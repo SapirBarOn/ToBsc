@@ -1,12 +1,21 @@
 const   express    = require('express'),
+        cors=require('cors'),
+        path = require('path'),
+        url = require('url'),
         bodyParser = require('body-parser'),
         userList  = require('./usersController'),
         chatController  = require('./chatController'),
         request    = require('request'),
-        app        = express(),
-        port       = process.env.PORT || 3000;
+        port       = process.env.PORT || 3000,
+        app        = express();
+      
 
 let engineeringArray=[];
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({extended: true}));   //For parsing POST requests
+app.use(cors({origin: '*'}));
+
 
 app.set('port',port);
 app.use('/', express.static('./public'));
@@ -18,6 +27,8 @@ app.use(
         next();
     });
 
+
+
 app.get('/', (req, res) => {
    res.sendFile(`${__dirname}/index.html`);
  });
@@ -27,11 +38,11 @@ app.get('/getAllData',
       userList.allusers().then(docs => res.json(docs));
 });
 
+
 app.post('/login', userList.login);
 
-app.get('/checkingUser/:emailInput/:passInput', userList.checkUser);
+app.post('/createNewAccount', userList.createUser);
 
-app.get('/createNewAccount/:firstNameInput/:lastNameInput/:emailInput/:passInput', userList.insertNewUserDataBase);
 
 
 app.get('/getAllChat',

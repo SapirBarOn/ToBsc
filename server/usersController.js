@@ -1,65 +1,51 @@
 const   mongoose = require('mongoose'),
         Users = require('./usersData'),
-        //translate  = require('google-translate-api'),
+        consts = require('./consts'),
         parser = require('json-parser'),
         http = require('http');
+        options = {
+            server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+            replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
+        };
+
 
 module.exports={
 
     allusers(){
-        return users.find();
+        return Users.find();
     }, 
 
 
     login(req,res){
         console.log(`login()`);
-      //  console.log(`req.body.emailInput -> ${req.body.emailInput}`);
         console.log(`req.body.password -> ${req.body.password}`);
+        console.log(`req.body.email -> ${req.body.email}`);
 
-    Users.findOne({
-        email : req.body.email
-    }, (err,result)=>{
-        if(err || !result){
-         //   console.log(`userName not exists -> ${err}`);
-            return res.status(500).json(`{email not exists:${err}}`);
-        }
+        Users.findOne({
+            email : req.body.email
+        }, (err,result)=>{
+            if(err || !result){
+                return res.status(500).json(`{email not exists:${err}}`);
+            }
 
-        if(req.body.password!==result.password){
-            console.log(`password is wrong ()`);
-            return res.status(405).json(`err:password is wrong`);
-        }
-    });
-},
-
-    checkUser(req, res){
-        var result='';        
-        users.find({},{"_id":0},
-            (err,users) => {
-                for (let i = 0; i < users.length; i++){
-                    if (users[i].email==req.params.emailInput){
-                            if (users[i].password==req.params.passInput)
-                                result='true';
-                            else result='password not correct';
-                    }
-                    else result='One of detailts are not correct';
-
-                }
-                res.json(result);
-
-            });
+            if(req.body.password!==result.password){
+                console.log(`password is wrong ()`);
+                return res.status(405).json(`err:password is wrong`);
+            }
+            else  {
+                console.log(`succses`);
+                return res.status(200).json(`succses`);
+            }
+        });
     },
 
-    insertNewUserDataBase(req,response){
-        let firstNameInsert=req.params.firstNameInput,
-            lastNameInsert= req.params.lastNameInput,
-            newEmail=req.params.emailInput,
-            passInsert= req.params.passInput
-            newUser = new user({
-            firstName: firstNameInsert,
-            lastName: lastNameInsert,
-            email: newEmail,
-            password: passInsert,
-            Engineering: null
+
+    createUser(req,response){
+        let newUser = new user({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password:req.body.password ,
             }),
             answerUser='data saved';
 
@@ -67,12 +53,12 @@ module.exports={
         newUser.save(
             (err) => {
                 if (err){
-                    console.log('errorrrr');
+                    console.log('creat error');
                     answerUser='error';                        
                 }
 
                else
-                   console.log('saved');
+                   console.log('user saved');
             });
 
         response.json(answerUser);
