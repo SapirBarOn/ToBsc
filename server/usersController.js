@@ -32,6 +32,13 @@ module.exports={
                 console.log(`password is wrong ()`);
                 return res.status(405).json(`err:password is wrong`);
             }
+
+            else if((req.body.email == "admin@gmail.com" ) && (req.body.password == "admin")){
+                                console.log(`admin`);
+
+                return res.status(200).json(`admin`);
+            }
+
             else  {
                 console.log(`succses`);
                 return res.status(200).json(`succses`);
