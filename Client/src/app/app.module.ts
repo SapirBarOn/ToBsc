@@ -15,6 +15,7 @@ import { AuthComponent } from './app-main/auth/auth.component';
 import { LoginComponent } from './app-main/login/login.component';
 import { AboutUsComponent } from './app-main/aboutUs/aboutUs.component';
 import { EnterComponent } from './app-main/enter/enter.component';
+import { ExpertComponent } from './app-main/expert/expert.component';
 
 
 const appRoutes: Routes = [
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'login', component: LoginComponent},
   {path: 'enter', component: EnterComponent},
+  {path: 'expert', component: ExpertComponent},
 
 ];
 
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     AuthComponent,
     LoginComponent,
     AboutUsComponent,
-    EnterComponent
+    EnterComponent,
+    ExpertComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

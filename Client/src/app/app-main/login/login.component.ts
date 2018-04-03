@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
     response:String;
 
     @ViewChild('email') emailInputRef : ElementRef;
@@ -25,8 +26,10 @@ export class LoginComponent implements OnInit {
            this.dataService.login(this.emailInputRef.nativeElement.value,
            this.passInputRef.nativeElement.value,result=>{
                 let code = result;
-                console.log(`response=${result}`);
-                if(result == "succses"){
+                if (result == 'admin'){
+                    this.router.navigateByUrl('/expert');            
+                }
+                if(result == 'succses'){
                     this.router.navigateByUrl('/enter');
                 }
                 else{
