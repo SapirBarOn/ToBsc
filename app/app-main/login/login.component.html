@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+
+<div id="login">
+    <form>
+        <h2>אימייל</h2>
+        <input #email type="email" name="email" ngModel  required>
+        <h2>סיסמא</h2>
+        <input #pass type="password" name="password" ngModel  required>
+        <p id="res"></p>
+        <button (click)="login()" type="submit">התחבר</button>
+
+    </form>
+
+</div>

@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+
+<div id="auth">
+    <form>
+        <h2>יצירת המשתמש שלך</h2>
+        <input #firstName type="text" name="firstName" ngModel placeholder="שם פרטי" required>
+        <input #lastName type="text" name="lastName" ngModel placeholder="שם משפחה" required>
+        <input #email type="email" name="email" ngModel placeholder="אימייל" required>
+        <input #pass type="password" name="password" ngModel placeholder="סיסמא" required>
+        <button (click)="createUser()" type="submit">הירשם</button>
+    </form>
+</div>
+
