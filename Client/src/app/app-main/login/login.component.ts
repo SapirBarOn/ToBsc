@@ -1,8 +1,6 @@
-import { Component, OnInit , ElementRef , ViewChild } from '@angular/core';
-import  { DataService } from '../../data.service';
+import { Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import  {DataService} from '../../data.service';
 import { Router } from '@angular/router';
-
-import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,30 +8,36 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    response:String;
 
-  emailAnswer="";
-  passAnswer="";
-  result;
+    @ViewChild('email') emailInputRef : ElementRef;
+    @ViewChild('pass') passInputRef : ElementRef;
 
-  constructor(private newService : DataService,
-      private router:Router) { }
+  constructor(private dataService : DataService,
+  private router:Router ) { }
 
   ngOnInit() {
-
   }
 
-    onSubmit(){
+  login(){
+           console.log(`login()->${this.emailInputRef.nativeElement.value},${this.passInputRef.nativeElement.value}`);
 
-         this.newService.checkLogin( this.emailAnswer , this.passAnswer,(results) => {
-         this.result = results;
+           this.dataService.login(this.emailInputRef.nativeElement.value,
+           this.passInputRef.nativeElement.value,result=>{
+                let code = result;
+                console.log(`response=${result}`);
+                if(result == "succses"){
+                    this.router.navigateByUrl('/enter');
+                }
+                else{
+                    document.getElementById('res').innerHTML='אימייל או סיסמא אינם נכונים';
+                }              
 
-         if (this.result=="true"){
-             document.getElementById('res').innerHTML="ברוכים הבאים";
-             this.router.navigateByUrl('/');
-
-         }
-
-         else if(this.result=="password not correct") document.getElementById('res').innerHTML="הסיסמא אינה נכונה. נסה שוב.";
-     })
+            })
+        };
     }
-}
+
+
+
+
+
