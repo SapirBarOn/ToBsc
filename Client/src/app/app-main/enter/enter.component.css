@@ -1,0 +1,13 @@
+div{
+    margin: 20px;
+    padding-top: 30px;
+    text-align: center;
+    direction: rtl;
+    font-style: arial;
+    font-size: 20px;
+    color: #cf411b;
+}
+
+span{
+    font-weight: bold;
+}
