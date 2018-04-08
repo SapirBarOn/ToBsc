@@ -1,16 +1,19 @@
-import { Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, EventEmitter, Output} from '@angular/core';
 import  {DataService} from '../../data.service';
 import { Router } from '@angular/router';
+import { AppHeaderComponent } from '../../app-header/app-header.component';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
 
-    response:String;
-
+    public response:string;
+    public test:string;
+    @Output() userName= new EventEmitter<string>();
     @ViewChild('email') emailInputRef : ElementRef;
     @ViewChild('pass') passInputRef : ElementRef;
 
@@ -25,15 +28,19 @@ export class LoginComponent implements OnInit {
 
            this.dataService.login(this.emailInputRef.nativeElement.value,
            this.passInputRef.nativeElement.value,result=>{
-                let code = result;
+                this.response = result;
                 if (result == 'admin'){
-                    this.router.navigateByUrl('/expert');            
+                    this.router.navigateByUrl('/expert');
+                    this.dataService.myMethod(this.response);           
                 }
-                if(result == 'succses'){
-                    this.router.navigateByUrl('/enter');
+                if(result == 'password is wrong'){
+                    document.getElementById('res').innerHTML='הסיסמא אינה נכונה';
                 }
                 else{
-                    document.getElementById('res').innerHTML='אימייל או סיסמא אינם נכונים';
+                    this.router.navigateByUrl('/enter');
+                    console.log('login response');
+                    console.log(result);
+                    this.dataService.myMethod(this.response);
                 }              
 
             })
