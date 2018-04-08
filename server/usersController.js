@@ -1,6 +1,6 @@
 const   mongoose = require('mongoose'),
         Users = require('./usersData'),
-        consts = require('./consts'),
+ //       consts = require('./consts'),
         parser = require('json-parser'),
         http = require('http');
         options = {
@@ -25,12 +25,13 @@ module.exports={
             email : req.body.email
         }, (err,result)=>{
             if(err || !result){
+                console.log ('error');
                 return res.status(500).json(`{email not exists:${err}}`);
             }
 
             if(req.body.password!==result.password){
                 console.log(`password is wrong ()`);
-                return res.status(405).json(`err:password is wrong`);
+                return res.status(405).json(`password is wrong`);
             }
 
             else if((req.body.email == "admin@gmail.com" ) && (req.body.password == "admin")){
@@ -41,7 +42,7 @@ module.exports={
 
             else  {
                 console.log(`succses`);
-                return res.status(200).json(`succses`);
+                return res.status(200).json(result.firstName);
             }
         });
     },
@@ -85,8 +86,8 @@ module.exports={
 
         let arrayLength=req.params.engineeringArray.length;
         for (let e =0; e < arrayLength; e++){
-            result.Engineering[e]=req.params.engineeringArray[e];
-
+            console.log();
+            result.Engineering.push(req.params.engineeringArray[e]);
         }
         res.json('Data saved');
         //result.Engineering = req.params.engineeringArray;
