@@ -52,7 +52,9 @@ app.get('/getAllChat',
 
 app.get('/getQuestion/:idNum', chatController.getQuestionById);
 
-app.get('/addEngineering/:userEmail/:engineeringArray', userList.insertEngineering);
+app.get('/calculateSubEngByUser/:userID/:answers', chatController.calculateSubEng);
+
+//app.get('/addEngineering/:userEmail/:engineeringArray', userList.insertEngineering);
 
 app.listen(port,
     () => {

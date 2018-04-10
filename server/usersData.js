@@ -9,7 +9,6 @@ const mongoose = require('mongoose'),
     email: String,
     password: String,
     Engineering: [String],
- //   _id: String,
 }, {collection: 'user'}),
 
 

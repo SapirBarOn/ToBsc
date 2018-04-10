@@ -6,6 +6,13 @@ const mongoose = require('mongoose'),
     questionSchema = new schema({
     questionId: {type: Number, index:1,required:true},
     questionData: String,
+    Wchemistry: Number,
+    Wsoftware: Number,
+    Welectronic: Number,
+    Wmedical: Number,
+    Wmanagement: Number,
+    Wbuilding: Number,
+    Wmachine: Number
 }, {collection: 'question'}),
 
 
