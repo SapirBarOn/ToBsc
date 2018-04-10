@@ -1,5 +1,5 @@
 const   mongoose = require('mongoose'),
-        Questions = require('./questionData'),
+        questions = require('./questionData'),
         subEng    = require('./subEngData'),
         //translate  = require('google-translate-api'),
         parser = require('json-parser'),
@@ -8,13 +8,13 @@ const   mongoose = require('mongoose'),
 module.exports={
 
     allQuestion(){
-        return Questions.find();
+        return questions.find();
     },
 
     getQuestionById(req,res){
         console.log(`getId()`);
         console.log(`req.params.idNum -> ${req.params.idNum}`);
-        Questions.findOne({
+        questions.findOne({
         questionId : req.params.idNum
     }, (err,result)=>{
         if(err || !result){
@@ -29,64 +29,65 @@ module.exports={
 
     calculateSubEng(req,res){
         let userId = req.params.userID;
+        let answersUser=[];
+        for (let i=0; i<req.params.answers.length; i++){
+            answersUser[i]=req.params.answers[i];
+        }
        // let answersUser=[];
         console.log(userId);
-        console.log(req.params.answers);
-        let totalSoftware=100,
-            weightSoftware;
+        console.log(answersUser);
+        let totalSoftware=0;
+        let num=1;
 
         for (let ans=0; ans<req.params.answers.length; ans++){
-                Questions.findOne({
-                    questionId : 1
-                }, (err,result)=>{
-                    if(err || !result){
-                        return res.status(500).json(`{id not exists:${err}}`);
-                    }
 
-                    res.json(result);
+                questions.findOne({
+                questionId : num
+                    }, (err,result)=>{
+                        if(err || !result){
+                            return res.status(500);
+                            console.log(`id not exists`);
+                        }
+                        console.log(result.Wsoftware);
+                        console.log(answersUser[ans]);
+                        totalSoftware= totalSoftware+(result.Wsoftware*answersUser[ans]);
                 });
-                //     Questions.findOne({
-                //     questionId : ++ans
 
-                // }, (err,result)=>{
-                //     if(err || !result){
-                //         return res.status(500).json(`{id not exists:${err}}`);
-                //     }
-                //     console.log(`questionId= ${questionId}`);
-
-                //     weightSoftware= result.Wsoftware;
-                //     console.log(`weightSoftware= ${weightSoftware}`);
-
-                //    //all 
-                // });
-            
-                // totalSoftware= totalSoftware-(weightSoftware*req.params.answers[ans]);
-                // //all
+                num++;
         }
-// console.log(`totalSoftware= ${totalSoftware}`);
+        console.log(totalSoftware);
 
-//         let userSubEng = new subEng({
-//             userID: userId,
-//             software: 0,
-//             chemistry: 0,
-//             electronic: 0,
-//             medical: 0,
-//             management: 0,
-//             building: 0,
-//             machine:0
-//             });
+        // for (let ans=0; ans<req.params.answers.length; ans++){
+               
+        //        // console.log(`weightSoftware= ${weightSoftware[ans]}`);
 
-//         userSubEng.save(
-//             (err) => {
-//                 if (err){
-//                     console.log('creat error');                      
-//                 }
+        //         totalSoftware= totalSoftware+(weightSoftware[ans]*req.params.answers[ans]);
+        // }
 
-//                else
-//                    console.log('user saved');
-//             });
+        console.log(`totalSoftware= ${totalSoftware}`);
 
-//         res.json(totalSoftware);
+                let userSubEng = new subEng({
+                    userID: userId,
+                    software: totalSoftware,
+                    chemistry: 0,
+                    electronic: 0,
+                    medical: 0,
+                    management: 0,
+                    building: 0,
+                    machine:0
+                    });
+
+                userSubEng.save(
+                    (err) => {
+                        if (err){
+                            console.log('creat error');                      
+                        }
+
+                       else
+                           console.log('user saved');
+                    });
+
+                res.json(totalSoftware);
 
     }
 

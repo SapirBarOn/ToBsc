@@ -1,6 +1,5 @@
 const   mongoose = require('mongoose'),
         Users = require('./usersData'),
- //       consts = require('./consts'),
         parser = require('json-parser'),
         http = require('http');
         options = {
@@ -70,28 +69,6 @@ module.exports={
             });
 
         response.json(answerUser);
-
-    },
-
-    insertEngineering(req,res){
-        console.log(`insertEngineering()`);
-        console.log(`req.params.engineeringArray -> ${req.params.engineeringArray}`);
-        Users.findOne({
-        email : req.params.userEmail
-    }, (err,result)=>{
-        if(err || !result){
-         //   console.log(`userName not exists -> ${err}`);
-            return res.status(500).json(`{email not exists:${err}}`);
-        }
-
-        let arrayLength=req.params.engineeringArray.length;
-        for (let e =0; e < arrayLength; e++){
-            console.log();
-            result.Engineering.push(req.params.engineeringArray[e]);
-        }
-        res.json('Data saved');
-        //result.Engineering = req.params.engineeringArray;
-    });    
 
     }
 
