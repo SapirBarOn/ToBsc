@@ -29,19 +29,64 @@ module.exports={
 
     calculateSubEng(req,res){
         let userId = req.params.userID;
-        let answersUser=[];
-        for (let ans=0; ans<req.params.answers.length; ans++){
-            answersUser[ans]=req.params.answers[ans];
-        }
+       // let answersUser=[];
         console.log(userId);
-        console.log(answersUser);
+        console.log(req.params.answers);
+        let totalSoftware=100,
+            weightSoftware;
 
-        // let userSubEng= new subEng(){
-        //     userID : userId,
-        //     software:100,
+        for (let ans=0; ans<req.params.answers.length; ans++){
+                Questions.findOne({
+                    questionId : 1
+                }, (err,result)=>{
+                    if(err || !result){
+                        return res.status(500).json(`{id not exists:${err}}`);
+                    }
+
+                    res.json(result);
+                });
+                //     Questions.findOne({
+                //     questionId : ++ans
+
+                // }, (err,result)=>{
+                //     if(err || !result){
+                //         return res.status(500).json(`{id not exists:${err}}`);
+                //     }
+                //     console.log(`questionId= ${questionId}`);
+
+                //     weightSoftware= result.Wsoftware;
+                //     console.log(`weightSoftware= ${weightSoftware}`);
+
+                //    //all 
+                // });
             
+                // totalSoftware= totalSoftware-(weightSoftware*req.params.answers[ans]);
+                // //all
+        }
+// console.log(`totalSoftware= ${totalSoftware}`);
 
-        // }
+//         let userSubEng = new subEng({
+//             userID: userId,
+//             software: 0,
+//             chemistry: 0,
+//             electronic: 0,
+//             medical: 0,
+//             management: 0,
+//             building: 0,
+//             machine:0
+//             });
+
+//         userSubEng.save(
+//             (err) => {
+//                 if (err){
+//                     console.log('creat error');                      
+//                 }
+
+//                else
+//                    console.log('user saved');
+//             });
+
+//         res.json(totalSoftware);
 
     }
 
