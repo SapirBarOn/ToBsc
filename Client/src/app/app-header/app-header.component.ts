@@ -10,17 +10,20 @@ import { LoginComponent } from '../app-main/login/login.component';
 })
 export class AppHeaderComponent implements OnInit {
 
-    userName: String;
+    public userData: string[];
+    userName:string;
 
   constructor( private dataService : DataService) { }
 
   ngOnInit() {
              this.dataService.myMethod$.subscribe((data) => {
-             this.userName = data; // And he have data here too!
+             this.userData = data; // And he have data here too!
+             console.log(this.userData);
+             this.userName=this.userData[1];
              console.log(this.userName);
-             if(this.userName){
-                document.getElementById('nameLogin').innerHTML=this.userName+'  ברוכים הבאים ';
-            }
+            //  if(this.userName){
+            //     document.getElementById('nameLogin').innerHTML=this.userName+'  ברוכים הבאים ';
+            // }
             }
         );
       //this.userName =this.dataService.firstNameUser;
@@ -28,6 +31,8 @@ export class AppHeaderComponent implements OnInit {
         console.log(this.userName);
   }
 
-
+  logOut(){
+    this.userName=null;
+  }
 
 }

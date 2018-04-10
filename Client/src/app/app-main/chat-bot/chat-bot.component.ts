@@ -51,39 +51,45 @@ resultAfterTyping;
       else{
          this.arrayCorrectAnswer.push(1);
       }
-      this.questionNum++;
-      console.log("this.arrayCorrectAnswer",this.arrayCorrectAnswer)
-      this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing);
-        this.messages.push(this.resultAfterTyping)
+      if(this.questionNum<12){
+         this.questionNum++;
+        console.log("this.arrayCorrectAnswer",this.arrayCorrectAnswer)
         this.timer = setTimeout(() => {
-          this.newService.getQuestionById( this.questionNum,(results) => {
-            this.messages.pop()
-            this.messages.push(
-            new Message(results)
-            );
-          });
+          this.resultAfterTyping = new Message (this.typing);
+          this.messages.push(this.resultAfterTyping)
+          this.timer = setTimeout(() => {
+            this.newService.getQuestionById( this.questionNum,(results) => {
+              this.messages.pop()
+              this.messages.push(
+              new Message(results)
+              );
+            });
+          }, 1000);
         }, 1000);
-      }, 1000);
+
+      }
+
     console.log(this.messages);
     return this.messageToCheak;  
     }
     if(this.messageToCheak.includes("כן") || this.messageToCheak.includes("ברור")|| this.messageToCheak.includes("בטח")){
-      this.questionNum++;
-      this.arrayCorrectAnswer.push(3);
-      console.log("this.arrayCorrectAnswer",this.arrayCorrectAnswer)
-      this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing)
-        this.messages.push(this.resultAfterTyping)
-        this.timer = setTimeout(() => {
-          this.newService.getQuestionById( this.questionNum,(results) => {
-            this.messages.pop()
-            this.messages.push(
-            new Message(results)
-            );
-          });  
-        }, 1000);
-      }, 1000);
+        if(this.questionNum<12){
+            this.questionNum++;
+            this.arrayCorrectAnswer.push(3);
+            console.log("this.arrayCorrectAnswer",this.arrayCorrectAnswer)
+            this.timer = setTimeout(() => {
+              this.resultAfterTyping = new Message (this.typing)
+              this.messages.push(this.resultAfterTyping)
+              this.timer = setTimeout(() => {
+                this.newService.getQuestionById( this.questionNum,(results) => {
+                  this.messages.pop()
+                  this.messages.push(
+                  new Message(results)
+                  );
+                });  
+              }, 1000);
+            }, 1000);
+        }
      console.log(this.messages);
     }
    else{
