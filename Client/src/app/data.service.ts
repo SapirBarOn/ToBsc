@@ -62,5 +62,20 @@ export class DataService {
                );
     }
 
+    getQuestionById(data:number, callback:Function){
+  let idNum=data;
+  this.http.get('http://localhost:3000/getQuestion/'+idNum)
+ .subscribe(
+        (response: Response) =>  {
+          console.log(response.json());
+          callback(response.json());
+        },
+        (error => {
+          console.log(error);
+          callback(null);
+        })
+      );
+    }
+
 
 }

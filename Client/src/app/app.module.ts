@@ -16,6 +16,7 @@ import { LoginComponent } from './app-main/login/login.component';
 import { AboutUsComponent } from './app-main/aboutUs/aboutUs.component';
 import { EnterComponent } from './app-main/enter/enter.component';
 import { ExpertComponent } from './app-main/expert/expert.component';
+import { ChatBotComponent } from './app-main/chat-bot/chat-bot.component';
 
 
 const appRoutes: Routes = [
@@ -24,7 +25,9 @@ const appRoutes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'login', component: LoginComponent},
   {path: 'enter', component: EnterComponent},
+  {path: 'chat-bot', component: ChatBotComponent},
   {path: 'expert', component: ExpertComponent},
+
 
 ];
 
@@ -38,7 +41,8 @@ const appRoutes: Routes = [
     LoginComponent,
     AboutUsComponent,
     EnterComponent,
-    ExpertComponent
+    ExpertComponent,
+    ChatBotComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
