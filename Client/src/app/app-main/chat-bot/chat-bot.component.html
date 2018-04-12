@@ -11,5 +11,7 @@
             <input type="text" class="inputtext" [(ngModel)]="content" (keydown)="handleSubmit($event)"> 
             <button class="replay" (click)="send(content)">שלח</button>
     </div>
+
+    <button routerLink="/SubEng" (click)="getAnswer()">תוצאות</button>
 </body>
 
