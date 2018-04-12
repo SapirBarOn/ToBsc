@@ -1,9 +1,9 @@
 const   mongoose = require('mongoose'),
         questions = require('./questionData'),
         subEng    = require('./subEngData'),
-        //translate  = require('google-translate-api'),
         parser = require('json-parser'),
         http = require('http');
+
 
 module.exports={
 
@@ -27,67 +27,66 @@ module.exports={
 
     },
 
+    getWeightsById(req,res){
+        questions.findOne({
+        questionId : req.params.idQus
+            }, (err,result)=>{
+                if(err || !result){
+                    return res.status(500);
+                    console.log(`id not exists`);
+               }
+                res.json([result.Wsoftware,result.Wchemistry,result.Welectronic,result.Wmedical,result.Wmanagement,result.Wbuilding,result.Wmachine]);
+            });
+    },
+
     calculateSubEng(req,res){
         let userId = req.params.userID;
+        let num=1;
+        let totalSoftware=100,
+            totalChemistry=100,
+            totalElectronic=100,
+            totalMedical=100,
+            totalManagement=100,
+            totalBuilding=100,
+            totalMachine=100;
+
         let answersUser=[];
         for (let i=0; i<req.params.answers.length; i++){
             answersUser[i]=req.params.answers[i];
         }
-       // let answersUser=[];
         console.log(userId);
         console.log(answersUser);
-        let totalSoftware=0;
-        let num=1;
 
-        for (let ans=0; ans<req.params.answers.length; ans++){
-
-                questions.findOne({
-                questionId : num
-                    }, (err,result)=>{
-                        if(err || !result){
-                            return res.status(500);
-                            console.log(`id not exists`);
-                        }
-                        console.log(result.Wsoftware);
-                        console.log(answersUser[ans]);
-                        totalSoftware= totalSoftware+(result.Wsoftware*answersUser[ans]);
-                });
-
-                num++;
+        for (let j=0; j<req.params.answers.length; j++){
+            totalSoftware=totalSoftware-(req.params.softwareArr[j]*answersUser[j]);
+            totalChemistry=totalChemistry-(req.params.chemistryArr[j]*answersUser[j]);
+            totalElectronic=totalElectronic-(req.params.electronicArr[j]*answersUser[j]);
+            totalMedical=totalMedical-(req.params.medicalArr[j]*answersUser[j]);
+            totalManagement=totalManagement-(req.params.managementArr[j]*answersUser[j]);
+            totalBuilding=totalBuilding-(req.params.buildingArr[j]*answersUser[j]);
+            totalMachine=totalMachine-(req.params.machineArr[j]*answersUser[j]);
         }
-        console.log(totalSoftware);
+            let userSubEng = new subEng({
+            userID: userId,
+            software: totalSoftware,
+            chemistry: totalChemistry,
+            electronic: totalElectronic,
+            medical: totalMedical,
+            management: totalManagement,
+            building: totalBuilding,
+            machine:totalMachine
+            });
 
-        // for (let ans=0; ans<req.params.answers.length; ans++){
-               
-        //        // console.log(`weightSoftware= ${weightSoftware[ans]}`);
+            userSubEng.save(
+                (err) => {
+                    if (err){
+                        console.log('creat error');                      
+                    }
 
-        //         totalSoftware= totalSoftware+(weightSoftware[ans]*req.params.answers[ans]);
-        // }
-
-        console.log(`totalSoftware= ${totalSoftware}`);
-
-                let userSubEng = new subEng({
-                    userID: userId,
-                    software: totalSoftware,
-                    chemistry: 0,
-                    electronic: 0,
-                    medical: 0,
-                    management: 0,
-                    building: 0,
-                    machine:0
+                    else
+                       console.log('user saved');
+                            res.json('save');
                     });
-
-                userSubEng.save(
-                    (err) => {
-                        if (err){
-                            console.log('creat error');                      
-                        }
-
-                       else
-                           console.log('user saved');
-                    });
-
-                res.json(totalSoftware);
 
     }
 

@@ -52,7 +52,9 @@ app.get('/getAllChat',
 
 app.get('/getQuestion/:idNum', chatController.getQuestionById);
 
-app.get('/calculateSubEngByUser/:userID/:answers', chatController.calculateSubEng);
+app.get('/getWeights/:idQus', chatController.getWeightsById);
+
+app.get('/calculateSubEngByUser/:userID/:answers/:softwareArr/:chemistryArr/:electronicArr/:medicalArr/:managementArr/:buildingArr/:machineArr', chatController.calculateSubEng);
 
 
 app.listen(port,
