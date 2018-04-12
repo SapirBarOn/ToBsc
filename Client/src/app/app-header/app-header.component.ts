@@ -10,7 +10,7 @@ import { LoginComponent } from '../app-main/login/login.component';
 })
 export class AppHeaderComponent implements OnInit {
 
-    public userData: string[];
+    public userData: string;
     userName:string;
 
   constructor( private dataService : DataService) { }
@@ -21,14 +21,10 @@ export class AppHeaderComponent implements OnInit {
              console.log(this.userData);
              this.userName=this.userData[1];
              console.log(this.userName);
-            //  if(this.userName){
-            //     document.getElementById('nameLogin').innerHTML=this.userName+'  ברוכים הבאים ';
-            // }
             }
         );
-      //this.userName =this.dataService.firstNameUser;
-        console.log('the user is');
-        console.log(this.userName);
+        // console.log('the user is');
+        // console.log(this.userName);
   }
 
   logOut(){

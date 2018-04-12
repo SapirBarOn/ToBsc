@@ -3,8 +3,13 @@ import { Http , Response} from '@angular/http';
 import {Subject} from 'rxjs/Subject';
 import { Observable } from 'rxjs';
 
+import  {Question} from './model/Qustion.model';
+
+
 @Injectable()
 export class DataService {
+
+  private questions:Question[]= [];
 
   myMethod$: Observable<any>;
   myAnswers$: Observable<any>;
@@ -25,6 +30,19 @@ export class DataService {
               callback( res.json() );
           }
        )
+  }
+
+  allQuestions(callback: Function) {
+      this.http.get('http://localhost:3000/getAllQuestions')
+      .subscribe(
+          (res: Response ) => {
+              callback( res.json() );
+          },
+          (error =>{
+              console.log(error);
+              callback(null);
+          })
+       );
   }
 
      myMethod(data) {
@@ -114,6 +132,60 @@ export class DataService {
                   callback(null);
                 })
               );
+    }
+
+
+     createQuestion(question:string,
+                   Wchemistry:number,
+                   Wsoftware:number,
+                   Welectronic:number,
+                   Wmedical:number,
+                   Wmanagement:number,
+                   Wbuilding:number,
+                   Wmachine:number,
+                   callback: Function){
+                this.http.post('http://localhost:3000/createNewQuestion',
+                     {'questionData':question,'Wchemistry':Wchemistry,'Wsoftware':Wsoftware,'Welectronic':Welectronic,
+                     'Wmedical':Wmedical,'Wmanagement':Wmanagement,'Wbuilding':Wbuilding,'Wmachine':Wmachine})
+                  .subscribe(
+                  (res: Response ) => {
+                      callback( res.json() );
+                  },
+                  (error => {
+                    console.log(error);
+                    callback(null);
+                })
+               );
+
+    }
+
+
+
+
+    updateQuestion(questionId:number,
+                   questionData:string,
+                   Wchemistry:number,
+                   Wsoftware:number,
+                   Welectronic:number,
+                   Wmedical:number,
+                   Wmanagement:number,
+                   Wbuilding:number,
+                   Wmachine:number,callback: Function){
+      this.http.post('http://localhost:3000/updateQuestion',
+      {'questionId':questionId,'questionData':questionData,
+       'Wchemistry':Wchemistry,'Wsoftware':Wsoftware,
+       'Welectronic':Welectronic,'Wmedical':Wmedical,
+       'Wmanagement':Wmanagement,'Wbuilding':Wbuilding,'Wmachine':Wmachine})
+      .subscribe(
+          (res: Response ) => {
+              callback(res.json());
+          },
+          (error => {
+            console.log(error);
+            callback(null);
+        })
+       );   
+    
     }
 
 }

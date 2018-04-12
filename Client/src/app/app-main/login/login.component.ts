@@ -29,13 +29,14 @@ export class LoginComponent implements OnInit {
            this.dataService.login(this.emailInputRef.nativeElement.value,
            this.passInputRef.nativeElement.value,result=>{
                 this.response = result;
-                if (result == 'admin'){
+                if(result == 'password is wrong'){
+                  document.getElementById('res').innerHTML='הסיסמא אינה נכונה';
+                }
+                else if (result[0] == '5ac3d84d86be841138bcaf1a'){
                     this.router.navigateByUrl('/expert');
                     this.dataService.myMethod(this.response);           
                 }
-                if(result == 'password is wrong'){
-                    document.getElementById('res').innerHTML='הסיסמא אינה נכונה';
-                }
+
                 else{
                     this.router.navigateByUrl('/enter');
                     console.log('login response');

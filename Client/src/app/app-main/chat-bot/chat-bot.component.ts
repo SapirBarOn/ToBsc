@@ -152,9 +152,9 @@ resultAfterTyping;
              // this.managementArr.push(data[4]);
              // this.buildingArr.push(data[5]);
              // this.machineArr.push(data[6]);
-             });
+             //});
 
-        }
+        //}
     }
 }
 
