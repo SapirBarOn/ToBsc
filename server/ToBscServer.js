@@ -4,6 +4,7 @@ const   express    = require('express'),
         url = require('url'),
         bodyParser = require('body-parser'),
         userList  = require('./usersController'),
+        questionController  = require('./expertController'),
         chatController  = require('./chatController'),
         request    = require('request'),
         port       = process.env.PORT || 3000,
@@ -43,6 +44,14 @@ app.post('/login', userList.login);
 
 app.post('/createNewAccount', userList.createUser);
 
+app.post('/createNewQuestion', questionController.createQuestion);
+
+app.post('/updateQuestion',questionController.updateQuestion);
+
+app.get('/getAllQuestions',
+     (req,res)=>{
+      questionController.allQuestion().then(docs => res.json(docs));
+});
 
 
 app.get('/getAllChat',
@@ -52,9 +61,11 @@ app.get('/getAllChat',
 
 app.get('/getQuestion/:idNum', chatController.getQuestionById);
 
+
 app.get('/getWeights/:idQus', chatController.getWeightsById);
 
 app.get('/calculateSubEngByUser/:userID/:answers/:softwareArr/:chemistryArr/:electronicArr/:medicalArr/:managementArr/:buildingArr/:machineArr', chatController.calculateSubEng);
+
 
 
 app.listen(port,

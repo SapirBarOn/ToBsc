@@ -34,9 +34,8 @@ module.exports={
             }
 
             else if((req.body.email == "admin@gmail.com" ) && (req.body.password == "admin")){
-                                console.log(`admin`);
-
-                return res.status(200).json(`admin`);
+                console.log(`admin`);
+                return res.status(200).json([result._id , result.firstName]);
             }
 
             else  {

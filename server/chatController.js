@@ -2,8 +2,8 @@ const   mongoose = require('mongoose'),
         questions = require('./questionData'),
         subEng    = require('./subEngData'),
         parser = require('json-parser'),
+        // results=[],
         http = require('http');
-
 
 module.exports={
 
@@ -35,6 +35,7 @@ module.exports={
                     return res.status(500);
                     console.log(`id not exists`);
                }
+               console.log(result);
                 res.json([result.Wsoftware,result.Wchemistry,result.Welectronic,result.Wmedical,result.Wmanagement,result.Wbuilding,result.Wmachine]);
             });
     },
@@ -85,7 +86,7 @@ module.exports={
 
                     else
                        console.log('user saved');
-                            res.json('save');
+                            res.json([totalSoftware,totalChemistry,totalElectronic,totalMedical,totalManagement,totalBuilding,totalMachine]);
                     });
 
     }
