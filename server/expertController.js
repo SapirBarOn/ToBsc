@@ -16,15 +16,15 @@ module.exports={
 
     createQuestion(req,response){
         let newQuestion = new question({
-            questionId: 13,
+            questionId: req.body.questionId,
             questionData: req.body.questionData,
             Wchemistry: req.body.Wchemistry,
             Wsoftware: req.body.Wsoftware,
-            Welectronic:req.body.Welectronic ,
-            Wmedical:req.body.Wmedical , 
-            Wmanagement:req.body.Wmanagement ,
-            Wbuilding:req.body.Wbuilding ,
-            Wmachine:req.body.Wmachine ,
+            Welectronic:req.body.Welectronic,
+            Wmedical:req.body.Wmedical, 
+            Wmanagement:req.body.Wmanagement,
+            Wbuilding:req.body.Wbuilding,
+            Wmachine:req.body.Wmachine,
             }),
             answerUser='data saved';
 
