@@ -135,7 +135,8 @@ export class DataService {
     }
 
 
-     createQuestion(question:string,
+     createQuestion(questionId:number,
+                   question:string,
                    Wchemistry:number,
                    Wsoftware:number,
                    Welectronic:number,
@@ -145,8 +146,8 @@ export class DataService {
                    Wmachine:number,
                    callback: Function){
                 this.http.post('http://localhost:3000/createNewQuestion',
-                     {'questionData':question,'Wchemistry':Wchemistry,'Wsoftware':Wsoftware,'Welectronic':Welectronic,
-                     'Wmedical':Wmedical,'Wmanagement':Wmanagement,'Wbuilding':Wbuilding,'Wmachine':Wmachine})
+                     {'questionId':questionId,'questionData':question,'Wchemistry':Wchemistry,'Wsoftware':Wsoftware,
+                     'Welectronic':Welectronic,'Wmedical':Wmedical,'Wmanagement':Wmanagement,'Wbuilding':Wbuilding,'Wmachine':Wmachine})
                   .subscribe(
                   (res: Response ) => {
                       callback( res.json() );
