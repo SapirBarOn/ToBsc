@@ -82,7 +82,8 @@ export class ExpertComponent implements OnInit {
   }
 
   createQuestion(){
-    this.dataService.createQuestion(this.questionInputRef.nativeElement.value,
+    this.dataService.createQuestion(this.questions.length,
+    this.questionInputRef.nativeElement.value,
     this.WchemistryInputRef.nativeElement.value,
     this.WsoftwareInputRef.nativeElement.value,
     this.WelectronicInputRef.nativeElement.value,
