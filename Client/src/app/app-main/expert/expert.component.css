@@ -1,18 +1,44 @@
 
-h2{
+#addQuestion h2{
   font-size: 15px;
   font-family: arial;
-  margin-left: 158px;
+  margin-left: 115px;
 }
 
-form{
+
+#addQuestion{
+  margin-right: 100px;
   float: right;
-  padding-right: 70px;
-  padding-top: 30px;
+}
+
+#updateQuestion{
+  margin-right: 500px;
+  margin-top: 20px;
+}
+
+#updateQuestion button{
+  width: 105px;
+  margin-top: -4px;
+}
+
+#updateQuestion h2{
+  font-size: 15px;
+  font-family: arial;
+  margin-left: 700px;
+}
+
+.dropdown-menu{
+  margin-left: 400px;
+  margin-top: 30px;
+}
+
+#updateQuestion form{
+  float: right;
+  margin-left: 150px;
 }
 
 input {
-  padding: 12px 20px;
+  padding: 5px 10px;
   margin: 8px 0;
   display:block;
   border: 1px solid #ccc;
@@ -24,8 +50,8 @@ input {
 }
 
 button{
-    height: 35px;
-    width: 85px;
+    height: 30px;
+    width: 80px;
     border-radius: 5px;
     border: 2px solid #4f4d4f;
     float:right;
