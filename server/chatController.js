@@ -27,6 +27,7 @@ module.exports={
 
     },
 
+
     getWeightsById(req,res){
         questions.findOne({
         questionId : req.params.idQus
@@ -35,7 +36,6 @@ module.exports={
                     return res.status(500);
                     console.log(`id not exists`);
                }
-               console.log(result);
                 res.json([result.Wsoftware,result.Wchemistry,result.Welectronic,result.Wmedical,result.Wmanagement,result.Wbuilding,result.Wmachine]);
             });
     },
@@ -43,29 +43,33 @@ module.exports={
     calculateSubEng(req,res){
         let userId = req.params.userID;
         let num=1;
-        let totalSoftware=100,
+        let softwareArr=req.params.softwareArr.split(','),
+            chemistryArr=req.params.chemistryArr.split(','),
+            electronicArr=req.params.electronicArr.split(','),
+            medicalArr=req.params.medicalArr.split(','),
+            managementArr=req.params.managementArr.split(','),
+            buildingArr=req.params.buildingArr.split(','),
+            machineArr=req.params.machineArr.split(','),
+            totalSoftware=100,
             totalChemistry=100,
             totalElectronic=100,
             totalMedical=100,
             totalManagement=100,
             totalBuilding=100,
             totalMachine=100;
+            var answersArr=req.params.answers.split(',');
 
-        let answersUser=[];
-        for (let i=0; i<req.params.answers.length; i++){
-            answersUser[i]=req.params.answers[i];
-        }
         console.log(userId);
-        console.log(answersUser);
+        console.log(answersArr);
 
-        for (let j=0; j<req.params.answers.length; j++){
-            totalSoftware=totalSoftware-(req.params.softwareArr[j]*answersUser[j]);
-            totalChemistry=totalChemistry-(req.params.chemistryArr[j]*answersUser[j]);
-            totalElectronic=totalElectronic-(req.params.electronicArr[j]*answersUser[j]);
-            totalMedical=totalMedical-(req.params.medicalArr[j]*answersUser[j]);
-            totalManagement=totalManagement-(req.params.managementArr[j]*answersUser[j]);
-            totalBuilding=totalBuilding-(req.params.buildingArr[j]*answersUser[j]);
-            totalMachine=totalMachine-(req.params.machineArr[j]*answersUser[j]);
+        for (let j=0; j<answersArr.length; j++){
+            totalSoftware=totalSoftware-(softwareArr[j]*answersArr[j]);
+            totalChemistry=totalChemistry-(chemistryArr[j]*answersArr[j]);
+            totalElectronic=totalElectronic-(electronicArr[j]*answersArr[j]);
+            totalMedical=totalMedical-(medicalArr[j]*answersArr[j]);
+            totalManagement=totalManagement-(managementArr[j]*answersArr[j]);
+            totalBuilding=totalBuilding-(buildingArr[j]*answersArr[j]);
+            totalMachine=totalMachine-(machineArr[j]*answersArr[j]);
         }
             let userSubEng = new subEng({
             userID: userId,
@@ -90,5 +94,6 @@ module.exports={
                     });
 
     }
+
 
 };
