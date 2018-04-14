@@ -13,13 +13,46 @@ export class DataService {
 
   myMethod$: Observable<any>;
   myAnswers$: Observable<any>;
+  chemistryWeight$:Observable<any>;
+  softwareWeight$: Observable<any>;
+  electronicWeight$ : Observable<any>;
+  medicalWeight$ : Observable<any>;
+  managementWeight$ : Observable<any>;
+  buildingWeight$ : Observable<any>;
+  machineWeight$ : Observable<any>;
+
+  chemistryResult:number[]=[];
+  softwarResult:number[]=[];
+  electronicResult:number[]=[];
+  medicalResult:number[]=[];
+  managementResult:number[]=[];
+  buildingResult:number[]=[];
+  machineResult:number[]=[];
+
   firstNameUser: string;
+
   private myMethodSubject = new Subject<any>();
-   private myAnswerSubject = new Subject<any>();
+  private myAnswerSubject = new Subject<any>();
+  private chemistryWeightSubject = new Subject<any>();
+  private softwareWeightSubject = new Subject<any>();
+  private electronicWeightSubject = new Subject<any>();
+  private medicalWeightSubject = new Subject<any>();
+  private managementWeightSubject = new Subject<any>();
+  private buildingWeightSubject = new Subject<any>();
+  private machineWeightSubject = new Subject<any>();
+
 
   constructor(private http: Http) { 
             this.myMethod$ = this.myMethodSubject.asObservable();
             this.myAnswers$ = this.myAnswerSubject.asObservable();
+            this.chemistryWeight$ = this.chemistryWeightSubject.asObservable();
+            this.softwareWeight$ = this.softwareWeightSubject.asObservable();
+            this.electronicWeight$ = this.electronicWeightSubject.asObservable();
+            this.medicalWeight$ = this.medicalWeightSubject.asObservable();
+            this.managementWeight$ = this.managementWeightSubject.asObservable();
+            this.buildingWeight$ = this.buildingWeightSubject.asObservable();
+            this.machineWeight$ = this.machineWeightSubject.asObservable();
+
         }
 
 
@@ -44,7 +77,6 @@ export class DataService {
           })
        );
   }
-
      myMethod(data) {
         console.log(data); // I have data! Let's return it so subscribers can use it!
         // we can do stuff with data if we want
@@ -56,6 +88,39 @@ export class DataService {
         // we can do stuff with data if we want
         this.myAnswerSubject.next(data);
      }
+
+    chemistryWeight(data){
+       this.chemistryResult.push(data)
+       this.chemistryWeightSubject.next(this.chemistryResult);
+     }
+
+     softwareWeight(data){
+       this.softwarResult.push(data)
+       this.softwareWeightSubject.next(this.softwarResult);
+     }
+
+      electronicWeight(data){
+       this.electronicResult.push(data)
+       this.electronicWeightSubject.next(this.electronicResult);
+     }
+
+      medicalWeight(data){
+       this.medicalResult.push(data)
+       this.medicalWeightSubject.next(this.medicalResult);
+     }
+      managementWeight(data){
+       this.managementResult.push(data)
+       this.managementWeightSubject.next(this.managementResult);
+     }
+      buildingWeight(data){
+       this.buildingResult.push(data)
+       this.buildingWeightSubject.next(this.buildingResult);
+     }
+      machineWeight(data){
+       this.machineResult.push(data)
+       this.machineWeightSubject.next(this.machineResult);
+     }
+
 
   login(email:string,password:string,callback: Function) {
       this.http.post('http://localhost:3000/login',{'email':email,'password':password})
@@ -120,8 +185,14 @@ export class DataService {
               );
     }
 
-    calculateAndSaveSubEng( userId: string, dataAns: number[], softtwareW: number[], chemistryW:number[],electronicW: number[], medicalhW:number[], managementW:number[], buildinghW:number[], machineW:number[], callback: Function){
-       this.http.get('http://localhost:3000/calculateSubEngByUser/'+userId+'/'+dataAns+'/'+softtwareW+'/'+chemistryW+'/'+electronicW+'/'+medicalhW+'/'+managementW+'/'+buildinghW+'/'+machineW)
+    calculateAndSaveSubEng( userId: string, dataAns: number[], callback: Function){
+      console.log(this.softwarResult);
+      console.log(this.medicalResult);
+      console.log(this.managementResult);
+      console.log(this.chemistryResult);
+      console.log(this.electronicResult);
+      console.log(this.buildingResult);
+       this.http.get('http://localhost:3000/calculateSubEngByUser/'+userId+'/'+dataAns+'/'+this.softwarResult+'/'+this.chemistryResult+'/'+this.electronicResult+'/'+this.medicalResult+'/'+this.managementResult+'/'+this.buildingResult+'/'+this.machineResult)
         .subscribe(
                (response: Response) =>  {
                   console.log(response.json());
@@ -133,6 +204,7 @@ export class DataService {
                 })
               );
     }
+
 
 
      createQuestion(questionId:number,
