@@ -1,0 +1,60 @@
+#header{
+    height: 120px;
+    background: #84b4a7;
+}
+
+img{
+   margin-left: 90px;
+}
+
+#buttons{
+    float: right;
+    margin-right: 100px;
+    margin-top: 50px;
+}
+
+button{
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #7d331f;
+    margin-left: 15px;
+    background-color:#cf411b;
+    color:#ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    outline:none;
+}
+
+button:hover{
+    background-color:#b13615;
+}
+
+#nameLogin{
+    float: right;
+    margin-right: 100px;
+    margin-top: 50px;  
+    font-size: 20px;
+    color:#ffffff;
+}
+
+.dropdown-toggle{
+    width: 45px;
+    background:#84b4a7;
+    border:2px solid #cecece; 
+    margin-right: 200px;
+    margin-top: -70px;
+    float: right;
+}
+.dropdown-toggle:hover{
+    background-color: #8dc4ae;
+}
+
+.dropdown-menu{
+    border:1px solid #cecece; 
+    margin-left: 920px;
+    margin-top: -30px;
+    text-align:right;
+    font-size:17px;
+    color: #84b4a7;
+}
