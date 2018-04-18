@@ -89,7 +89,7 @@ export class SubEngComponent implements OnInit {
                         document.getElementById('twoTotal').innerHTML="עדיפות שנייה  "+this.totalSubEng[1].type;
                         document.getElementById('treeTotal').innerHTML="עדיפות שלישית "+this.totalSubEng[2].type;     
                 })
-                    });
+     
             }  
       });
 
@@ -98,25 +98,7 @@ export class SubEngComponent implements OnInit {
 
 
  }
-
-
- // ngOnInit1(userId){
- //     console.log(userId);
- //      // this.dataService.myAnswers$.subscribe((data) => {
- //      //       this.userAns = data; 
- //      //       console.log(`answersUser= ${this.userAns}`);
- //             this.userAns=[1,2,1,2,1,2,1,2,1,2,1,2];
- //            // this.userId="5ac35e2ee92c8230100e21c4";
- //            if (userId!=null && this.userAns!= null){
- //                this.dataService.calculateAndSaveSubEng(userId, 
- //                    this.userAns ,this.softwarResult,this.chemistryResult,this.electronicResult,this.medicalResult,this.managementResult,this.buildingResult,this.machineResult, (data)=>{
- //                    this.result=data;
- //                    console.log("server->",this.result)
- //                    });
- //            }  
- //      //});
-
-            
+     
 
 }
 
