@@ -1,0 +1,48 @@
+<meta charset="utf-8">
+
+<div id="addQuestion">
+    <form>
+        <h2>הוספת שאלה</h2>
+        <input #question type="text"   placeholder="השאלה" required>
+        <input #Wchemistry type="number"   placeholder="משקל כימיה" required>
+        <input #Wsoftware type="number"   placeholder="משקל תוכנה" required>
+        <input #Welectronic type="number"   placeholder="משקל אלקטרוניקה" required>
+        <input #Wmedical type="number"   placeholder="משקל רפואה" required>
+        <input #Wmanagement type="number"   placeholder="משקל תעשייה וניהול" required>
+        <input #Wbuilding type="number"   placeholder="משקל בניין" required>
+        <input #Wmachine type="number"   placeholder="משקל מכונות" required>
+
+        <button (click)="createQuestion()" type="submit">הוספה</button>
+        <p id="res"></p>
+    </form>
+</div>
+
+<div id="updateQuestion">
+    <h2>עדכון שאלה</h2> 
+    <div class="dropdown">
+                <button class="dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>בחר שאלה
+                </button>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let q of questions">
+                        <div (click)="choose(q)">{{q.questionData}}</div>
+                    </li>
+                </ul>
+    </div>
+    <div *ngIf= "choosed">
+        <form>
+            השאלה<input #q type="text"   placeholder="{{Qchoosed.questionData}}" required>
+            משקל כימיה<input #Wchem type="number"   placeholder="{{Qchoosed.Wchemistry}}" required>
+            משקל תוכנה<input #Wsoft type="number"   placeholder="{{Qchoosed.Wsoftware}}" required>
+            משקל אלקטרוניקה<input #Welectro type="number"   placeholder="{{Qchoosed.Welectronic}}" required>
+            משקל רפואה<input #Wmedic type="number"   placeholder="{{Qchoosed.Wmedical}}" required>
+            משקל תעשייה וניהול<input #Wmanage type="number"   placeholder="{{Qchoosed.Wmanagement}}" required>
+            משקל בניין<input #Wbuild type="number"   placeholder="{{Qchoosed.Wbuilding}}" required>
+            משקל מכונות<input #Wmac type="number"   placeholder="{{Qchoosed.Wmachine}}" required>
+
+            <button (click)="update(Qchoosed.questionId)" type="submit">עדכן</button>
+        </form>                
+        <p id="res"></p>
+    </div>
+</div>
+

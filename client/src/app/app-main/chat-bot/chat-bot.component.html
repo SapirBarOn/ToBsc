@@ -1,0 +1,17 @@
+<body>
+    <blockquote id="chat">
+             <p>שלום אני מומחה וירטואלי</p>
+             <p> אני אשאל אותך מספר שאלות</p>
+             <p>{{result}}</p>
+             <div *ngFor = "let mg of messages;let first = first ;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess,first:first}">
+                {{mg.content}}
+             </div>
+    </blockquote>
+    <div class="input">
+            <input type="text" class="inputtext" [(ngModel)]="content" (keydown)="handleSubmit($event)"> 
+            <button class="replay" (click)="send(content)">שלח</button>
+    </div>
+
+    <button routerLink="/SubEng" (click)="getAnswer()">תוצאות</button>
+</body>
+
