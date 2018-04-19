@@ -6,7 +6,9 @@ const   express    = require('express'),
         userList  = require('./usersController'),
         questionController  = require('./expertController'),
         chatController  = require('./chatController'),
+        crawlerController= require('./crawlerController'),
         request    = require('request'),
+        Crawler = require("crawler"),
         port       = process.env.PORT || 3000,
         app        = express();
       
@@ -66,6 +68,7 @@ app.get('/getWeights/:idQus', chatController.getWeightsById);
 
 app.get('/calculateSubEngByUser/:userID/:answers/(:softwareArr)/(:chemistryArr)/(:electronicArr)/(:medicalArr)/(:managementArr)/(:buildingArr)/(:machineArr)', chatController.calculateSubEng);
 
+app.get('/getCrawler',crawlerController.getCrawler)
 
 app.listen(port,
     () => {
