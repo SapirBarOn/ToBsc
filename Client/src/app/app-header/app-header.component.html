@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+
+<div id="header">
+
+    <a routerLink="/aboutUs"><img src="../../assets/images/logo.png"></a>
+    <div *ngIf = "!userName" id="buttons">
+        <button routerLink="/login">התחבר</button>
+        <button routerLink="/auth">הירשם</button>
+    </div>
+    <div *ngIf = "userName" id="nameLogin"> שלום, {{userName}} </div>
+        <div *ngIf = "userName" class="dropdown">
+            <button class="dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">עריכת משתמש</a></li>
+                <li (click)="logOut()"><a>התנתקות</a></li>
+            </ul>
+        </div>
+
+</div>
+
