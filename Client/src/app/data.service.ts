@@ -264,8 +264,8 @@ export class DataService {
     
     }
 
-    getCrowler(callback: Function) {
-      this.http.get('http://localhost:3000/getCrowler')
+    getCrawler(callback: Function) {
+      this.http.get('http://localhost:3000/getCrawler')
       .subscribe(
           (res: Response ) => {
               callback( res.json() );

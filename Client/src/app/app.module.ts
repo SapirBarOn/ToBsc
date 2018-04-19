@@ -19,6 +19,7 @@ import { ExpertComponent } from './app-main/expert/expert.component';
 import { ChatBotComponent } from './app-main/chat-bot/chat-bot.component';
 import { SubEngComponent } from './app-main/sub-eng/sub-eng.component';
 import {CurrentUser} from './app-shared/current-user';
+import { CollegesComponent } from './app-main/colleges/colleges.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/aboutUs', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
   {path: 'enter', component: EnterComponent},
   {path: 'chat-bot', component: ChatBotComponent},
   {path: 'expert', component: ExpertComponent},
+  {path: 'colleges', component: CollegesComponent},
   {path: 'SubEng', component: SubEngComponent}
 
 ];
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     ExpertComponent,
     ChatBotComponent,
     SubEngComponent,
+    CollegesComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
