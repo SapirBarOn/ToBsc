@@ -51,6 +51,8 @@ app.post('/createNewQuestion', questionController.createQuestion);
 
 app.post('/updateQuestion',questionController.updateQuestion);
 
+app.post('/filterInstitutes',institutesController.filterInstitutes);
+
 app.get('/getAllQuestions',
      (req,res)=>{
       questionController.allQuestion().then(docs => res.json(docs));

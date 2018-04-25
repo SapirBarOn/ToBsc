@@ -12,10 +12,10 @@ const mongoose = require('mongoose'),
     uniSalary: Boolean,
     dorms: Boolean,
     subEng: [String]
+
 }, {collection: 'institutes'}),
 
-
- institutes= mongoose.model('institutes',institutesSchema);
+institutes= mongoose.model('institutes',institutesSchema);
 module.exports=institutes;
 
 
