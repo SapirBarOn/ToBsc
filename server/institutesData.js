@@ -7,6 +7,11 @@ const mongoose = require('mongoose'),
     name: {type:String, index:1,required:true},
     pic: String,
     logo: String,
+    type: String,
+    location: String,
+    uniSalary: Boolean,
+    dorms: Boolean,
+    subEng: [String]
 }, {collection: 'institutes'}),
 
 
