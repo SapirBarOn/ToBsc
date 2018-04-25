@@ -77,6 +77,23 @@ export class DataService {
           })
        );
   }
+
+  getAllInstitutes(callback: Function) {
+      this.http.get('http://localhost:3000/getAllInstitutes')
+      .subscribe(
+          (res: Response ) => {
+              callback( res.json() );
+          },
+          (error =>{
+              console.log(error);
+              callback(null);
+          })
+       );
+  }
+
+
+
+  
      myMethod(data) {
         console.log(data); // I have data! Let's return it so subscribers can use it!
         // we can do stuff with data if we want

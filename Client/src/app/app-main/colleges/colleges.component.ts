@@ -9,14 +9,14 @@ import  { DataService } from '../../data.service';
 export class CollegesComponent implements OnInit {
 crawler:string;
 display:boolean=false;
-  constructor(private newService : DataService) { }
+  constructor(private dataService : DataService) { }
 
   ngOnInit() {
      
   }
   getData(){
       this.display=true;
-      this.newService.getCrawler((data) => {
+      this.dataService.getCrawler((data) => {
            this.crawler = data;
            console.log(this.crawler);
            

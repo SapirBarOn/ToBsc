@@ -20,6 +20,7 @@ import { ChatBotComponent } from './app-main/chat-bot/chat-bot.component';
 import { SubEngComponent } from './app-main/sub-eng/sub-eng.component';
 import {CurrentUser} from './app-shared/current-user';
 import { CollegesComponent } from './app-main/colleges/colleges.component';
+import { InstitutesComponent } from './app-main/institutes/institutes.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/aboutUs', pathMatch: 'full'},
@@ -30,7 +31,10 @@ const appRoutes: Routes = [
   {path: 'chat-bot', component: ChatBotComponent},
   {path: 'expert', component: ExpertComponent},
   {path: 'colleges', component: CollegesComponent},
-  {path: 'SubEng', component: SubEngComponent}
+  {path: 'SubEng', component: SubEngComponent},
+  {path: 'institutes', component: InstitutesComponent}
+
+  
 
 ];
 
@@ -48,6 +52,7 @@ const appRoutes: Routes = [
     ChatBotComponent,
     SubEngComponent,
     CollegesComponent,
+    InstitutesComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
