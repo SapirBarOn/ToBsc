@@ -1,8 +1,43 @@
 <meta charset="utf-8">
 
 <div id="filter">
-    
+        <select id="inst" (change)="selectInstitute($event)">
+            <option value="all">מוסד לימוד</option>
+            <option value="אוניברסיטה">אוניברסיטה</option>
+            <option value="מכללה">מכללה</option>
+        </select>
 
+        <select id="subEng" (change)="selectSubEng($event)">
+            <option value="all">תחום הנדסה</option>
+            <option value="הנדסת כימיה">הנדסת כימיה</option>
+            <option value="הנדסת תוכנה">הנדסת תוכנה</option>
+            <option value="הנדסת אלקטרוניקה">הנדסת אלקטרוניקה</option>
+            <option value="הנדסת מכונות">הנדסת מכונות</option>
+            <option value="הנדסת בניין">הנדסת בניין</option>
+            <option value="הנדסת תעשייה וניהול">הנדסת תעשייה וניהול</option>
+            <option value="הנדסה כימית">הנדסה כימית</option>
+        </select>
+
+
+        <select id="location" (change)="selectLocation($event)">
+            <option value="all">מיקום</option>
+            <option value="מרכז">מרכז</option>
+            <option value="שרון">שרון</option>
+            <option value="ירושלים">ירושלים</option>
+            <option value="דרום">דרום</option>
+            <option value="שומרון">שומרון</option>
+            <option value="צפון">צפון</option>
+        </select>
+    
+    <form>
+        <label  for="uniSalary">שכר אוניברסיטאי</label>
+        <input  (change)="selectUniSalary($event)" value="true" type="checkbox" id="uniSalary" name="uniSalary" >
+
+        <label for="dorms">מעונות</label>
+        <input (change)="selectDorms($event)" value="true" type="checkbox" id="dorms" name="dorms">
+    
+        <button (click)="filter()" type="submit">סינון</button>
+    </form>
 
 </div>
 

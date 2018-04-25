@@ -153,9 +153,6 @@ export class DataService {
 
   }
 
-//  getUserName(){
-//     return userName;
-//  }
 
   createUser(firstName:string,lastName:string,email:string,password:string,callback: Function){
            this.http.post('http://localhost:3000/createNewAccount',
@@ -253,8 +250,6 @@ export class DataService {
     }
 
 
-
-
     updateQuestion(questionId:number,
                    questionData:string,
                    Wchemistry:number,
@@ -280,6 +275,28 @@ export class DataService {
        );   
     
     }
+
+
+    filterInstitutes(location:string,
+                     subEng:string,
+                     dorms:boolean,
+                     uniSalary:boolean,
+                     institute:string,callback: Function){
+      this.http.post('http://localhost:3000/filterInstitutes',
+      {'location':location,'subEng':subEng,'dorms':dorms,
+       'uniSalary':uniSalary,'institute':institute})
+      .subscribe(
+          (res: Response ) => {
+              callback(res.json());
+          },
+          (error => {
+            console.log(error);
+            callback(null);
+        })
+       );   
+    
+    }
+
 
     getCrawler(callback: Function) {
       this.http.get('http://localhost:3000/getCrawler')

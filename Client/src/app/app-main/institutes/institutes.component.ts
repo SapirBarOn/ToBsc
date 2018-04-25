@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  {DataService} from '../../data.service';
 import  {Institutes} from '../../model/Institutes.model';
+// import { FormBuilder , FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-institutes',
@@ -10,8 +11,14 @@ import  {Institutes} from '../../model/Institutes.model';
 export class InstitutesComponent implements OnInit {
 
   institutes:Institutes[]=[];
-
-
+  selectedLocation: string;
+  selectedSubEng: string;
+  selectedDorms:boolean = false;
+  selectedUniSalary:boolean = false;
+  selectedInstitute:string;
+  // selectedCollege:string;
+  // selectedUniversity:string;
+  // flag:boolean = false;
 
   constructor(private dataService:DataService) { }
 
@@ -22,9 +29,46 @@ export class InstitutesComponent implements OnInit {
         console.log(this.institutes);      
 
     });
+  }
+
+  filter(){
+    this.dataService.filterInstitutes(this.selectedLocation,
+    this.selectedSubEng,
+    this.selectedDorms,
+    this.selectedUniSalary,
+    this.selectedInstitute,result=>{
+                console.log(`response=${result}`);
+                if(result) this.institutes = result;
+                else  console.log('filter error');           
+            })
+  };
 
 
+  selectLocation (event: any) {
+    this.selectedLocation = event.target.value;
+    console.log(this.selectedLocation);      
+  }
 
+  selectSubEng (event: any) {
+    this.selectedSubEng = event.target.value;
+    console.log(this.selectedSubEng);      
+  }
+
+  selectInstitute (event: any) {
+    this.selectedInstitute = event.target.value;
+    console.log(this.selectedInstitute);      
+  }
+
+  selectDorms(event: any){
+    if(!this.selectedDorms) this.selectedDorms = event.target.value;
+    else this.selectedDorms = false;
+    console.log(this.selectedDorms);      
+  }
+
+  selectUniSalary(event: any){
+    if(!this.selectedUniSalary) this.selectedUniSalary = event.target.value;
+    else this.selectedUniSalary = false;
+    console.log(this.selectedUniSalary);      
   }
 
 }
