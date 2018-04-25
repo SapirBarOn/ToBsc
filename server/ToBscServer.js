@@ -7,6 +7,7 @@ const   express    = require('express'),
         questionController  = require('./expertController'),
         chatController  = require('./chatController'),
         crawlerController= require('./crawlerController'),
+        institutesController= require('./institutesController'),
         request    = require('request'),
         Crawler = require("crawler"),
         port       = process.env.PORT || 3000,
@@ -59,6 +60,11 @@ app.get('/getAllQuestions',
 app.get('/getAllChat',
    (req,res)=>{
       chatController.allQuestion().then(docs => res.json(docs));
+});
+
+app.get('/getAllInstitutes',
+     (req,res)=>{
+      institutesController.getAllInstitutes().then(docs => res.json(docs));
 });
 
 app.get('/getQuestion/:idNum', chatController.getQuestionById);
