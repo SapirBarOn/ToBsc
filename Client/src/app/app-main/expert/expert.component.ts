@@ -2,6 +2,7 @@ import { Component, OnInit ,ElementRef, ViewChild} from '@angular/core';
 import  {DataService} from '../../data.service';
 import  {Question} from '../../model/Qustion.model';
 import { Router } from '@angular/router';
+// import {Popup} from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-expert',
@@ -12,8 +13,9 @@ export class ExpertComponent implements OnInit {
 
   questions:Question[]=[];
   Qchoosed:Question;
-  Qid:number;
-  choosed:boolean=false;
+
+  choosedUpdate:boolean=false;
+  choosedCreate:boolean=false;
 
     //for Add question
     @ViewChild('question') questionInputRef : ElementRef;
@@ -47,19 +49,25 @@ export class ExpertComponent implements OnInit {
 
   }
 
-  choose(q){
-    this.choosed=true;
+  chooseForUpdate(q){
+    if (this.chooseForCreate)   this.choosedCreate=false;
+    this.choosedUpdate=true;
     this.Qchoosed=q;
-    console.log(this.Qchoosed.questionData);      
-
+    console.log(this.Qchoosed.questionData);    
   }
 
-  update(Q){
-    this.Qid=Q;
-    console.log(`Qid= ${this.Qid}`);    
+
+  chooseForCreate(){
+    if (this.choosedUpdate) this.choosedUpdate = false;
+    this.choosedCreate=true;
+  }
+
+
+  update(){
+    console.log(`Qid= ${this.Qchoosed.questionId}`);    
     console.log(`qInputRef= ${this.qInputRef.nativeElement.value}`);
 
-    this.dataService.updateQuestion(this.Qid,
+    this.dataService.updateQuestion(this.Qchoosed.questionId,
                         this.qInputRef.nativeElement.value,
                         this.WchemiInputRef.nativeElement.value,
                         this.WsoftInputRef.nativeElement.value,
@@ -71,6 +79,8 @@ export class ExpertComponent implements OnInit {
       console.log(`response=${result}`);
       if(result == "data update"){
         document.getElementById('res').innerHTML="העדכון בוצע בהצלחה";
+        this.ngOnInit();
+        // this.popup.show();
       }
       else{
         document.getElementById('res').innerHTML='ישנה שגיאה,אנא נסה שנית';
@@ -80,6 +90,15 @@ export class ExpertComponent implements OnInit {
     
 
   }
+
+  delete(q){
+    this.dataService.deleteQuestion(q.questionId,result=>{
+                          if(result == "question deleted"){
+                              this.ngOnInit();
+                          }        
+    });
+  }
+
 
   createQuestion(){
     this.dataService.createQuestion(this.questions.length,
@@ -93,12 +112,8 @@ export class ExpertComponent implements OnInit {
     this.WmachineInputRef.nativeElement.value,result=>{
                 console.log(`response=${result}`);
                 if(result == "data saved"){
-                    document.getElementById('res').innerHTML="השאלה נוספה";
-                }
-                else{
-                    document.getElementById('res').innerHTML='ישנה שגיאה,אנא נסה שנית';
-                }              
-
+                    this.ngOnInit();
+                }            
             })
         };
 

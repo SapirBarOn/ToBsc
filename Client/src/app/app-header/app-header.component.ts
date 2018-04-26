@@ -20,17 +20,13 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit() {
              this.dataService.myMethod$.subscribe((data) => {
-             this.userData = data; // And he have data here too!
+             this.userData = data; 
              console.log(this.userData);
              this.userName=this.userData[1];
              console.log(this.userName);
             }
         );
 
-             // this.currentUserService.change(this.user);
-             // console.log("user",this.user);
-        // console.log('the user is');
-        // console.log(this.userName);
   }
 
   logOut(){

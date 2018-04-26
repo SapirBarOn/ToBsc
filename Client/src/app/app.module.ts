@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule } from '@angular/router';
 
-import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 
@@ -33,9 +33,6 @@ const appRoutes: Routes = [
   {path: 'colleges', component: CollegesComponent},
   {path: 'SubEng', component: SubEngComponent},
   {path: 'institutes', component: InstitutesComponent}
-
-  
-
 ];
 
 @NgModule({
@@ -58,8 +55,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule,
-    ReactiveFormsModule
+    HttpModule
   ],
   exports: [RouterModule],
   providers: [DataService,CurrentUser],

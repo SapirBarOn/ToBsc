@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  {DataService} from '../../data.service';
 import  {Institutes} from '../../model/Institutes.model';
-// import { FormBuilder , FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-institutes',
@@ -16,9 +16,7 @@ export class InstitutesComponent implements OnInit {
   selectedDorms:boolean = false;
   selectedUniSalary:boolean = false;
   selectedInstitute:string;
-  // selectedCollege:string;
-  // selectedUniversity:string;
-  // flag:boolean = false;
+emailid:string;
 
   constructor(private dataService:DataService) { }
 
@@ -31,7 +29,14 @@ export class InstitutesComponent implements OnInit {
     });
   }
 
+
+   onClickSubmit(data) {
+     this.emailid = data.emailid;
+     console.log(`emailid= ${this.emailid}`);
+   }
+
   filter(){
+
     this.dataService.filterInstitutes(this.selectedLocation,
     this.selectedSubEng,
     this.selectedDorms,
@@ -51,7 +56,7 @@ export class InstitutesComponent implements OnInit {
 
   selectSubEng (event: any) {
     this.selectedSubEng = event.target.value;
-    console.log(this.selectedSubEng);      
+    console.log(this.selectedSubEng); 
   }
 
   selectInstitute (event: any) {
