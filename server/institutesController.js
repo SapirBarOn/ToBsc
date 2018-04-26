@@ -20,13 +20,146 @@ module.exports={
             dorms= req.body.dorms,
             uniSalary= req.body.uniSalary,
             type= req.body.institute;
+        let university='אוניברסיטה',
+            college='מכללה',
+            north='צפון',
+            South='דרום',
+            center='מרכז',
+            Samaria='שומרון',
+            sharon='שרון',
+            Jerusalem='ירושלים';
+            software='הנדסת תוכנה',
+            chemical='הנדסה כימית',
+            electronic='הנדסת אלקטרוניקה',
+            management='הנדסת תעשיה וניהול',
+            building='הנדסת בניין',
+            machine='הנדסת מכונות',
+            medical='הנדסה רפואית';
+
+            if (type=='אוניברסיטה'){
+                college='';
+            }
+            else if (type=='מכללה'){
+                university='';
+            }
+
+
+            if(location=='צפון'){
+                South='';
+                center='';
+                Samaria='';
+                sharon='';
+                Jerusalem='';
+            }
+
+            else if(location=='דרום'){
+                north='';
+                center='';
+                Samaria='';
+                sharon='';
+                Jerusalem='';
+            }
+
+            else if(location=='מרכז'){
+                South='';
+                north='';
+                Samaria='';
+                sharon='';
+                Jerusalem='';
+            }
+            else if(location=='שרון'){
+                South='';
+                center='';
+                Samaria='';
+                north='';
+                Jerusalem='';
+            }
+
+            else if(location=='שומרון'){
+                South='';
+                center='';
+                north='';
+                sharon='';
+                Jerusalem='';
+            }
+            else if(location=='ירושלים'){
+                South='';
+                center='';
+                Samaria='';
+                sharon='';
+                north='';
+            }
+
+            if(subEng=='הנדסת תוכנה'){
+                electronic='';
+                chemical='';
+                management='';
+                medical='';
+                building='';
+                machine='';
+            }
+
+            else if(subEng=='הנדסת אלקטרוניקה'){
+                software='';
+                chemical='';
+                management='';
+                medical='';
+                building='';
+                machine='';
+            }
+
+            else if(subEng=='הנדסת בניין'){
+                electronic='';
+                chemical='';
+                management='';
+                medical='';
+                software='';
+                machine='';
+            }
+            else if(subEng=='הנדסה כימית'){
+                electronic='';
+                software='';
+                management='';
+                medical='';
+                building='';
+                machine='';
+            }
+
+            else if(subEng=='הנדסת מכונות'){
+                electronic='';
+                chemical='';
+                management='';
+                medical='';
+                building='';
+                software='';
+            }
+
+            else if(subEng=='הנדסת תעשייה וניהול'){
+                electronic='';
+                chemical='';
+                software='';
+                medical='';
+                building='';
+                machine='';
+            }
+
+            else if(subEng=='הנדסה רפואית'){
+                electronic='';
+                chemical='';
+                software='';
+                management='';
+                building='';
+                machine='';
+            }
 
             Institutes.find({$and:[
-                    {type: type},                  
-                    {location: location},
+                    { $or : [ { type : university }, { type : college } ] },
+                    { $or : [ { location : north }, { location : South },
+                     { location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon } ] },                    
                     {dorms: dorms},
-                    {subEng: subEng},
-                    {uniSalary: uniSalary}
+                    { $or : [ { subEng : software }, { subEng : chemical },
+                     { subEng : electronic }, { subEng : management }, { subEng : building }, { subEng : medical }, { subEng : machine } ] }, 
+                    {uniSalary: uniSalary }
                 ]
  
             },(err,result)=>{
