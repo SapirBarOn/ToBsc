@@ -66,6 +66,20 @@ module.exports={
             }
 
         });
+    },
+
+    deleteQuestion(req,response){
+        Questions.remove({questionId: req.body.questionId},
+            (err,result)=>{
+                if(err){
+                    console.log ('error');
+                }
+
+                else  {
+                    console.log(`succses`);
+                    return response.status(200).json("question deleted");
+                }
+            });
     }
 
 

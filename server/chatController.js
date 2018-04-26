@@ -2,7 +2,6 @@ const   mongoose = require('mongoose'),
         questions = require('./questionData'),
         subEng    = require('./subEngData'),
         parser = require('json-parser'),
-        // results=[],
         http = require('http');
 
 module.exports={
@@ -25,19 +24,6 @@ module.exports={
         res.json(result.questionData);
     });
 
-    },
-
-
-    getWeightsById(req,res){
-        questions.findOne({
-        questionId : req.params.idQus
-            }, (err,result)=>{
-                if(err || !result){
-                    return res.status(500);
-                    console.log(`id not exists`);
-               }
-                res.json([result.Wsoftware,result.Wchemistry,result.Welectronic,result.Wmedical,result.Wmanagement,result.Wbuilding,result.Wmachine]);
-            });
     },
 
     calculateSubEng(req,res){

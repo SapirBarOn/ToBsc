@@ -51,6 +51,8 @@ app.post('/createNewQuestion', questionController.createQuestion);
 
 app.post('/updateQuestion',questionController.updateQuestion);
 
+app.post('/deleteQuestion',questionController.deleteQuestion);
+
 app.post('/filterInstitutes',institutesController.filterInstitutes);
 
 app.get('/getAllQuestions',
@@ -71,8 +73,6 @@ app.get('/getAllInstitutes',
 
 app.get('/getQuestion/:idNum', chatController.getQuestionById);
 
-
-app.get('/getWeights/:idQus', chatController.getWeightsById);
 
 app.get('/calculateSubEngByUser/:userID/:answers/(:softwareArr)/(:chemistryArr)/(:electronicArr)/(:medicalArr)/(:managementArr)/(:buildingArr)/(:machineArr)', chatController.calculateSubEng);
 
