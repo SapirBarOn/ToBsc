@@ -13,7 +13,6 @@ module.exports={
         return Institutes.find();
     },
 
-
     filterInstitutes(req,response){
         let location= req.body.location,
             subEng= req.body.subEng,

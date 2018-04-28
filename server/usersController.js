@@ -35,12 +35,13 @@ module.exports={
 
             else if((req.body.email == "admin@gmail.com" ) && (req.body.password == "admin")){
                 console.log(`admin`);
-                return res.status(200).json([result._id , result.firstName]);
+                return res.status(200).json(result);
+           
             }
 
             else  {
-                console.log(`succses`);
-                return res.status(200).json([result._id , result.firstName]);
+                console.log(`login result--->>>${result}`);
+                return res.status(200).json(result);
             }
         });
     },
@@ -52,24 +53,19 @@ module.exports={
             lastName: req.body.lastName,
             email: req.body.email,
             password:req.body.password ,
-            }),
-            answerUser='data saved';
-
+            });
 
         newUser.save(
             (err) => {
                 if (err){
                     console.log('creat error');
-                    answerUser='error';                        
                 }
 
                else
                    console.log('user saved');
             });
 
-        response.json(answerUser);
-
+        response.json(newUser);
     }
-
 
 };
