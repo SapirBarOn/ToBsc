@@ -5,73 +5,60 @@ export class User {
       private email:string;
       private password:string;
       private answers:number[]=[];
-  // constructor(
-      // public _id:string,
-      // public name:string,
-  //     public password:string,
-  //     public email:string,
-  //     public env:[string],
-  //     public instr:[string],
-  //     public era:[string]) {}
 
-  constructor(){
-
-  }
+  constructor(){}
 
  
   public setId(v : string) {
       this._id = v;
   }
 
-    public setFirstName(v : string) {
-      this.firstName = v;
-  }
-
   public getId(){
       return this._id;
   }
-    public getFirstName(){
+
+  public setFirstName(v : string) {
+    this.firstName = v;
+  }
+
+  public getFirstName(){
       return this.firstName;
   }
 
-   public setPassword(v : string) {
-      this.password = v;
+
+  public setLastName(v : string) {
+    this.lastName = v;
   }
 
-  public getPassword(){
-      return this.password;
+  public getLastName(){
+      return this.lastName;
   }
 
   public setEmail(v : string) {
-      this.email = v;
+    this.email = v;
   }
 
   public getEmail(){
-      return this.email;
+    return this.email;
   }
+
+  public setPassword(v : string) {
+    this.password = v;
+  }
+
+  public getPassword(){
+    return this.password;
+  }
+
   public setAnswers(s:number[])
   {
     for(let i=0;i<s.length;i++){
       this.answers[i]=s[i];
     }
   }
+
   public getAnswers(){
     return this.answers;
   }
 
-//   public setInstr(v : String[]) {
-//       this.instr = v;
-//   }
-
-//   public getInstr(){
-//       return this.instr;
-//   }
-
-//   public setEra(v : String[]) {
-//       this.era = v;
-//   }
-
-//   public getEra(){
-//       return this.era;
-//   }
 }

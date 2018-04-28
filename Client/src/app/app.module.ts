@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
-
 
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
@@ -18,7 +17,7 @@ import { EnterComponent } from './app-main/enter/enter.component';
 import { ExpertComponent } from './app-main/expert/expert.component';
 import { ChatBotComponent } from './app-main/chat-bot/chat-bot.component';
 import { SubEngComponent } from './app-main/sub-eng/sub-eng.component';
-import {CurrentUser} from './app-shared/current-user';
+import { CurrentUser } from './app-shared/current-user';
 import { CollegesComponent } from './app-main/colleges/colleges.component';
 import { InstitutesComponent } from './app-main/institutes/institutes.component';
 
@@ -32,7 +31,7 @@ const appRoutes: Routes = [
   {path: 'expert', component: ExpertComponent},
   {path: 'colleges', component: CollegesComponent},
   {path: 'SubEng', component: SubEngComponent},
-  {path: 'institutes', component: InstitutesComponent}
+  {path: 'institutes', component: InstitutesComponent},
 ];
 
 @NgModule({
@@ -58,7 +57,10 @@ const appRoutes: Routes = [
     HttpModule
   ],
   exports: [RouterModule],
-  providers: [DataService,CurrentUser],
+  providers: [
+    DataService,
+    CurrentUser
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

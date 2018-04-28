@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import  {DataService} from '../../data.service';
+import { DataService } from '../../data.service';
 import { Router } from '@angular/router';
+import { CurrentUser } from '../../app-shared/current-user';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +18,8 @@ export class AuthComponent implements OnInit {
     @ViewChild('pass') passInputRef : ElementRef;
 
   constructor(private dataService : DataService,
-  private router:Router) { }
+              private router:Router,
+              private currentUserService:CurrentUser) { }
 
   ngOnInit() {
   }
@@ -33,8 +35,10 @@ export class AuthComponent implements OnInit {
                this.lastNameInputRef.nativeElement.value,
                this.emailInputRef.nativeElement.value,
                this.passInputRef.nativeElement.value,result=>{
-                console.log(`response=${result}`);
-                if(result == "data saved"){
+
+                if(result){
+                    this.dataService.myMethod(result); 
+                    this.currentUserService.change(result);
                     this.router.navigateByUrl('/enter');
                 }
                 else{

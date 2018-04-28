@@ -38,23 +38,11 @@ button:hover{
     color:#ffffff;
 }
 
-.dropdown-toggle{
-    width: 45px;
-    background:#84b4a7;
-    border:2px solid #cecece; 
-    margin-right: 200px;
-    margin-top: -70px;
-    float: right;
-}
-.dropdown-toggle:hover{
-    background-color: #8dc4ae;
-}
-
-.dropdown-menu{
-    border:1px solid #cecece; 
-    margin-left: 920px;
-    margin-top: -30px;
-    text-align:right;
-    font-size:17px;
-    color: #84b4a7;
+.logout{
+    cursor: pointer;
+    color: #b13615;
+    font-size: 15px;
+    margin-left: 650px;
+    margin-top: 55px;
+    position: absolute;
 }

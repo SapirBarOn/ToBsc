@@ -132,12 +132,10 @@ resultAfterTyping;
       }
     }
 
-    getAnswer(id){
+    getAnswer(){
       console.log("befor Sub",this.arrayCorrectAnswer);
           this.user=this.currentUserService.getCurrentUser();
-          this.user.setAnswers(this.arrayCorrectAnswer);
-         // this.newService.myAnswers(this.arrayCorrectAnswer);
-         
+          this.user.setAnswers(this.arrayCorrectAnswer);         
     }
 }
 

@@ -12,29 +12,27 @@
             משקל בניין<input #Wbuild type="number"   placeholder="{{Qchoosed.Wbuilding}}" required>
             משקל מכונות<input #Wmac type="number"   placeholder="{{Qchoosed.Wmachine}}" required>
             
-            <button (click)="update()" type="submit">עדכן</button>
+            <button (click)="update()" class="btn btn-info" type="submit">עדכן</button>
         </form>     
-<!--         <popup>השאלה עודכנה בהצלחה!</popup>           
- -->    </div>
+   </div>
 
     <div *ngIf= "choosedCreate">
         <form>
-            <input #question type="text"   placeholder="השאלה" required>
-            <input #Wchemistry type="number"   placeholder="משקל כימיה" required>
-            <input #Wsoftware type="number"   placeholder="משקל תוכנה" required>
-            <input #Welectronic type="number"   placeholder="משקל אלקטרוניקה" required>
-            <input #Wmedical type="number"   placeholder="משקל רפואה" required>
-            <input #Wmanagement type="number"   placeholder="משקל תעשייה וניהול" required>
-            <input #Wbuilding type="number"   placeholder="משקל בניין" required>
-            <input #Wmachine type="number"   placeholder="משקל מכונות" required>
-
-            <button (click)="createQuestion()" type="submit">הוספה</button>
+            <input #question type="text"   placeholder="השאלה" required><br>
+            <input #Wchemistry type="number"   placeholder="משקל כימיה" required><br>
+            <input #Wsoftware type="number"   placeholder="משקל תוכנה" required><br>
+            <input #Welectronic type="number"   placeholder="משקל אלקטרוניקה" required><br>
+            <input #Wmedical type="number"   placeholder="משקל רפואה" required><br>
+            <input #Wmanagement type="number"   placeholder="משקל תעשייה וניהול" required><br>
+            <input #Wbuilding type="number"   placeholder="משקל בניין" required><br>
+            <input #Wmachine type="number"   placeholder="משקל מכונות" required><br>
+            <button (click)="createQuestion()"  class="btn btn-info" type="submit">הוספה</button>
         </form>
     </div>
    <div class="table-responsive">
    <br />
     <div align="right">
-     <button (click)="chooseForCreate()" type="button" name="add" id="add" class="btn btn-info">הוספה</button>
+     <span (click)="chooseForCreate()" id="add" class="glyphicon glyphicon-plus-sign"></span>
     </div>
     <br />
     <table id="user_data" class="table table-bordered table-striped">

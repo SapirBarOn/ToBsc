@@ -2,7 +2,6 @@ import { Component, OnInit ,ElementRef, ViewChild} from '@angular/core';
 import  {DataService} from '../../data.service';
 import  {Question} from '../../model/Qustion.model';
 import { Router } from '@angular/router';
-// import {Popup} from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-expert',

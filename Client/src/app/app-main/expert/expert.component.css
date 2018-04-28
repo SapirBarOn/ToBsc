@@ -12,9 +12,13 @@
    box-sizing:border-box;
   }
 
-#add{
+.btn{
   background-color: #84b4a7;
   border-color: #84b4a7;
+}
+
+#add{
+  font-size: 35px;
 }
 
 table{
@@ -27,7 +31,15 @@ th{
 
 .glyphicon{
   font-size: 20px;
-
   cursor:pointer;
 }
 
+
+form{
+  margin-left: 500px;
+}
+
+input{
+  text-align: center;
+  margin-bottom: 5px;
+}
