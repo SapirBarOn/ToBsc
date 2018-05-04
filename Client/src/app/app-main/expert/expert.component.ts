@@ -1,7 +1,9 @@
-import { Component, OnInit ,ElementRef, ViewChild} from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import  {DataService} from '../../data.service';
 import  {Question} from '../../model/Qustion.model';
 import { Router } from '@angular/router';
+import { NgbModal , ModalDismissReasons ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-expert',
@@ -10,33 +12,35 @@ import { Router } from '@angular/router';
 })
 export class ExpertComponent implements OnInit {
 
-  questions:Question[]=[];
-  Qchoosed:Question;
+    questions:Question[]=[];
+    Qchoosed:Question;
+    closeResult: string;
 
-  choosedUpdate:boolean=false;
-  choosedCreate:boolean=false;
+    rForm: FormGroup;
+    post:any;          // A property for our submitted form
+    question:string;
+    Wchemistry:number;
+    Wsoftware:number;
+    Welectronic:number;
+    Wmedical:number;
+    Wmanagement:number;
+    Wbuilding:number;
+    Wmachine:number;
 
-    //for Add question
-    @ViewChild('question') questionInputRef : ElementRef;
-    @ViewChild('Wchemistry') WchemistryInputRef : ElementRef;
-    @ViewChild('Wsoftware') WsoftwareInputRef : ElementRef;
-    @ViewChild('Welectronic') WelectronicInputRef : ElementRef;
-    @ViewChild('Wmedical') WmedicalInputRef : ElementRef;
-    @ViewChild('Wmanagement') WmanagementInputRef : ElementRef;
-    @ViewChild('Wbuilding') WbuildingInputRef : ElementRef;
-    @ViewChild('Wmachine') WmachineInputRef : ElementRef;
 
-    //for Update question
-    @ViewChild('q') qInputRef : ElementRef;
-    @ViewChild('Wchem') WchemiInputRef : ElementRef;
-    @ViewChild('Wsoft') WsoftInputRef : ElementRef;
-    @ViewChild('Welectro') WelectroInputRef : ElementRef;
-    @ViewChild('Wmedic') WmedicInputRef : ElementRef;
-    @ViewChild('Wmanage') WmanageInputRef : ElementRef;
-    @ViewChild('Wbuild') WbuildInputRef : ElementRef;
-    @ViewChild('Wmac') WmachInputRef : ElementRef;
+    @Input() public alerts: Array<string> = [];
 
-  constructor(private dataService : DataService) { }
+
+  constructor(private dataService : DataService,
+              private modalService: NgbModal,
+              private fb: FormBuilder,
+              private alertConfig: NgbAlertConfig) { 
+
+
+    alertConfig.type = 'success';
+    alertConfig.dismissible = false;
+
+  }
 
   ngOnInit() {
 
@@ -46,53 +50,95 @@ export class ExpertComponent implements OnInit {
 
     });
 
+    this.rForm = this.fb.group({
+      'question': [null],
+      'Wchemistry': [null],
+      'Wsoftware': [null],
+      'Welectronic': [null],
+      'Wmedical': [null],
+      'Wmanagement': [null],
+      'Wbuilding': [null],
+      'Wmachine': [null]
+    });
   }
 
-  chooseForUpdate(q){
-    if (this.chooseForCreate)   this.choosedCreate=false;
-    this.choosedUpdate=true;
+
+  openAdd(content) {
+    this.alertConfig.dismissible = false;
+    this.modalService.open(content,{ centered: true });
+  }
+
+  addPost(post) {
+    this.question = post.question;
+    this.Wchemistry = post.Wchemistry;
+    this.Wsoftware = post.Wsoftware;
+    this.Welectronic = post.Welectronic;    
+    this.Wmedical = post.Wmedical;
+    this.Wmanagement = post.Wmanagement;
+    this.Wbuilding = post.Wbuilding;
+    this.Wmachine = post.Wmachine;
+    this.createQuestion();
+  }
+
+
+  openUpdate(content,q) {
+    this.alertConfig.dismissible = false;
     this.Qchoosed=q;
-    console.log(this.Qchoosed.questionData);    
+    this.modalService.open(content,{ centered: true });
   }
 
-
-  chooseForCreate(){
-    if (this.choosedUpdate) this.choosedUpdate = false;
-    this.choosedCreate=true;
+  updatePost(post) {
+    this.question = post.question;
+    this.Wchemistry = post.Wchemistry;
+    this.Wsoftware = post.Wsoftware;
+    this.Welectronic = post.Welectronic;    
+    this.Wmedical = post.Wmedical;
+    this.Wmanagement = post.Wmanagement;
+    this.Wbuilding = post.Wbuilding;
+    this.Wmachine = post.Wmachine;
+    this.update();
   }
+
+  openDelete(content,q) {
+    this.alertConfig.dismissible = false;
+    this.Qchoosed=q;
+    this.modalService.open(content,{ centered: true });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
 
 
   update(){
-    console.log(`Qid= ${this.Qchoosed.questionId}`);    
-    console.log(`qInputRef= ${this.qInputRef.nativeElement.value}`);
-
     this.dataService.updateQuestion(this.Qchoosed.questionId,
-                        this.qInputRef.nativeElement.value,
-                        this.WchemiInputRef.nativeElement.value,
-                        this.WsoftInputRef.nativeElement.value,
-                        this.WelectroInputRef.nativeElement.value,
-                        this.WmedicInputRef.nativeElement.value,
-                        this.WmanageInputRef.nativeElement.value,
-                        this.WbuildInputRef.nativeElement.value,
-                        this.WmachInputRef.nativeElement.value,result=>{
+                                    this.question,
+                                    this.Wchemistry,
+                                    this.Wsoftware,
+                                    this.Welectronic,    
+                                    this.Wmedical,
+                                    this.Wmanagement,
+                                    this.Wbuilding,
+                                    this.Wmachine,result=>{
       console.log(`response=${result}`);
       if(result == "data update"){
-        document.getElementById('res').innerHTML="העדכון בוצע בהצלחה";
+        this.alertConfig.dismissible=true;
         this.ngOnInit();
-        // this.popup.show();
-      }
-      else{
-        document.getElementById('res').innerHTML='ישנה שגיאה,אנא נסה שנית';
-      }              
-
-  });
-    
-
+      }        
+    });
   }
 
-  delete(q){
-    this.dataService.deleteQuestion(q.questionId,result=>{
+  delete(){
+    this.dataService.deleteQuestion(this.Qchoosed.questionId,result=>{
                           if(result == "question deleted"){
+                              this.alertConfig.dismissible=true;
                               this.ngOnInit();
                           }        
     });
@@ -101,20 +147,21 @@ export class ExpertComponent implements OnInit {
 
   createQuestion(){
     this.dataService.createQuestion(this.questions.length,
-    this.questionInputRef.nativeElement.value,
-    this.WchemistryInputRef.nativeElement.value,
-    this.WsoftwareInputRef.nativeElement.value,
-    this.WelectronicInputRef.nativeElement.value,
-    this.WmedicalInputRef.nativeElement.value,
-    this.WmanagementInputRef.nativeElement.value,
-    this.WbuildingInputRef.nativeElement.value,
-    this.WmachineInputRef.nativeElement.value,result=>{
+                                    this.question,
+                                    this.Wchemistry,
+                                    this.Wsoftware,
+                                    this.Welectronic,    
+                                    this.Wmedical,
+                                    this.Wmanagement,
+                                    this.Wbuilding,
+                                    this.Wmachine,result=>{
                 console.log(`response=${result}`);
                 if(result == "data saved"){
+                    this.alertConfig.dismissible=true;
                     this.ngOnInit();
-                }            
+                }          
             })
-        };
+  };
 
-  }
+}
 

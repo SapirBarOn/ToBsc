@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NgbModule ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 
@@ -54,12 +55,16 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgbModule.forRoot(),
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [
     DataService,
-    CurrentUser
+    CurrentUser,
+    NgbModule,
+    NgbAlertConfig
   ],
   bootstrap: [AppComponent]
 })
