@@ -1,6 +1,6 @@
 const   mongoose = require('mongoose'),
         questions = require('./questionData'),
-        subEng    = require('./subEngData'),
+        subEngByUser = require('./subEngByUserData'),
         parser = require('json-parser'),
         http = require('http');
 
@@ -57,7 +57,7 @@ module.exports={
             totalBuilding=totalBuilding-(buildingArr[j]*answersArr[j]);
             totalMachine=totalMachine-(machineArr[j]*answersArr[j]);
         }
-            let userSubEng = new subEng({
+            let userSubEng = new subEngByUser({
             userID: userId,
             software: totalSoftware,
             chemistry: totalChemistry,

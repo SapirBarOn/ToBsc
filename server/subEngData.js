@@ -3,19 +3,13 @@ const mongoose = require('mongoose'),
 
 
     subEngSchema = new schema({
-    userID: {type:String, index:1,required:true},
-    software: Number,
-    chemistry: Number,
-    electronic: Number,
-    medical: Number,
-    management: Number,
-    building: Number,
-    machine:Number
-}, {collection: 'subEngineering'}),
+    name: {type:String, index:1,required:true},
+    logo: String
+}, {collection: 'subEng'}),
 
 
- subEngineering= mongoose.model('subEngineering',subEngSchema);
-module.exports=subEngineering;
+ subEng= mongoose.model('subEng',subEngSchema);
+module.exports=subEng;
 
 
 console.log(`required paths: ${subEngSchema.requiredPaths()}`);
