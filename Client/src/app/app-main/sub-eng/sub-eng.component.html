@@ -1,8 +1,8 @@
-
-
-<p id="oneTotal">
-</p>
-<p id="twoTotal">
-</p>
-<p id="treeTotal">
-</p>
+<div id="subEng">
+    <section class="frame" *ngFor="let s of subEng">
+        <section class="logo">
+            <img src="{{s.logo}}">
+        </section>
+           <p class="name">{{s.name}}</p>
+    </section> 
+</div>

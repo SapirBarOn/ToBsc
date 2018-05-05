@@ -17,10 +17,11 @@ import { AboutUsComponent } from './app-main/aboutUs/aboutUs.component';
 import { EnterComponent } from './app-main/enter/enter.component';
 import { ExpertComponent } from './app-main/expert/expert.component';
 import { ChatBotComponent } from './app-main/chat-bot/chat-bot.component';
-import { SubEngComponent } from './app-main/sub-eng/sub-eng.component';
+import { SubEngByUserComponent } from './app-main/subEngByUser/subEngByUser.component';
 import { CurrentUser } from './app-shared/current-user';
 import { CollegesComponent } from './app-main/colleges/colleges.component';
 import { InstitutesComponent } from './app-main/institutes/institutes.component';
+import { SubEngComponent } from './app-main/sub-eng/sub-eng.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/aboutUs', pathMatch: 'full'},
@@ -31,8 +32,10 @@ const appRoutes: Routes = [
   {path: 'chat-bot', component: ChatBotComponent},
   {path: 'expert', component: ExpertComponent},
   {path: 'colleges', component: CollegesComponent},
-  {path: 'SubEng', component: SubEngComponent},
+  {path: 'subEngByUser', component: SubEngByUserComponent},
   {path: 'institutes', component: InstitutesComponent},
+  {path: 'subEng', component: SubEngComponent},
+
 ];
 
 @NgModule({
@@ -47,9 +50,10 @@ const appRoutes: Routes = [
     EnterComponent,
     ExpertComponent,
     ChatBotComponent,
-    SubEngComponent,
+    SubEngByUserComponent,
     CollegesComponent,
     InstitutesComponent,
+    SubEngComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
