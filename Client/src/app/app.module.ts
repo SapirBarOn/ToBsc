@@ -1,6 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import {
+    SocialLoginModule,
+    AuthServiceConfig,
+    GoogleLoginProvider,
+    FacebookLoginProvider,
+} from "angular5-social-login";
+
 import { NgbModule ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,6 +30,23 @@ import { CurrentUser } from './app-shared/current-user';
 import { CollegesComponent } from './app-main/colleges/colleges.component';
 import { InstitutesComponent } from './app-main/institutes/institutes.component';
 import { SubEngComponent } from './app-main/sub-eng/sub-eng.component';
+import { FacebookComponent } from './app-main/facebook/facebook.component';
+
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("825684884292849")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("Your-Google-Client-Id")
+        },
+      ]);
+  return config;
+}
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/aboutUs', pathMatch: 'full'},
@@ -35,6 +60,7 @@ const appRoutes: Routes = [
   {path: 'subEngByUser', component: SubEngByUserComponent},
   {path: 'institutes', component: InstitutesComponent},
   {path: 'subEng', component: SubEngComponent},
+  {path: 'facebook', component: FacebookComponent}
 
 ];
 
@@ -54,12 +80,14 @@ const appRoutes: Routes = [
     CollegesComponent,
     InstitutesComponent,
     SubEngComponent,
+    FacebookComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     HttpModule,
+    SocialLoginModule,
     NgbModule.forRoot(),
     ReactiveFormsModule
   ],
@@ -67,6 +95,10 @@ const appRoutes: Routes = [
   providers: [
     DataService,
     CurrentUser,
+      {
+        provide: AuthServiceConfig,
+        useFactory: getAuthServiceConfigs
+      },
     NgbModule,
     NgbAlertConfig
   ],
