@@ -9,8 +9,8 @@ const mongoose = require('mongoose'),
     logo: String,
     type: String,
     location: String,
-    uniSalary: Boolean,
-    dorms: Boolean,
+    uniSalary: String,
+    dorms: String,
     subEng: [String]
 
 }, {collection: 'institutes'}),

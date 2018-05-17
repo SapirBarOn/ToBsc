@@ -33,15 +33,33 @@ module.exports={
             management='הנדסת תעשיה וניהול',
             building='הנדסת בניין',
             machine='הנדסת מכונות',
-            medical='הנדסה רפואית';
+            medical='הנדסה רפואית',
+            exsist='קיים',
+            without='אין',
+            yesUnSalary='כן',
+            noUnSalary='לא';
 
             if (type=='אוניברסיטה'){
                 college='';
+                noUnSalary='';
             }
             else if (type=='מכללה'){
                 university='';
+                if (uniSalary=='שכ"ל אוניברסיטאי'){
+                    noUnSalary='';
+                }
+                else if (uniSalary=='ללא שכ"ל אוניברסיטאי'){
+                    yesUnSalary='';
+                }
             }
 
+            if (dorms=='קיום מעונות'){
+                without='';
+            }
+
+            else if (dorms=='ללא מעונות'){
+                exsist='';
+            }
 
             if(location=='צפון'){
                 South='';
@@ -154,11 +172,11 @@ module.exports={
             Institutes.find({$and:[
                     { $or : [ { type : university }, { type : college } ] },
                     { $or : [ { location : north }, { location : South },
-                     { location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon } ] },                    
-                    {dorms: dorms},
+                     { location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon } ] },
+                    { $or : [ { dorms : exsist }, { dorms : without } ] },                   
                     { $or : [ { subEng : software }, { subEng : chemical },
                      { subEng : electronic }, { subEng : management }, { subEng : building }, { subEng : medical }, { subEng : machine } ] }, 
-                    {uniSalary: uniSalary }
+                    { $or : [ { uniSalary : yesUnSalary }, { uniSalary : noUnSalary } ] },  
                 ]
  
             },(err,result)=>{
