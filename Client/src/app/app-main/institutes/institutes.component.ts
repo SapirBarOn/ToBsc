@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  {DataService} from '../../data.service';
 import  {Institutes} from '../../model/Institutes.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup ,FormControl ,FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-institutes',
@@ -11,14 +11,44 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class InstitutesComponent implements OnInit {
 
   institutes:Institutes[]=[];
-  selectedLocation: string;
-  selectedSubEng: string;
-  selectedDorms:boolean = false;
-  selectedUniSalary:boolean = false;
-  selectedInstitute:string;
-emailid:string;
+  myform: FormGroup;
 
-  constructor(private dataService:DataService) { }
+  locations: string[] = [
+    'מרכז',
+    'שרון',
+    'ירושלים',
+    'דרום',
+    'שומרון',
+    'צפון'
+  ]  
+
+  institute: string[] = [
+    'אוניברסיטה',
+    'מכללה'
+  ]
+  
+  subEngs: string[] = [
+    'הנדסת כימיה',
+    'הנדסת תוכנה',
+    'הנדסת אלקטרוניקה',
+    'הנדסת מכונות',
+    'הנדסת בניין',
+    'הנדסת תעשייה וניהול',
+    'הנדסה רפואית'
+  ]  
+
+  salary: string[] = [
+    'שכ"ל אוניברסיטאי',
+    'ללא שכ"ל אוניברסיטאי'
+  ]
+
+  dorms: string[] = [
+    'קיום מעונות',
+    'ללא מעונות'
+  ]
+
+  constructor(private dataService:DataService,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
 
@@ -27,53 +57,34 @@ emailid:string;
         console.log(this.institutes);      
 
     });
+
+
+    this.myform = new FormGroup({
+       'location': new FormControl(),
+       'subEng':new FormControl(),
+       'institute':new FormControl(),
+       'salary':new FormControl(),
+       'dorms':new FormControl()
+    });
+
   }
 
 
-   onClickSubmit(data) {
-     this.emailid = data.emailid;
-     console.log(`emailid= ${this.emailid}`);
-   }
+  filter(post){
+    console.log('filter');
+        console.log(post.location);
+        console.log(post.subEng);
+        console.log(post.dorms);
+        console.log(post.salary);
+        console.log(post.institute);
 
-  filter(){
-
-    this.dataService.filterInstitutes(this.selectedLocation,
-    this.selectedSubEng,
-    this.selectedDorms,
-    this.selectedUniSalary,
-    this.selectedInstitute,result=>{
+    this.dataService.filterInstitutes(post.location,
+    post.subEng,
+    post.dorms,
+    post.salary,
+    post.institute,result=>{
                 console.log(`response=${result}`);
                 if(result) this.institutes = result;
                 else  console.log('filter error');           
             })
   };
-
-
-  selectLocation (event: any) {
-    this.selectedLocation = event.target.value;
-    console.log(this.selectedLocation);      
-  }
-
-  selectSubEng (event: any) {
-    this.selectedSubEng = event.target.value;
-    console.log(this.selectedSubEng); 
-  }
-
-  selectInstitute (event: any) {
-    this.selectedInstitute = event.target.value;
-    console.log(this.selectedInstitute);      
-  }
-
-  selectDorms(event: any){
-    if(!this.selectedDorms) this.selectedDorms = event.target.value;
-    else this.selectedDorms = false;
-    console.log(this.selectedDorms);      
-  }
-
-  selectUniSalary(event: any){
-    if(!this.selectedUniSalary) this.selectedUniSalary = event.target.value;
-    else this.selectedUniSalary = false;
-    console.log(this.selectedUniSalary);      
-  }
-
-}
