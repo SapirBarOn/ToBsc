@@ -88,3 +88,5 @@ export class InstitutesComponent implements OnInit {
                 else  console.log('filter error');           
             })
   };
+  
+}
