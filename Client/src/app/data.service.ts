@@ -33,7 +33,7 @@ export class DataService {
   }
 
   allUsers(callback: Function) {
-    this.http.get('http://localhost:3000/getAllData')
+    this.http.get('https://tobsc-ws.herokuapp.com/getAllData')
     .subscribe(
       (res: Response ) => {
           callback( res.json() );
@@ -42,7 +42,7 @@ export class DataService {
   }
 
   allQuestions(callback: Function) {
-    this.http.get('http://localhost:3000/getAllQuestions')
+    this.http.get('https://tobsc-ws.herokuapp.com/getAllQuestions')
     .subscribe(
       (res: Response ) => {
         callback( res.json() );
@@ -56,7 +56,7 @@ export class DataService {
 
 
   getAllInstitutes(callback: Function) {
-    this.http.get('http://localhost:3000/getAllInstitutes')
+    this.http.get('https://tobsc-ws.herokuapp.com/getAllInstitutes')
     .subscribe(
       (res: Response ) => {
         callback( res.json() );
@@ -71,7 +71,7 @@ export class DataService {
 
 
   login(email:string,password:string,callback: Function) {
-    this.http.post('http://localhost:3000/login',{'email':email,'password':password})
+    this.http.post('https://tobsc-ws.herokuapp.com/login',{'email':email,'password':password})
     .subscribe(
       (res: Response ) => {
         callback(res.json());
@@ -86,7 +86,7 @@ export class DataService {
 
 
   createUser(firstName:string,lastName:string,email:string,password:string,callback: Function){
-    this.http.post('http://localhost:3000/createNewAccount',
+    this.http.post('https://tobsc-ws.herokuapp.com/createNewAccount',
     {'firstName':firstName,'lastName':lastName,'email':email,'password':password})
     .subscribe(
       (res: Response ) => {
@@ -102,7 +102,7 @@ export class DataService {
 
   getQuestionById(data:number, callback:Function){
     let idNum=data;
-    this.http.get('http://localhost:3000/getQuestion/'+idNum)
+    this.http.get('https://tobsc-ws.herokuapp.com/getQuestion/'+idNum)
     .subscribe(
       (response: Response) =>  {
         console.log(response.json());
@@ -126,7 +126,7 @@ export class DataService {
                          managementArr:number[],
                          buildingArr:number[],
                          machineArr:number[],callback: Function){
-    this.http.get('http://localhost:3000/calculateSubEngByUser/'+userId+'/'+dataAns+'/'+softwareArr+'/'+chemistryArr+'/'+electronicArr+'/'+medicalArr+'/'+managementArr+'/'+buildingArr+'/'+machineArr)
+    this.http.get('https://tobsc-ws.herokuapp.com/calculateSubEngByUser/'+userId+'/'+dataAns+'/'+softwareArr+'/'+chemistryArr+'/'+electronicArr+'/'+medicalArr+'/'+managementArr+'/'+buildingArr+'/'+machineArr)
     .subscribe(
       (response: Response) =>  {
         console.log(response.json());
@@ -151,7 +151,7 @@ export class DataService {
                  Wbuilding:number,
                  Wmachine:number,
                  callback: Function){
-    this.http.post('http://localhost:3000/createNewQuestion',
+    this.http.post('https://tobsc-ws.herokuapp.com/createNewQuestion',
     {'questionId':questionId,'questionData':question,'Wchemistry':Wchemistry,'Wsoftware':Wsoftware,
     'Welectronic':Welectronic,'Wmedical':Wmedical,'Wmanagement':Wmanagement,'Wbuilding':Wbuilding,'Wmachine':Wmachine})
     .subscribe(
@@ -175,7 +175,7 @@ export class DataService {
                  Wmanagement:number,
                  Wbuilding:number,
                  Wmachine:number,callback: Function){
-    this.http.post('http://localhost:3000/updateQuestion',
+    this.http.post('https://tobsc-ws.herokuapp.com/updateQuestion',
     {'questionId':questionId,'questionData':questionData,
     'Wchemistry':Wchemistry,'Wsoftware':Wsoftware,
     'Welectronic':Welectronic,'Wmedical':Wmedical,
@@ -193,7 +193,7 @@ export class DataService {
 
 
   deleteQuestion(questionId:number,callback: Function){
-    this.http.post('http://localhost:3000/deleteQuestion',{'questionId':questionId})
+    this.http.post('https://tobsc-ws.herokuapp.com/deleteQuestion',{'questionId':questionId})
     .subscribe(
       (res: Response ) => {
         callback(res.json());
@@ -208,10 +208,10 @@ export class DataService {
 
   filterInstitutes(location:string,
                    subEng:string,
-                   dorms:boolean,
-                   uniSalary:boolean,
+                   dorms:string,
+                   uniSalary:string,
                    institute:string,callback: Function){
-    this.http.post('http://localhost:3000/filterInstitutes',
+    this.http.post('https://tobsc-ws.herokuapp.com/filterInstitutes',
     {'location':location,'subEng':subEng,'dorms':dorms,
     'uniSalary':uniSalary,'institute':institute})
     .subscribe(
@@ -226,7 +226,7 @@ export class DataService {
   }
 
    getAllSubEng(callback: Function) {
-    this.http.get('http://localhost:3000/getAllSubEng')
+    this.http.get('https://tobsc-ws.herokuapp.com/getAllSubEng')
     .subscribe(
       (res: Response ) => {
         callback( res.json() );
@@ -240,7 +240,7 @@ export class DataService {
 
 
   getCrawler(callback: Function) {
-    this.http.get('http://localhost:3000/getCrawler')
+    this.http.get('https://tobsc-ws.herokuapp.com/getCrawler')
     .subscribe(
       (res: Response ) => {
          callback( res.json() );
