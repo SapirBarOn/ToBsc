@@ -1,48 +1,22 @@
-
 #filter{
-    margin-left: 100px;
-    margin-top: 40px;
-    position: absolute;
+    margin-left: 300px;
+    margin-top: 50px; 
 }
 
-#location{
-    margin-left: 760px;
-    position: absolute;
-
+select{
+    display: inline-block;
+    width: 120px;
 }
 
-#subEng{
-    margin-left: 600px;
-    position: absolute;
-
-}
-
-#inst{
-    margin-left: 500px;
-    position: absolute;
-}
-
-form{
-    margin-left: 200px;
-    position: relative;
-}
-
-
-label{
-    margin-left: 30px;
-}
-
-form button{
-    float: left;
-}
-
-form{
-    margin-right: 500px;
+.btn{
+    background: #84b4a7;
+    margin-right: 10px;
+    border: #84b4a7;
 }
 
 #institutes{
     margin: auto;
-    padding-top: 80px;
+    padding-top: 30px;
     padding-right:170px;
 }
 
