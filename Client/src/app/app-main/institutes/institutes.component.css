@@ -3,9 +3,24 @@
     margin-top: 50px; 
 }
 
+.modal-body{
+    width: 700px;
+}
+agm-map {
+  height: 500px;
+  width: 600px;
+}
+
+#getMap{
+    margin-left: 100px;
+    width: 55px;
+    height: 40px;
+}
+
 select{
     display: inline-block;
     width: 120px;
+    direction: rtl;
 }
 
 .btn{

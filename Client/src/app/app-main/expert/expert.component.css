@@ -30,6 +30,10 @@ th{
   text-align: center;
 }
 
+td{
+  text-align: right;
+}
+
 .glyphicon{
   font-size: 20px;
   cursor:pointer;

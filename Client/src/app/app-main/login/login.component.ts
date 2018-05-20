@@ -3,6 +3,12 @@ import { DataService } from '../../data.service';
 import { Router } from '@angular/router';
 import { CurrentUser } from '../../app-shared/current-user';
 import { User } from '../../model/user.model';
+import { Response, Headers } from '@angular/http';
+import {
+    AuthService,
+    FacebookLoginProvider,
+    GoogleLoginProvider
+} from 'angular5-social-login';
 
 
 @Component({
@@ -21,7 +27,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private dataService : DataService,
               private router:Router , 
-              private currentUserService:CurrentUser ) { }
+              private currentUserService:CurrentUser,
+              private facebookLogin: FacebookLoginProvider,
+              private socialAuthService: AuthService ) { }
 
   ngOnInit() {
   }
@@ -73,7 +81,39 @@ export class LoginComponent implements OnInit {
 
             })
         };
-    }
+
+
+    public socialSignIn(socialPlatform : string) {
+        let socialPlatformProvider;
+        if(socialPlatform == "facebook"){
+          socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+        }else if(socialPlatform == "google"){
+          socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+        }
+        
+        this.socialAuthService.signIn(socialPlatformProvider).then(
+          (userData) => {
+            console.log(socialPlatform+" sign in data : " , userData);
+            console.log(userData.name);
+            console.log(userData.token);
+            console.log(userData.image);
+            console.log(userData.provider);
+            let user = new User();
+                user.setId(userData.id);
+                user.setFirstName(userData.name);
+                user.setEmail(userData.email);  
+                this.currentUserService.change(user); 
+                this.dataService.myMethod(user); 
+                this.router.navigateByUrl('/enter');
+            // Now sign-in with userData
+                
+          }
+        );
+
+
+  }
+
+}
 
 
 

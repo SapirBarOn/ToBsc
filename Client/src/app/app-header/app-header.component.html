@@ -7,7 +7,7 @@
         <button routerLink="/login">התחבר</button>
         <button routerLink="/auth">הירשם</button>
     </div>
-    <div *ngIf = "user" id="nameLogin"> שלום,{{user.firstName}}  </div>
+    <div *ngIf = "user" id="nameLogin">{{user.firstName}}</div>
     <a class="logout" *ngIf = "user" (click)="logOut()">התנתק</a>
 </div>
 

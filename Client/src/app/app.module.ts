@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import {
     SocialLoginModule,
     AuthServiceConfig,
@@ -31,6 +32,8 @@ import { CollegesComponent } from './app-main/colleges/colleges.component';
 import { InstitutesComponent } from './app-main/institutes/institutes.component';
 import { SubEngComponent } from './app-main/sub-eng/sub-eng.component';
 import { FacebookComponent } from './app-main/facebook/facebook.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -84,6 +87,9 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCAl7947O2CZzG-4JFUVntpAOZeNSblfaI'
+    }),
     BrowserModule,
     FormsModule,
     HttpModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import  {DataService} from '../../data.service';
 import  {Institutes} from '../../model/Institutes.model';
 import { FormGroup ,FormControl ,FormBuilder } from '@angular/forms';
+import { NgbModal , ModalDismissReasons ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-institutes',
@@ -9,6 +10,28 @@ import { FormGroup ,FormControl ,FormBuilder } from '@angular/forms';
   styleUrls: ['./institutes.component.css']
 })
 export class InstitutesComponent implements OnInit {
+
+  latShenkar: number = 32.0897947;
+  lngShenkar: number = 34.8036642;
+
+  latAfeka: number=32.122615;
+  lngAfeka: number=34.806536;
+
+  latTech: number=32.7767783;
+  lngTech: number=35.0231271;
+
+  latAriel: number=32.103188;
+  lngAriel: number=35.207718;
+
+  latHIT: number=32.0160931;
+  lngHIT: number=34.7730563;
+
+  latOrt: number=32.912914;
+  lngOrt: number=35.281471;
+
+  latBenG: number=32.912914;
+  lngBenG: number=35.281471;
+
 
   institutes:Institutes[]=[];
   myform: FormGroup;
@@ -48,7 +71,9 @@ export class InstitutesComponent implements OnInit {
   ]
 
   constructor(private dataService:DataService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private modalService: NgbModal,
+              private alertConfig: NgbAlertConfig) { }
 
   ngOnInit() {
 
@@ -67,6 +92,11 @@ export class InstitutesComponent implements OnInit {
        'dorms':new FormControl()
     });
 
+  }
+
+  openMap(content) {
+    this.alertConfig.dismissible = false;
+    this.modalService.open(content,{ centered: true });
   }
 
 
