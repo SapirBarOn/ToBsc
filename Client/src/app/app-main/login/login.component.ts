@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   constructor(private dataService : DataService,
               private router:Router , 
               private currentUserService:CurrentUser,
-              private facebookLogin: FacebookLoginProvider,
               private socialAuthService: AuthService ) { }
 
   ngOnInit() {
@@ -109,8 +108,6 @@ export class LoginComponent implements OnInit {
                 
           }
         );
-
-
   }
 
 }
