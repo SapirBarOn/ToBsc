@@ -3,10 +3,10 @@
   width: 350px;
   border:2px solid #d3d3d3;
   background-color: #f9f9f9;
-  float: right;
-  position:absolute;
+  display: block;
+  margin: 0 auto;
   margin-top: 50px; 
-  margin-left: 470px;
+ 
 }
 
 h2{
