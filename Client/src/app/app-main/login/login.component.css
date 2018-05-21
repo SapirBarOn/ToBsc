@@ -1,11 +1,12 @@
 #login{
+  height: 380px;
   padding: 15px;
   width: 350px;
+  display: block;
+  margin: 0 auto;
   border:2px solid #d3d3d3;
   background-color: #f9f9f9;
-  float: right;
   text-align: right;
-  position:absolute;
   margin-top: 50px; 
   left: 500px;
 }
@@ -19,7 +20,7 @@ h2{
 form{
   float: right;
   padding-right: 10px;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 input {
@@ -55,16 +56,16 @@ button:hover{
   width: 280px;
   height: 35px;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 #or{
-  top: 220px;
-  right: 150px;
-  display: block;
-  position: absolute;
+  text-align: center;
+  margin-left: 30px;
+  margin-bottom:20px;
 }
 
 #Facebook{
+  margin-top:-10px;
   background-color: #3B5998;
   color: white;
 }
