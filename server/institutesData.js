@@ -11,7 +11,9 @@ const mongoose = require('mongoose'),
     location: String,
     uniSalary: String,
     dorms: String,
-    subEng: [String]
+    subEng: [String],
+    latitude: Number ,
+    longitude: Number
 
 }, {collection: 'institutes'}),
 
