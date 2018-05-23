@@ -206,12 +206,12 @@ export class DataService {
   }
 
 
-  filterInstitutes(location:string,
+  filterColleges(location:string,
                    subEng:string,
                    dorms:string,
                    uniSalary:string,
                    institute:string,callback: Function){
-    this.http.post('https://tobsc-ws.herokuapp.com/filterInstitutes',
+    this.http.post('https://tobsc-ws.herokuapp.com/filterColleges',
     {'location':location,'subEng':subEng,'dorms':dorms,
     'uniSalary':uniSalary,'institute':institute})
     .subscribe(
@@ -238,12 +238,25 @@ export class DataService {
     );
   }
 
+  forgotPassword(email:string,callback: Function) {
+      this.http.post('https://tobsc-ws.herokuapp.com/forgotPassword',{'email':email})
+      .subscribe(
+        (res: Response ) => {
+          callback(res.json());
+        },
+        (error => {
+          let code = error.status;
+          console.log(`loginUser(bad) -> ${error.status}`);
+          callback(code);
+        })
+      );
+    }
 
-  getCrawler(callback: Function) {
-    this.http.get('https://tobsc-ws.herokuapp.com/getCrawler')
+   getAllDepartments(callback: Function) {
+    this.http.get('https://tobsc-ws.herokuapp.com/getAllDepartments')
     .subscribe(
       (res: Response ) => {
-         callback( res.json() );
+        callback( res.json() );
       },
       (error =>{
         console.log(error);
@@ -251,6 +264,20 @@ export class DataService {
       })
     );
   }
+
+ getAllColleges(callback: Function) {
+    this.http.get('https://tobsc-ws.herokuapp.com/getAllColleges')
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error =>{
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
+
   
 
 }

@@ -7,7 +7,8 @@
         <h2>סיסמא</h2>
         <input #pass type="password" name="password" ngModel  required>
         <p id="res"></p>
-        <button id="sighnIn" (click)="login()" type="submit">התחבר</button>
+        <p routerLink="/forgotPassword" id="forgot">?שכחת סיסמא</p>
+        <button id="signIn" (click)="login()" type="submit">התחבר</button>
         <h2 id="or">או</h2>
         <button id="Facebook" (click)="socialSignIn('facebook')">Facebook</button>
         <button id="Google" (click)="socialSignIn('google')">Google+</button>  

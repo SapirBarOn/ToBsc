@@ -89,6 +89,6 @@ button:hover{
         cursor: pointer;
         color: #b13615;
         font-size: 15px;
-       text-align:center;
+       text-align:center; 
     }   
 }
