@@ -3,11 +3,13 @@ const   express    = require('express'),
         path = require('path'),
         url = require('url'),
         bodyParser = require('body-parser'),
+        schedule = require('node-schedule'),
+        fs = require('fs'),
         userList  = require('./usersController'),
         questionController  = require('./expertController'),
         chatController  = require('./chatController'),
         crawlerController= require('./crawlerController'),
-        institutesController= require('./institutesController'),
+        collegesController= require('./collegesController'),
         subEngController= require('./subEngController'),
         request    = require('request'),
         Crawler = require("crawler"),
@@ -54,7 +56,9 @@ app.post('/updateQuestion',questionController.updateQuestion);
 
 app.post('/deleteQuestion',questionController.deleteQuestion);
 
-app.post('/filterInstitutes',institutesController.filterInstitutes);
+app.post('/filterColleges',collegesController.filterColleges);
+
+app.post('/forgotPassword',userList.forgotPassword);
 
 app.get('/getAllQuestions',
      (req,res)=>{
@@ -67,10 +71,10 @@ app.get('/getAllChat',
       chatController.allQuestion().then(docs => res.json(docs));
 });
 
-app.get('/getAllInstitutes',
-     (req,res)=>{
-      institutesController.getAllInstitutes().then(docs => res.json(docs));
-});
+// app.get('/getAllInstitutes',
+//      (req,res)=>{
+//       institutesController.getAllInstitutes().then(docs => res.json(docs));
+// });
 
 app.get('/getAllSubEng',
      (req,res)=>{
@@ -82,7 +86,40 @@ app.get('/getQuestion/:idNum', chatController.getQuestionById);
 
 app.get('/calculateSubEngByUser/:userID/:answers/(:softwareArr)/(:chemistryArr)/(:electronicArr)/(:medicalArr)/(:managementArr)/(:buildingArr)/(:machineArr)', chatController.calculateSubEng);
 
-app.get('/getCrawler',crawlerController.getCrawler)
+
+
+//app.get('/getCrawler',crawlerController.getCrawler);
+app.get('/getAllColleges',
+     (req,res)=>{
+      crawlerController.getAllColleges().then(docs => res.json(docs));
+});
+
+app.get('/getCollegesData', crawlerController.getCollegesData);
+
+// Automatic Get Rates - (Scheduler - 6:30-AM)
+var getRatesRule = new schedule.RecurrenceRule();
+getRatesRule.hour = 05;
+getRatesRule.minute = 00; 
+var i = schedule.scheduleJob(getRatesRule, function(){
+    console.log('Automatic Schedule: Get Colleges Data Started !');
+    crawlerController.getCollegesData();
+});
+
+app.get('/getAllDepartments',
+     (req,res)=>{
+      crawlerController.getAllDepartments().then(docs => res.json(docs));
+});
+// Schedule Routes (manual)
+app.get('/getDepartmentsData', crawlerController.getDepartmentsData);
+
+// Automatic Get Rates - (Scheduler - 6:30-AM)
+var getRatesRule = new schedule.RecurrenceRule();
+getRatesRule.hour = 05;
+getRatesRule.minute = 00; 
+var i = schedule.scheduleJob(getRatesRule, function(){
+    console.log('Automatic Schedule: Get Departments Data Started !');
+    crawlerController.getDepartmentsData();
+});
 
 app.listen(port,
     () => {
