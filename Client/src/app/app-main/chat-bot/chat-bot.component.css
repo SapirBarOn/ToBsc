@@ -1,11 +1,12 @@
 #chat{
   background: #e5e5ea;
-  width: 600px;
+  width: 700px;
   height: 300px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0 auto;
   padding: 10px;
   overflow: auto;
+  text-align: right;
 }
 
 #chat p{
@@ -30,7 +31,7 @@
   padding: 0.5em 1em;
   min-width: 200px;
   float: right;
-  margin-bottom:20px;
+ margin-top:-30px;
   margin-right: 120px
 }
 
@@ -41,46 +42,49 @@
   border-radius: 1em;
   padding: 0.5em 1em;
   width: 200px;
-   margin-left: 120px;
-   margin-top:55px;
+  margin-left: 120px;
+  margin-top:10px;
+  margin-bottom: 30px;
 }
-
-.first{
-  display: none;
-}
-
-.input{
+.answer{
   background: #e5e5ea;
-  width: 600px;
-  height: 100px;
+  width: 700px;
+  height: 180px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
+  padding-right: 200px;
   border-top: 2px solid #d3d3d3;
 }
 
-.inputtext{
-  direction: rtl;
-  width: 200px;
-  padding: 5px 20px;
-  margin: 8px 0;
-  display:block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-top: 10px;
-  margin-left: 270px;
-}
-
-button{
+ .select button{
+  position: relative;
+  float: right;
+  margin-top: 50px;
   height: 28px;
   width: 80px;
   border-radius: 5px;
   border: 2px solid #4f4d4f;
-  background-color:#676767;
+ /* background-color:#676767;*/
   color:#ffffff;
   font-size: 17px;
   cursor: pointer;
-  margin-left: 510px;
-  margin-top:-35px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.first > button{
+  background-color:#8b9dc3;
+  border-color: #8b9dc3;
+ 
+}
+
+.glyphicon-thumbs-up{
+  float: right;
+  right: 565px;
   position: absolute;
+  top: 498px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
 }

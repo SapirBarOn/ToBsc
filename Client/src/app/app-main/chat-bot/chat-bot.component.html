@@ -1,17 +1,17 @@
-<body>
-    <blockquote id="chat">
+   <div id="chat">
              <p>שלום אני מומחה וירטואלי</p>
              <p> אני אשאל אותך מספר שאלות</p>
-             <p>{{result}}</p>
-             <div *ngFor = "let mg of messages;let first = first ;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess,first:first}">
+             <div *ngFor = "let mg of messages;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess}">
                 {{mg.content}}
              </div>
-    </blockquote>
-    <div class="input">
-            <input type="text" class="inputtext" [(ngModel)]="content" (keydown)="handleSubmit($event)"> 
-            <button class="replay" (click)="send(content)">שלח</button>
     </div>
+    <div class="answer">
+        <div class="select" *ngFor="let s of selects;let first = first; let last = last ;" [ngClass]="{first:first,last:last}"> 
+            <button (click)="send(s.name)"></button> 
+             <span (click)="send('כן')" class="glyphicon glyphicon-thumbs-up"></span> 
+        </div>
 
-    <button routerLink="/subEngByUser" (click)="getAnswer()">תוצאות</button>
-</body>
+        <!-- <i class="glyphicon glyphicon-plus"></i>
+        <i class="glyphicon glyphicon-plus"></i> --> 
+    </div>
 
