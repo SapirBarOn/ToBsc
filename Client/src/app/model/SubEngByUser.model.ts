@@ -1,3 +1,6 @@
+import { Subject } from './subject.model';
+
+
 export class SubEngByUser {
 
     public userID:string;

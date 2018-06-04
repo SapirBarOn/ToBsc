@@ -1,7 +1,9 @@
+
 #chat{
   background: #e5e5ea;
   width: 700px;
   height: 300px;
+ /*height: 100%;*/
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0 auto;
   padding: 10px;
@@ -65,26 +67,30 @@
   width: 80px;
   border-radius: 5px;
   border: 2px solid #4f4d4f;
- /* background-color:#676767;*/
+  background-color:#8fe600;
+  border-color:#8fe600;
   color:#ffffff;
   font-size: 17px;
   cursor: pointer;
   margin-right: 10px;
   margin-left: 10px;
 }
-
+.select span{
+  margin-top: 3px;
+}
 .first > button{
   background-color:#8b9dc3;
   border-color: #8b9dc3;
- 
 }
-
-.glyphicon-thumbs-up{
+.last > button{
+   background-color:#e56567;
+   border-color:#e56567;
+}
+/*.first > span{
   float: right;
   right: 565px;
-  position: absolute;
   top: 498px;
   font-size: 20px;
   color: #fff;
   cursor: pointer;
-}
+}*/

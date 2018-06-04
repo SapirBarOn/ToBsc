@@ -115,7 +115,20 @@ export class DataService {
     );
   }
 
+getORcreateSubEngByUser(userID:string,callback: Function){
+    this.http.post('http://localhost:3000/createSubEngByUserOrReturn',
+    {'userID':userID})
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );
 
+  }
 
   calculateAndSaveSubEng(userId: string,
                          dataAns: number[],
