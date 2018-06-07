@@ -2,7 +2,7 @@
 #chat{
   background: #e5e5ea;
   width: 700px;
-  height: 300px;
+  height: 410px;
  /*height: 100%;*/
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0 auto;
@@ -28,7 +28,30 @@ img{
   margin-bottom: 10px;
  
 }
-
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid #ffffff; 
+  margin-right: 185px;
+  margin-top: -15px;
+}
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #84b4a7;
+  margin-right:-21px;
+  margin-top: -16px;
+}
+.psychImg{
+  margin-right:200px;
+}
+.userImg{
+  margin-right:-70px; 
+}
 .odd{
   padding: 50px;
   direction: rtl;
@@ -38,7 +61,7 @@ img{
   padding: 0.5em 1em;
   min-width: 200px;
   float: right;
- margin-top:-30px;
+   margin-top:-45px;
   margin-right: 120px
 }
 
@@ -51,12 +74,12 @@ img{
   width: 200px;
   margin-left: 120px;
   margin-top:10px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .answer{
   background: #e5e5ea;
   width: 700px;
-  height: 180px;
+  height: 50px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0 auto;
   padding: 20px;
@@ -67,7 +90,7 @@ img{
  .select button{
   position: relative;
   float: right;
-  margin-top: 50px;
+  margin-top: -10px;
   height: 28px;
   width: 80px;
   border-radius: 5px;

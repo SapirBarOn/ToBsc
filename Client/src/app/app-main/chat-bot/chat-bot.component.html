@@ -3,8 +3,16 @@
              <p> אני אשאל אותך מספר שאלות</p>
              <div *ngFor = "let mg of messages;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess}">
                 {{mg.content}}
-                <img  [src]="mg.img"/> 
-                <p id="time">{{mg.time}}</p>
+                <div *ngIf="evenMess">
+                <div class="arrow-left"></div>
+                <img class="psychImg" src="../../../assets/images/avatar-psychologist.png">
+               </div>
+               <div *ngIf="oddMess">
+                 <div class="arrow-right"></div>
+                 <img class="userImg" src="../../../assets/images/User_Avatar.png">
+               </div>
+              <!-- <img  [src]="mg.img"/> 
+                <p id="time">{{mg.time}}</p> -->
              </div>
     </div>
     <div class="answer">
