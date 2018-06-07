@@ -82,7 +82,7 @@ app.get('/getAllSubEng',
 });
 
 app.get('/getQuestion/:idNum', chatController.getQuestionById);
-
+app.post('/getUserSubEngById' , chatController.getUserSubEngById);
 app.post('/createSubEngByUserOrReturn', chatController.createSubEngByUserOrReturn);
 
 app.post('/updateSubEngWeights', chatController.updateSubEngWeights); 
