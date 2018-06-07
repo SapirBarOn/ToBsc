@@ -7,7 +7,10 @@ const mongoose = require('mongoose'),
     firstName: {type:String, index:1,required:true},
     lastName: String,
     email: String,
-    password: String
+    password: String,
+    age:Number,
+    WorkExperience:String,
+    gender:String
 }, {collection: 'user'}),
 
 

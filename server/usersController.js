@@ -54,6 +54,9 @@ module.exports={
             lastName: req.body.lastName,
             email: req.body.email,
             password:req.body.password ,
+            age:req.body.age,
+            WorkExperience:req.body.WorkExperience,
+            gender:req.body.gender,
             });
 
         newUser.save(
