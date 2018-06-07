@@ -96,7 +96,24 @@ module.exports={
 
         });
     },
+        
+    getUserSubEngById(req,res){
+            subEngByUser.findOne({
+            userID : req.body.userID
+        }, (err,result)=>{
+            if(err || !result){
+                console.log ('error / not exsist');
+                return res.status(500).json(`{error:${err}}`);
+            }
 
+            else{
+                console.log(`Exsist`);
+                return res.status(200).json(result);
+            }
+
+        });    
+    },
+        
     calculateSubEng(req,res){
         let userId = req.params.userID;
         let softwareArr=req.params.softwareArr.split(','),
