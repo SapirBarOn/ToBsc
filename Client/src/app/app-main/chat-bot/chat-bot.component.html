@@ -1,9 +1,10 @@
-
    <div id="chat">  
              <p>שלום אני מומחה וירטואלי</p>
              <p> אני אשאל אותך מספר שאלות</p>
              <div *ngFor = "let mg of messages;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess}">
                 {{mg.content}}
+                <img  [src]="mg.img"/> 
+                <p id="time">{{mg.time}}</p>
              </div>
     </div>
     <div class="answer">
@@ -21,8 +22,5 @@
             </button> 
             
         </div>
-
-        <!-- <i class="glyphicon glyphicon-plus"></i>
-        <i class="glyphicon glyphicon-plus"></i> --> 
     </div>
 

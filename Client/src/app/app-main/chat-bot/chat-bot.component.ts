@@ -47,6 +47,7 @@ typing="מקליד...";
 user:User;
 id:string;
 resultAfterTyping;
+today = new Date();
 selects = [
        {id: 1, name: "כן"},
        {id: 2, name: "אולי"},
@@ -58,7 +59,6 @@ selects = [
    }
 
   ngOnInit() {
-
     //this.user=this.currentUserService.getCurrentUser();
     //this.id=this.user.getId();
     this.id='29837528394';
@@ -143,7 +143,7 @@ kuku(){
         console.log(this.nextQuestion)
         this.canAsk= this.checkIfAsked(this.nextQuestion)
         if (this.canAsk == true){
-          this.messages.push(new Message(this.nextQuestion.questionData));
+          this.messages.push(new Message(this.nextQuestion.questionData,"../../../assets/images/chat_bot.png",);
           this.askedQuestions.push(this.nextQuestion);
           $('.select button').css('visibility','visible')
          //  $('html, #chat').animate({
@@ -202,7 +202,7 @@ kuku(){
           this.canAsk=this.checkIfAsked(this.nextQuestion.questionId);
           console.log(this.canAsk)
           if (this.canAsk == true){
-            this.messages.push(new Message(this.nextQuestion.questionData));
+            this.messages.push(new Message(this.nextQuestion.questionData,"../../../assets/images/chat_bot.png"));
             $('.select button').css('visibility','visible')
             this.askedQuestions.push(this.nextQuestion);
           }
@@ -248,7 +248,7 @@ kuku(){
   send(content){
     let numForAddTotal;
      $('.select button').css('visibility','hidden');
-    let message =new Message(content);
+    let message =new Message(content,"../../../assets/images/chat_bot.png");
     this.messages.push(message)
     $('html, #chat').animate({
     scrollTop: $("#chat").offset().top+ '100px'

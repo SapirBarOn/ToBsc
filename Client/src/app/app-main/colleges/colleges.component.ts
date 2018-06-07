@@ -3,6 +3,7 @@ import { DataService } from '../../data.service';
 import { Colleges } from '../../model/Colleges.model';
 import { FormGroup ,FormControl ,FormBuilder } from '@angular/forms';
 import { NgbModal , ModalDismissReasons ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import {Subject} from '../../model/subject.model';
 
 @Component({
   selector: 'app-colleges',
@@ -61,7 +62,7 @@ export class CollegesComponent implements OnInit {
     this.dataService.getAllColleges((result) =>{
         this.colleges=result;
         console.log(this.colleges);      
-
+        this.distance(result);
     });
 
 
@@ -75,6 +76,36 @@ export class CollegesComponent implements OnInit {
 
 
   }
+
+  distance(result) {
+window.navigator.geolocation.getCurrentPosition(function(pos) { 
+// var y = document.getElementById("yes");
+var myLocationLong =pos.coords.longitude;
+var myLocationLat= pos.coords.latitude;
+ // y.innerHTML = "Latitude: " + myLocationLat + 
+ // "<br>Longitude: " + myLocationLong; 
+console.log("myLocationLong",myLocationLong);
+console.log("myLocationLat",myLocationLat);
+ var a:number[]=[]
+var x:Subject[]=[]
+  var p = 0.017453292519943295;    // Math.PI / 180
+  var c = Math.cos;
+
+  for(let i=0;i<result.length;i++){
+    a.push( 0.5 - c((result[i].latitude - myLocationLat) * p)/2 + 
+          c(myLocationLat * p) * c(result[i].latitude * p) * 
+          (1 - c((result[i].longitude - myLocationLong) * p))/2)
+  }
+
+  for(let j=0;j<result.length;j++){
+    x.push(new Subject(result[j].hebName,12742 * Math.asin(Math.sqrt(a[j]))))
+  }
+
+ x.sort(function(a, b){return a.total - b.total});
+ console.log(x);
+
+});
+}
 
   openMap(content) {
     this.alertConfig.dismissible = false;

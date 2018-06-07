@@ -85,9 +85,9 @@ export class DataService {
   }
 
 
-  createUser(firstName:string,lastName:string,email:string,password:string,callback: Function){
-    this.http.post('https://tobsc-ws.herokuapp.com/createNewAccount',
-    {'firstName':firstName,'lastName':lastName,'email':email,'password':password})
+  createUser(firstName:string,lastName:string,email:string,password:string,WorkExperience:string,gender:string,age:number,callback: Function){
+    this.http.post('http://localhost:3000/createNewAccount',
+    {'firstName':firstName,'lastName':lastName,'email':email,'password':password,'WorkExperience':WorkExperience,'gender':gender,'age':age})
     .subscribe(
       (res: Response ) => {
         callback( res.json() );
