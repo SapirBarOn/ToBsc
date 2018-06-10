@@ -112,25 +112,13 @@ selects = [
          this.questionsForMachine.sort(function(a, b){return a.Wmachine - b.Wmachine});
          console.log('Machine',this.questionsForMachine);
 
-       this.kuku();
+      this.ChatAlgorithm();
 
         });
-
-          //this.loction();
     })
-           this.timer=setTimeout(()=>{
-           // this.dataService.getQuestionById( this.questionNum,(results) => {
-           // this.messages.push(new Message(results));
-           $('.select').css('display','block')
-           this.questionNum++;
-           // var scroll = $("#chat");
-           //  scroll.scrollTop = scroll.scrollHeight;
-
-         // });
-       },1500)
   }
 
-kuku(){
+ChatAlgorithm(){
   this.totalSubEng.sort(function(a, b){return a.total - b.total});
       console.log(this.totalSubEng);
      this.maxWeight=this.totalSubEng[this.totalSubEng.length-1];
@@ -143,15 +131,12 @@ kuku(){
         console.log(this.nextQuestion)
         this.canAsk= this.checkIfAsked(this.nextQuestion)
         if (this.canAsk == true){
-          this.messages.push(new Message(this.nextQuestion.questionData,"../../../assets/images/chat_bot.png",);
+          this.messages.push(new Message(this.nextQuestion.questionData,"../../../assets/images/chat_bot.png"));
           this.askedQuestions.push(this.nextQuestion);
           $('.select button').css('visibility','visible')
-         //  $('html, #chat').animate({
-         //   scrollTop: $("#chat").offset().top+ '100px'
-         // }, 10);
         }
 
-        else this.kuku();
+        else this.ChatAlgorithm();
       }
 
       else{
@@ -207,7 +192,7 @@ kuku(){
             this.askedQuestions.push(this.nextQuestion);
           }
           else{
-           this.kuku();
+           this.ChatAlgorithm();
           }
         }
 
@@ -216,7 +201,7 @@ kuku(){
            console.log(this.userTotalSubEng);
            this.popCount++;
            if (this.popCount<4){
-            this.kuku();            
+            this.ChatAlgorithm();            
            }
 
            else{
@@ -252,7 +237,7 @@ kuku(){
     this.messages.push(message)
     $('html, #chat').animate({
     scrollTop: $("#chat").offset().top+ '100px'
-    }, 5000);
+    }, 10);
 
     if (content=="כן") {
       numForAddTotal=1;
@@ -291,20 +276,8 @@ kuku(){
       }      
     }
 
-    this.kuku();
+    this.ChatAlgorithm();
   }
-//   loction(){
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(this.showPosition)
-//     } else { 
-//         console.log("Geolocation is not supported by this browser.");
-//     }
-// }
-
-//  showPosition(position) {
-//    console.log("Latitude:",position.coords.latitude)  
-//    console.log("Longitude:",position.coords.longitude)
-// }
     getAnswer(){
       console.log("befor Sub",this.arrayCorrectAnswer);
           this.user=this.currentUserService.getCurrentUser();

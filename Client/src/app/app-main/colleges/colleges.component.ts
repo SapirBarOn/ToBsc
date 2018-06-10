@@ -14,8 +14,11 @@ export class CollegesComponent implements OnInit {
 
 
   colleges:Colleges[]=[];
+  DistanceFromMe:Colleges[]=[];
   myform: FormGroup;
   cChoosed:Colleges;
+  myLocationLat:number;
+  myLocationLong:number;
 
   locations: string[] = [
     'מרכז',
@@ -77,35 +80,49 @@ export class CollegesComponent implements OnInit {
 
   }
 
-  distance(result) {
-window.navigator.geolocation.getCurrentPosition(function(pos) { 
-// var y = document.getElementById("yes");
-var myLocationLong =pos.coords.longitude;
-var myLocationLat= pos.coords.latitude;
- // y.innerHTML = "Latitude: " + myLocationLat + 
- // "<br>Longitude: " + myLocationLong; 
-console.log("myLocationLong",myLocationLong);
-console.log("myLocationLat",myLocationLat);
- var a:number[]=[]
-var x:Subject[]=[]
-  var p = 0.017453292519943295;    // Math.PI / 180
-  var c = Math.cos;
-
-  for(let i=0;i<result.length;i++){
-    a.push( 0.5 - c((result[i].latitude - myLocationLat) * p)/2 + 
-          c(myLocationLat * p) * c(result[i].latitude * p) * 
-          (1 - c((result[i].longitude - myLocationLong) * p))/2)
+  getUserLocation(result) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.showPosition(position,result);
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   }
 
-  for(let j=0;j<result.length;j++){
-    x.push(new Subject(result[j].hebName,12742 * Math.asin(Math.sqrt(a[j]))))
+
+showPosition(position,result) {
+    this.myLocationLat = position.coords.latitude;
+    this.myLocationLong = position.coords.longitude;
+    console.log("myLocationLat",this.myLocationLat);
+    console.log("myLocationLong",this.myLocationLong);
+    this.distance(result);
   }
 
- x.sort(function(a, b){return a.total - b.total});
- console.log(x);
 
-});
-}
+
+    distance(result){
+     var a:number[]=[]
+    var x:Colleges[]=[]
+      var p = 0.017453292519943295;    // Math.PI / 180
+      var c = Math.cos;
+
+      for(let i=0;i<result.length;i++){
+        a.push( 0.5 - c((result[i].latitude - this.myLocationLat) * p)/2 + 
+              c(this.myLocationLat * p) * c(result[i].latitude * p) * 
+              (1 - c((result[i].longitude - this.myLocationLong) * p))/2)
+      }
+
+      for(let j=0;j<result.length;j++){
+        result[j].distanceKM=12742 * Math.asin(Math.sqrt(a[j]));
+        this.DistanceFromMe.push(result[j]);
+        //x.push(new Subject(result[j].hebName,12742 * Math.asin(Math.sqrt(a[j]))))
+      }
+
+     this.DistanceFromMe.sort(function(a, b){return a.distanceKM - b.distanceKM});
+     console.log('colleges by distance',this.DistanceFromMe);
+     this.colleges=this.DistanceFromMe;
+  }
 
   openMap(content) {
     this.alertConfig.dismissible = false;

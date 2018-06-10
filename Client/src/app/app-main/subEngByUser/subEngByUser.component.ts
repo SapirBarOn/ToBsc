@@ -83,7 +83,7 @@ export class SubEngByUserComponent implements OnInit {
                          console.log(this.totalSubEng);
                         document.getElementById('oneTotal').innerHTML="עדיפות ראשונה  "+this.totalSubEng[0].type;
                         document.getElementById('twoTotal').innerHTML="עדיפות שנייה  "+this.totalSubEng[1].type;
-                        document.getElementById('treeTotal').innerHTML="עדיפות שלישית "+this.totalSubEng[2].type;     
+                        document.getElementById('threeTotal').innerHTML="עדיפות שלישית "+this.totalSubEng[2].type;     
                 })
             }  
       });

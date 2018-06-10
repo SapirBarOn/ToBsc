@@ -8,6 +8,7 @@ export class Colleges {
     public subEng: [string];
     public latitude:number;
     public longitude:number;
+    public distanceKM:number;
     // public dorms: boolean;
 
     public dorms: string;
@@ -26,7 +27,7 @@ export class Colleges {
 
 
   constructor(hebName:string,pic: string,logo: string,type:string,location: string,
-              uniSalary: boolean,dorms: string,subEng: [string],latitude:number,longitude:number,
+              uniSalary: boolean,dorms: string,subEng: [string],latitude:number,longitude:number, DistanceKM:number,
               engName: string,reqUrl:string,specialization:string,description:string,headline:string,
               address:string,tuitionFee:string,tel:string,openday:string,requirements:string){
     this.hebName = hebName;
@@ -39,6 +40,7 @@ export class Colleges {
     this.subEng=subEng;
     this.latitude=latitude;
     this.longitude=longitude;
+    this.distanceKM=DistanceKM;
     this.engName = engName;
     this.reqUrl=reqUrl;
     this.specialization=specialization;

@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
                 user.setLastName(result.lastName);  
                 user.setPassword(result.password);
                 user.setAge(result.age);
-                // user.setWorkExperience(result.workExperience);
+                // user.setWorkExperience(result.WorkExperience);
                 // user.setGender(result.gender);
                 this.currentUserService.change(user);   
                 this.dataService.myMethod(result); 
@@ -76,8 +76,8 @@ export class LoginComponent implements OnInit {
                 user.setLastName(result.lastName);  
                 user.setPassword(result.password); 
                 user.setAge(result.age);
-                // user.setWorkExperience(result.workExperience);
-                // user.setGender(result.gender); 
+                user.setWorkExperience(result.WorkExperience);
+                user.setGender(result.gender); 
                 this.currentUserService.change(user); 
                 this.dataService.myMethod(result); 
                 this.router.navigateByUrl('/enter');    

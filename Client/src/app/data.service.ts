@@ -99,7 +99,20 @@ export class DataService {
     );
   }
 
-
+  getSubEngByUserId(userID:string,callback: Function){
+    this.http.post('http://localhost:3000/getUserSubEngById',
+    {'userID':userID})
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
+  
   getQuestionById(data:number, callback:Function){
     let idNum=data;
     this.http.get('https://tobsc-ws.herokuapp.com/getQuestion/'+idNum)

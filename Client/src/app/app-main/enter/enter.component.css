@@ -37,7 +37,17 @@ img{
     margin-top: 100px;
 }*/
 
+#recommended>p{
+    margin-top: 7px;
+    display: block;
+    text-align: right;
+
+}
+
 button{
+    position: relative;
+    top: 200px;
+    float: left;
     height: 40px;
     width: 110px;
     border-radius: 5px;
