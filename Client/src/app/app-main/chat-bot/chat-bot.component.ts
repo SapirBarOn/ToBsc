@@ -59,9 +59,9 @@ selects = [
    }
 
   ngOnInit() {
-    //this.user=this.currentUserService.getCurrentUser();
-    //this.id=this.user.getId();
-    this.id='29837528394';
+    this.user=this.currentUserService.getCurrentUser();
+    this.id=this.user.getId();
+    // this.id='29837528394';
     //this.id='5ac35e2ee92c8230100e21c4';
     this.dataService.getORcreateSubEngByUser(this.id, (result)=>{
     this.subEngForUser=result;
@@ -205,6 +205,8 @@ ChatAlgorithm(){
            }
 
            else{
+              this.dataService.updateSubEngWeights(this.id,this.subEngForUser.chemistry,this.subEngForUser.software,this.subEngForUser.electronic,this.subEngForUser.medical,this.subEngForUser.management,this.subEngForUser.building,this.subEngForUser.machine, (result)=>{
+             })
              this.userTotalSubEng.sort(function(a, b){return b.total - a.total});
              console.log('עדיפות ראשונה', this.userTotalSubEng[0])
              console.log('עדיפות שנייה', this.userTotalSubEng[1])

@@ -63,9 +63,10 @@ totalSubEng:Subject[]=[];
                this.sameUser=this.allUsers[0]
                console.log(this.allUsers[0])              
            }
-           else this.sameUser=this.allUsers[1];
-
-
+           else {
+             this.sameUser=this.allUsers[1];
+             console.log(this.sameUser);
+           }
         this.dataService.getSubEngByUserId(this.sameUser._id , (result)=>{
             this.subEngForUser=result;
             console.log(result)
@@ -85,9 +86,9 @@ totalSubEng:Subject[]=[];
                             );
             this.totalSubEng.sort(function(a, b){return b.total - a.total})
             console.log(this.totalSubEng)
-            document.getElementById('recommended1').innerHTML="1.  "+this.totalSubEng[0].type;
-             document.getElementById('recommended2').innerHTML="2.  "+this.totalSubEng[1].type;
-            document.getElementById('recommended3').innerHTML="3. "+this.totalSubEng[2].type;   
+            document.getElementById('recommended1').innerHTML=this.totalSubEng[0].type;
+             document.getElementById('recommended2').innerHTML=this.totalSubEng[1].type;
+            document.getElementById('recommended3').innerHTML=this.totalSubEng[2].type;   
 
 
             

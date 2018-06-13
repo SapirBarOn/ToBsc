@@ -165,7 +165,26 @@ getORcreateSubEngByUser(userID:string,callback: Function){
     );
   }
 
-
+updateSubEngWeights(userID:string,chemistry:number,
+    software:number,
+    electronic:number,
+    medical:number,
+    management:number,
+    building:number,
+    machine:number,callback: Function){
+    this.http.post('http://localhost:3000/updateSubEngWeights',
+    {'userID':userID,'chemistry':chemistry,'software':software,'electronic':electronic,
+    'medical':medical,'management':management,'building':building,'machine':machine})
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
 
   createQuestion(questionId:number,
                  question:string,
