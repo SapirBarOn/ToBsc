@@ -1,0 +1,30 @@
+<div id="departments">
+    <section (click)="openInfo(departmentsModal,d)" class="frame" *ngFor="let d of departments">
+        <section class="logo">
+            <img src="{{d.logo}}">
+        </section>
+        <p class="name">{{d.hebName}}</p>
+    </section> 
+</div>
+
+
+        <ng-template #departmentsModal let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">{{dChoosed.hebName}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5>:תיאור התחום</h5>
+            <p>{{dChoosed.description}}</p>
+            <h5>:נושאי הלימוד</h5>
+            <p>{{dChoosed.subjects}}</p>
+            <h5>:תנאי קבלה</h5>
+            <p>{{dChoosed.requirements}}</p>
+            <h5>:שכר התחלתי</h5>
+            <p>{{dChoosed.lowSalary}}</p>
+            <h5>:שכר עם נסיון</h5>
+            <p>{{dChoosed.highSalary}}</p>
+          </div>
+        </ng-template>

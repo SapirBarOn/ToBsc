@@ -1,0 +1,114 @@
+ #chat{
+  background: #e5e5ea;
+  width: 700px;
+  height: 410px;
+/* /height: 100%;/*/
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  padding: 10px;
+  overflow: auto;
+  text-align: right;
+}
+img{
+  height: 50px;
+  width: 50px;
+  margin-right:180px;
+  margin-top:-100px;
+}
+#chat p{
+  direction: rtl;
+  background-color:#ffffff;
+  margin: 0 0 0.5em;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  width: 200px;
+  margin-left: 120px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid #ffffff; 
+  margin-right: 104%;
+  margin-top: -10%;
+}
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #84b4a7;
+ margin-right:-8%;
+  margin-top: -10%;
+}
+.psychImg{
+  margin-right:200px;
+}
+.userImg{
+  margin-right:-70px; 
+}
+.odd{
+  padding: 50px;
+  direction: rtl;
+  background-color:#84b4a7;
+  margin: 0 0 0.5em;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  min-width: 200px;
+  float: right;
+   margin-top:-45px;
+  margin-right: 120px
+}
+
+.even{
+  direction: rtl;
+  background-color:#ffffff;
+  margin: 0 0 0.5em;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  width: 200px;
+  margin-left: 120px;
+  margin-top:10px;
+  margin-bottom: 50px;
+}
+.answer{
+  background: #e5e5ea;
+  width: 700px;
+  height: 50px;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  padding-right: 200px;
+  border-top: 2px solid #d3d3d3;
+}
+
+ .select button{
+  position: relative;
+  float: right;
+  margin-top: -10px;
+  height: 28px;
+  width: 80px;
+  border-radius: 5px;
+  border: 2px solid #4f4d4f;
+  background-color:#8fe600;
+  border-color:#8fe600;
+  color:#ffffff;
+  font-size: 17px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.select span{
+  margin-top: 3px;
+}
+.first > button{
+  background-color:#8b9dc3;
+  border-color: #8b9dc3;
+}
+.last > button{
+   background-color:#e56567;
+   border-color:#e56567;
+}

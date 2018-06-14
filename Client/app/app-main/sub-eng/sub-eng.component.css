@@ -1,0 +1,33 @@
+#subEng{
+    margin: auto;
+    padding-top: 80px;
+    padding-right:170px;
+}
+
+.frame{
+    width: 300px;
+    height: 160px;
+    border: 1px solid black;
+    border-radius: 5px;
+    float: right;    
+    padding: 7px;  
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.logo{
+    float: right;
+    width: 180px;
+    height: 140px;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%; 
+}
+
+ p{
+    margin-top: 35px;
+    font-size: 22px;
+    text-align: center;
+}

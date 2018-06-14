@@ -1,0 +1,61 @@
+#container{
+  width: 100%;
+}
+
+.box{
+  width:1270px;
+  padding:20px;
+  background-color:#fff;
+  border:1px solid #ccc;
+  border-radius:5px;
+  margin-top:25px;
+  box-sizing:border-box;
+}
+
+.btn{
+  background-color: #84b4a7;
+  border-color: #84b4a7;
+  margin-top: 5px;
+}
+
+#add{
+  font-size: 35px;
+}
+
+table{
+  direction: rtl;
+}
+
+th{
+  text-align: center;
+}
+
+td{
+  text-align: right;
+}
+
+.glyphicon{
+  font-size: 20px;
+  cursor:pointer;
+}
+
+input{
+  text-align: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+label{
+  float: right;
+}
+
+.form-container {
+    display:block;
+    width:100%;
+    padding:2em;
+    margin: 2em auto;
+}
+
+.modal-title{
+  margin-left: 195px;
+}

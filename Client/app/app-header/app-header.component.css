@@ -1,0 +1,94 @@
+button{
+        height: 40px;
+        width: 80px;
+        border-radius: 5px;
+        border: 2px solid #7d331f;
+        margin-left: 15px;
+        background-color:#cf411b;
+        color:#ffffff;
+        font-size: 17px;
+        cursor: pointer;
+        outline:none;
+    }
+
+button:hover{
+        background-color:#b13615;
+    }
+
+@media (min-width: 635px){
+
+    #header{
+        height: 120px;
+        width: 100%;
+        background: #84b4a7;
+    }
+    
+    img{
+       margin-left: 90px;
+    }
+
+    #buttons{
+        float: right;
+        margin-right: 100px;
+        margin-top: 50px;
+    }
+
+    #nameLogin{
+        float: right;
+        margin-right: 100px;
+        margin-top: 50px;  
+        font-size: 20px;
+        color:#ffffff;
+    }
+
+    .logout{
+        float: right;
+        cursor: pointer;
+        color: #b13615;
+        font-size: 15px;
+        margin-right: 65px;
+        margin-top: 55px;
+       
+    }
+}
+@media (max-width: 634px) {
+
+    #header{
+        display: block;
+        height:220px;
+        background: #84b4a7;
+    }
+
+    #buttons{
+        margin-right:0px;
+        margin-top: -30px;
+        display: block;
+    }
+
+    button{
+        display: block;
+        margin:0 auto;
+        margin-top: 10px;
+    }
+
+    img{
+        display: block;
+        margin :0 auto;
+        margin-top:-20px;
+    }
+
+     #nameLogin{
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        color:#ffffff;
+    }
+
+    .logout{
+        display: block;
+        cursor: pointer;
+        color: #b13615;
+        font-size: 15px;
+       text-align:center; 
+    }   
+}
