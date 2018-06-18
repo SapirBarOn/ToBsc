@@ -1,3 +1,4 @@
+// npm Initialize
 var mongoose = require('mongoose');
 var scrapy = require('node-scrapy');
 var dateFormat = require('dateformat');
@@ -17,59 +18,73 @@ exports.getCollegesData = function(req, res){
         {
             "id": "1019560",
             "name": "shankar-school-of-engineering",
-            "url": "https://limudim.psychometry.co.il/shenkar/shenkar_requirements.php"
+            "url": "https://limudim.psychometry.co.il/shenkar/shenkar_requirements.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&sp2=51&sp3=191&college=61"
         },{
             "id": "34969730",
             "name": "afeka-engineering-college",
-            "url": "https://limudim.psychometry.co.il/afeka/requirements_afeka.php"
+            "url": "https://limudim.psychometry.co.il/afeka/requirements_afeka.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&sp2=61&college=7"
         },{
             "id": "1179940",
             "name": "bar-ilan-university",
             "url": "http://engineering.biu.ac.il/about",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=2&campus_distance=1&sp2=51&sp3=191"
         },{
             "id": "966690",
             "name": "tau-university",
-            "url": "https://limudim.psychometry.co.il/tau/application-chances.php"
+            "url": "https://limudim.psychometry.co.il/tau/application-chances.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=4&campus_distance=1&sp2=61"
         },{
             "id": "33314510",
             "name": "ariel-university-center",
-            "url": "https://limudim.psychometry.co.il/ariel/ariel_requirements.php"
+            "url": "https://limudim.psychometry.co.il/ariel/ariel_requirements.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=30&campus_distance=1&sp3=252"
         },{
             "id": "3049800",
             "name": "hit-holon1",
-            "url": "https://limudim.psychometry.co.il/hit/ba-electronics.php"
+            "url": "https://limudim.psychometry.co.il/hit/ba-electronics.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=21&campus_distance=1&sp2=123"
         },{
             "id": "39340070",
             "name": "ruppin-college-technology",
-            "url": "https://limudim.psychometry.co.il/ruppin/rupin_requirements.php"
+            "url": "https://limudim.psychometry.co.il/ruppin/rupin_requirements.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=20&campus_distance=1"
         },{
             "id": "10518040",
             "name": "college-ort-braude",
-            "url": "https://limudim.psychometry.co.il/braude/brauda_requirements.php"
+            "url": "https://limudim.psychometry.co.il/braude/brauda_requirements.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=49&campus_distance=1&sp3=271"
         },{
             "id": "8149700",
             "name": "college-kinneret",
-            "url": "https://limudim.psychometry.co.il/kinneret/kineret_requirements.php"
+            "url": "https://limudim.psychometry.co.il/kinneret/kineret_requirements.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=14&campus_distance=1&sp3=278"
         },{
             "id": "10690120",
             "name": "technion",
-            "url": "https://limudim.psychometry.co.il/technion/application-chances.php"
+            "url": "https://limudim.psychometry.co.il/technion/application-chances.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=39&campus_distance=1&sp3=167"
         },{
             "id": "6002050",
             "name": "hebrew-university",
-            "url": "https://limudim.psychometry.co.il/huji/application-chances.php"
+            "url": "https://limudim.psychometry.co.il/huji/application-chances.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=5&campus_distance=1&sp3=30"
         },{
             "id": "41324290",
             "name": "jerusalem-college-engineering",
-            "url": "https://limudim.psychometry.co.il/jce/azrieli_requirements.php"
+            "url": "https://limudim.psychometry.co.il/jce/azrieli_requirements.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&sp3=30&college=22"
         },{
             "id": "2590930",
             "name": "ben-gurion-university",
-            "url": "https://limudim.psychometry.co.il/bgu/application-chances.php"
+            "url": "https://limudim.psychometry.co.il/bgu/application-chances.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=1&campus_distance=1&sp3=98"
         },{
             "id": "40509770",
             "name": "engineering-college-shamoon",
-            "url": "https://limudim.psychometry.co.il/sce/sami_shamun_requirements.php"
+            "url": "https://limudim.psychometry.co.il/sce/sami_shamun_requirements.php",
+            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&college=50&sp3=43"
         }   
     ]
 
@@ -99,8 +114,10 @@ exports.getCollegesData = function(req, res){
                 let newCollege = new College();
                 newCollege.engName = colleges[i].name;
                 newCollege.reqUrl = colleges[i].url;
+                newCollege.rentUrl = colleges[i].rentUrl;
                 newCollege.collegeId = colleges[i].id;
-                
+                newCollege._id = colleges[i].id;
+
                 scrapy.scrape(fullUrl, collegeDetails, function(err, data) {
                     if (err) {
                         console.error(err);
@@ -208,7 +225,6 @@ exports.getCollegesData = function(req, res){
                             collegesArr[j].tel = data.tel;
                         }
                     }
-
                     // console.log(currCollege+"/"+collegesLen+" "+JSON.stringify(data, null, 2));
 
                     if(currCollege==collegesLen-1) {
@@ -467,76 +483,542 @@ exports.getCollegesData = function(req, res){
             }
         },
 
-        function(caption, callback) { // Get Requirements
+        function(caption, callback) { // Get Rents
 
-            console.log("Start: E - 5");
-            console.log("getRequirements START!");
+            console.log("Start: F - 6");
+            console.log("getRents START!");
 
-            var collegeDetails = {
-                requirements: 'div#customers-page-contents',
-                href: 
-                    { selector: '.text-left > a',
-                      get: 'href',
-                      prefix: '' }
+            var collegeDetails = { 
+                maintainers: { 
+                    selector: '.dropdown-menu > li:nth-child(2) > a',
+                    get: 'href',
+                    prefix: '' 
+                },
+                rent: '.box-price'
             };
-
-            var collegeDetails2 = {
-                requirements: '.rtejustify'
-            };
-
 
             var currCollege = 0;
             var collegesLen = collegesArr.length;
+            var numOfRents = 10;
 
             for (var i = 0; i<collegesLen; i++) {
-                if(colleges[i].url.includes("limudim.psychometry.co.il/")){
-                    scrapy.scrape(colleges[i].url, collegeDetails, function(err, data) {
-                        if (err) {
-                            console.error(err);
+                scrapy.scrape(colleges[i].rentUrl, collegeDetails, function(err, data) {
+                    if (err) {
+                        currCollege++;
+                        console.error(err);
+                    }
+                    // console.log("DATA "+data.rent.length+" => "+JSON.stringify(data, null, 2));
+                    let totalRents = 0;
+                    let rentsCounter = 0;
+                    for (var j = 0; j < numOfRents; j++) {
+                        // console.log("Final num : "+data.rent[j].substring(0, data.rent[j].length-2).replace(",", ""));
+                        if(Number(data.rent[j].substring(0, data.rent[j].length-2).replace(",", ""))<200){
+                            // console.log("Fake rent price");
                         }
+                        else {
+                            totalRents += Number(data.rent[j].substring(0, data.rent[j].length-2).replace(",", ""));
+                            rentsCounter++;
+                        }
+                        if(j==numOfRents-1){
+                            saveAverage(totalRents/rentsCounter, data.maintainers.substring(0, data.maintainers.length-11));
+                        }
+                    }
+                    if(currCollege==collegesLen-1) {
+                        console.log("End: F - 6");
+                        callback(null, "a33333");   
+                    }
+                    else currCollege++;
+                });
+            }
 
-                        // set college details
-                        for (var j = 0; j < collegesLen; j++) {
-
-                            let tmpUrl = collegesArr[j].reqUrl.split("/", 4).join("/");
-
-                            if(data.href.substring(0, data.href.length-9)==tmpUrl) {
-                                collegesArr[j].requirements = data.requirements;
+            function saveAverage(averageRent, collegeUrl){
+                if(averageRent){
+                    // set college details
+                    for (var j = 0; j < collegesArr.length; j++) {
+                        if(collegesArr[j].rentUrl == collegeUrl){
+                            // console.log(collegeUrl+" Match!");
+                            // collegesArr[j].averageRents = averageRent;
+                            var now = new Date();
+                            var history = {
+                                date: dateFormat(now, "dd/mm/yyyy"),
+                                time: dateFormat(now, "HH:MM:ss"),
+                                averagePrice: averageRent
                             }
+                            College.update(
+                              { "engName": collegesArr[j].engName },
+                              { "$push": { "averageRents" : history } } ).
+                                exec (function(err, newProduct){
+                                    if(err) console.log(err);
+                                    if(!newProduct) console.log("Error Save College Rents");
+                                    // console.log("New Average Price ("+averageRent+") Saved Successfully in the College's History");
+                            })
                         }
-
-                        // console.log(currCollege+"/"+collegesLen+"  "+JSON.stringify(data, null, 2));
-
-                        if(currCollege==collegesLen-1) {
-                            console.log("End: E - 5");
-                            callback(null, "a33333");   
-                        }
-                        else currCollege++;
-                    });
+                    }
                 }
                 else {
+                    // set college details
+                    for (var j = 0; j < collegesArr.length; j++) {
+                        if(collegesArr[j].rentUrl == collegeUrl){
+                            console.log(collegeUrl+" Match Unknown !");
+                            // collegesArr[j].averageRent = "לא ידוע";
+                        }
+                    }
+                }
+            }
+        },
 
-                    scrapy.scrape(colleges[i].url, collegeDetails2, function(err, data) {
+        function(caption, callback) { // Get Requirements
+
+            console.log("Start: G - 7");
+            console.log("getRequirements START!");
+
+            var currCollege = 0;
+            var collegesLen = colleges.length;
+
+            // all colleges models
+            var shenkarDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
+            var afekaDetails = {
+                title: 'div#customers-page-contents > span > span span',
+                requirements: 'div#customers-page-contents'
+            };
+            var barIlanDetails = {requirements: '.rtejustify'};
+            var sceDetails = {requirements: 'div#customers-page-contents > ul > li'};
+            var arielDetails = {requirements: 'div#customers-page-contents > ul > li'};
+            var hitDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
+            var ruppinDetails = {requirements: 'div#customers-page-contents > ul > li'};
+            var ortDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
+            var kinneretDetails = {requirements: 'div#customers-page-contents > ul'};
+            var technionDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
+            var hujiDetails = {
+                title: 'div#customers-page-contents > div > span',
+                requirements: 'div#customers-page-contents > div'
+            };
+            var azrieliDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
+            var bguDetails = {
+                requirements: 'div#customers-page-contents > ul > li',
+                title: 'div#customers-page-contents > div > strong',
+                grades: 'div#customers-page-contents > div'
+            };
+            var tauDetails = {
+                requirements: 'div#customers-page-contents > ul > li',
+                grades: 'div#customers-page-contents > div'
+            };
+
+            for (var i = 0; i<collegesLen; i++) {
+
+                if(colleges[i].name == "shankar-school-of-engineering"){
+                    scrapy.scrape(colleges[i].url, shenkarDetails, function(err, data) {
                         if (err) {
                             console.error(err);
+                            currCollege++;
                         }
+                        else {
+                            var reqStr = data.requirements.join(" ");
+                            var mathGrades = getMath(reqStr, "shankar-school-of-engineering", "math");
+                            var engGrades = getMath(reqStr, "shankar-school-of-engineering", "english");
+                            var physicsGrades = getMath(reqStr, "shankar-school-of-engineering", "physics");
+                            var psyGrade = getPsychometric(reqStr, "shankar-school-of-engineering");
+                            return saveRequirements(data.requirements, psyGrade, mathGrades, engGrades, physicsGrades, "shankar-school-of-engineering");
+                        }
+                    });
+                }
+                if(colleges[i].name == "afeka-engineering-college"){
+                    scrapy.scrape(colleges[i].url, afekaDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqArray = [];
+                            for (var i = 0; i < data.title.length; i++) {
+                                let tmpData = data.requirements.split(data.title[i]);
+                                if(i<data.title.length-1){
+                                    tmpData = tmpData[1].split(data.title[i+1]);
+                                    reqArray.push(data.title[i]+": "+tmpData[0]);
+                                }
+                                else reqArray.push(data.title[i]+": "+tmpData[1]);
+                            }
+                            var mathGrades = getMath(data.requirements, "afeka-engineering-college", "math");
+                            var engGrades = getMath(data.requirements, "afeka-engineering-college", "english");
+                            var physicsGrades = getMath(data.requirements, "afeka-engineering-college", "physics");
+                            var psyGrade = getPsychometric(data.requirements, "afeka-engineering-college");
+                            return saveRequirements(reqArray, psyGrade, mathGrades, engGrades, physicsGrades, "afeka-engineering-college");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "bar-ilan-university"){
+                    scrapy.scrape(colleges[i].url, barIlanDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var mathGrades = getMath(data.requirements[2], "bar-ilan-university", "math");
+                            var engGrades = getMath(data.requirements[2], "bar-ilan-university", "english");
+                            var physicsGrades = getMath(data.requirements[2], "bar-ilan-university", "physics");
+                            var psyGrade = getPsychometric(data.requirements[2], "bar-ilan-university");
+                            return saveRequirements(data.requirements[2], psyGrade, mathGrades, engGrades, physicsGrades, "bar-ilan-university");
+                        }
+                    });
+                }
+                if(colleges[i].name == "tau-university"){
+                    scrapy.scrape(colleges[i].url, tauDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqStr = data.requirements.join(" ");
+                            var tmpData = data.grades[1].split("הנדסה מכנית");
+                            var mathGrades = getMath(tmpData[1], "tau-university", "math");
+                            var engGrades = getMath(reqStr, "tau-university", "english");
+                            var physicsGrades = getMath(reqStr, "tau-university", "physics");
+                            var psyGrade = getPsychometric(tmpData[1]+tmpData[2], "tau-university");
+                            return saveRequirements(data.requirements, psyGrade, mathGrades, engGrades, physicsGrades, "tau-university");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "ariel-university-center"){
+                    scrapy.scrape(colleges[i].url, arielDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqArray = data.requirements.splice(0, 9);
+                            var reqStr = reqArray.join(" ");
+                            var mathGrades = getMath(reqStr, "ariel-university-center", "math");
+                            var engGrades = getMath(reqStr, "ariel-university-center", "english");
+                            var physicsGrades = getMath(reqArray[2], "ariel-university-center", "physics");
+                            var psyGrade = getPsychometric(reqStr, "ariel-university-center");
+                            return saveRequirements(reqArray, psyGrade, mathGrades, engGrades, physicsGrades, "ariel-university-center");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "hit-holon1"){
+                    scrapy.scrape(colleges[i].url, hitDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqStr = data.requirements.join(" ");
+                            var mathGrades = getMath(reqStr, "hit-holon1", "math");
+                            var engGrades = getMath(reqStr, "hit-holon1", "english");
+                            var physicsGrades = getMath(reqStr, "hit-holon1", "physics");
+                            var psyGrade = getPsychometric(reqStr, "hit-holon1");
+                            return saveRequirements(data.requirements, psyGrade, mathGrades, engGrades, physicsGrades, "hit-holon1");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "ruppin-college-technology"){
+                    scrapy.scrape(colleges[i].url, ruppinDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqArray = data.requirements.splice(0, 4);
+                            var reqStr = reqArray.join(" ");
+                            var mathGrades = getMath(reqStr, "ruppin-college-technology", "math");
+                            var engGrades = getMath(reqStr, "ruppin-college-technology", "english");
+                            var physicsGrades = getMath(reqArray[2], "ruppin-college-technology", "physics");
+                            var psyGrade = getPsychometric(reqStr, "ruppin-college-technology");
+                            return saveRequirements(reqArray, psyGrade, mathGrades, engGrades, physicsGrades, "ruppin-college-technology");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "college-ort-braude"){
+                    scrapy.scrape(colleges[i].url, ortDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqArray = data.requirements.splice(0, 5);
+                            var reqStr = reqArray.join(" ");
+                            var mathGrades = getMath(reqStr, "college-ort-braude", "math");
+                            var engGrades = getMath(reqStr, "college-ort-braude", "english");
+                            var physicsGrades = getMath(reqStr, "college-ort-braude", "physics");
+                            var psyGrade = getPsychometric(reqStr, "college-ort-braude");
+                            return saveRequirements(reqArray, psyGrade, mathGrades, engGrades, physicsGrades, "college-ort-braude");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "college-kinneret"){
+                    scrapy.scrape(colleges[i].url, kinneretDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var mathGrades = getMath(data.requirements[2], "college-kinneret", "math");
+                            var engGrades = getMath(data.requirements[0], "college-kinneret", "english");
+                            var physicsGrades = getMath(data.requirements[0], "college-kinneret", "physics");
+                            var psyGrade = getPsychometric(data.requirements[2], "college-kinneret");
+                            return saveRequirements(data.requirements[0], psyGrade, mathGrades, engGrades, physicsGrades, "college-kinneret");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "technion"){
+                    scrapy.scrape(colleges[i].url, technionDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            // console.log("technion ==> "+JSON.stringify(data, null, 4));
+                            var reqStr = data.requirements.join(" ");
+                            var mathGrades = getMath(reqStr, "technion", "math");
+                            var engGrades = getMath(data.requirements[4], "technion", "english");
+                            var physicsGrades = getMath(reqStr, "technion", "physics");
+                            var psyGrade = getPsychometric(reqStr, "technion");
+                            return saveRequirements(data.requirements, psyGrade, mathGrades, engGrades, physicsGrades, "technion");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "hebrew-university"){
+                    scrapy.scrape(colleges[i].url, hujiDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqStr = data.requirements[1].replace(data.title, data.title+": ");
+                            var mathGrades = getMath(reqStr, "hebrew-university", "math");
+                            var engGrades = getMath(reqStr, "hebrew-university", "english");
+                            var physicsGrades = getMath(reqStr, "hebrew-university", "physics");
+                            var psyGrade = getPsychometric(data.requirements[1], "hebrew-university");
+                            return saveRequirements(reqStr, psyGrade, mathGrades, engGrades, physicsGrades, "hebrew-university");
+                        }
+                    });
+                }
+                if(colleges[i].name == "jerusalem-college-engineering"){
+                    scrapy.scrape(colleges[i].url, azrieliDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqStr = data.requirements.join(" ");
+                            var mathGrades = getMath(reqStr, "jerusalem-college-engineering", "math");
+                            var engGrades = getMath(reqStr, "jerusalem-college-engineering", "english");
+                            var physicsGrades = getMath(reqStr, "jerusalem-college-engineering", "physics");
+                            var psyGrade = getPsychometric(reqStr, "jerusalem-college-engineering");
+                            return saveRequirements(data.requirements, psyGrade, mathGrades, engGrades, physicsGrades, "jerusalem-college-engineering");
+                        } 
+                    });
+                }
+                if(colleges[i].name == "ben-gurion-university"){
+                    scrapy.scrape(colleges[i].url, bguDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqArray = data.requirements.splice(0, 10);
+                            var reqStr = reqArray.join(" ");
 
-                        // set college details
-                        for (var j = 0; j < collegesLen; j++) {
-                            if(collegesArr[j].engName=="bar-ilan-university") {
-                                collegesArr[j].requirements = data.requirements[2];
-                                // console.log("KINGGGGGG : "+data.requirements[2]);
+                            for (var i = data.title.length-1; i > 0; i--) {
+                                if(data.title[i-1].indexOf("הנדסת")){
+                                    var tmpData = data.grades[2].split(data.title[i])[0];
+                                    var grades = tmpData.split(data.title[i-1])[1];
+                                    var mathGrades = getMath(grades, "ben-gurion-university", "math");
+                                    var engGrades = getMath(reqStr, "ben-gurion-university", "english");
+                                    var physicsGrades = getMath(reqStr, "ben-gurion-university", "physics");
+                                    var psyGrade = getPsychometric(grades, "ben-gurion-university");
+                                    return saveRequirements(reqArray, psyGrade, mathGrades, engGrades, physicsGrades, "ben-gurion-university");
+                                }
+                            }
+                        } 
+                    });
+                }
+                if(colleges[i].name == "engineering-college-shamoon"){
+                    scrapy.scrape(colleges[i].url, sceDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            var reqArray = data.requirements.splice(0, 4);
+                            var reqStr = reqArray.join(" ");
+                            var mathGrades = getMath(reqStr, "engineering-college-shamoon", "math");
+                            var engGrades = getMath(reqStr, "engineering-college-shamoon", "english");
+                            var physicsGrades = getMath(reqStr, "engineering-college-shamoon", "physics");
+                            var psyGrade = getPsychometric(reqStr, "engineering-college-shamoon");
+                            return saveRequirements(reqArray, psyGrade, mathGrades, engGrades, physicsGrades, "engineering-college-shamoon");
+                        } 
+                    });
+                }
+            }
+
+            function saveRequirements(requirements, psychometry, mathGrades, engGrades, physicsGrades, collegeName){
+                // set college details
+                for (var j = 0; j < collegesArr.length; j++) {
+                    if(collegesArr[j].engName == collegeName){
+                        if(requirements) collegesArr[j].requirements = requirements;
+                        else collegesArr[j].requirements = "Unknown";
+                        collegesArr[j].psychometry = psychometry;
+                        collegesArr[j].mathGrades = mathGrades;
+                        collegesArr[j].engGrades = engGrades;
+                        collegesArr[j].physicsGrades = physicsGrades;
+                    }
+                }
+                if(currCollege==collegesLen-1) {
+                    console.log("End: G - 7");
+                    callback(null, "a33333");   
+                }
+                else currCollege++;
+            }
+
+            function getPsychometric(reqStr, collegeName){
+                var numPreWords = 14;
+                var numPostWords = 14;
+                let tmpStr = reqStr.indexOf("פסיכומטרי");
+                if(tmpStr==-1) {
+                    return "Unknown";
+                } 
+                else {
+                    let cutStr = reqStr.split("פסיכומטרי");
+                    let beforeStr = cutStr[0].split(" ");
+                    let afterStr = cutStr[1].split(" ");
+
+                    for (var i = 1; i < numPreWords; i++) {
+                        if((isNaN(afterStr[i]))&&(afterStr[i]!="")){
+                            // console.log("not a number");
+                        }
+                        else {
+                            if(Number(afterStr[i])>200) 
+                                return afterStr[i];
+                        }
+                    }
+                    for (var i = 0; i < numPostWords; i++) {
+                        if(isNaN(beforeStr[beforeStr.length-i-2])){
+                            if(i==numPostWords-1)
+                                // The string "Psychometric" was found - but not the grade
+                                return "1";
+                        }
+                        else {
+                            if(Number(beforeStr[beforeStr.length-i-2])>200) 
+                                return beforeStr[beforeStr.length-i-2];
+                        }
+                    }
+                }
+            }
+
+            function getMath(reqStr, collegeName, subject){
+                let gradesArray = [];
+                var numPreWords = 20;
+                var numPostWords = 3;
+                let keyword;
+                let keyword2;
+
+                if(subject=="math") keyword = "מתמטיקה";
+                if(subject=="english") keyword = "אנגלית";
+                if(subject=="physics") {
+                    keyword = "פיזיקה";
+                    numPreWords = 10;
+                    numPostWords = 10;
+                } 
+                if(subject=="physics2") {
+                    keyword = "פיסיקה";
+                    numPreWords = 10;
+                    numPostWords = 4;
+                } 
+
+                let tmpStr = reqStr.indexOf(keyword);
+                if(tmpStr==-1) {
+                    if(subject=="physics") return getMath(reqStr, collegeName, "physics2");
+
+                    console.log("Get Math of college: "+collegeName);
+                    console.log(subject+" NOT found in college !!");
+                    gradesArray.push(new Object({"units": 0}));
+                    return gradesArray;
+                } 
+                else {
+                    let cutStr = reqStr.replace(/-/ig, " ").replace(/\//g," ").replace(/\(|\)/g, "").replace(/\:/g, "").split(keyword);
+                    let beforeStr = cutStr[0].split(" ");
+                    let afterStr;
+
+                    gradesArray.push(new Object({"units": 0}));
+                    gradesArray.push(new Object({"units": 0}));
+
+                    let gradesCounter = 0;
+                    let unitsCounter = 0;
+
+                    let joinStr = cutStr[1].concat(cutStr[2]);
+                    afterStr = joinStr.split(" ");
+
+                    // console.log("beforeStr"+beforeStr);
+                    // console.log("afterStr"+afterStr);
+                    console.log("Get Subject: "+subject+" of college: "+collegeName);
+                    
+                    for (var i = 0; i < numPostWords; i++) {
+                        if(isNaN(beforeStr[beforeStr.length-i-2])){
+                            if(i==numPostWords-1){
+                                // console.log("MATHMATICA NUMBER found - but not grade");
                             }
                         }
-
-                        // console.log(currCollege+"/"+collegesLen+" TAU "+JSON.stringify(data, null, 2));
-
-                        if(currCollege==collegesLen-1) {
-                            console.log("End: E - 5");
-                            callback(null, "a33333");   
+                        else {
+                            if((Number(beforeStr[beforeStr.length-i-2])>10)&&(Number(beforeStr[beforeStr.length-i-2])<101)) {
+                                console.log(subject+" GRADE NUMBER :"+beforeStr[beforeStr.length-i-2]);
+                                console.log("gradesCounter : "+gradesCounter);
+                                if((gradesCounter<2)&&((subject!="english"))){
+                                    gradesArray[gradesCounter].grade = Number(beforeStr[beforeStr.length-i-2]);
+                                    gradesCounter++;
+                                }   
+                            }
+                            else if(Number(beforeStr[beforeStr.length-i-2])<10) {
+                                console.log(subject+" UNITS NUMBER :"+beforeStr[beforeStr.length-i-2]);
+                                console.log("unitsCounter : "+unitsCounter);
+                                if(unitsCounter<2) {
+                                    gradesArray[unitsCounter].units = Number(beforeStr[beforeStr.length-i-2]);
+                                    unitsCounter++;
+                                }
+                            }
                         }
-                        else currCollege++;
-                    });
+                    }
+
+                    for (var i = 1; i < numPreWords; i++) {
+                        if((isNaN(afterStr[i]))&&(afterStr[i]!="")){
+                            // console.log("not a number");
+                        }
+                        else {
+                            if((Number(afterStr[i])>10)&&(Number(afterStr[i])<101)) {
+                                console.log(subject+" GRADE NUMBER :"+afterStr[i]);
+                                console.log("gradesCounter : "+gradesCounter);
+                                if(gradesCounter<2) {
+                                    gradesArray[gradesCounter].grade = Number(afterStr[i]);
+                                    gradesCounter++;
+                                }
+                            }
+                            else if((Number(afterStr[i])<10)&&(Number(afterStr[i])>0)) {
+                                console.log(subject+" UNITS NUMBER :"+afterStr[i]);
+                                console.log("unitsCounter : "+unitsCounter);
+                                if(unitsCounter<2) {
+                                    gradesArray[unitsCounter].units = Number(afterStr[i]);
+                                    unitsCounter++;
+                                }
+                            }
+                        }
+                        // last call - check & validate
+                        if(i==numPreWords-1) {
+                            if(gradesArray[0].grade&&gradesArray[0].units==0){
+                                var emptyArray = [];
+                                emptyArray.push(new Object({"units": 0}));
+                                return emptyArray;
+                            }
+                            if(gradesArray[1].grade&&gradesArray[1].units!=0){
+                                console.log("FINISH => "+JSON.stringify(gradesArray, null, 2));
+                                return gradesArray;
+                            }
+                            else { 
+                                console.log("NOT GRADEEE ");
+                                console.log("FINISH => "+JSON.stringify(gradesArray, null, 2));
+                                return gradesArray.splice(0,1);
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -546,29 +1028,43 @@ exports.getCollegesData = function(req, res){
         console.log("Save Json START!");
         var json = JSON.stringify(collegesArr, null, 2);
         // console.log(json);
-        saveColleges(collegesArr);
         fs.writeFile('colleges.json', json, 'utf8', function(){            
             console.log("Save Json is finished!");
         });
-        // return res.json(collegesArr);
-    });
-    
 
-    function saveColleges(collegesArr) {
-        console.log("Start saveColleges...")
         for (var i = 0; i < collegesArr.length; i++) {
+            College.update(
+            { "engName": collegesArr[i].engName },
+            { "$set": { 
+                engName:  collegesArr[i].engName, 
+                hebName: collegesArr[i].hebName,
+                headline: collegesArr[i].headline, 
+                address: collegesArr[i].address,
+                tuitionFee: collegesArr[i].tuitionFee,
+                dorms: collegesArr[i].dorms,
+                tel: collegesArr[i].tel,
+                openday: collegesArr[i].openday,
+                description: collegesArr[i].description,
+                requirements: collegesArr[i].requirements,
+                specialization: collegesArr[i].specialization,
+                reqUrl: collegesArr[i].reqUrl,
 
-            // College.create(collegesArr[i], function(err, newCollege){
-            //     console.log("College "+newCollege+" saved successfully !");
-            // })
-
-            College.update().
-            where('engName').equals(collegesArr[i].engName).
+                // scholarships: collegesArr[i].scholarships,
+                psychometry: collegesArr[i].psychometry,
+                mathGrades: collegesArr[i].mathGrades,
+                engGrades: collegesArr[i].engGrades,
+                physicsGrades: collegesArr[i].physicsGrades
+            }}).
             exec (function(err, newCollege){
-                console.log("College "+newCollege+" saved successfully !");
+                if(err){
+                    console.log(err);
+                }
+                if(newCollege){
+                    console.log("College Updated successfully");
+                }
             })
         }
-    }
+    });
 };
 
 // Daily Get Colleges Data from external Url
@@ -626,6 +1122,7 @@ exports.getDepartmentsData = function(req, res){
 
                 let newDepartment = new Department();
                 newDepartment.engName = departments[i].name;
+                newDepartment._id = departments[i].id;
 
                 scrapy.scrape(departments[i].url, departmentDetails, function(err, data) {
                     if (err) {
@@ -678,13 +1175,13 @@ exports.getDepartmentsData = function(req, res){
                 else {
                     // console.log(JSON.stringify(data, null, 2));
 
-                    saveSalary(data.td[4].split("� �����").join(""), data.td[5].split("� �����").join(""), "software");
-                    saveSalary(data.td[10].split("� �����").join(""), data.td[11].split("� �����").join(""), "management-industry");
-                    saveSalary(data.td[16].split("� �����").join(""), data.td[17].split("� �����").join(""), "chemical");
-                    saveSalary(data.td[25].split("� �����").join(""), data.td[26].split("� �����").join(""), "medicine");
-                    saveSalary(data.td[28].split("� �����").join(""), data.td[29].split("� �����").join(""), "electronics");
-                    saveSalary(data.td[37].split("� �����").join(""), data.td[38].split("� �����").join(""), "civil");
-                    saveSalary(data.td[49].split("� �����").join(""), data.td[50].split("� �����").join(""), "mechanics");
+                    saveSalary(data.td[4].split(" � �����").join(""), data.td[5].split(" � �����").join(""), "software");
+                    saveSalary(data.td[10].split(" � �����").join(""), data.td[11].split(" � �����").join(""), "management-industry");
+                    saveSalary(data.td[16].split(" � �����").join(""), data.td[17].split(" � �����").join(""), "chemical");
+                    saveSalary(data.td[25].split(" � �����").join(""), data.td[26].split(" � �����").join(""), "medicine");
+                    saveSalary(data.td[28].split(" � �����").join(""), data.td[29].split(" � �����").join(""), "electronics");
+                    saveSalary(data.td[37].split(" � �����").join(""), data.td[38].split(" � �����").join(""), "civil");
+                    saveSalary(data.td[49].split(" � �����").join(""), data.td[50].split(" � �����").join(""), "mechanics");
 
                     console.log("End: B - 2");
                     callback(null, "a33333");   
@@ -714,34 +1211,45 @@ exports.getDepartmentsData = function(req, res){
         console.log("Save Json START!");
         var json = JSON.stringify(departmentsArr, null, 2);
         // console.log(json);
-        saveDepartments(departmentsArr);
-        fs.writeFile('departments.json', json, 'utf8', function(){         
+        fs.writeFile('data/departments.json', json, 'utf8', function(){         
             console.log("Save Json is finished!");
         });
-    });
 
-    function saveDepartments(departmentsArr) {
-        console.log("Start saveDepartments...")
+
+        // for (var i = 0; i < departmentsArr.length; i++) {
+        //  departmentsArr[i].save(function(err, newDepartment){
+        //      if(err){
+        //          console.log(err);
+        //      }
+        //      else {
+        //          console.log("Create Department successfully : "+newDepartment.engName);
+        //          // console.log("Department => "+JSON.stringify(newDepartment, null, 4));
+        //      }
+        //  })
+        // }
+
         for (var i = 0; i < departmentsArr.length; i++) {
-
-            // Department.create(departmentsArr[i], function(err, newDep){
-            //     console.log("Department "+newDep+" saved successfully !");
-            // })
-
-            // Department.findOne().where('engName', departmentsArr[i].engName).
-            // exec (function(err, newDepartment){
-            //     if(err) console.log("Error: "+err);
-            //     else console.log("Department "+newDepartment+" saved successfully !");
-            // })
-
-            Department.update().
-            where('engName').equals(departmentsArr[i].engName).
+            Department.update(
+            { "engName": departmentsArr[i].engName },
+            { "$set": { 
+                engName:  departmentsArr[i].engName, 
+                hebName: departmentsArr[i].hebName,
+                description: departmentsArr[i].description, 
+                requirements: departmentsArr[i].requirements,
+                subjects: departmentsArr[i].subjects,
+                lowSalary: departmentsArr[i].lowSalary,
+                highSalary: departmentsArr[i].highSalary
+            }}).
             exec (function(err, newDepartment){
-                if(err) console.log("Error: "+err);
-                else console.log("Department "+newDepartment+" saved successfully !");
+                if(err){
+                    console.log(err);
+                }
+                if(newDepartment){
+                    console.log("Department Updated successfully");
+                }
             })
         }
-    }
+    });
 };
 
 exports.getAllColleges = function(req,res){

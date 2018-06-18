@@ -14,7 +14,7 @@ var collegeSchema = new schema({
     tel: String,                // done
     openday: String,            // done
     description: String,        // done
-    requirements: String,       // done
+    requirements: Array,        // done
     specialization: String,     // done
     reqUrl: String,
     pic: String,
@@ -23,7 +23,15 @@ var collegeSchema = new schema({
     uniSalary: String,
     subEng: [String],
     latitude: Number ,
-    longitude: Number
+    longitude: Number,
+
+    // scholarships: Array,
+    averageRents: Array,
+    psychometry: Number,
+    mathGrades: Array,
+    engGrades: Array,
+    physicsGrades: Array,
+
 }, {collection: 'Colleges'});
 
 var College = mongoose.model('College', collegeSchema);
