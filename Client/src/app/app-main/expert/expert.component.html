@@ -60,13 +60,13 @@
             <div class="row columns">
 
                 <input type="text" formControlName="question" placeholder="השאלה">
-                <input type="number" formControlName="Wchemistry" placeholder="משקל כימיה">
-                <input type="number" formControlName="Wsoftware" placeholder="משקל תוכנה">
-                <input type="number" formControlName="Welectronic" placeholder="משקל אלקטרוניקה">
-                <input type="number" formControlName="Wmedical" placeholder="משקל רפואה">
-                <input type="number" formControlName="Wmanagement" placeholder="משקל תעשייה וניהול">
-                <input type="number" formControlName="Wbuilding" placeholder="משקל בניין">
-                <input type="number" formControlName="Wmachine" placeholder="משקל מכונות">
+                <input type="number" name="quantity" min="1" max="5" formControlName="Wchemistry" placeholder="משקל כימיה">
+                <input type="number" name="quantity" min="1" max="5" formControlName="Wsoftware" placeholder="משקל תוכנה">
+                <input type="number" name="quantity" min="1" max="5" formControlName="Welectronic" placeholder="משקל אלקטרוניקה">
+                <input type="number" name="quantity" min="1" max="5" formControlName="Wmedical" placeholder="משקל רפואה">
+                <input type="number" name="quantity" min="1" max="5" formControlName="Wmanagement" placeholder="משקל תעשייה וניהול">
+                <input type="number" name="quantity" min="1" max="5" formControlName="Wbuilding" placeholder="משקל בניין">
+                <input type="number" name="quantity" min="1" max="5" formControlName="Wmachine" placeholder="משקל מכונות">
                 <input type="submit" class="btn btn-info" value="הוספה" [disabled]="!rForm.valid">
 
             </div>
@@ -94,13 +94,13 @@
             <div class="row-columns">
 
                 <label>השאלה</label><input type="text" formControlName="question" placeholder="{{Qchoosed.questionData}}">
-                <label>משקל כימיה</label><input type="number" formControlName="Wchemistry" placeholder="{{Qchoosed.Wchemistry}}">
-                <label>משקל תוכנה</label><input type="number" formControlName="Wsoftware" placeholder="{{Qchoosed.Wsoftware}}">
-                <label>משקל אלקטרוניקה</label><input type="number" formControlName="Welectronic" placeholder="{{Qchoosed.Welectronic}}">
-                <label>משקל רפואה</label><input type="number" formControlName="Wmedical" placeholder="{{Qchoosed.Wmedical}}">
-                <label>משקל תעשיה וניהול</label><input type="number" formControlName="Wmanagement" placeholder="{{Qchoosed.Wmanagement}}">
-                <label>משקל בניין</label><input type="number" formControlName="Wbuilding" placeholder="{{Qchoosed.Wbuilding}}">
-                <label>משקל מכונות</label><input type="number" formControlName="Wmachine" placeholder="{{Qchoosed.Wmachine}}">
+                <label>משקל כימיה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wchemistry" placeholder="{{Qchoosed.Wchemistry}}">
+                <label>משקל תוכנה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wsoftware" placeholder="{{Qchoosed.Wsoftware}}">
+                <label>משקל אלקטרוניקה</label><input type="number" name="quantity" min="1" max="5" formControlName="Welectronic" placeholder="{{Qchoosed.Welectronic}}">
+                <label>משקל רפואה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmedical" placeholder="{{Qchoosed.Wmedical}}">
+                <label>משקל תעשיה וניהול</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmanagement" placeholder="{{Qchoosed.Wmanagement}}">
+                <label>משקל בניין</label><input type="number" name="quantity" min="1" max="5" formControlName="Wbuilding" placeholder="{{Qchoosed.Wbuilding}}">
+                <label>משקל מכונות</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmachine" placeholder="{{Qchoosed.Wmachine}}">
                 <input type="submit" class="btn btn-info" value="עדכון" [disabled]="!rForm.valid">
 
             </div>
