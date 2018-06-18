@@ -89,9 +89,6 @@ totalSubEng:Subject[]=[];
             document.getElementById('recommended1').innerHTML=this.totalSubEng[0].type;
              document.getElementById('recommended2').innerHTML=this.totalSubEng[1].type;
             document.getElementById('recommended3').innerHTML=this.totalSubEng[2].type;   
-
-
-            
         })
     })
    
