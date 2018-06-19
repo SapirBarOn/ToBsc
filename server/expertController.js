@@ -15,9 +15,8 @@ module.exports={
     }, 
 
     createQuestion(req,response){
-        let id = req.body.questionId +1;
         let newQuestion = new question({
-            questionId: id,
+            questionId: req.body.questionId,
             questionData: req.body.questionData,
             Wchemistry: req.body.Wchemistry,
             Wsoftware: req.body.Wsoftware,
