@@ -146,6 +146,7 @@ export class ExpertComponent implements OnInit {
 
 
   createQuestion(){
+    this.questions.length++;
     this.dataService.createQuestion(this.questions.length,
                                     this.question,
                                     this.Wchemistry,
