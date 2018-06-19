@@ -3,7 +3,9 @@ import { DataService } from '../../data.service';
 import { Colleges } from '../../model/Colleges.model';
 import { FormGroup ,FormControl ,FormBuilder } from '@angular/forms';
 import { NgbModal , ModalDismissReasons ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
-import {Subject} from '../../model/subject.model';
+import { Subject } from '../../model/subject.model';
+import { CurrentColleges } from '../../app-shared/current-college';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-colleges',
@@ -58,7 +60,9 @@ export class CollegesComponent implements OnInit {
 
   constructor(private dataService:DataService,
               private modalService: NgbModal,
-              private alertConfig: NgbAlertConfig) { }
+              private alertConfig: NgbAlertConfig,
+              private router:Router ,
+              private currentCollegeService:CurrentColleges) { }
 
   ngOnInit() {
      
@@ -102,8 +106,8 @@ showPosition(position,result) {
 
 
     distance(result){
-     var a:number[]=[]
-    var x:Colleges[]=[]
+      var a:number[]=[]
+      var x:Colleges[]=[]
       var p = 0.017453292519943295;    // Math.PI / 180
       var c = Math.cos;
 
@@ -143,9 +147,17 @@ showPosition(position,result) {
   };
 
 
-  openInfo(content,c) {
-    this.cChoosed=c;
-    this.alertConfig.dismissible = false;
-    this.modalService.open(content,{ centered: true });
+  // openInfo(content,c) {
+  //   this.cChoosed=c;
+  //   this.alertConfig.dismissible = false;
+  //   this.modalService.open(content,{ centered: true });
+  // }
+
+    intoCollege(c) {
+      this.cChoosed=c;
+      this.currentCollegeService.change(c);
+      console.log("intoCollege-->");
+      console.log(c);
+      this.router.navigateByUrl('/intoCollege');
   }
 }

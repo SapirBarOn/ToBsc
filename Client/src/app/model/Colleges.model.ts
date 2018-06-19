@@ -53,4 +53,15 @@ export class Colleges {
     this.openday=openday;   
     this.requirements=requirements;
   }
+
+
+  // public setId(v : string) {
+  //     this._id = v;
+  // }
+
+  // public getId(){
+  //     return this._id;
+  // }
 }
+
+
