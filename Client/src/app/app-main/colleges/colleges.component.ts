@@ -56,8 +56,12 @@ export class CollegesComponent implements OnInit {
     'ללא מעונות'
   ]
 
+  psychometric: string[]= [
+    '600-700',
+    '599-500',
+    '499 ומטה'
 
-
+  ]
   constructor(private dataService:DataService,
               private modalService: NgbModal,
               private alertConfig: NgbAlertConfig,
@@ -78,7 +82,8 @@ export class CollegesComponent implements OnInit {
        'subEng':new FormControl(),
        'institute':new FormControl(),
        'salary':new FormControl(),
-       'dorms':new FormControl()
+       'dorms':new FormControl(),
+       'psychometric':new FormControl()
     });
 
 

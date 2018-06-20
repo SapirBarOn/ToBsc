@@ -1,10 +1,38 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div id="filter">
 
     <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
 
         <button class="btn btn-info" id="userLocation" onclick="getUserLocation()">מיקום נוכחי</button>
+        
+        <select class="form-control" formControlName="psychometric">
+            <option value="null" >ללא פסיכומטרי?</option>
+            <option *ngFor="let p of psychometric"
+              [value]="p"> 
+              {{p}} 
+             </option>
+        </select>
+
+        <select class="form-control" formControlName="dorms">
+            <option value="null" >מעונות?</option>
+            <option *ngFor="let d of dorms"
+              [value]="d"> 
+              {{d}} 
+             </option>
+        </select>
+
+        <select class="form-control" formControlName="dorms">
+            <option value="null" >מעונות?</option>
+            <option *ngFor="let d of dorms"
+              [value]="d"> 
+              {{d}} 
+             </option>
+        </select>
 
         <select class="form-control" formControlName="location">
             <option value="null" >בחר מיקום</option>
@@ -56,7 +84,47 @@
 </div>
 
 
-<div id="institutes">
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
+  <section *ngFor="let c of colleges" class="w3-image w3-margin-top" id="frame">
+          <section (click)="intoCollege(c)" class="info">
+              <img src="{{c.logo}}">   
+              <p class="address"><span>כתובת:</span> {{c.address}}</p>
+              <p class="tel"><span>טל':</span> {{c.tel}}</p>
+              <p class="subEng"><span>תחומי הנדסה:</span> {{c.subEng}}</p>         
+          </section>
+          <section class="favorite">
+              <span class="glyphicon glyphicon-heart-empty"></span>
+          </section>
+          <section class="rate">
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+          </section>
+  </section>
+</div>
+  
+  <!-- <div class="w3-third w3-container w3-margin-bottom">
+      <div class="w3-container w3-white" *ngFor="let c of colleges" id="frame">
+         <section (click)="intoCollege(c)" class="info">
+            <img src="{{c.logo}}">   
+            <p class="address"><span>כתובת:</span> {{c.address}}</p>
+            <p class="tel"><span>טל':</span> {{c.tel}}</p>
+            <p class="subEng"><span>תחומי הנדסה:</span> {{c.subEng}}</p>         
+        </section>
+        <section class="favorite">
+            <span class="glyphicon glyphicon-heart-empty"></span>
+        </section>
+        <section class="rate">
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+        </section>
+      </div>
+    </div>  -->
+<!-- <div id="institutes">
    <section class="frame" *ngFor="let c of colleges">
         <section (click)="intoCollege(c)" class="info">
             <img src="{{c.logo}}">   
@@ -74,7 +142,7 @@
             <span class="glyphicon glyphicon-star-empty"></span>
         </section>
     </section>    
-</div>
+</div> -->
 
 
 <ng-template #mapModal let-c="close" let-d="dismiss">
