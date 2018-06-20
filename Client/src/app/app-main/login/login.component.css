@@ -28,6 +28,7 @@ input {
   width: 280px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  direction: ltr;
 }
 
 ::placeholder{
@@ -53,6 +54,7 @@ button:hover{
 }
 #forgot{
   text-align: left;
+  margin-left: 9%;
   color: blue;
   cursor: pointer;    
  }

@@ -12,13 +12,13 @@
 h2{
   font-size: 20px;
   font-family: arial;
-  margin-left: -120px;
+  margin-left: -50%;
 }
 
 form{
   float: right;
-  padding-right: 70px;
-  padding-top: 30px;
+  padding-right: 20%;
+  padding-top: 5%;
 }
 
 input {
@@ -28,14 +28,17 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
+.email{
+  direction: ltr;
+}
 ::placeholder{
   text-align: right;
 }
 form+form{
   float: left;
-  padding-left:150px;
-  padding-top: 120px;
+  padding-left:15%;
+  margin-top: -35%;
+  /*padding-bottom: 50%;*/
 }
 select{
   width: 150px;
@@ -57,8 +60,8 @@ button{
     color:#ffffff;
     font-size: 17px;
     cursor: pointer;
-    margin-top: 50px;
-    margin-right:250px;
+    margin-top:-5%;
+    margin-right:68%;
 }
 
 button:hover{

@@ -56,12 +56,11 @@ export class CollegesComponent implements OnInit {
     'ללא מעונות'
   ]
 
-  psychometric: string[]= [
-    '600-700',
-    '599-500',
-    '499 ומטה'
+  // psychometric: string[]= [
+   
 
-  ]
+  // ]
+
   constructor(private dataService:DataService,
               private modalService: NgbModal,
               private alertConfig: NgbAlertConfig,

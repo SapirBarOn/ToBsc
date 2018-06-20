@@ -57,10 +57,5 @@ label{
 }
 
 .modal-title{
-  margin-right: 195px;
-}
-
-.close{
-    float: right;
-    margin-right: -280px;
+  margin-left: 195px;
 }
