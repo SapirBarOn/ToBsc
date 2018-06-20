@@ -22,6 +22,7 @@ WorkExperience:string;
 gender:string;
 subEngForUser:SubEngByUser[]=[];
 totalSubEng:Subject[]=[];
+threeSubEngRecommended:string[]=[];
   constructor(private dataService : DataService,private currentUserService : CurrentUser) { }
 
   ngOnInit() {
@@ -86,9 +87,10 @@ totalSubEng:Subject[]=[];
                             );
             this.totalSubEng.sort(function(a, b){return b.total - a.total})
             console.log(this.totalSubEng)
-            document.getElementById('recommended1').innerHTML=this.totalSubEng[0].type;
-             document.getElementById('recommended2').innerHTML=this.totalSubEng[1].type;
-            document.getElementById('recommended3').innerHTML=this.totalSubEng[2].type;   
+            this.threeSubEngRecommended.push(this.totalSubEng[0].type,this.totalSubEng[1].type,this.totalSubEng[2].type)
+            // document.getElementById('recommended1').innerHTML=this.totalSubEng[0].type;
+            //  document.getElementById('recommended2').innerHTML=this.totalSubEng[1].type;
+            // document.getElementById('recommended3').innerHTML=this.totalSubEng[2].type;     
         })
     })
    
