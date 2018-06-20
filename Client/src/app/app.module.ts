@@ -67,7 +67,7 @@ const appRoutes: Routes = [
   {path: 'colleges', component: CollegesComponent},
   {path: 'departments', component: DepartmentsComponent},
   {path: 'facebook', component: FacebookComponent},
-  {path: 'forgotPassword', component: ForgotPasswordComponent}
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'intoCollege', component: IntoCollegeComponent}
 
 ];
