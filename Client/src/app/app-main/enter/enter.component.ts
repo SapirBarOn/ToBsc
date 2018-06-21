@@ -40,7 +40,9 @@ departments:Departments[]=[];
         // this.age=25
         // this.WorkExperience='שירות/תמיכת לקוחות'
         // this.gender='נקבה'
+        if(this.user!=undefined){
         this.user=this.currentUserService.getCurrentUser();
+
         this.id=this.user.getId();
         this.WorkExperience=this.user.getWorkExperience();
         this.gender=this.user.getGender();
@@ -105,6 +107,12 @@ departments:Departments[]=[];
               );  
         })
     })
+        }
+
+    else{
+        // alert('עליך להתחבר למערכת.')
+        // this.router.navigateByUrl('/login')
+    }
    
   }
 

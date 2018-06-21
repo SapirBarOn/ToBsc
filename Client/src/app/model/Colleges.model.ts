@@ -22,14 +22,21 @@ export class Colleges {
     public tuitionFee: string;
     public tel: string;
     public openday: string;
-    public requirements: string;
+    public requirements: [string];
+    public psychometry: number;
+    public MathGrades:[string];
+    public EngGrades: [number];
+    public physicsGrades:[number];
+    public userProbability:number;
+    public averageRents:string[];
 
 
 
   constructor(hebName:string,pic: string,logo: string,type:string,location: string,
               uniSalary: boolean,dorms: string,subEng: [string],latitude:number,longitude:number, DistanceKM:number,
               engName: string,reqUrl:string,specialization:string,description:string,headline:string,
-              address:string,tuitionFee:string,tel:string,openday:string,requirements:string){
+              address:string,tuitionFee:string,tel:string,openday:string,requirements:[string],
+              psychometry: number, MathGrade:[string], EngGrades:[number], physicsGrades:[number], probability:number, averages:string[]){
     this.hebName = hebName;
     this.pic=pic;
     this.logo=logo;
@@ -52,6 +59,12 @@ export class Colleges {
     this.tel=tel;
     this.openday=openday;   
     this.requirements=requirements;
+    this.psychometry=psychometry;
+    this.MathGrades=MathGrade;
+    this.EngGrades=EngGrades;
+    this.physicsGrades=physicsGrades;
+    this.userProbability=probability;
+    this.averageRents=averages;
   }
 
 

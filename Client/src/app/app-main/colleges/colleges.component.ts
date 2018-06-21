@@ -23,6 +23,11 @@ export class CollegesComponent implements OnInit {
   myLocationLong:number;
   extend:boolean=false;
 
+   userPsichometry:number=550;
+  userMath:number[]=[4,91];
+  userEng:number[]=[4,85];
+  userPhysics:number[]=[0,0];
+
   locations: string[] = [
     'מרכז',
     'שרון',
@@ -90,8 +95,21 @@ export class CollegesComponent implements OnInit {
      
     this.dataService.getAllColleges((result) =>{
         this.colleges=result;
-        console.log(this.colleges);      
-        this.distance(result);
+        console.log(this.colleges); 
+          for (let c=0; c<this.colleges.length; c++){
+          let psychometryPercent= this.userPsichometry/this.colleges[c].psychometry;
+          //let mathPercent= this.userMath
+          if (psychometryPercent>1) psychometryPercent=1;
+          let mathPercent=0;
+          if (this.userMath[0]==4){
+            //mathPercent=this.userMath[1]/this.colleges[c].MathGrades[0];
+          }
+          this.colleges[c].userProbability=0.25*psychometryPercent+0.25*mathPercent;
+          // console.log(this.colleges[c].MathGrades);
+          // console.log(this.colleges[c].averageRents[0]);
+          console.log(this.colleges[c].hebName,this.colleges[c].userProbability)    
+      }
+              this.distance(result);
     });
 
 
@@ -178,7 +196,6 @@ showPosition(position,result) {
   //   this.alertConfig.dismissible = false;
   //   this.modalService.open(content,{ centered: true });
   // }
-
     intoCollege(c) {
       this.cChoosed=c;
       this.currentCollegeService.change(c);

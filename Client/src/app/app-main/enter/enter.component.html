@@ -1,48 +1,3 @@
-<!-- <meta charset="utf-8">
-
-<aside>
-    <div id="recommended">
-        <h3>:אולי יעניין אותך ללמוד</h3>
-        <p id="recommended1"></p><br>
-        <p id="recommended2"></p><br>
-        <p id="recommended3"></p><br>
-    </div>
-    <div id="history">
-        <h3>:צפית לאחרונה</h3>
-    </div>
-</aside>
-<div id="startChat">
-            <p>שמי אילנה ואני פסיכולוגית תעסוקתית</p>
-            <p>
-            .על מנת שאוכל להתאים לך את תחומי ההנדסה
-             אצטרך להכיר אותך ואת תחומי העניין שלך<br>
-            ...לחץ על "התחל צא'ט" ונצא לדרך
-            </p>
-        <img src="../../../assets/images/avatar-psychologist (1).png">
-        <button routerLink="/chat-bot">התחל צ'אט</button>
-</div>
-
-<div id="data">
-        
-    <div id="colleges" routerLink="/colleges">
-         <img src="../../../assets/images/מוסדות.png">
-    </div>
-    <div id="departments" routerLink="/departments">
-         <img src="../../../assets/images/הנדסה.png">
-    </div>     
-</div> -->
-
-
-
-<!-- <div id="info">
-    <p>
-        כאן תוכל למצוא מידע אודות תחומי ההנדסה השונים<br>
-    </p>
-    <button>תחומי הנדסה</button>
-    <button>מוסדות לימוד</button>
-    <button>תנאי שכר</button>
-
-</div> -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +30,7 @@
     </div>
     <div class="w3-third w3-container w3-margin-bottom" id="sectionRight">
       <div class="w3-container w3-white">
-            <h3>אולי יעניין אותך ללמוד:</h3>
+            <h3>לפי נתוני הפרופיל שלך, אולי יעניין אותך ללמוד:</h3>
             <p (click)="openDepartment(i)" *ngFor="let i of threeSubEngRecommended">{{i}}</p>
             <h3>המומלצים:</h3>
       </div>
