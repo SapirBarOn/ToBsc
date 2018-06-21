@@ -9,33 +9,9 @@
     <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
 
         <button class="btn btn-info" id="userLocation" onclick="getUserLocation()">מיקום נוכחי</button>
-        
-        <select class="form-control" formControlName="psychometric">
-            <option value="null" >ללא פסיכומטרי?</option>
-            <option *ngFor="let p of psychometric"
-              [value]="p"> 
-              {{p}} 
-             </option>
-        </select>
-
-        <select class="form-control" formControlName="dorms">
-            <option value="null" >מעונות?</option>
-            <option *ngFor="let d of dorms"
-              [value]="d"> 
-              {{d}} 
-             </option>
-        </select>
-
-        <select class="form-control" formControlName="dorms">
-            <option value="null" >מעונות?</option>
-            <option *ngFor="let d of dorms"
-              [value]="d"> 
-              {{d}} 
-             </option>
-        </select>
 
         <select class="form-control" formControlName="location">
-            <option value="null" >בחר מיקום</option>
+            <option value="null" >מיקום</option>
             <option *ngFor="let l of locations"
               [value]="l"> 
               {{l}} 
@@ -43,7 +19,7 @@
         </select>
 
         <select class="form-control" formControlName="subEng">
-            <option value="null" >בחר תחום הנדסה</option>
+            <option value="null" >תחום הנדסה</option>
             <option *ngFor="let s of subEngs"
               [value]="s"> 
               {{s}} 
@@ -51,7 +27,7 @@
         </select>
 
         <select class="form-control" formControlName="institute">
-            <option value="null" >בחר סוג מוסד</option>
+            <option value="null" >סוג מוסד</option>
             <option *ngFor="let i of institute"
               [value]="i"> 
               {{i}} 
@@ -59,7 +35,7 @@
         </select>
 
         <select class="form-control" formControlName="salary">
-            <option value="null" >בחר סוג שכ"ל</option>
+            <option value="null" >סוג שכ"ל</option>
             <option *ngFor="let s of salary"
               [value]="s"> 
               {{s}} 
@@ -79,6 +55,59 @@
         <button id="getMap" (click)="openMap(mapModal)" type="button" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-map-marker"></span> מוסדות במפה
         </button>
+
+        <button class="btn btn-info" id="Extend" (click)="ExtendedFilter()" >סינון מורחב</button>
+
+      <div id="ExtendedFilter" *ngIf="extend">
+
+<!--         <div id="ExtendedFilter">
+ -->          <select class="form-control" formControlName="psychometric">
+              <option value="null" >פסיכומטרי</option>
+              <option *ngFor="let p of psychometric"
+                [value]="p"> 
+                {{p}} 
+               </option>
+          </select>
+
+          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+        
+<!--         </div>
+ -->
+<!--         <div id="ExtendedFilter">
+ -->          <select class="form-control" formControlName="math">
+              <option value="null" >יח' במתמטיקה</option>
+              <option *ngFor="let m of math"
+                [value]="m"> 
+                {{m}} 
+               </option>
+          </select>
+
+          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+<!--         </div>
+ -->
+<!--         <div id="ExtendedFilter">
+ -->          <select class="form-control" formControlName="english">
+              <option value="null" >יח' באנגלית</option>
+              <option *ngFor="let e of english"
+                [value]="e"> 
+                {{e}} 
+               </option>
+          </select>
+
+          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+<!--           </div>
+ -->
+<!--         <div id="ExtendedFilter">
+ -->          <select class="form-control" formControlName="english">
+              <option value="null" >יח' בפיסיקה</option>
+              <option *ngFor="let p of physics"
+                [value]="p"> 
+                {{p}} 
+              </option>
+          </select>
+
+          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+      </div>
 
     </form>
 </div>
