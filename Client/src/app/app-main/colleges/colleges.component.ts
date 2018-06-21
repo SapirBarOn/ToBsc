@@ -21,6 +21,7 @@ export class CollegesComponent implements OnInit {
   cChoosed:Colleges;
   myLocationLat:number;
   myLocationLong:number;
+  extend:boolean=false;
 
   locations: string[] = [
     'מרכז',
@@ -56,10 +57,28 @@ export class CollegesComponent implements OnInit {
     'ללא מעונות'
   ]
 
-  // psychometric: string[]= [
-   
+  psychometric: string[]= [
+    'יש',
+    'אין'
+  ]
 
-  // ]
+  math: string[]= [
+    '3',
+    '4',
+    '5'
+  ]
+
+  english: string[]= [
+    '3',
+    '4',
+    '5'
+  ]
+
+  physics: string[]= [
+    '3',
+    '4',
+    '5'
+  ]
 
   constructor(private dataService:DataService,
               private modalService: NgbModal,
@@ -82,7 +101,10 @@ export class CollegesComponent implements OnInit {
        'institute':new FormControl(),
        'salary':new FormControl(),
        'dorms':new FormControl(),
-       'psychometric':new FormControl()
+       'psychometric':new FormControl(),
+       'math':new FormControl(),
+       'english':new FormControl(),
+       'physics':new FormControl()
     });
 
 
@@ -163,5 +185,10 @@ showPosition(position,result) {
       console.log("intoCollege-->");
       console.log(c);
       this.router.navigateByUrl('/intoCollege');
+  }
+
+  ExtendedFilter(){
+    if(this.extend == false) this.extend=true;
+    else this.extend=false;
   }
 }
