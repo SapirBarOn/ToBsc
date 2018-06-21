@@ -29,6 +29,8 @@ import { ChatBotComponent } from './app-main/chat-bot/chat-bot.component';
 import { SubEngByUserComponent } from './app-main/subEngByUser/subEngByUser.component';
 import { CurrentUser } from './app-shared/current-user';
 import { CurrentColleges } from './app-shared/current-college';
+import { CurrentDepartments } from './app-shared/current-department';
+
 
 import { CollegesComponent } from './app-main/colleges/colleges.component';
 import { FacebookComponent } from './app-main/facebook/facebook.component';
@@ -36,6 +38,7 @@ import { AgmCoreModule } from '@agm/core';
 import { DepartmentsComponent } from './app-main/departments/departments.component';
 import { ForgotPasswordComponent } from './app-main/forgot-password/forgot-password.component';
 import { IntoCollegeComponent } from './app-main/colleges/into-college/into-college.component';
+import { IntoDepartmentsComponent } from './app-main/departments/into-departments/into-departments.component';
 
 
 // Configs 
@@ -69,6 +72,7 @@ const appRoutes: Routes = [
   {path: 'facebook', component: FacebookComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'intoCollege', component: IntoCollegeComponent},
+  {path: 'intoDepartments', component: IntoDepartmentsComponent},
 
 ];
 
@@ -90,6 +94,7 @@ const appRoutes: Routes = [
     DepartmentsComponent,
     ForgotPasswordComponent,
     IntoCollegeComponent,
+    IntoDepartmentsComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -108,6 +113,7 @@ const appRoutes: Routes = [
     DataService,
     CurrentUser,
     CurrentColleges,
+    CurrentDepartments,
       {
         provide: AuthServiceConfig,
         useFactory: getAuthServiceConfigs

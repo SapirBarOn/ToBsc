@@ -136,7 +136,7 @@ selects = [
     }
 
    else{
-     alert('על מנת לבצע את שיחת הצאט מול הפסיכולוגית שלנו עליך להתחבר למערכת.')
+     alert('על מנת לבצע את שיחת הצאט מול הפסיכולוגית שלנות עליך להתחבר למערכת.')
    }
   
 }
@@ -290,16 +290,12 @@ getQuestionByDiff(){
   send(content){
     let numForAddTotal;
      $('.select button').css('visibility','hidden');
-     this.timer = setTimeout(() => {
-          this.resultAfterTyping = new Message (this.typing,"../../../assets/images/chat_bot.png");
-          this.messages.push(this.resultAfterTyping)
-          this.timer = setTimeout(() => {
-              this.messages.pop()
-               let message =new Message(content,"../../../assets/images/chat_bot.png");
-             this.messages.push(message)
-         
-            },1000);
-          }, 1000);
+    let message =new Message(content,"../../../assets/images/chat_bot.png");
+    this.messages.push(message)
+    $('html, #chat').animate({
+    scrollTop: $("#chat").offset().top+ '100px'
+    }, 10);
+
     if (content=="כן") {
       numForAddTotal=1;
     }
@@ -334,12 +330,8 @@ getQuestionByDiff(){
         this.totalSubEng[t].total+=this.askedQuestions[this.askedQuestions.length-1].Wmachine*numForAddTotal;
       }      
     }
-     this.timer = setTimeout(() => {
-       $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '100px'
-            }, 10);
+
     this.ChatAlgorithm();
-      },5000);
   }
 
 

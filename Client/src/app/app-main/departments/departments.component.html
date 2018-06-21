@@ -1,6 +1,9 @@
 <div id="departments">
-    <section (click)="openInfo(departmentsModal,d)" class="frame" *ngFor="let d of departments">
-        <section class="logo">
+<!--     <section (click)="openInfo(departmentsModal,d)" class="frame" *ngFor="let d of departments">
+ -->
+    <section (click)="intoDepartments(d)" class="frame" *ngFor="let d of departments">
+
+         <section class="logo">
             <img src="{{d.logo}}">
         </section>
         <p class="name">{{d.hebName}}</p>
@@ -8,7 +11,7 @@
 </div>
 
 
-        <ng-template #departmentsModal let-c="close" let-d="dismiss">
+<!--         <ng-template #departmentsModal let-c="close" let-d="dismiss">
           <div class="modal-header">
             <h4 class="modal-title">{{dChoosed.hebName}}</h4>
             <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -27,4 +30,4 @@
             <h5>:שכר עם נסיון</h5>
             <p>{{dChoosed.highSalary}}</p>
           </div>
-        </ng-template>
+        </ng-template> -->

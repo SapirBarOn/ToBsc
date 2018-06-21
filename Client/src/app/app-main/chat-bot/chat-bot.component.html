@@ -1,43 +1,5 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
-
-<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
-  <section class="w3-image w3-margin-top" id="chat">
-              <p>שלום אני מומחה וירטואלי</p>
-              <p> אני אשאל אותך מספר שאלות</p> 
-              <div *ngFor = "let mg of messages;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess}">
-                {{mg.content}}
-                <div *ngIf="evenMess">
-                    <div class="arrow-right"></div>
-                    <img class="psychImg" src="../../../assets/images/avatar-psychologist.png">
-               </div> 
-               <div *ngIf="oddMess">
-                   <div class="arrow-left"></div>
-                   <img class="userImg" src="../../../assets/images/User_Avatar.png">
-               </div>
-             </div> 
-  </section>
-  <section class="w3-image w3-margin-top" id="answer">
-                <div class="select" *ngFor="let s of selects;let i=index; let first = first; let last = last ;" [ngClass]="{first:first,last:last}"> 
-                    <button (click)="send(s.name)">
-                      <div *ngIf="first">
-                          <span class="glyphicon glyphicon-thumbs-up"></span>
-                      </div>
-                      <div *ngIf="i==1">
-                          <span class="glyphicon glyphicon-question-sign"></span>
-                      </div>
-                      <div *ngIf="last">
-                          <span class="glyphicon glyphicon-thumbs-down"></span>
-                     </div>
-                    </button> 
-                </div>
-  </section>
-</div>
-
-<!-- <div id="chat">  
+<div id="chat">  
              <p>שלום אני מומחה וירטואלי</p>
              <p> אני אשאל אותך מספר שאלות</p>
              <div *ngFor = "let mg of messages;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess}">
@@ -50,9 +12,11 @@
                  <div class="arrow-right"></div>
                  <img class="userImg" src="../../../assets/images/User_Avatar.png">
                </div>
+              <!-- <img  [src]="mg.img"/> 
+                <p id="time">{{mg.time}}</p> -->
              </div>
-</div> -->
-<!-- <div class="answer">
+    </div>
+    <div class="answer">
         <div class="select" *ngFor="let s of selects;let i=index; let first = first; let last = last ;" [ngClass]="{first:first,last:last}"> 
             <button (click)="send(s.name)">
                <div *ngIf="first">
@@ -67,4 +31,4 @@
             </button> 
             
         </div>
-</div> -->
+    </div>

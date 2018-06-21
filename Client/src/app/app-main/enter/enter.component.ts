@@ -5,12 +5,15 @@ import { Router } from '@angular/router';
 import  { DataService } from '../../data.service';
 import { Subject } from '../../model/subject.model';
 import {SubEngByUser} from'../../model/SubEngByUser.model';
+import {CurrentDepartments} from '../../app-shared/current-department';
+import { Departments } from '../../model/Departments.model';
 
 @Component({
   selector: 'app-enter',
   templateUrl: './enter.component.html',
   styleUrls: ['./enter.component.css']
 })
+
 export class EnterComponent implements OnInit {
 allUsers:User[]=[];
 samesUsers:User[]=[];
@@ -23,9 +26,16 @@ gender:string;
 subEngForUser:SubEngByUser[]=[];
 totalSubEng:Subject[]=[];
 threeSubEngRecommended:string[]=[];
-  constructor(private dataService : DataService,private currentUserService : CurrentUser) { }
+departments:Departments[]=[];
+
+  constructor(private dataService : DataService,
+              private currentUserService : CurrentUser,
+              private CurrentDepartmentsService:CurrentDepartments,
+              private router:Router) { }
 
   ngOnInit() {
+        this.CurrentDepartmentsService.setAllDepartments();
+
         // this.id='5ac35e2ee92c8230100e21c4' //    Testing Only
         // this.age=25
         // this.WorkExperience='שירות/תמיכת לקוחות'
@@ -86,14 +96,26 @@ threeSubEngRecommended:string[]=[];
                        new Subject("הנדסת מכונות",result.machine)
                             );
             this.totalSubEng.sort(function(a, b){return b.total - a.total})
-            console.log(this.totalSubEng)
-            this.threeSubEngRecommended.push(this.totalSubEng[0].type,this.totalSubEng[1].type,this.totalSubEng[2].type)
-            // document.getElementById('recommended1').innerHTML=this.totalSubEng[0].type;
-            //  document.getElementById('recommended2').innerHTML=this.totalSubEng[1].type;
-            // document.getElementById('recommended3').innerHTML=this.totalSubEng[2].type;     
+            console.log("totalSubEng");
+            console.log(this.totalSubEng);
+            this.threeSubEngRecommended.push(
+                this.totalSubEng[0].type,
+                this.totalSubEng[1].type,
+                this.totalSubEng[2].type
+              );  
         })
     })
    
   }
 
+  openDepartment(d){
+    console.log("openDepartment!!!!!!!!!!!!!!!!");
+    console.log(d);
+    // this.departments= this.CurrentDepartmentsService.getAllDepartments();
+    // console.log(this.departments);
+    this.CurrentDepartmentsService.check(d);
+  }
+
 }
+
+

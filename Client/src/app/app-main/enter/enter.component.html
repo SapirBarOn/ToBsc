@@ -76,9 +76,7 @@
     <div class="w3-third w3-container w3-margin-bottom" id="sectionRight">
       <div class="w3-container w3-white">
             <h3>אולי יעניין אותך ללמוד:</h3>
-            <p id="recommended1"></p><br>
-            <p id="recommended2"></p><br>
-            <p id="recommended3"></p><br>
+            <p (click)="openDepartment(i)" *ngFor="let i of threeSubEngRecommended">{{i}}</p>
             <h3>המומלצים:</h3>
       </div>
     </div>

@@ -4,14 +4,17 @@ p{
     font-size: 15px; 
     margin-top: 5%;
 }
-#recommended1,#recommended2,#recommended3{
-    color: blue;
+
+.w3-container p{
+    cursor: pointer;
 }
+
 #sectionMiddle img{
     width:50%;
     margin-left:25%;
     margin-top: 7%;
 }
+
 h3{
     text-align: center;
 }
@@ -23,6 +26,7 @@ h3{
     margin-left: 15%;
     margin-top: 12%;
 }
+
 button{
     height: 40%;
     width: 40%;
@@ -37,6 +41,7 @@ button{
     margin-right:30%;
 
 }
+
 button:hover{
     background-color:#585858;
 }
