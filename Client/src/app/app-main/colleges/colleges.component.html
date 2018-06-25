@@ -69,12 +69,12 @@
                </option>
           </select>
 
-          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+                   <input id="grade" class="form-control" type="number" name="quantity" min="200" max="800" placeholder="ציון" formControlName="psychometricGrade">
         
 <!--         </div>
  -->
 <!--         <div id="ExtendedFilter">
- -->          <select class="form-control" formControlName="math">
+ -->          <select class="form-control" formControlName="mathUnits">
               <option value="null" >יח' במתמטיקה</option>
               <option *ngFor="let m of math"
                 [value]="m"> 
@@ -82,11 +82,11 @@
                </option>
           </select>
 
-          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון" formControlName="mathGrade">
 <!--         </div>
  -->
 <!--         <div id="ExtendedFilter">
- -->          <select class="form-control" formControlName="english">
+ -->          <select class="form-control" formControlName="englishUnits">
               <option value="null" >יח' באנגלית</option>
               <option *ngFor="let e of english"
                 [value]="e"> 
@@ -94,11 +94,11 @@
                </option>
           </select>
 
-          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון" formControlName="englishGrade">
 <!--           </div>
  -->
 <!--         <div id="ExtendedFilter">
- -->          <select class="form-control" formControlName="english">
+ -->          <select class="form-control" formControlName="physicsUnits">
               <option value="null" >יח' בפיסיקה</option>
               <option *ngFor="let p of physics"
                 [value]="p"> 
@@ -106,7 +106,7 @@
               </option>
           </select>
 
-          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון">
+          <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון" formControlName="physicsGrade">
       </div>
 
     </form>
@@ -124,6 +124,9 @@
           <section (click)="liked(c)" class="favorite">
               <span *ngIf="!c.liked" class="glyphicon glyphicon-heart-empty"></span>
               <span *ngIf="c.liked" class="glyphicon glyphicon-heart"></span>
+          </section>
+          <section class="probability">
+             <p id="probability"><span>סיכויי קבלה:</span> {{c.userProbability}}%</p> 
           </section>
           <section class="rate">
               <span class="glyphicon glyphicon-star-empty"></span>
