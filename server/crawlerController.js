@@ -964,7 +964,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" GRADE NUMBER :"+beforeStr[beforeStr.length-i-2]);
                                 console.log("gradesCounter : "+gradesCounter);
                                 if((gradesCounter<2)&&((subject!="english"))){
-                                    gradesArray[gradesCounter].grade = Number(beforeStr[beforeStr.length-i-2]);
+                                    gradesArray[gradesCounter].grade = (Number(beforeStr[beforeStr.length-i-2]));
                                     gradesCounter++;
                                 }   
                             }
@@ -972,7 +972,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" UNITS NUMBER :"+beforeStr[beforeStr.length-i-2]);
                                 console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
-                                    gradesArray[unitsCounter].units = Number(beforeStr[beforeStr.length-i-2]);
+                                    gradesArray[unitsCounter].units = (Number(beforeStr[beforeStr.length-i-2]));
                                     unitsCounter++;
                                 }
                             }
@@ -988,7 +988,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" GRADE NUMBER :"+afterStr[i]);
                                 console.log("gradesCounter : "+gradesCounter);
                                 if(gradesCounter<2) {
-                                    gradesArray[gradesCounter].grade = Number(afterStr[i]);
+                                    gradesArray[gradesCounter].grade = (Number(afterStr[i]));
                                     gradesCounter++;
                                 }
                             }
@@ -996,7 +996,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" UNITS NUMBER :"+afterStr[i]);
                                 console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
-                                    gradesArray[unitsCounter].units = Number(afterStr[i]);
+                                    gradesArray[unitsCounter].units = (Number(afterStr[i]));
                                     unitsCounter++;
                                 }
                             }
