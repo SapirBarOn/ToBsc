@@ -5,6 +5,8 @@ import { FormGroup ,FormControl ,FormBuilder } from '@angular/forms';
 import { NgbModal , ModalDismissReasons ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from '../../model/subject.model';
 import { CurrentColleges } from '../../app-shared/current-college';
+import { CurrentUser } from '../../app-shared/current-user';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,8 +24,12 @@ export class CollegesComponent implements OnInit {
   myLocationLat:number;
   myLocationLong:number;
   extend:boolean=false;
+  userID:string;
+  checkLike:boolean;
+  favoriteColleges:string[]=[];
 
-   userPsichometry:number=550;
+
+  userPsichometry:number=550;
   userMath:number[]=[4,91];
   userEng:number[]=[4,85];
   userPhysics:number[]=[0,0];
@@ -89,29 +95,11 @@ export class CollegesComponent implements OnInit {
               private modalService: NgbModal,
               private alertConfig: NgbAlertConfig,
               private router:Router ,
-              private currentCollegeService:CurrentColleges) { }
+              private currentCollegeService:CurrentColleges,
+              private currentUserService:CurrentUser) { }
+
 
   ngOnInit() {
-     
-    this.dataService.getAllColleges((result) =>{
-        this.colleges=result;
-        console.log(this.colleges); 
-          for (let c=0; c<this.colleges.length; c++){
-          let psychometryPercent= this.userPsichometry/this.colleges[c].psychometry;
-          //let mathPercent= this.userMath
-          if (psychometryPercent>1) psychometryPercent=1;
-          let mathPercent=0;
-          if (this.userMath[0]==4){
-            //mathPercent=this.userMath[1]/this.colleges[c].MathGrades[0];
-          }
-          this.colleges[c].userProbability=0.25*psychometryPercent+0.25*mathPercent;
-          // console.log(this.colleges[c].MathGrades);
-          // console.log(this.colleges[c].averageRents[0]);
-          console.log(this.colleges[c].hebName,this.colleges[c].userProbability)    
-      }
-              this.distance(result);
-    });
-
 
     this.myform = new FormGroup({
        'location': new FormControl(),
@@ -125,6 +113,32 @@ export class CollegesComponent implements OnInit {
        'physics':new FormControl()
     });
 
+    this.dataService.getAllColleges((result) =>{
+        this.colleges=result;
+        //this.distance(result);
+
+    this.userID=this.currentUserService.getCurrentUser()._id;
+
+    this.dataService.getFavoriteUserId(this.userID,result=>{
+                if(result) {
+                  this.favoriteColleges= result.liked;
+                  this.setFavoriteColleges();
+                }
+                else  console.log('error');           
+            });
+    });
+
+  }
+
+  setFavoriteColleges(){
+    for(let i=0; i<this.favoriteColleges.length; i++){
+      for(let j=0; j<this.colleges.length; j++){
+        console.log(this.favoriteColleges[i],this.colleges[j].hebName);
+        if(this.favoriteColleges[i] == this.colleges[j].hebName){
+            this.colleges[j].liked=true;
+        }
+      }
+    }
 
   }
 
@@ -185,18 +199,15 @@ showPosition(position,result) {
                         post.salary,
                         post.institute,result=>{
                 console.log(`response=${result}`);
-                if(result) this.colleges = result;
+                if(result){
+                  this.colleges = result;
+                  this.setFavoriteColleges();
+                } 
                 else  console.log('filter error');           
             })
   };
 
-
-  // openInfo(content,c) {
-  //   this.cChoosed=c;
-  //   this.alertConfig.dismissible = false;
-  //   this.modalService.open(content,{ centered: true });
-  // }
-    intoCollege(c) {
+  intoCollege(c) {
       this.cChoosed=c;
       this.currentCollegeService.change(c);
       console.log("intoCollege-->");
@@ -208,4 +219,36 @@ showPosition(position,result) {
     if(this.extend == false) this.extend=true;
     else this.extend=false;
   }
+
+  liked(c){
+    this.currentCollegeService.change(c);
+    console.log(this.currentCollegeService.getCurrentColleges().hebName);
+    console.log(this.currentCollegeService.getliked());
+    this.checkLike = this.currentCollegeService.getliked();
+    if(this.checkLike == null) {
+      this.currentCollegeService.setliked(false);
+      console.log('like null->false');
+      this.checkLike=false;
+    }
+    console.log(this.currentCollegeService.getliked());
+
+    if(this.checkLike == false){
+      this.currentCollegeService.setliked(true);
+      this.dataService.favoriteColleges(this.userID,c.hebName,result=>{
+          console.log(`response=${result}`);
+          if(result) console.log('favorite done');
+          else  console.log('favorite error');           
+        });
+    }
+    else{
+      this.currentCollegeService.setliked(false);
+      this.dataService.unFavoriteColleges(this.userID,c.hebName,result=>{
+          console.log(`response=${result}`);
+          if(result) console.log('unfavorite done');
+          else  console.log('unfavorite error');           
+        });
+    }
+  }
+
+
 }

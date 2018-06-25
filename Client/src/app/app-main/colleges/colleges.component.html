@@ -121,8 +121,9 @@
               <p class="tel"><span>טל':</span> {{c.tel}}</p>
               <p class="subEng"><span>תחומי הנדסה:</span> {{c.subEng}}</p>         
           </section>
-          <section class="favorite">
-              <span class="glyphicon glyphicon-heart-empty"></span>
+          <section (click)="liked(c)" class="favorite">
+              <span *ngIf="!c.liked" class="glyphicon glyphicon-heart-empty"></span>
+              <span *ngIf="c.liked" class="glyphicon glyphicon-heart"></span>
           </section>
           <section class="rate">
               <span class="glyphicon glyphicon-star-empty"></span>

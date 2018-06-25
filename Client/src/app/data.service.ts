@@ -323,6 +323,46 @@ updateSubEngWeights(userID:string,chemistry:number,
     );
   }
 
+
+  favoriteColleges(userID:string,liked:string,callback: Function){
+    this.http.post('http://localhost:3000/favoriteColleges',
+    {'userID':userID,'liked':liked})
+    .subscribe(
+      (res: Response ) => {
+        callback(res.json());
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );   
+  }
   
 
+  unFavoriteColleges(userID:string,liked:string,callback: Function){
+    this.http.post('http://localhost:3000/unFavoriteColleges',
+    {'userID':userID,'liked':liked})
+    .subscribe(
+      (res: Response ) => {
+        callback(res.json());
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );   
+  }
+
+getFavoriteUserId(_id:string,callback: Function){
+    this.http.get('http://localhost:3000/getFavoriteUserId/'+_id)
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
 }

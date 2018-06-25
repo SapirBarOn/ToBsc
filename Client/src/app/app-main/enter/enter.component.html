@@ -32,7 +32,10 @@
       <div class="w3-container w3-white">
             <h3 id="recommended">לפי נתוני הפרופיל שלך, אולי יעניין אותך ללמוד:</h3>
             <p (click)="openDepartment(i)" *ngFor="let i of threeSubEngRecommended">{{i}}</p>
+
       </div>
+                  <h3 id="recommended1">מוסדות מועדפים:</h3>
+            <p (click)="openColleges(i)" *ngFor="let i of favoriteColleges">{{i}}</p>
     </div>
   </div>
   

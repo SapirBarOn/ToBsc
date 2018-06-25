@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {CurrentUser} from '../../app-shared/current-user';
 import { User } from '../../model/user.model';
+// import { LikedByUser } from '../../model/LikedByUser.model';
 import { Router } from '@angular/router';
-import  { DataService } from '../../data.service';
+import { DataService } from '../../data.service';
 import { Subject } from '../../model/subject.model';
 import {SubEngByUser} from'../../model/SubEngByUser.model';
 import {CurrentDepartments} from '../../app-shared/current-department';
+import {CurrentColleges} from '../../app-shared/current-college';
 import { Departments } from '../../model/Departments.model';
 
 @Component({
@@ -28,14 +30,17 @@ totalSubEng:Subject[]=[];
 flag:number=0;
 threeSubEngRecommended:string[]=[];
 departments:Departments[]=[];
+favoriteColleges:string[]=[];
 
   constructor(private dataService : DataService,
               private currentUserService : CurrentUser,
               private CurrentDepartmentsService:CurrentDepartments,
+              private CurrentCollegesService:CurrentColleges,
               private router:Router) { }
 
   ngOnInit() {
         this.CurrentDepartmentsService.setAllDepartments();
+        this.CurrentCollegesService.setAllColleges();
 
         // this.id='5ac35e2ee92c8230100e21c4' //    Testing Only
         // this.age=25
@@ -78,7 +83,9 @@ departments:Departments[]=[];
 
            this.allUsers.sort(function(a, b){return b.similarity - a.similarity})
            console.log(this.allUsers)
-            this.getThreeSubEng();
+           
+           this.getThreeSubEng();
+           this.getfavorite();
 
         })
       }
@@ -86,7 +93,9 @@ departments:Departments[]=[];
         alert('עליך להתחבר למערכת.')
         this.router.navigateByUrl('/login')
       } 
-  }
+
+    }
+  
 
   getThreeSubEng(){
     this.dataService.getSubEngByUserId(this.allUsers[this.flag]._id , (result)=>{
@@ -118,12 +127,31 @@ departments:Departments[]=[];
       }
     }) 
   }
+
+  getfavorite(){
+        this.dataService.getFavoriteUserId(this.user.getId(),result=>{
+                console.log(`response=${result}`);
+                if(result) {
+                  this.favoriteColleges= result.liked;
+                  console.log('this.favoriteColleges-->');
+                  console.log(this.favoriteColleges);
+                }
+                else  console.log('error');           
+            });
+  }
+
   openDepartment(d){
     console.log("openDepartment!!!!!!!!!!!!!!!!");
     console.log(d);
     // this.departments= this.CurrentDepartmentsService.getAllDepartments();
     // console.log(this.departments);
     this.CurrentDepartmentsService.check(d);
+  }
+
+  openColleges(c){
+    console.log("openColleges!!!!!!!!!!!!!!!!");
+    console.log(c);
+    this.CurrentCollegesService.check(c);
   }
 
 }

@@ -1,25 +1,16 @@
-<html>
-  <head>
-    <title>jQuery Read More/Less Toggle Example</title>
-  </head>
-  <body>
 <img src="{{College.logo}}"> 
 <h1>{{College.headline}}</h1>
 <h5>כתובת: {{College.address}}</h5>
 <h5>טלפון: {{College.tel}}</h5>
 <div class="data">
-    <div class="more">
-        <span>תיאור המוסד:</span>
-        <p>{{College.description}}</p>
-    </div>
+    <span>תיאור המכללה:</span>
+    <p>{{College.description}}</p>
     <span>תנאי קבלה:</span>
     <p>{{College.requirements}}</p>
     <span>שכ"ל:</span>
     <p>{{College.tuitionFee}}</p>
     <span>ימים פתוחים:</span>
     <p>{{College.openday}}</p>
-<canvas id="myChart" width="300" height="70"></canvas>
+    <canvas id="myChart" width="300" height="70"></canvas>
 </div> 
 <button (click)="goBack()">Go Back</button>
-  </body>
-</html>

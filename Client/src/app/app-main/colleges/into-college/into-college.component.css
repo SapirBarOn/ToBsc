@@ -16,13 +16,14 @@ h5,h1{
     border: 1px solid grey;
    margin: 0 auto;
     width: 800px;
+
+
 }
 
 p{
     font-size: 15px;
 }
- span{
+span{
     font-size: 15px;
     font-weight: bold;
-    text-align: right;
 }

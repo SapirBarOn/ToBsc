@@ -60,8 +60,6 @@ selects = [
        {id: 3, name: "לא"}
        
      ];
-showP1:boolean=false;
-showP2:boolean=false;
 
   constructor(private dataService : DataService,private currentUserService : CurrentUser, private router: Router) {  
    }
@@ -130,15 +128,7 @@ showP2:boolean=false;
           console.log('Management',this.questionsForManagement);
           this.questionsForMachine.sort(function(a, b){return a.Wmachine - b.Wmachine});
           console.log('Machine',this.questionsForMachine);
-           this.timer = setTimeout(() => {
-              this.showP1=true;
-        },1000);
-            this.timer = setTimeout(() => {
-              this.showP2=true;
-        },2000);
-               this.timer = setTimeout(() => {
-                this.ChatAlgorithm();
-        },3000);
+        this.ChatAlgorithm();
 
           });
       });
@@ -149,6 +139,7 @@ showP2:boolean=false;
       alert('על מנת לבצע את שיחת הצאט מול הפסיכולוגית שלנו עליך להתחבר למערכת.')
       this.router.navigateByUrl('/login')
    }
+  
 }
 
 ChatAlgorithm(){
@@ -173,19 +164,9 @@ getQuestionByDiff(){
           console.log(this.nextQuestion)
     this.canAsk= this.checkIfAsked(this.nextQuestion.questionId)
     if (this.canAsk == true){
-      this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing);
-          this.messages.push(this.resultAfterTyping)
-            $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '100px'
-            }, 10);
-        this.timer = setTimeout(() => {
-       this.messages.pop();
-       this.messages.push(new Message(this.nextQuestion.questionData));
-        $('.select button').css('visibility','visible');
-     },2000);
-      },1000);
+        this.messages.push(new Message(this.nextQuestion.questionData,"../../../assets/images/chat_bot.png"));
         this.askedQuestions.push(this.nextQuestion);
+        $('.select button').css('visibility','visible')
     }
     else this.ChatAlgorithm();
   }
@@ -244,19 +225,9 @@ getQuestionByDiff(){
         console.log(this.canAsk)
         if (this.canAsk == true){
           console.log(this.nextQuestion)
-          this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing);
-          this.messages.push(this.resultAfterTyping)
-            $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '100px'
-            }, 10);
-        this.timer = setTimeout(() => {
-       this.messages.pop();
-       this.messages.push(new Message(this.nextQuestion.questionData));
-        $('.select button').css('visibility','visible');
-     },2000);
-      },1000);
-        this.askedQuestions.push(this.nextQuestion);
+          this.messages.push(new Message(this.nextQuestion.questionData,"../../../assets/images/chat_bot.png"));
+          $('.select button').css('visibility','visible')
+          this.askedQuestions.push(this.nextQuestion);
         }
         else{
           this.ChatAlgorithm();          }
@@ -286,63 +257,22 @@ getQuestionByDiff(){
         ThreeSub=this.userTotalSubEng[2].type;
 
     if (this.userTotalSubEng[0].total==0 && this.userTotalSubEng[1].total==0 && this.userTotalSubEng[2].total==0){
-   this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing);
-          this.messages.push(this.resultAfterTyping)
-            $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
-            }, 10);
-        this.timer = setTimeout(() => {
-       this.messages.pop();
-      this.messages.push(new Message('משיחתי איתך, נראה כי אינך מתעניין בלימודי תחומי ההנדסה הקיימים. חשוב אולי כדאי לשקול תחומים אחרים'));
-     },2000);
-      },1000);
+  this.messages.push(new Message('משיחתי איתך, נראה כי אינך מתעניין בלימודי תחומי ההנדסה הקיימים. חשוב אולי כדאי לשקול תחומים אחרים',"../../../assets/images/chat_bot.png"));
     }
 
     else if(this.userTotalSubEng[0].total==this.userTotalSubEng[1].total){
-      this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing);
-          this.messages.push(this.resultAfterTyping)
-            $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
-            }, 10);
-        this.timer = setTimeout(() => {
-       this.messages.pop();
         this.messages.push(new Message('משיחתי איתך, נראה כי קיימים 2 תחומים התאימים לך ביותר ובמידה שווה,התחום '+OneSub+
-        ' והתחום '+TwoSub+' . התחום הנוסף התאים לך הוא '+ThreeSub+'.'));
-     },2000);
-      },1000);
-      
+        ' והתחום '+TwoSub+' . התחום הנוסף התאים לך הוא '+ThreeSub+'.',"../../../assets/images/chat_bot.png"));
     }
 
     else if(this.userTotalSubEng[1].total==this.userTotalSubEng[2].total){
-      this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing);
-          this.messages.push(this.resultAfterTyping)
-            $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
-            }, 10);
-        this.timer = setTimeout(() => {
-       this.messages.pop();
-       this.messages.push(new Message('משיחתי איתך, נראה כי התחום המתאים לך ביותר הוא '+OneSub+' . כעדיפות שנייה התחומים '+TwoSub+ ' ו'+ThreeSub+' מצאו גם כן מתאימים לך באופן שווה'));
-     },2000);
-      },1000);
+      this.messages.push(new Message('משיחתי איתך, נראה כי התחום המתאים לך ביותר הוא '+OneSub+' . כעדיפות שנייה התחומים '+TwoSub+ ' ו'+ThreeSub+' מצאו גם כן מתאימים לך באופן שווה',"../../../assets/images/chat_bot.png"));
     }
 
     else{
-         this.timer = setTimeout(() => {
-        this.resultAfterTyping = new Message (this.typing);
-          this.messages.push(this.resultAfterTyping)
-            $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
-            }, 10);
-        this.timer = setTimeout(() => {
-       this.messages.pop();
-       this.messages.push(new Message('משיחתי איתך נראה כי התחום המתאים לך ביותר הוא '+OneSub+
+      this.messages.push(new Message('משיחתי איתך נראה כי התחום המתאים לך ביותר הוא '+OneSub+
         '.\n כעדיפות שנייה התחום המתאים לך הוא '+TwoSub+'.\nוכעדיפות שלישית ניתן לראות שתחום '+
-        ThreeSub+'\n מתאים לך.'));
-     },2000);
-      },1000);
+        ThreeSub+'\n מתאים לך.',"../../../assets/images/chat_bot.png"));
     }
   }
 
@@ -361,9 +291,16 @@ getQuestionByDiff(){
   send(content){
     let numForAddTotal;
      $('.select button').css('visibility','hidden');
-       let message =new Message(content);
-       this.messages.push(message)
-    
+     this.timer = setTimeout(() => {
+          this.resultAfterTyping = new Message (this.typing,"../../../assets/images/chat_bot.png");
+          this.messages.push(this.resultAfterTyping)
+          this.timer = setTimeout(() => {
+              this.messages.pop()
+               let message =new Message(content,"../../../assets/images/chat_bot.png");
+             this.messages.push(message)
+         
+            },1000);
+          }, 1000);
     if (content=="כן") {
       numForAddTotal=1;
     }
@@ -398,17 +335,12 @@ getQuestionByDiff(){
         this.totalSubEng[t].total+=this.askedQuestions[this.askedQuestions.length-1].Wmachine*numForAddTotal;
       }      
     }
-     // this.timer = setTimeout(() => {
-     //    this.resultAfterTyping = new Message (this.typing);
-     //      this.messages.push(this.resultAfterTyping)
-     //   $('html, #chat').animate({
-     //          scrollTop: $("#chat").offset().top+ '100px'
-     //        }, 10);
-     //    this.timer = setTimeout(() => {
-     //   this.messages.pop();
-     // },1000);
+     this.timer = setTimeout(() => {
+       $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '100px'
+            }, 10);
     this.ChatAlgorithm();
-      // },3000);
+      },5000);
   }
 
 

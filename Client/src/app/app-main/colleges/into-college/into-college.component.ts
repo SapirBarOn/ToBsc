@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Colleges } from '../../../model/Colleges.model';
 import { CurrentColleges } from '../../../app-shared/current-college';
 import * as Chart from 'chart.js';
-declare var $:any;
+
 @Component({
   selector: 'app-into-college',
   templateUrl: './into-college.component.html',
@@ -12,51 +12,13 @@ export class IntoCollegeComponent implements OnInit {
 
   College:Colleges;
     BarChart:any;
-    show:boolean=false;
+
   constructor(private currentCollegeService:CurrentColleges) { }
 
   ngOnInit() {
       this.College = this.currentCollegeService.getCurrentColleges();
       console.log("ngOnInit->intoCollege");
       console.log(this.College);
-
-       $(document).ready(function() {
-    // Configure/customize these variables.
-    var showChar = 200;  // How many characters are shown by default
-    var moretext = "קרא עוד";
-    var lesstext = "סגור";
-    
-
-    $('.more p').each(function() {
-        var content = $(this).html();
- 
-        if(content.length > showChar) {
- 
-            var c = content.substr(0, showChar);
-            var h = content.substr(showChar, content.length - showChar);
- 
-            var html = c + '<span class="moreellipses">' + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + lesstext + '</a></span>';
- 
-            $(this).html(html);
-        }
- 
-    });
- 
-    $(".morelink").click(function(){
-        if($(this).hasClass("less")) {
-            $(this).removeClass("less");
-             $(this).html(lesstext);
-        } else {
-            $(this).addClass("less");
-            $(this).html(moretext);
-           
-        }
-        $(this).parent().prev().toggle();
-        $(this).prev().toggle();
-        return false;
-    });
-});
-      
       var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
