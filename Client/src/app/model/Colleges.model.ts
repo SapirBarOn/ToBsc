@@ -24,9 +24,9 @@ export class Colleges {
     public openday: string;
     public requirements: [string];
     public psychometry: number;
-    public MathGrades:[string];
-    public EngGrades: [number];
-    public physicsGrades:[number];
+    public mathGrades:[{'units':number,'grade':number}];
+    public engGrades: [{'units':number,'grade':number}];
+    public physicsGrades:[{'units':number,'grade':number}];
     public userProbability:number;
     public averageRents:string[];
 
@@ -36,7 +36,8 @@ export class Colleges {
               uniSalary: boolean,dorms: string,subEng: [string],latitude:number,longitude:number, DistanceKM:number,
               engName: string,reqUrl:string,specialization:string,description:string,headline:string,
               address:string,tuitionFee:string,tel:string,openday:string,requirements:[string],
-              psychometry: number, MathGrade:[string], EngGrades:[number], physicsGrades:[number],
+              psychometry: number, MathGrade:[{'units':number,'grade':number}], EngGrades:[{'units':number,'grade':number}], 
+              physicsGrades:[{'units':number,'grade':number}],
               probability:number, averages:string[],liked:boolean){
     this.hebName = hebName;
     this.pic=pic;
