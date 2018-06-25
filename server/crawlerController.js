@@ -1,4 +1,6 @@
-// npm Initialize
+
+
+    // npm Initialize
 var mongoose = require('mongoose');
 var scrapy = require('node-scrapy');
 var dateFormat = require('dateformat');
@@ -932,7 +934,7 @@ exports.getCollegesData = function(req, res){
 
                     console.log("Get Math of college: "+collegeName);
                     console.log(subject+" NOT found in college !!");
-                    gradesArray.push(new Object({"units": 0}));
+                    gradesArray.push(new Object({"units": 0,"grade": 1}));
                     return gradesArray;
                 } 
                 else {
@@ -940,8 +942,8 @@ exports.getCollegesData = function(req, res){
                     let beforeStr = cutStr[0].split(" ");
                     let afterStr;
 
-                    gradesArray.push(new Object({"units": 0}));
-                    gradesArray.push(new Object({"units": 0}));
+                    gradesArray.push(new Object({"units": 0,"grade": 1}));
+                    gradesArray.push(new Object({"units": 0,"grade": 1}));
 
                     let gradesCounter = 0;
                     let unitsCounter = 0;
