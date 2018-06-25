@@ -1,6 +1,4 @@
-
-
-    // npm Initialize
+// npm Initialize
 var mongoose = require('mongoose');
 var scrapy = require('node-scrapy');
 var dateFormat = require('dateformat');
@@ -934,7 +932,7 @@ exports.getCollegesData = function(req, res){
 
                     console.log("Get Math of college: "+collegeName);
                     console.log(subject+" NOT found in college !!");
-                    gradesArray.push(new Object({"units": 0,"grade": 1}));
+                    gradesArray.push(new Object({"units": 0}));
                     return gradesArray;
                 } 
                 else {
@@ -942,8 +940,8 @@ exports.getCollegesData = function(req, res){
                     let beforeStr = cutStr[0].split(" ");
                     let afterStr;
 
-                    gradesArray.push(new Object({"units": 0,"grade": 1}));
-                    gradesArray.push(new Object({"units": 0,"grade": 1}));
+                    gradesArray.push(new Object({"units": 0}));
+                    gradesArray.push(new Object({"units": 0}));
 
                     let gradesCounter = 0;
                     let unitsCounter = 0;
@@ -966,7 +964,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" GRADE NUMBER :"+beforeStr[beforeStr.length-i-2]);
                                 console.log("gradesCounter : "+gradesCounter);
                                 if((gradesCounter<2)&&((subject!="english"))){
-                                    gradesArray[gradesCounter].grade = (Number(beforeStr[beforeStr.length-i-2]));
+                                    gradesArray[gradesCounter].grade = Number(beforeStr[beforeStr.length-i-2]);
                                     gradesCounter++;
                                 }   
                             }
@@ -974,7 +972,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" UNITS NUMBER :"+beforeStr[beforeStr.length-i-2]);
                                 console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
-                                    gradesArray[unitsCounter].units = (Number(beforeStr[beforeStr.length-i-2]));
+                                    gradesArray[unitsCounter].units = Number(beforeStr[beforeStr.length-i-2]);
                                     unitsCounter++;
                                 }
                             }
@@ -990,7 +988,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" GRADE NUMBER :"+afterStr[i]);
                                 console.log("gradesCounter : "+gradesCounter);
                                 if(gradesCounter<2) {
-                                    gradesArray[gradesCounter].grade = (Number(afterStr[i]));
+                                    gradesArray[gradesCounter].grade = Number(afterStr[i]);
                                     gradesCounter++;
                                 }
                             }
@@ -998,7 +996,7 @@ exports.getCollegesData = function(req, res){
                                 console.log(subject+" UNITS NUMBER :"+afterStr[i]);
                                 console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
-                                    gradesArray[unitsCounter].units = (Number(afterStr[i]));
+                                    gradesArray[unitsCounter].units = Number(afterStr[i]);
                                     unitsCounter++;
                                 }
                             }

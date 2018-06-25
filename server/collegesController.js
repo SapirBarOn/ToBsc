@@ -1,5 +1,6 @@
 const   mongoose = require('mongoose'),
         Colleges = require('./collegeData'),
+        LikedByUser = require('./likedByUserData'),
         parser = require('json-parser'),
         http = require('http');
         options = {
@@ -8,6 +9,83 @@ const   mongoose = require('mongoose'),
         };
 
 module.exports={
+
+    getAllInstitutes(){ //change !!!!!!!!!!!
+        return Institutes.find();
+    },
+
+    getFavoriteUserId(req,res){
+        LikedByUser.findOne({userID : req.params._id}, (err,result)=>{
+            if(err || !result){
+                return res.status(500).json(`{id not exists:${err}}`);
+            }
+            res.json(result);
+        });
+    },
+
+    favoriteColleges(req,response){
+        LikedByUser.findOne({userID : req.body.userID},(err,result)=>{
+            if(err){
+                console.log ('errorrr');
+                return response.status(500).json(`{error:${err}}`);
+            }
+
+            if(!result){
+                console.log(`Sub eng not exsist. Create one `);            
+                let newLikedByUser = new LikedByUser({
+                    userID: req.body.userID,
+                    liked: req.body.liked
+                });
+
+                newLikedByUser.save(
+                    (err) => {
+                        if (err){
+                            console.log('error');
+                            return response.status(500).json(`{error:${err}}`);
+
+                        }
+
+                       else
+                           console.log('favorite saved');
+                           return response.status(200).json(newLikedByUser);
+                });
+            }
+
+            if(result){
+                console.log(`Exsist`);
+                LikedByUser.findOneAndUpdate({userID: req.body.userID},
+                    {$addToSet: {liked:req.body.liked}},(err,result)=>{
+                        if(err){
+                            console.log ('error');
+                            return response.status(500).json(`{error:${err}}`);
+
+                        }
+
+                        else{
+                           console.log(`succses`);
+                           return response.status(200).json(`succses`);
+                        } 
+
+                });
+            }
+        });
+    },
+
+
+    unFavoriteColleges(req,response){
+        LikedByUser.findOneAndUpdate({userID: req.body.userID},
+             {$pull: {liked: req.body.liked}},(err,result)=>{
+                if(err){
+                    console.log ('error');
+                    return response.status(500).json(`{error:${err}}`);
+                }
+
+                else{
+                    console.log(`succses`);
+                    return response.status(200).json(`succses`);
+                } 
+        });
+    },
 
     filterColleges(req,response){
         let location= req.body.location,
