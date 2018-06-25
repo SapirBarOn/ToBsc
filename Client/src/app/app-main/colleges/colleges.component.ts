@@ -27,12 +27,7 @@ export class CollegesComponent implements OnInit {
   userID:string;
   checkLike:boolean;
   favoriteColleges:string[]=[];
-
-
-  userPsichometry:number=550;
-  userMath:number[]=[4,91];
-  userEng:number[]=[4,85];
-  userPhysics:number[]=[0,0];
+  extend:boolean=false;
 
   locations: string[] = [
     'מרכז',
@@ -108,9 +103,13 @@ export class CollegesComponent implements OnInit {
        'salary':new FormControl(),
        'dorms':new FormControl(),
        'psychometric':new FormControl(),
-       'math':new FormControl(),
-       'english':new FormControl(),
-       'physics':new FormControl()
+       'psychometricGrade': new FormControl(),
+       'mathUnits':new FormControl(),
+       'mathGrade':new FormControl(),
+       'englishUnits':new FormControl(),
+       'englishGrade':new FormControl(),
+       'physicsUnits':new FormControl(),
+       'physicsGrade':new FormControl()
     });
 
     this.dataService.getAllColleges((result) =>{
@@ -202,6 +201,54 @@ showPosition(position,result) {
                 if(result){
                   this.colleges = result;
                   this.setFavoriteColleges();
+                  for (let c=0; c<this.colleges.length; c++){
+                    let psychometryPercent= post.psychometricGrade/this.colleges[c].psychometry;
+                    if (psychometryPercent>1) psychometryPercent=1;
+                    
+                    let mathPercent=0;
+                    for(let m=0;m<this.colleges[c].mathGrades.length;m++){
+                      if(this.colleges[c].mathGrades[m].units==0){
+                        mathPercent=1;
+                      }
+                      else{
+                        if(post.mathUnits==this.colleges[c].mathGrades[m].units){
+                          mathPercent=post.mathGrade/this.colleges[c].mathGrades[m].grade;
+                        }
+                      }
+                    }
+
+                    let engPercent=0;
+                    for(let e=0; e<this.colleges[c].engGrades.length; e++){
+                      if(this.colleges[c].engGrades[e].units==0){
+                        engPercent=1;
+                      }
+                      else{
+                        if(post.englishUnits==this.colleges[c].engGrades[e].units){
+                          engPercent=post.englishGrade/this.colleges[c].engGrades[e].grade;
+                        }                        
+                      }
+                    }
+
+                    let physPercent=0;
+                    for(let p=0; p<this.colleges[c].physicsGrades.length; p++){
+                      if(this.colleges[c].physicsGrades[p].units==0){
+                        physPercent=1;
+                      }
+                      else{
+                        if(post.physicsUnits==this.colleges[c].physicsGrades[p].units){
+                          physPercent=post.physicsGrade/this.colleges[c].physicsGrades[p].grade;
+                        }
+                      }
+                    }
+                    console.log(psychometryPercent,mathPercent,engPercent,physPercent)
+                    this.colleges[c].userProbability=0.25*psychometryPercent+0.25*mathPercent+0.25*engPercent+0.25*physPercent;
+                    if(this.colleges[c].userProbability>1){
+                      this.colleges[c].userProbability=0.99
+                    }
+                    this.colleges[c].userProbability=Math.round(this.colleges[c].userProbability*100);
+                    //this.colleges[c].userProbability.toFixed(2);
+                    console.log(this.colleges[c].hebName,this.colleges[c].userProbability) 
+                  }  
                 } 
                 else  console.log('filter error');           
             })
