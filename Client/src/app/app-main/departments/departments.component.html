@@ -1,14 +1,28 @@
-<div id="departments">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
+  <section *ngFor="let d of departments" class="w3-image w3-margin-top" id="frame">
+          <section (click)="intoDepartments(d)" class="info">
+              <img src="{{d.logo}}">   
+              <p class="name">{{d.hebName}}</p>
+          </section>
+  </section>
+</div>
+<!-- <div id="departments">
 <!--     <section (click)="openInfo(departmentsModal,d)" class="frame" *ngFor="let d of departments">
  -->
-    <section (click)="intoDepartments(d)" class="frame" *ngFor="let d of departments">
+  <!--   <section (click)="intoDepartments(d)" class="frame" *ngFor="let d of departments">
 
          <section class="logo">
             <img src="{{d.logo}}">
         </section>
         <p class="name">{{d.hebName}}</p>
     </section> 
-</div>
+</div> --> 
 
 
 <!--         <ng-template #departmentsModal let-c="close" let-d="dismiss">

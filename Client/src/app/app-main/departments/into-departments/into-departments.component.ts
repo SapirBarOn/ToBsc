@@ -18,5 +18,8 @@ export class IntoDepartmentsComponent implements OnInit {
       console.log("ngOnInit->intoDepartments");
       console.log(this.Departments);
   }
+  goBack() {
+    window.history.back();
+}
 
 }

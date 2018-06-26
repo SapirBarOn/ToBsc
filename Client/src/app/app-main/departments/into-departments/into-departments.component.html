@@ -1,3 +1,15 @@
-<img src="{{Departments.logo}}">
+<img src="{{Departments.logo}}"> 
 <h1>{{Departments.hebName}}</h1>
-<p>{{Departments.description}}</p>
+<div class="data">
+    <span>תיאור ההנדסה:</span>
+    <p>{{Departments.description}}</p>
+    <span>תנאי קבלה:</span>
+    <p>{{Departments.requirements}}</p>
+    <span>נושאי לימוד:</span>
+    <p>{{Departments.subjects}}</p>
+    <span>שכר התחלתי:</span>
+    <p>{{Departments.lowSalary}}</p>
+    <span>שכר ניסיון:</span>
+    <p>{{Departments.highSalary}}</p>
+</div> 
+<button (click)="goBack()">Go Back</button>
