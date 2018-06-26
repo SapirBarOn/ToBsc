@@ -27,7 +27,6 @@ export class CollegesComponent implements OnInit {
   userID:string;
   checkLike:boolean;
   favoriteColleges:string[]=[];
-  extend:boolean=false;
 
   locations: string[] = [
     'מרכז',
