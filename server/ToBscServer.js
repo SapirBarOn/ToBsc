@@ -109,8 +109,8 @@ app.get('/getCollegesData', crawlerController.getCollegesData);
 
 // Automatic Get Rates - (Scheduler - 6:30-AM)
 var getRatesRule = new schedule.RecurrenceRule();
-getRatesRule.hour = 20;
-getRatesRule.minute = 27; 
+getRatesRule.hour = 06;
+getRatesRule.minute = 00; 
 var i = schedule.scheduleJob(getRatesRule, function(){
     console.log('Automatic Schedule: Get Colleges Data Started !');
     crawlerController.getCollegesData();
