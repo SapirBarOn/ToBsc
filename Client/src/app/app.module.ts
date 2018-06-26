@@ -39,6 +39,7 @@ import { DepartmentsComponent } from './app-main/departments/departments.compone
 import { ForgotPasswordComponent } from './app-main/forgot-password/forgot-password.component';
 import { IntoCollegeComponent } from './app-main/colleges/into-college/into-college.component';
 import { IntoDepartmentsComponent } from './app-main/departments/into-departments/into-departments.component';
+import { ScholarshipsComponent } from './app-main/scholarships/scholarships.component';
 
 
 // Configs 
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'intoCollege', component: IntoCollegeComponent},
   {path: 'intoDepartments', component: IntoDepartmentsComponent},
+  {path: 'scholarships',component:ScholarshipsComponent}
 
 ];
 
@@ -95,6 +97,7 @@ const appRoutes: Routes = [
     ForgotPasswordComponent,
     IntoCollegeComponent,
     IntoDepartmentsComponent,
+    ScholarshipsComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
