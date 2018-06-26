@@ -10,6 +10,7 @@ const   express    = require('express'),
         chatController  = require('./chatController'),
         crawlerController= require('./crawlerController'),
         collegesController= require('./collegesController'),
+        scholarshipsController=require('./scholarshipsController'),
         subEngController= require('./subEngController'),
         request    = require('request'),
         Crawler = require("crawler"),
@@ -78,6 +79,12 @@ app.get('/getAllChat',
    (req,res)=>{
       chatController.allQuestion().then(docs => res.json(docs));
 });
+app.get('/getAllScholarships',
+   (req,res)=>{
+      scholarshipsController.getAllScholarships().then(docs => res.json(docs));
+});
+
+app.post('/filterScholarships',scholarshipsController.filterScholarships);
 
 // app.get('/getAllInstitutes',
 //      (req,res)=>{
