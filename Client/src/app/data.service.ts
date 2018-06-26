@@ -67,7 +67,33 @@ export class DataService {
       })
     );
   }
+getAllScholarships(callback: Function) {
+      this.http.get('http://localhost:3000/getAllScholarships')
+      .subscribe(
+        (res: Response ) => {
+            callback( res.json() );
+        }
+      )
+    }
 
+  filterScholarships(location:string,
+                   origin:string,
+                   volunteering:string,
+                   reservist:string,
+                   veteran:string,callback: Function){
+    this.http.post('http://localhost:3000/filterScholarships',
+    {'location':location,'origin':origin,'volunteering':volunteering,
+    'reservist':reservist,'veteran':veteran})
+    .subscribe(
+      (res: Response ) => {
+        callback(res.json());
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );   
+  }
 
 
   login(email:string,password:string,callback: Function) {
