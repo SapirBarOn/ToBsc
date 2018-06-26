@@ -1,8 +1,6 @@
 export class Message {
   content: string;
-  img:string;
-  constructor(content: string,img:string){
+  constructor(content: string){
     this.content = content;
-    this.img=img;
   }
 }
