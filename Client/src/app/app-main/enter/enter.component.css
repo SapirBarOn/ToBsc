@@ -22,9 +22,10 @@ h3{
 #data{
     cursor: pointer;
     border-radius: 50px; 
-    width: 70%;
-    margin-left: 15%;
-    margin-top: 12%;
+    width: 60%;
+    margin-left: 20%;
+    padding-top: 2%;
+    height: 144px;
 }
 
 button{
