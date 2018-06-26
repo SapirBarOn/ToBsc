@@ -1,0 +1,62 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="filter">
+
+    <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
+
+        <select class="form-control" formControlName="location">
+            <option value="null" >מיקום</option>
+            <option *ngFor="let l of locations"
+              [value]="l"> 
+              {{l}} 
+             </option>
+        </select>
+
+        <select class="form-control" formControlName="origin">
+            <option value="null" >מוצא</option>
+            <option *ngFor="let o of origin"
+              [value]="o"> 
+              {{o}} 
+             </option>
+        </select>
+
+        <select class="form-control" formControlName="volunteering">
+            <option value="null" >התנדבות</option>
+            <option *ngFor="let v of volunteering"
+              [value]="v"> 
+              {{v}} 
+             </option>
+        </select>
+
+        <select class="form-control" formControlName="reservist">
+            <option value="null" >חייל/ת מילואים</option>
+            <option *ngFor="let r of reservist"
+              [value]="r"> 
+              {{r}} 
+             </option>
+        </select>
+
+        <select class="form-control" formControlName="veteran">
+            <option value="null" >חייל/ת משוחרר/ת</option>
+            <option *ngFor="let v of veteran"
+              [value]="v"> 
+              {{v}} 
+             </option>
+        </select>
+
+        <input type="submit" class="btn btn-info" value="סינון" [disabled]="!myform.valid">
+        
+    </form>
+</div>
+
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
+  <section *ngFor="let s of scholarships" class="w3-image w3-margin-top" id="frame">
+          <section class="info">
+              <p class="name">{{s.name}}</p>         
+          </section>
+  </section>
+</div>

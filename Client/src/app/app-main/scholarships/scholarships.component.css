@@ -1,0 +1,36 @@
+#filter{
+    margin-left:10%;
+    margin-top: 5%; 
+}
+
+select{
+    display: inline-block;
+    width: 11%;
+    direction: rtl;
+}
+#frame{
+    cursor: pointer;
+    width:610px;
+    height:100px;
+    margin: 0 auto;
+   /* width: 610px;*/
+   /* height: 160px;*/
+    border: 1px solid black;
+    border-radius: 5px;
+   /* float: right;    
+    padding: 7px;  
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;*/
+}
+.info{
+   /* padding: 5px;*/
+   /* float: right;*/
+    /*position: relative;*/
+/*    margin-left: 200px;*/
+    text-align: center;
+}
+
+.info p{
+   margin-right: 10%;
+}
