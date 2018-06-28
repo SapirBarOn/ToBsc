@@ -76,14 +76,11 @@ getAllScholarships(callback: Function) {
       )
     }
 
-  filterScholarships(location:string,
-                   origin:string,
-                   volunteering:string,
-                   reservist:string,
-                   veteran:string,callback: Function){
+  filterScholarships(
+                   choose:string,
+                   callback: Function){
     this.http.post('http://localhost:3000/filterScholarships',
-    {'location':location,'origin':origin,'volunteering':volunteering,
-    'reservist':reservist,'veteran':veteran})
+    {'choose':choose})
     .subscribe(
       (res: Response ) => {
         callback(res.json());

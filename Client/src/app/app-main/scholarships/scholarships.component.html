@@ -7,16 +7,24 @@
 <div id="filter">
 
     <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
-
-        <select class="form-control" formControlName="location">
-            <option value="null" >מיקום</option>
-            <option *ngFor="let l of locations"
-              [value]="l"> 
-              {{l}} 
+          
+          <select *ngIf="cChoose" class="form-control" formControlName="choose">
+            <option value="null" >בחר אופציה</option>
+            <option *ngFor="let c of choose"
+            [value]="c"> 
+                   {{c}} 
              </option>
         </select>
 
-        <select class="form-control" formControlName="origin">
+        <select *ngIf="cLocation" class="form-control" formControlName="location">
+            <option value="null" >מיקום</option>
+            <option *ngFor="let l of locations"
+            [value]="l"> 
+                   {{l}} 
+             </option>
+        </select>
+
+        <select *ngIf="cOrigin" class="form-control" formControlName="origin">
             <option value="null" >מוצא</option>
             <option *ngFor="let o of origin"
               [value]="o"> 
@@ -24,7 +32,7 @@
              </option>
         </select>
 
-        <select class="form-control" formControlName="volunteering">
+        <!-- <select class="form-control" formControlName="volunteering">
             <option value="null" >התנדבות</option>
             <option *ngFor="let v of volunteering"
               [value]="v"> 
@@ -46,7 +54,7 @@
               [value]="v"> 
               {{v}} 
              </option>
-        </select>
+        </select> -->
 
         <input type="submit" class="btn btn-info" value="סינון" [disabled]="!myform.valid">
         
@@ -54,8 +62,9 @@
 </div>
 
 <div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
-  <section *ngFor="let s of scholarships" class="w3-image w3-margin-top" id="frame">
+  <section *ngFor="let s of scholarships" (click)="intoScholarships(s)" class="w3-image w3-margin-top" id="frame">
           <section class="info">
+              <img src="{{s.img}}">  
               <p class="name">{{s.name}}</p>         
           </section>
   </section>

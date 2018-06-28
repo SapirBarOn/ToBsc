@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+//import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 import {
@@ -31,6 +31,7 @@ import { SubEngByUserComponent } from './app-main/subEngByUser/subEngByUser.comp
 import { CurrentUser } from './app-shared/current-user';
 import { CurrentColleges } from './app-shared/current-college';
 import { CurrentDepartments } from './app-shared/current-department';
+import { CurrentScholarships } from './app-shared/current-scholarship';
 
 
 import { CollegesComponent } from './app-main/colleges/colleges.component';
@@ -41,7 +42,7 @@ import { ForgotPasswordComponent } from './app-main/forgot-password/forgot-passw
 import { IntoCollegeComponent } from './app-main/colleges/into-college/into-college.component';
 import { IntoDepartmentsComponent } from './app-main/departments/into-departments/into-departments.component';
 import { ScholarshipsComponent } from './app-main/scholarships/scholarships.component';
-
+import { IntoScholarshipsComponent } from './app-main/scholarships/into-scholarships/into-scholarships.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
   {path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'intoCollege', component: IntoCollegeComponent},
   {path: 'intoDepartments', component: IntoDepartmentsComponent},
-  {path: 'scholarships',component:ScholarshipsComponent}
+  {path: 'scholarships',component:ScholarshipsComponent},
+  {path: 'intoScholarships',component:IntoScholarshipsComponent},
 
 ];
 
@@ -99,6 +101,7 @@ const appRoutes: Routes = [
     IntoCollegeComponent,
     IntoDepartmentsComponent,
     ScholarshipsComponent,
+    IntoScholarshipsComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -111,7 +114,7 @@ const appRoutes: Routes = [
     SocialLoginModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    AngularFontAwesomeModule
+   // AngularFontAwesomeModule
   ],
   exports: [RouterModule],
   providers: [
@@ -119,6 +122,8 @@ const appRoutes: Routes = [
     CurrentUser,
     CurrentColleges,
     CurrentDepartments,
+    CurrentScholarships,
+
       {
         provide: AuthServiceConfig,
         useFactory: getAuthServiceConfigs
