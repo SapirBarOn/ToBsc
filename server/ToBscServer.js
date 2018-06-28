@@ -63,6 +63,8 @@ app.post('/forgotPassword',userList.forgotPassword);
 
 app.post('/favoriteColleges',collegesController.favoriteColleges);
 
+app.post('/rateColleges',collegesController.rateColleges);
+
 app.post('/unFavoriteColleges',collegesController.unFavoriteColleges);
 
 app.get('/getFavoriteUserId/:_id',collegesController.getFavoriteUserId);

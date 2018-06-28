@@ -1,6 +1,7 @@
 const   mongoose = require('mongoose'),
         Colleges = require('./collegeData'),
         LikedByUser = require('./likedByUserData'),
+        RateByUser = require('./rateByUserData'),
         parser = require('json-parser'),
         http = require('http');
         options = {
@@ -12,6 +13,55 @@ module.exports={
 
     getAllInstitutes(){ //change !!!!!!!!!!!
         return Institutes.find();
+    },
+
+
+    rateColleges(req,response){
+        console.log('rateColleges');
+        RateByUser.findOne({userID : req.body.userID},(err,result)=>{
+            if(err){
+                console.log ('rate errorrr');
+                return response.status(500).json(`{rate error:${err}}`);
+            }
+
+            if(!result){
+                console.log(`rate not exsist. Create one `);            
+                let newRateByUser = new RateByUser({
+                    userID: req.body.userID,
+                    rate: [req.body.college,req.body.numOfStars]
+                });
+
+                newRateByUser.save(
+                    (err) => {
+                        if (err){
+                            console.log('rate error');
+                            return response.status(500).json(`{rate error:${err}}`);
+                        }
+
+                       else
+                           console.log('rate saved');
+                           return response.status(200).json(newRateByUser);
+                });
+            }
+
+            if(result){
+                console.log(`rate Exsist`);
+                RateByUser.findOneAndUpdate({userID: req.body.userID},
+                    {$addToSet: {rate:[[req.body.college,req.body.numOfStars]]}},(err,result)=>{
+                        if(err){
+                            console.log ('rate error');
+                            return response.status(500).json(`{rate error:${err}}`);
+
+                        }
+
+                        else{
+                           console.log(`rate succses`);
+                           return response.status(200).json(`rate succses`);
+                        } 
+
+                });
+            }
+        });
     },
 
     getFavoriteUserId(req,res){

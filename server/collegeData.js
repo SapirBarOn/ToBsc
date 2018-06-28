@@ -24,7 +24,7 @@ var collegeSchema = new schema({
     subEng: [String],
     latitude: Number ,
     longitude: Number,
-
+    rating: Number,
     // scholarships: Array,
     averageRents: Array,
     psychometry: Number,
