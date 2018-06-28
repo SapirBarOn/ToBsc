@@ -1,21 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Colleges } from '../../../model/Colleges.model';
 import { CurrentColleges } from '../../../app-shared/current-college';
+import { DataService } from '../../../data.service';
+import { Subject } from '../../../model/subject.model';
+import { CurrentUser } from '../../../app-shared/current-user';
+
 import * as Chart from 'chart.js';
 declare var $:any;
+
 @Component({
   selector: 'app-into-college',
   templateUrl: './into-college.component.html',
   styleUrls: ['./into-college.component.css']
 })
+
 export class IntoCollegeComponent implements OnInit {
 
-  College:Colleges;
+    College:Colleges;
     BarChart:any;
     show:boolean=false;
-  constructor(private currentCollegeService:CurrentColleges) { }
+    stars:boolean[]=[false,false,false,false,false];
+    numOfStars:number;
+    userID:string;
+
+  constructor(private currentCollegeService:CurrentColleges,
+              private dataService :DataService,
+              private currentUserService:CurrentUser ) { }
 
   ngOnInit() {
+      this.userID=this.currentUserService.getCurrentUser()._id;
+
       this.College = this.currentCollegeService.getCurrentColleges();
       console.log("ngOnInit->intoCollege");
       console.log(this.College);
@@ -95,9 +109,56 @@ var myChart = new Chart(ctx, {
     }
 });
   }
+
+
+
   
 goBack() {
     window.history.back();
-}  
+}
+
+
+rate(x){
+    for(let i=0; i<this.stars.length; i++){
+        this.stars[i]=false;
+    }
+    if(x==1){
+        this.stars[0]=true;
+        this.numOfStars=1;
+    } 
+    else if(x==2){
+        this.stars[0]=true;
+        this.stars[1]=true; 
+        this.numOfStars=2;
+    }
+    else if(x==3){
+        this.stars[0]=true;
+        this.stars[1]=true;
+        this.stars[2]=true;            
+        this.numOfStars=3;
+    }
+    else if(x==4){
+        this.stars[0]=true;
+        this.stars[1]=true;
+        this.stars[2]=true;
+        this.stars[3]=true; 
+        this.numOfStars=4;
+    }   
+    else if(x==5){
+        this.stars[0]=true;
+        this.stars[1]=true;
+        this.stars[2]=true;
+        this.stars[3]=true;
+        this.stars[4]=true; 
+        this.numOfStars=5;
+    }
+
+    this.dataService.rateColleges(this.userID,this.College.hebName,this.numOfStars,result=>{
+          console.log(`response=${result}`);
+          if(result) console.log('rate done');
+          else  console.log('rate error');           
+        });
+}
+
 
 }

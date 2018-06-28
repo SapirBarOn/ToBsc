@@ -126,6 +126,7 @@ export class CollegesComponent implements OnInit {
             });
     });
 
+
   }
 
   setFavoriteColleges(){

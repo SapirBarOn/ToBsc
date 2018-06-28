@@ -391,4 +391,21 @@ getFavoriteUserId(_id:string,callback: Function){
       })
     );
   }
+
+  rateColleges(userID:string,college:string,numOfStars:number,callback: Function){
+    this.http.post('http://localhost:3000/rateColleges',
+    {'userID':userID,'college':college,'numOfStars':numOfStars})
+    .subscribe(
+      (res: Response ) => {
+        callback(res.json());
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );   
+  }
+
+
+
 }

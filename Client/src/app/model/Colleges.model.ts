@@ -29,7 +29,7 @@ export class Colleges {
     public physicsGrades:[{'units':number,'grade':number}];
     public userProbability:number;
     public averageRents:string[];
-
+    public rating: number;
     public liked:boolean;
 
   constructor(hebName:string,pic: string,logo: string,type:string,location: string,
@@ -38,7 +38,7 @@ export class Colleges {
               address:string,tuitionFee:string,tel:string,openday:string,requirements:[string],
               psychometry: number, mathGrade:[{'units':number,'grade':number}], engGrades:[{'units':number,'grade':number}], 
               physicsGrades:[{'units':number,'grade':number}],
-              probability:number, averages:string[],liked:boolean){
+              probability:number, averages:string[],liked:boolean,rating: number){
     this.hebName = hebName;
     this.pic=pic;
     this.logo=logo;
@@ -68,6 +68,7 @@ export class Colleges {
     this.userProbability=probability;
     this.averageRents=averages;
     this.liked=liked;
+    this.rating=rating;
   }
 
 

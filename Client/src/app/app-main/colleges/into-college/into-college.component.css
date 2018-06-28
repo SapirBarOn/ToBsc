@@ -26,3 +26,19 @@ p{
     font-weight: bold;
     text-align: right;
 }
+
+.rating{
+    margin-left: 46%;
+}
+
+.far{
+    font-size: 200%;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.fas{
+    font-size: 200%;
+    cursor: pointer;
+    color: orange;    
+}
