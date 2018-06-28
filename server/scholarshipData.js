@@ -12,6 +12,8 @@ const mongoose = require('mongoose'),
     volunteering:String,
     reservist:String,
     veteran:String,
+    choose:String,
+    img:String,
 
 }, {collection: 'scholarships'}),
 

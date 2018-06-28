@@ -14,12 +14,18 @@ module.exports={
     },
 
     filterScholarships(req,response){
-        let location= req.body.location,
-            origin= req.body.origin,
-            volunteering= req.body.volunteering,
-            reservist= req.body.reservist,//חייל מילואים
-            veteran= req.body.veteran;//חייל משוחרר
-        let Iraq='עיראק',
+        let choose=req.body.choose,
+        // let location= req.body.location,
+        //     origin= req.body.origin,
+        //     volunteering= req.body.volunteering,
+        //     reservist= req.body.reservist,//חייל מילואים
+        //     veteran= req.body.veteran;//חייל משוחרר
+           location='מיקום',
+            origin='מוצא',
+            volunteering='התנדבות',
+            reservist='חייל/ת מילואים',
+            veteran='חייל/ת משוחרר/ת',
+            Iraq='עיראק',
             Ethiopia='אתיופיה',
             Iran='איראן',
             Russia='רוסיה',
@@ -33,165 +39,205 @@ module.exports={
             Samaria='שומרון',
             sharon='שרון',
             Jerusalem='ירושלים';
-            yesReservist='כן'
-            noReservist='לא',
-            yesVeteran='כן',
-            noVeteran='לא',
-            yesVolunteering='כן',
-            noVolunteering='לא'
+            // yesReservist='כן'
+            // noReservist='לא',
+            // yesVeteran='כן',
+            // noVeteran='לא',
+            // yesVolunteering='כן',
+            // noVolunteering='לא'
 
-            if (origin=='עיראק'){
-                Ethiopia='';
-                Iran='';
-                Russia='';
-                TheDruze='';
-                TheArabic='';
-                EdaHaredit='';
-                Yemen='';
+            if(choose=='מיקום'){
+                if(location=='צפון'){
+                    South='';
+                    center='';
+                    Samaria='';
+                    sharon='';
+                    Jerusalem='';
+                }
+
+                else if(location=='דרום'){
+                    north='';
+                    center='';
+                    Samaria='';
+                    sharon='';
+                    Jerusalem='';
+                }
+
+                else if(location=='מרכז'){
+                    South='';
+                    north='';
+                    Samaria='';
+                    sharon='';
+                    Jerusalem='';
+                }
+                else if(location=='שרון'){
+                    South='';
+                    center='';
+                    Samaria='';
+                    north='';
+                    Jerusalem='';
+                }
+
+                else if(location=='שומרון'){
+                    South='';
+                    center='';
+                    north='';
+                    sharon='';
+                    Jerusalem='';
+                }
+                else if(location=='ירושלים'){
+                    South='';
+                    center='';
+                    Samaria='';
+                    sharon='';
+                    north='';
+                }
+                origin='';
+                volunteering='';
+                reservist='';
+                veteran='';
             }
-            else if (origin=='אתיופיה'){
-                Iraq='',
-                Iran='';
-                Russia='';
-                TheDruze='';
-                TheArabic='';
-                EdaHaredit='';
-                Yemen='';
+
+            if(choose=='מוצא'){
+                if (origin=='עיראק'){
+                    Ethiopia='';
+                    Iran='';
+                    Russia='';
+                    TheDruze='';
+                    TheArabic='';
+                    EdaHaredit='';
+                    Yemen='';
             }
-            else if (origin=='איראן'){
-                Ethiopia='';
-                Iraq='',
-                Russia='';
-                TheDruze='';
-                TheArabic='';
-                EdaHaredit='';
-                Yemen='';
-            }
-            else if (origin=='רוסיה'){
-                Ethiopia='';
-                Iran='';
-                Iraq='',
-                TheDruze='';
-                TheArabic='';
-                EdaHaredit='';
-                Yemen='';
-            }
-            else if (origin=='העדה הדרוזית'){
-                Ethiopia='';
-                Iran='';
-                Iraq='',
-                Russia='';
-                TheArabic='';
-                EdaHaredit='';
-                Yemen='';
-            }
-            else if (origin=='העדה הערבית'){
-                Ethiopia='';
-                Iran='';
-                Iraq='',
-                Russia='';
-                TheDruze='';
-                EdaHaredit='';
-                Yemen='';
-            }
-            else if (origin=='העדה החרדית'){
-                Ethiopia='';
-                Iran='';
-                Iraq='',
-                Russia='';
-                TheDruze='';
-                TheArabic='';
-                Yemen='';
-            }
-            else if (origin=='תימן'){
-                Ethiopia='';
-                Iran='';
-                Iraq='',
-                Russia='';
-                TheDruze='';
-                TheArabic='';
-                EdaHaredit='';
-            }
+                else if (origin=='אתיופיה'){
+                    Iraq='',
+                    Iran='';
+                    Russia='';
+                    TheDruze='';
+                    TheArabic='';
+                    EdaHaredit='';
+                    Yemen='';
+                }
+                else if (origin=='איראן'){
+                    Ethiopia='';
+                    Iraq='',
+                    Russia='';
+                    TheDruze='';
+                    TheArabic='';
+                    EdaHaredit='';
+                    Yemen='';
+                }
+                else if (origin=='רוסיה'){
+                    Ethiopia='';
+                    Iran='';
+                    Iraq='',
+                    TheDruze='';
+                    TheArabic='';
+                    EdaHaredit='';
+                    Yemen='';
+                }
+                else if (origin=='העדה הדרוזית'){
+                    Ethiopia='';
+                    Iran='';
+                    Iraq='',
+                    Russia='';
+                    TheArabic='';
+                    EdaHaredit='';
+                    Yemen='';
+                }
+                else if (origin=='העדה הערבית'){
+                    Ethiopia='';
+                    Iran='';
+                    Iraq='',
+                    Russia='';
+                    TheDruze='';
+                    EdaHaredit='';
+                    Yemen='';
+                }
+                else if (origin=='העדה החרדית'){
+                    Ethiopia='';
+                    Iran='';
+                    Iraq='',
+                    Russia='';
+                    TheDruze='';
+                    TheArabic='';
+                    Yemen='';
+                }
+                else if (origin=='תימן'){
+                    Ethiopia='';
+                    Iran='';
+                    Iraq='',
+                    Russia='';
+                    TheDruze='';
+                    TheArabic='';
+                    EdaHaredit='';
+                }
     
-            if(location=='צפון'){
-                South='';
-                center='';
-                Samaria='';
-                sharon='';
-                Jerusalem='';
+                location='';
+                volunteering='';
+                reservist='';
+                veteran='';
             }
 
-            else if(location=='דרום'){
-                north='';
-                center='';
-                Samaria='';
-                sharon='';
-                Jerusalem='';
+            if(choose=='התנדבות'){
+                origin='';
+                volunteering='';
+                reservist='';
+                veteran='';
             }
 
-            else if(location=='מרכז'){
-                South='';
-                north='';
-                Samaria='';
-                sharon='';
-                Jerusalem='';
-            }
-            else if(location=='שרון'){
-                South='';
-                center='';
-                Samaria='';
-                north='';
-                Jerusalem='';
+            if(choose=='חייל/ת מילואים'){
+                location='';
+                origin='';
+                volunteering='';
+                veteran='';
             }
 
-            else if(location=='שומרון'){
-                South='';
-                center='';
-                north='';
-                sharon='';
-                Jerusalem='';
-            }
-            else if(location=='ירושלים'){
-                South='';
-                center='';
-                Samaria='';
-                sharon='';
-                north='';
+            if(choose=='חייל/ת משוחרר/ת'){
+                location='';
+                origin='';
+                volunteering='';
+                reservist='';
             }
 
-            if(volunteering=='כן'){
-                noVolunteering='';
-            }
 
-            else if(volunteering=='לא'){
-                yesVolunteering='';
-            }
+            
+            
 
-            if(reservist=='כן'){
-                noReservist='';
-            }
+            // if(volunteering=='כן'){
+            //     noVolunteering='';
+            // }
 
-            else if(reservist=='לא'){
-                yesReservist='';
-            }
+            // else if(volunteering=='לא'){
+            //     yesVolunteering='';
+            // }
 
-            if(veteran=='כן'){
-                noVeteran='';
-            }
-            else if(veteran=='לא'){
-                yesVeteran='';
-            }
+            // if(reservist=='כן'){
+            //     noReservist='';
+            // }
+
+            // else if(reservist=='לא'){
+            //     yesReservist='';
+            // }
+
+            // if(veteran=='כן'){
+            //     noVeteran='';
+            // }
+            // else if(veteran=='לא'){
+            //     yesVeteran='';
+            // }
 
          
 
             scholarships.find({$and:[
+                    {$or: [{choose : location }, {choose : origin },{choose :volunteering },
+                    {choose : reservist },{choose : veteran}]},
                     { $or : [ { origin : Iraq }, { origin : Ethiopia },{ origin : Iran },{ origin : Russia },
-                    { origin : TheDruze },{ origin : TheArabic },{ origin : EdaHaredit },{ origin : Yemen }] },
-                    { $or : [ { location : north }, { location : South },
-                     { location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon } ] },
-                    { $or : [ { volunteering : noVolunteering }, { volunteering : yesVolunteering } ] },                   
-                    { $or : [ { reservist : noReservist }, { reservist : yesReservist } ] }, 
-                    { $or : [ { veteran : noVeteran }, { veteran : yesVeteran } ] }, 
+                     { origin : TheDruze },{ origin : TheArabic },{ origin : EdaHaredit },{ origin : Yemen }] },
+                    // { $or : [ { location : north }, { location : South },
+                    //  { location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon } ] },
+                    // { $or : [ { volunteering : noVolunteering }, { volunteering : yesVolunteering } ] },                   
+                    // { $or : [ { reservist : noReservist }, { reservist : yesReservist } ] }, 
+                    // { $or : [ { veteran : noVeteran }, { veteran : yesVeteran } ] }, 
                      
                 ]
  
