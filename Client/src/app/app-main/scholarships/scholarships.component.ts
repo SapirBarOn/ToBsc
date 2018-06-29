@@ -87,15 +87,21 @@ locations: string[] = [
     if(post.choose=="מיקום"){
       this.cLocation=true;
       this.cChoose=false;
+      post.origin=null;
     }
-    if(post.choose=="מוצא"){
+    else if(post.choose=="מוצא"){
       this.cOrigin=true;
       this.cChoose=false;
-
+      post.location=null;
     }
-    this.dataService.filterScholarships(post.choose,
+    else{
+      post.origin=null;
+      post.location=null;
+    }
+    this.dataService.filterScholarships(post.choose, post.origin, post.location,
                       result=>{
                 console.log(`response=${result}`);
+                console.log(result);
                 if(result) this.scholarships = result;
                 else  console.log('filter error');           
             })
