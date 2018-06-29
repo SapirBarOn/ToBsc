@@ -101,11 +101,14 @@ module.exports={
             subEngByUser.findOne({
             userID : req.body.userID
         }, (err,result)=>{
-            if(err || !result){
-                console.log ('error / not exsist');
+            if(err){
+                console.log ('error');
                 return res.status(500).json(`{error:${err}}`);
             }
-
+            else if(!result){
+                console.log ('not exsist');
+                return res.status(204).json(`Sub Eng not exsist!`);
+            }
             else{
                 console.log(`Exsist`);
                 return res.status(200).json(result);
