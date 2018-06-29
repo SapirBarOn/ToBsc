@@ -13,15 +13,15 @@ module.exports={
         return scholarships.find();
     },
 
-    filterScholarships(req,response){
+        filterScholarships(req,response){
         let choose=req.body.choose,
         // let location= req.body.location,
         //     origin= req.body.origin,
         //     volunteering= req.body.volunteering,
         //     reservist= req.body.reservist,//חייל מילואים
         //     veteran= req.body.veteran;//חייל משוחרר
-           location='מיקום',
-            origin='מוצא',
+           location=req.body.location,
+            origin=req.body.origin,
             volunteering='התנדבות',
             reservist='חייל/ת מילואים',
             veteran='חייל/ת משוחרר/ת',
@@ -93,12 +93,21 @@ module.exports={
                     north='';
                 }
                 origin='';
+                Iraq='',
+                Ethiopia='';
+                Iran='';
+                Russia='';
+                TheDruze='';
+                TheArabic='';
+                EdaHaredit='';
+                Yemen='';
                 volunteering='';
                 reservist='';
                 veteran='';
             }
 
-            if(choose=='מוצא'){
+            else if(choose=='מוצא'){
+
                 if (origin=='עיראק'){
                     Ethiopia='';
                     Iran='';
@@ -107,7 +116,7 @@ module.exports={
                     TheArabic='';
                     EdaHaredit='';
                     Yemen='';
-            }
+                }
                 else if (origin=='אתיופיה'){
                     Iraq='',
                     Iran='';
@@ -178,69 +187,60 @@ module.exports={
                 veteran='';
             }
 
-            if(choose=='התנדבות'){
+            else if(choose=='התנדבות'){
                 origin='';
+                Iraq='',
+                Ethiopia='';
+                Iran='';
+                Russia='';
+                TheDruze='';
+                TheArabic='';
+                EdaHaredit='';
+                Yemen='';
                 volunteering='';
                 reservist='';
                 veteran='';
             }
 
-            if(choose=='חייל/ת מילואים'){
+            else if(choose=='חייל/ת מילואים'){
                 location='';
                 origin='';
+                Iraq='',
+                Ethiopia='';
+                Iran='';
+                Russia='';
+                TheDruze='';
+                TheArabic='';
+                EdaHaredit='';
+                Yemen='';
                 volunteering='';
                 veteran='';
             }
 
-            if(choose=='חייל/ת משוחרר/ת'){
+            else if(choose=='חייל/ת משוחרר/ת'){
                 location='';
                 origin='';
+                Iraq='',
+                Ethiopia='';
+                Iran='';
+                Russia='';
+                TheDruze='';
+                TheArabic='';
+                EdaHaredit='';
+                Yemen='';
                 volunteering='';
                 reservist='';
             }
-
-
-            
-            
-
-            // if(volunteering=='כן'){
-            //     noVolunteering='';
-            // }
-
-            // else if(volunteering=='לא'){
-            //     yesVolunteering='';
-            // }
-
-            // if(reservist=='כן'){
-            //     noReservist='';
-            // }
-
-            // else if(reservist=='לא'){
-            //     yesReservist='';
-            // }
-
-            // if(veteran=='כן'){
-            //     noVeteran='';
-            // }
-            // else if(veteran=='לא'){
-            //     yesVeteran='';
-            // }
 
          
 
-            scholarships.find({$and:[
-                    {$or: [{choose : location }, {choose : origin },{choose :volunteering },
-                    {choose : reservist },{choose : veteran}]},
-                    { $or : [ { origin : Iraq }, { origin : Ethiopia },{ origin : Iran },{ origin : Russia },
-                     { origin : TheDruze },{ origin : TheArabic },{ origin : EdaHaredit },{ origin : Yemen }] },
-                    // { $or : [ { location : north }, { location : South },
-                    //  { location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon } ] },
-                    // { $or : [ { volunteering : noVolunteering }, { volunteering : yesVolunteering } ] },                   
-                    // { $or : [ { reservist : noReservist }, { reservist : yesReservist } ] }, 
-                    // { $or : [ { veteran : noVeteran }, { veteran : yesVeteran } ] }, 
-                     
-                ]
- 
+            scholarships.find({$or:   [{ $or : [ {choose : location },{ location : north }, { location : South },
+                                {location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon }]},
+                            {$or: [{choose : origin},{ origin : Iraq }, { origin : Ethiopia },{ origin : Iran },{ origin : Russia },
+                                {origin : TheDruze },{ origin : TheArabic},{ origin : EdaHaredit },{ origin : Yemen }]},
+                            {choose :volunteering },
+                            {choose : reservist },
+                            {choose : veteran}]
             },(err,result)=>{
                 if(err){
                     console.log ('filter error');
