@@ -2,10 +2,13 @@
 <img src="{{College.logo}}"> 
 <h1>{{College.headline}}</h1>
 <h5>כתובת: {{College.address}}</h5>
-<h5>טלפון: {{College.tel}}</h5>
-
-
-
+<h5>טלפון:
+<span itemprop="telephone">
+      <a href="tel:{{College.tel}}">
+         {{College.tel}}
+      </a>
+    </span>
+</h5>
 <div class="rating">
     <i *ngIf="!stars[4]" class="far fa-star" (click)="rate(5)"></i>
     <i *ngIf="stars[4]" class="fas fa-star" (click)="rate(5)"></i>

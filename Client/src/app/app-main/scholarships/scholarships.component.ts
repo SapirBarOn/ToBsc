@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DataService } from '../../data.service';
 import { Scholarships } from '../../model/Scholarships.model';
 import { FormGroup ,FormControl ,FormBuilder } from '@angular/forms';
@@ -18,7 +17,6 @@ scholarships:Scholarships[]=[];
 myform: FormGroup;
 cLocation:boolean=false;
 cOrigin:boolean=false;
-cChoose:boolean=true;
 locations: string[] = [
     'מרכז',
     'שרון',
@@ -38,20 +36,7 @@ locations: string[] = [
     'העדה החרדית',
     'תימן',
   ]
-  
-  // volunteering: string[] = [
-  //   'כן',
-  //   'לא',
-  // ]  
-
-  // reservist: string[] = [
-  //   'כן',
-  //   'לא',
-  // ] 
-  // veteran: string[] = [
-  //   'כן',
-  //   'לא',
-  // ] 
+ 
   choose: string[]=[
   'מיקום',
   'מוצא',
@@ -86,17 +71,19 @@ locations: string[] = [
   filter(post){
     if(post.choose=="מיקום"){
       this.cLocation=true;
-      this.cChoose=false;
+      this.cOrigin=false;
       post.origin=null;
     }
     else if(post.choose=="מוצא"){
       this.cOrigin=true;
-      this.cChoose=false;
+      this.cLocation=false;
       post.location=null;
     }
     else{
       post.origin=null;
       post.location=null;
+      this.cOrigin=false;
+      this.cLocation=false;
     }
     this.dataService.filterScholarships(post.choose, post.origin, post.location,
                       result=>{

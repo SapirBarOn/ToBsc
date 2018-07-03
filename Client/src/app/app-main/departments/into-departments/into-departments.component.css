@@ -14,8 +14,8 @@ h1{
 .data{
     text-align: right;
     border: 1px solid grey;
-   margin: 0 auto;
-    width: 800px;
+    margin: 0 auto;
+   /* width: 800px;*/
 }
 
 p{
@@ -25,4 +25,7 @@ p{
     font-size: 15px;
     font-weight: bold;
     text-align: right;
+}
+#subEng{
+    cursor: pointer;
 }

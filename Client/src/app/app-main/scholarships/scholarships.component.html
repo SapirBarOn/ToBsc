@@ -8,8 +8,8 @@
 
     <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
           
-          <select *ngIf="cChoose" class="form-control" formControlName="choose">
-            <option value="null" >בחר אופציה</option>
+          <select class="form-control" formControlName="choose">
+            <option value="null" >בחר סוג מלגה</option>
             <option *ngFor="let c of choose"
             [value]="c"> 
                    {{c}} 
@@ -17,7 +17,7 @@
         </select>
 
         <select *ngIf="cLocation" class="form-control" formControlName="location">
-            <option value="null" >מיקום</option>
+            <option value="null" >כל הארץ</option>
             <option *ngFor="let l of locations"
             [value]="l"> 
                    {{l}} 
@@ -25,47 +25,26 @@
         </select>
 
         <select *ngIf="cOrigin" class="form-control" formControlName="origin">
-            <option value="null" >מוצא</option>
+            <option value="null" >כל המוצאים</option>
             <option *ngFor="let o of origin"
               [value]="o"> 
               {{o}} 
              </option>
         </select>
 
-        <!-- <select class="form-control" formControlName="volunteering">
-            <option value="null" >התנדבות</option>
-            <option *ngFor="let v of volunteering"
-              [value]="v"> 
-              {{v}} 
-             </option>
-        </select>
-
-        <select class="form-control" formControlName="reservist">
-            <option value="null" >חייל/ת מילואים</option>
-            <option *ngFor="let r of reservist"
-              [value]="r"> 
-              {{r}} 
-             </option>
-        </select>
-
-        <select class="form-control" formControlName="veteran">
-            <option value="null" >חייל/ת משוחרר/ת</option>
-            <option *ngFor="let v of veteran"
-              [value]="v"> 
-              {{v}} 
-             </option>
-        </select> -->
-
         <input type="submit" class="btn btn-info" value="סינון" [disabled]="!myform.valid">
         
-    </form>
+    </form> 
 </div>
-
-<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
-  <section *ngFor="let s of scholarships" (click)="intoScholarships(s)" class="w3-image w3-margin-top" id="frame">
-          <section class="info">
-              <img src="{{s.img}}">  
-              <p class="name">{{s.name}}</p>         
-          </section>
-  </section>
+    
+<div id="wrapperLayout3">
+  <main id="mainLayout3">
+    <section *ngFor="let s of scholarships">
+      <section (click)="intoScholarships(s)">
+        <img src="{{s.img}}">   
+        <p class="name">{{s.name}}</p>
+      </section>
+    </section>
+  </main>
 </div>
+  

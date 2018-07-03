@@ -1,7 +1,7 @@
 <img src="{{Departments.logo}}"> 
 <h1>{{Departments.hebName}}</h1>
 <div class="data">
-    <span>תיאור ההנדסה:</span>
+    <span>תיאור התחום:</span>
     <p>{{Departments.description}}</p>
     <span>תנאי קבלה:</span>
     <p>{{Departments.requirements}}</p>
@@ -9,7 +9,9 @@
     <p>{{Departments.subjects}}</p>
     <span>שכר התחלתי:</span>
     <p>{{Departments.lowSalary}}</p>
-    <span>שכר ניסיון:</span>
+    <span>שכר לבעלי ניסיון:</span>
     <p>{{Departments.highSalary}}</p>
+    <span>מוסדות שמלמדים תחום זה:</span>
+    <p id="subEng" (click)="openColleges(s)" *ngFor="let s of arraySubEng">{{s}}</p>
 </div> 
 <button (click)="goBack()">Go Back</button>

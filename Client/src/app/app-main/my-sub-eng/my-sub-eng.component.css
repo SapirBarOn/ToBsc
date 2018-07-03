@@ -1,0 +1,20 @@
+#mySubEng{
+  min-height: 350px;
+  width: 350px;
+  border:2px solid #d3d3d3;
+  background-color: #f9f9f9;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px; 
+ 
+}
+h2{
+  font-size: 20px;
+  font-family: arial;
+  text-align: center;
+  font-weight: bold;
+}
+p{
+    text-align: center;
+    cursor: pointer;
+}

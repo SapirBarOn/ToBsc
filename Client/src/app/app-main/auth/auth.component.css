@@ -1,6 +1,6 @@
 #auth{
   height: 350px;
-  width: 600px;
+  width: 350px;
   border:2px solid #d3d3d3;
   background-color: #f9f9f9;
   display: block;
@@ -12,12 +12,13 @@
 h2{
   font-size: 20px;
   font-family: arial;
-  margin-left: -50%;
+  margin-left: 5%;
+  margin-top: -7%;
 }
 
 form{
   float: right;
-  padding-right: 20%;
+  padding-right: 5%;
   padding-top: 5%;
 }
 
@@ -27,6 +28,7 @@ input {
   display:block;
   border: 1px solid #ccc;
   border-radius: 4px;
+  width: 75%;
 }
 .email{
   direction: ltr;
@@ -36,8 +38,8 @@ input {
 }
 form+form{
   float: left;
-  padding-left:15%;
-  margin-top: -35%;
+  padding-left:3%;
+  margin-top: -65%;
   /*padding-bottom: 50%;*/
 }
 select{
@@ -60,8 +62,8 @@ button{
     color:#ffffff;
     font-size: 17px;
     cursor: pointer;
-    margin-top:-5%;
-    margin-right:68%;
+    margin-top:1%;
+    margin-right:40%;
 }
 
 button:hover{

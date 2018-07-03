@@ -1,0 +1,44 @@
+#myFavorite{
+  min-height: 350px;
+  width: 400px;
+  border:2px solid #d3d3d3;
+  background-color: #f9f9f9;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px; 
+ 
+}
+h2{
+  font-size: 20px;
+  font-family: arial;
+  text-align: center;
+  font-weight: bold;
+}
+p{
+    text-align: center;
+    cursor: pointer;
+}
+.info{
+    cursor: pointer;
+    width:250px;
+    height:120px;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 3%;
+}
+
+.info img{
+    padding-bottom: 5px;
+    margin-left: 5%;
+    width: 150px;
+    height: 50px;
+}
+
+.info p{
+   margin-right: 10%;
+}
+
+.info span{
+    font-weight: bold;
+}

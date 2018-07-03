@@ -1,0 +1,12 @@
+  <div id="myFavorite">
+      <h2>מוסדות מועדפים:</h2>
+     <!--  <p (click)="openColleges(i)" *ngFor="let i of favoriteColleges">{{i}}</p> -->
+      <div id="frame">
+          <section  *ngFor="let c of myCollges" class="info">
+                   <button (click)="openColleges(c.hebName)">למידע נוסף</button>
+                  <img src="{{c.logo}}">   
+                  <p class="address"><span>כתובת:</span> {{c.address}}</p>
+                  <p class="tel"><span>טל':</span> {{c.tel}}</p>        
+         </section>
+       </div> 
+  </div>
