@@ -43,6 +43,9 @@ import { IntoCollegeComponent } from './app-main/colleges/into-college/into-coll
 import { IntoDepartmentsComponent } from './app-main/departments/into-departments/into-departments.component';
 import { ScholarshipsComponent } from './app-main/scholarships/scholarships.component';
 import { IntoScholarshipsComponent } from './app-main/scholarships/into-scholarships/into-scholarships.component';
+import { MyProfileComponent } from './app-main/my-profile/my-profile.component';
+import { MyFavoriteComponent } from './app-main/my-favorite/my-favorite.component';
+import { MySubEngComponent } from './app-main/my-sub-eng/my-sub-eng.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -78,7 +81,9 @@ const appRoutes: Routes = [
   {path: 'intoDepartments', component: IntoDepartmentsComponent},
   {path: 'scholarships',component:ScholarshipsComponent},
   {path: 'intoScholarships',component:IntoScholarshipsComponent},
-
+  {path: 'myProfile',component:MyProfileComponent},
+  {path: 'myFavorite',component:MyFavoriteComponent},
+  {path: 'mySubEng',component:MySubEngComponent},
 ];
 
 @NgModule({
@@ -102,6 +107,9 @@ const appRoutes: Routes = [
     IntoDepartmentsComponent,
     ScholarshipsComponent,
     IntoScholarshipsComponent,
+    MyProfileComponent,
+    MyFavoriteComponent,
+    MySubEngComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

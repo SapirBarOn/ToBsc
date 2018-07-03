@@ -2,4 +2,8 @@ div{
     height: 50px;
     background: #FFFFFF;
 }
-
+p{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 1%;
+}

@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { User } from '../model/user.model';
 import { CurrentUser } from '../app-shared/current-user';
 import { Router } from '@angular/router';
+declare var $:any;
 
 
 @Component({
@@ -23,6 +24,11 @@ export class AppHeaderComponent implements OnInit{
     this.dataService.myMethod$.subscribe((data) => {
       this.user = data; 
     });
+
+  $("#myNav").hide();
+     $("#hamburger button").click(function(){  
+       $("#myNav").slideToggle("fast");
+    }); 
   }
 
 
