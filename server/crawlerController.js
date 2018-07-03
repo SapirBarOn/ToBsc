@@ -1134,7 +1134,11 @@ exports.getDepartmentsData = function(req, res){
 
                     // set college details
                     newDepartment.hebName = data.name[0].split("תואר ראשון ב").join("");
-                    newDepartment.description = data.description[0];
+                    newDepartment.description = data.description[0].split("למידע נוסף על תנאי הקבלה לתואר ראשון בהנדסת תעשייה וניהול לחצו כאן").join("")
+                    .split("למידע נוסף על תנאי הקבלה ללימודי תואר ראשון בהנדסת מכונות לחצו כאן").join("")
+                    .split("למידע על תנאי הקבלה לתואר ראשון בהנדסת תוכנה לחצו כאן").join("")
+                    .split("למידע על תנאי הקבלה לתואר ראשון בהנדסה אזרחית לחצו כאן.").join("")
+                    .split("למידע על תנאי הקבלה ללימודי תואר ראשון בהנדסה כימית, לחצו כאן").join("");
 
                     // set requirements offset by department
                     let requireOffset = 7;
