@@ -13,13 +13,8 @@ module.exports={
         return scholarships.find();
     },
 
-        filterScholarships(req,response){
+    filterScholarships(req,response){
         let choose=req.body.choose,
-        // let location= req.body.location,
-        //     origin= req.body.origin,
-        //     volunteering= req.body.volunteering,
-        //     reservist= req.body.reservist,//חייל מילואים
-        //     veteran= req.body.veteran;//חייל משוחרר
            location=req.body.location,
             origin=req.body.origin,
             volunteering='התנדבות',
@@ -39,12 +34,6 @@ module.exports={
             Samaria='שומרון',
             sharon='שרון',
             Jerusalem='ירושלים';
-            // yesReservist='כן'
-            // noReservist='לא',
-            // yesVeteran='כן',
-            // noVeteran='לא',
-            // yesVolunteering='כן',
-            // noVolunteering='לא'
 
             if(choose=='מיקום'){
                 if(location=='צפון'){
@@ -107,7 +96,6 @@ module.exports={
             }
 
             else if(choose=='מוצא'){
-
                 if (origin=='עיראק'){
                     Ethiopia='';
                     Iran='';
@@ -180,7 +168,13 @@ module.exports={
                     TheArabic='';
                     EdaHaredit='';
                 }
-    
+                
+                Jerusalem='ירושלים';
+                South='';
+                center='';
+                Samaria='';
+                sharon='';
+                north='';
                 location='';
                 volunteering='';
                 reservist='';
@@ -197,12 +191,24 @@ module.exports={
                 TheArabic='';
                 EdaHaredit='';
                 Yemen='';
-                volunteering='';
+                Jerusalem='ירושלים';
+                South='';
+                center='';
+                Samaria='';
+                sharon='';
+                north='';
+                location='';
                 reservist='';
                 veteran='';
             }
 
             else if(choose=='חייל/ת מילואים'){
+                Jerusalem='ירושלים';
+                South='';
+                center='';
+                Samaria='';
+                sharon='';
+                north='';
                 location='';
                 origin='';
                 Iraq='',
@@ -234,24 +240,22 @@ module.exports={
 
          
 
-            scholarships.find({$or:   [{ $or : [ {choose : location },{ location : north }, { location : South },
+        scholarships.find({$or:   [{ $or : [ {choose : location },{ location : north }, { location : South },
                                 {location : center }, { location : Jerusalem }, { location : Samaria }, { location : sharon }]},
-                            {$or: [{choose : origin},{ origin : Iraq }, { origin : Ethiopia },{ origin : Iran },{ origin : Russia },
+                                {$or: [{choose : origin},{ origin : Iraq }, { origin : Ethiopia },{ origin : Iran },{ origin : Russia },
                                 {origin : TheDruze },{ origin : TheArabic},{ origin : EdaHaredit },{ origin : Yemen }]},
-                            {choose :volunteering },
-                            {choose : reservist },
-                            {choose : veteran}]
-            },(err,result)=>{
-                if(err){
-                    console.log ('filter error');
-                }
+                                {choose :volunteering },
+                                {choose : reservist },
+                                {choose : veteran}]
+                          },(err,result)=>{
+                    if(err){
+                        console.log ('filter error');
+                    }else{
+                        console.log(`filter done`);
+                        return response.status(200).json(result);
+                    }
 
-                
-                else  {
-                    console.log(`filter done`);
-                    return response.status(200).json(result);
-                }
-
-            });
-        }
+                    }
+        );
+    }
 }
