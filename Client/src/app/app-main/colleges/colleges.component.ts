@@ -114,7 +114,7 @@ export class CollegesComponent implements OnInit {
     this.dataService.getAllColleges((result) =>{
         this.colleges=result;
         //this.distance(result);
-
+    //document.getElementById("probability").style.visibility='hidden';
     this.userID=this.currentUserService.getCurrentUser()._id;
 
     this.dataService.getFavoriteUserId(this.userID,result=>{
@@ -122,7 +122,7 @@ export class CollegesComponent implements OnInit {
                   this.favoriteColleges= result.liked;
                   this.setFavoriteColleges();
                 }
-                else  console.log('error');           
+                else  console.log('No favorites');           
             });
     });
 
@@ -132,7 +132,7 @@ export class CollegesComponent implements OnInit {
   setFavoriteColleges(){
     for(let i=0; i<this.favoriteColleges.length; i++){
       for(let j=0; j<this.colleges.length; j++){
-        console.log(this.favoriteColleges[i],this.colleges[j].hebName);
+        //console.log(this.favoriteColleges[i],this.colleges[j].hebName);
         if(this.favoriteColleges[i] == this.colleges[j].hebName){
             this.colleges[j].liked=true;
         }
@@ -192,6 +192,11 @@ showPosition(position,result) {
 
 
   filter(post){
+
+    if (post.psychometricGrade!= null || post.mathGrade!= null || post.engGrades!=null || post.physicsGrade!= null ){
+      console.log('יש תנאי קבלה');
+      document.getElementById("probability").style.visibility='visible';
+    }
     this.dataService.filterColleges(post.location,
                         post.subEng,
                         post.dorms,

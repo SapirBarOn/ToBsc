@@ -85,6 +85,7 @@ locations: string[] = [
       this.cOrigin=false;
       this.cLocation=false;
     }
+    console.log(post.location);
     this.dataService.filterScholarships(post.choose, post.origin, post.location,
                       result=>{
                 console.log(`response=${result}`);

@@ -82,7 +82,7 @@ getAllScholarships(callback: Function) {
                    location:string,
                    callback: Function){
     this.http.post('http://localhost:3000/filterScholarships',
-    {'choose':choose,'origin':origin})
+    {'choose':choose,'origin':origin, 'location':location})
     .subscribe(
       (res: Response ) => {
         callback(res.json());

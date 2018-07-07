@@ -28,8 +28,8 @@ export class IntoCollegeComponent implements OnInit {
               private currentUserService:CurrentUser ) { }
 
   ngOnInit() {
-      this.userID=this.currentUserService.getCurrentUser()._id;
-
+      //this.userID=this.currentUserService.getCurrentUser()._id;
+      this.userID='5b180bf36c2cba0c844c4920';
       this.College = this.currentCollegeService.getCurrentColleges();
       console.log("ngOnInit->intoCollege");
       console.log(this.College);

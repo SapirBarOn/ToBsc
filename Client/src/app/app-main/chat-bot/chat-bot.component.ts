@@ -344,6 +344,20 @@ getQuestionByDiff(){
      },2000);
       },1000);
     }
+//get urls to subeng and colleges
+     //  this.timer = setTimeout(() => {
+     //    this.resultAfterTyping = new Message (this.typing);
+     //      this.messages.push(this.resultAfterTyping)
+     //        $('html, #chat').animate({
+     //          scrollTop: $("#chat").offset().top+ '120px'
+     //        }, 10);
+     //    this.timer = setTimeout(() => {
+     //   this.messages.pop();
+     //   this.messages.push(new Message('לקבלת מידע אודות '+OneSub+ 'לחץ כאן'+
+     //    '.\n לקבלת מידע אודות '+TwoSub+'לחץ כאן.\nולקבלת מידע אודות '+
+     //    ThreeSub+'\n לחץ כאן.\n לקבלת מידע אודות מוסדות הלימוד לתואר בהנדסה, לחץ כאן.'));
+     // },2000);
+     //  },1000);
   }
 
   checkIfAsked(questionID){

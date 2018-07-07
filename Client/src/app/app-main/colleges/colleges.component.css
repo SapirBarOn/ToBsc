@@ -3,6 +3,11 @@
     margin-top: 5%; 
 }
 
+
+#probability{
+  visibility: hidden;
+}
+
 agm-map {
   height: 500px;
   width: 480px;

@@ -42,3 +42,8 @@ p{
     cursor: pointer;
     color: orange;    
 }
+
+.more>p{
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
