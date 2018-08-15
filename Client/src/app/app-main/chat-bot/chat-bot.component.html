@@ -12,7 +12,7 @@
              <div *ngIf="showP2">
                <p> אני אשאל אותך מספר שאלות</p> 
               </div>
-              <div *ngFor = "let mg of messages;let evenMess=even ; let oddMess=odd ;" [ngClass]="{odd:oddMess,even:evenMess}">
+              <div *ngFor = "let mg of messages;let evenMess=even ; let oddMess=odd  ; let last=last ;" [ngClass]="{odd:oddMess,even:evenMess,last:last}">
                 {{mg.content}}
                 <div *ngIf="evenMess">
                     <div class="arrow-right"></div>
@@ -23,6 +23,11 @@
                    <img class="userImg" src="../../../assets/images/User_Avatar.png">
                </div>
              </div> 
+             <div class="messagesResult" *ngFor ="let mg of messageResult"> 
+             {{mg.content}}
+                <div class="arrow-right"></div>
+                <img class="psychImg1" src="../../../assets/images/avatar-psychologist.png">
+             </div>
   </section>
   <section class="w3-image w3-margin-top" id="answer">
                 <div class="select" *ngFor="let s of selects;let i=index; let first = first; let last = last ;" [ngClass]="{first:first,last:last}"> 

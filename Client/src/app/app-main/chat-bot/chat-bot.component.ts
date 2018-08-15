@@ -43,6 +43,8 @@ myLocationLat:number;
 myLocationLong:number;
 
 messages:Message []=[];
+messages1:Message[]=[];
+messageResult:Message[]=[];
 result;
 questionNum:number=1;
 messageToCheak:string [];
@@ -62,7 +64,6 @@ selects = [
      ];
 showP1:boolean=false;
 showP2:boolean=false;
-
   constructor(private dataService : DataService,private currentUserService : CurrentUser, private router: Router) {  
    }
 
@@ -130,6 +131,7 @@ showP2:boolean=false;
           console.log('Management',this.questionsForManagement);
           this.questionsForMachine.sort(function(a, b){return a.Wmachine - b.Wmachine});
           console.log('Machine',this.questionsForMachine);
+          $('.select button').css('visibility','hidden');
            this.timer = setTimeout(() => {
               this.showP1=true;
         },1000);
@@ -341,23 +343,35 @@ getQuestionByDiff(){
        this.messages.push(new Message('משיחתי איתך נראה כי התחום המתאים לך ביותר הוא '+OneSub+
         '.\n כעדיפות שנייה התחום המתאים לך הוא '+TwoSub+'.\nוכעדיפות שלישית ניתן לראות שתחום '+
         ThreeSub+'\n מתאים לך.'));
+
      },2000);
-      },1000);
-    }
-//get urls to subeng and colleges
-     //  this.timer = setTimeout(() => {
-     //    this.resultAfterTyping = new Message (this.typing);
-     //      this.messages.push(this.resultAfterTyping)
-     //        $('html, #chat').animate({
-     //          scrollTop: $("#chat").offset().top+ '120px'
-     //        }, 10);
      //    this.timer = setTimeout(() => {
      //   this.messages.pop();
-     //   this.messages.push(new Message('לקבלת מידע אודות '+OneSub+ 'לחץ כאן'+
-     //    '.\n לקבלת מידע אודות '+TwoSub+'לחץ כאן.\nולקבלת מידע אודות '+
-     //    ThreeSub+'\n לחץ כאן.\n לקבלת מידע אודות מוסדות הלימוד לתואר בהנדסה, לחץ כאן.'));
+     //   this.messages.push(new Message('hjkgfhjghfjgfj'));
      // },2000);
-     //  },1000);
+      },1000);
+    }
+
+//get urls to subeng and colleges
+      this.timer = setTimeout(() => {
+       //  var number=this.messages.length;
+       // console.log(number);
+       //  if((number+1)%2==0){
+       //  this.messages.length++;
+       //    }
+       //   console.log(this.messages.length);
+        this.resultAfterTyping = new Message (this.typing);
+          this.messageResult.push(this.resultAfterTyping)
+            $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '120px'
+            }, 10);
+        this.timer = setTimeout(() => {
+       this.messageResult.pop();
+       this.messageResult.push(new Message('לקבלת מידע אודות '+OneSub+ 'לחץ כאן'+
+        '.\n לקבלת מידע אודות '+TwoSub+'לחץ כאן.\nולקבלת מידע אודות '+
+        ThreeSub+'\n לחץ כאן.\n לקבלת מידע אודות מוסדות הלימוד לתואר בהנדסה, לחץ כאן.'));
+     },2000);
+      },5000);
   }
 
   checkIfAsked(questionID){
