@@ -4,8 +4,14 @@
 }
 
 
-#probability{
-  visibility: hidden;
+.probability{
+  padding-left: 3.5%;
+  width: 25%;
+  height: 12%;
+  background-color: #f0f0f0;
+  margin-right: 70%;
+  border: solid 2px #ffc107;
+  border-radius: 45%;
 }
 
 agm-map {
@@ -14,11 +20,13 @@ agm-map {
 }
 
 #getMap{
-    margin-left: 100px;
-    width: 10%;
-    height: 30px;
-    color: #ffffff;
-    text-align: center;
+  width: 8%;
+  height: 50%;
+  color: #ffffff;
+  text-align: center;
+  float: right;
+  margin-right: 5%;
+   margin-top: 1%;
 }
 
 select{
@@ -28,15 +36,18 @@ select{
 }
 
 #userLocation{
-    margin-right: 10px;
-    width: 8%;
-    margin-top: -3px;
-    margin-left: 3px;
+  float: right;
+  margin-right: 19%;
+  width: 10%;
+  margin-top: 0.1%;
+  background-color: #ffff;
+  border-color: #6c6e70;
+  color: #6c6e70;
 }
 
 .btn{
     background: #84b4a7;
-    margin-right: 10px;
+    margin-right: 10%;
     border: #84b4a7;
     width: 50px;
     height: 30px;
@@ -55,9 +66,11 @@ select{
 }
 
 #Extend{
-    width: 10%;
-    margin-top: -5%;
-    margin-left: -2.5%;
+  width: 10%;
+  background-color: #ffc107;
+  margin-right: 0;
+  margin-top: 0;
+  margin-left: 85%;
 }
 
 #ExtendedFilter{
@@ -121,6 +134,7 @@ select{
     font-size: 30px;
    /* margin-left:10%;*/
     cursor: pointer;
+    color: #e94937;
 }
 
 .rate{

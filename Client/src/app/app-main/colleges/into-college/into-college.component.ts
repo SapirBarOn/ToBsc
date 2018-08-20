@@ -33,6 +33,7 @@ export class IntoCollegeComponent implements OnInit {
       this.College = this.currentCollegeService.getCurrentColleges();
       console.log("ngOnInit->intoCollege");
       console.log(this.College);
+      console.log(this.College.averageRents[0].averagePrice);
 
        $(document).ready(function() {
     // Configure/customize these variables.
@@ -75,10 +76,10 @@ export class IntoCollegeComponent implements OnInit {
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["ממוצע היום", "ממוצע אתמול", "ממוצע לפני יומיים", "ממוצע לפני 3 ימים", "ממוצע לפני 4 ימים", "ממוצע לפני 5 ימים"],
+        labels: [this.College.averageRents[0].date,this.College.averageRents[1].date,this.College.averageRents[2].date, this.College.averageRents[3].date,this.College.averageRents[4].date,this.College.averageRents[5].date],
         datasets: [{
             label: 'שכירות ממוצעת באזור מוסד הלימוד',
-            data: [3200, 4100, 3900, 3800, 3400, 3600],
+            data: [this.College.averageRents[0].averagePrice, this.College.averageRents[1].averagePrice, this.College.averageRents[2].averagePrice, this.College.averageRents[3].averagePrice, this.College.averageRents[4].averagePrice, this.College.averageRents[5].averagePrice],
             backgroundColor: [
                 // 'rgba(255, 99, 132, 0.2)',
                 // 'rgba(54, 162, 235, 0.2)',

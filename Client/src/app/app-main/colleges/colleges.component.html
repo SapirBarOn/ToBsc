@@ -5,11 +5,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div id="filter">
-
+   <button class="btn btn-info" id="userLocation" (click)="getUserLocation(this.colleges)" >מיקום נוכחי</button>
     <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
     
-        <button class="btn btn-info" id="userLocation" onclick="getUserLocation()">מיקום נוכחי</button>
-
         <select class="form-control" formControlName="location">
             <option value="null" >מיקום</option>
             <option *ngFor="let l of locations"
@@ -50,14 +48,12 @@
              </option>
         </select>
 
-        <input type="submit" class="btn btn-info" value="סינון" [disabled]="!myform.valid">
+        <input type="submit" class="btn btn-info" value="חפש" [disabled]="!myform.valid">
 
+        <button class="btn btn-info" id="Extend" (click)="ExtendedFilter()" >חפש לפי תנאי קבלה</button>
         <button id="getMap" (click)="openMap(mapModal)" type="button" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-map-marker"></span> מוסדות במפה
         </button>
-
-        <button class="btn btn-info" id="Extend" (click)="ExtendedFilter()" >סינון מורחב</button>
-
       <div id="ExtendedFilter" *ngIf="extend">
 
 <!--         <div id="ExtendedFilter">
@@ -109,6 +105,7 @@
           <input id="grade" class="form-control" type="number" name="quantity" min="0" max="100" placeholder="ציון" formControlName="physicsGrade">
       </div>
 
+
     </form>
 </div>
 
@@ -125,7 +122,10 @@
               <span *ngIf="!c.liked" class="glyphicon glyphicon-heart-empty"></span>
               <span *ngIf="c.liked" class="glyphicon glyphicon-heart"></span>
           </section>
-          <section class="probability">
+          <section class="KM" *ngIf="showKM">
+             <p>מרחק ממקומך : {{c.distanceKM}} ק"מ</p> 
+          </section>
+          <section class="probability" *ngIf="showProbability">
              <p id="probability"><span>סיכויי קבלה:</span> {{c.userProbability}}%</p> 
           </section>
 

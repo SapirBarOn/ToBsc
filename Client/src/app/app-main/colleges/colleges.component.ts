@@ -15,15 +15,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./colleges.component.css']
 })
 export class CollegesComponent implements OnInit {
-
-
   colleges:Colleges[]=[];
   DistanceFromMe:Colleges[]=[];
   myform: FormGroup;
   cChoosed:Colleges;
+  flag:boolean=false;
   myLocationLat:number;
   myLocationLong:number;
   extend:boolean=false;
+  showProbability:boolean=false;
+  showKM:boolean=false;
   userID:string;
   checkLike:boolean;
   favoriteColleges:string[]=[];
@@ -141,48 +142,66 @@ export class CollegesComponent implements OnInit {
 
   }
 
-  getUserLocation(result) {
+  getUserLocation(colleges){
+    this.flag=true;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.showPosition(position,result);
+            this.showKM=true;
+        this.showPosition(position,colleges)
+      },(Error)=>{
+         this.showError(Error); 
       });
-    } else {
-      alert("Geolocation is not supported by this browser.");
     }
   }
 
 
-showPosition(position,result) {
+  showPosition(position,colleges) {
+    //this.showKM=true;
     this.myLocationLat = position.coords.latitude;
     this.myLocationLong = position.coords.longitude;
     console.log("myLocationLat",this.myLocationLat);
     console.log("myLocationLong",this.myLocationLong);
-    this.distance(result);
+    var a:number[]=[]
+    var p = 0.017453292519943295;    // Math.PI / 180
+    var c = Math.cos;
+    this.dataService.getAllColleges((result) =>{
+    this.DistanceFromMe=result;
+    this.colleges=result;
+
+      for(let i=0;i<this.DistanceFromMe.length;i++){
+        a.push( 0.5 - c((this.DistanceFromMe[i].latitude - position.coords.latitude) * p)/2 +
+          c(this.myLocationLat * p) * c(this.DistanceFromMe[i].latitude * p) * 
+          (1 - c((this.DistanceFromMe[i].longitude - position.coords.longitude) * p))/2)
+      }
+      for(let j=0;j<this.DistanceFromMe.length;j++){
+        this.DistanceFromMe[j].distanceKM=12742 * Math.asin(Math.sqrt(a[j]));
+        //this.colleges[j].distanceKM=Math.round(this.DistanceFromMe[j].distanceKM);
+        colleges[j].distanceKM=Math.round(this.DistanceFromMe[j].distanceKM);
+        //this.colleges[j].distanceKM.toFixed(2);
+      }
+
+    // this.DistanceFromMe.sort(function(a, b){return a.distanceKM - b.distanceKM});
+    // console.log('colleges by distance',this.DistanceFromMe);
+    //    this.colleges=this.DistanceFromMe;
+    });
   }
 
 
-
-    distance(result){
-      var a:number[]=[]
-      var x:Colleges[]=[]
-      var p = 0.017453292519943295;    // Math.PI / 180
-      var c = Math.cos;
-
-      for(let i=0;i<result.length;i++){
-        a.push( 0.5 - c((result[i].latitude - this.myLocationLat) * p)/2 + 
-              c(this.myLocationLat * p) * c(result[i].latitude * p) * 
-              (1 - c((result[i].longitude - this.myLocationLong) * p))/2)
+  showError(error) {
+      switch(error.code) {
+          case error.PERMISSION_DENIED:
+              console.log("User denied the request for Geolocation.");
+              break;
+          case error.POSITION_UNAVAILABLE:
+              console.log("Location information is unavailable.");
+              break;
+          case error.TIMEOUT:
+              console.log("The request to get user location timed out.");
+              break;
+          case error.UNKNOWN_ERROR:
+              console.log("An unknown error occurred.");
+              break;
       }
-
-      for(let j=0;j<result.length;j++){
-        result[j].distanceKM=12742 * Math.asin(Math.sqrt(a[j]));
-        this.DistanceFromMe.push(result[j]);
-        //x.push(new Subject(result[j].hebName,12742 * Math.asin(Math.sqrt(a[j]))))
-      }
-
-     this.DistanceFromMe.sort(function(a, b){return a.distanceKM - b.distanceKM});
-     console.log('colleges by distance',this.DistanceFromMe);
-     this.colleges=this.DistanceFromMe;
   }
 
   openMap(content) {
@@ -192,72 +211,75 @@ showPosition(position,result) {
 
 
   filter(post){
-
-    if (post.psychometricGrade!= null || post.mathGrade!= null || post.engGrades!=null || post.physicsGrade!= null ){
-      console.log('יש תנאי קבלה');
-      document.getElementById("probability").style.visibility='visible';
-    }
+    console.log('filterrr')
     this.dataService.filterColleges(post.location,
                         post.subEng,
                         post.dorms,
                         post.salary,
                         post.institute,result=>{
                 console.log(`response=${result}`);
-                if(result){
-                  this.colleges = result;
-                  this.setFavoriteColleges();
-                  for (let c=0; c<this.colleges.length; c++){
-                    let psychometryPercent= post.psychometricGrade/this.colleges[c].psychometry;
-                    if (psychometryPercent>1) psychometryPercent=1;
-                    
-                    let mathPercent=0;
-                    for(let m=0;m<this.colleges[c].mathGrades.length;m++){
-                      if(this.colleges[c].mathGrades[m].units==0){
-                        mathPercent=1;
-                      }
-                      else{
-                        if(post.mathUnits==this.colleges[c].mathGrades[m].units){
-                          mathPercent=post.mathGrade/this.colleges[c].mathGrades[m].grade;
+    if(result){
+      this.colleges = result;
+      this.setFavoriteColleges();
+
+      if (post.psychometricGrade!= null || post.mathGrade!= null || post.engGrades!=null || post.physicsGrade!= null ){
+        console.log('יש תנאי קבלה');
+        this.showProbability=true;
+
+                    for (let c=0; c<this.colleges.length; c++){
+                      let psychometryPercent= post.psychometricGrade/this.colleges[c].psychometry;
+                      //console.log(this.colleges[c].averageRents[0].averagePrice);
+                      if (psychometryPercent>1) psychometryPercent=1;
+                      
+                      let mathPercent=0;
+                      for(let m=0;m<this.colleges[c].mathGrades.length;m++){
+                        if(this.colleges[c].mathGrades[m].units==0){
+                          mathPercent=1;
+                        }
+                        else{
+                          if(post.mathUnits==this.colleges[c].mathGrades[m].units){
+                            mathPercent=post.mathGrade/this.colleges[c].mathGrades[m].grade;
+                          }
                         }
                       }
-                    }
 
-                    let engPercent=0;
-                    for(let e=0; e<this.colleges[c].engGrades.length; e++){
-                      if(this.colleges[c].engGrades[e].units==0){
-                        engPercent=1;
-                      }
-                      else{
-                        if(post.englishUnits==this.colleges[c].engGrades[e].units){
-                          engPercent=post.englishGrade/this.colleges[c].engGrades[e].grade;
-                        }                        
-                      }
-                    }
-
-                    let physPercent=0;
-                    for(let p=0; p<this.colleges[c].physicsGrades.length; p++){
-                      if(this.colleges[c].physicsGrades[p].units==0){
-                        physPercent=1;
-                      }
-                      else{
-                        if(post.physicsUnits==this.colleges[c].physicsGrades[p].units){
-                          physPercent=post.physicsGrade/this.colleges[c].physicsGrades[p].grade;
+                      let engPercent=0;
+                      for(let e=0; e<this.colleges[c].engGrades.length; e++){
+                        if(this.colleges[c].engGrades[e].units==0){
+                          engPercent=1;
+                        }
+                        else{
+                          if(post.englishUnits==this.colleges[c].engGrades[e].units){
+                            engPercent=post.englishGrade/this.colleges[c].engGrades[e].grade;
+                          }                        
                         }
                       }
-                    }
-                    console.log(psychometryPercent,mathPercent,engPercent,physPercent)
-                    this.colleges[c].userProbability=0.25*psychometryPercent+0.25*mathPercent+0.25*engPercent+0.25*physPercent;
-                    if(this.colleges[c].userProbability>1){
-                      this.colleges[c].userProbability=0.99
-                    }
-                    this.colleges[c].userProbability=Math.round(this.colleges[c].userProbability*100);
-                    //this.colleges[c].userProbability.toFixed(2);
-                    console.log(this.colleges[c].hebName,this.colleges[c].userProbability) 
-                  }  
-                } 
-                else  console.log('filter error');           
+
+                      let physPercent=0;
+                      for(let p=0; p<this.colleges[c].physicsGrades.length; p++){
+                        if(this.colleges[c].physicsGrades[p].units==0){
+                          physPercent=1;
+                        }
+                        else{
+                          if(post.physicsUnits==this.colleges[c].physicsGrades[p].units){
+                            physPercent=post.physicsGrade/this.colleges[c].physicsGrades[p].grade;
+                          }
+                        }
+                      }
+                      console.log(psychometryPercent,mathPercent,engPercent,physPercent)
+                      this.colleges[c].userProbability=0.25*psychometryPercent+0.25*mathPercent+0.25*engPercent+0.25*physPercent;
+                      if(this.colleges[c].userProbability>1){
+                        this.colleges[c].userProbability=0.99
+                      }
+                      this.colleges[c].userProbability=Math.round(this.colleges[c].userProbability*100);
+                      console.log(this.colleges[c].hebName,this.colleges[c].userProbability) 
+                    }  
+                  }
+                else  console.log('אין תנאי קבלה');
+         if(this.showKM=true) this.getUserLocation(this.colleges);  
+      }         
             })
-  };
+  }
 
   intoCollege(c) {
       this.cChoosed=c;
@@ -268,8 +290,15 @@ showPosition(position,result) {
   }
 
   ExtendedFilter(){
-    if(this.extend == false) this.extend=true;
-    else this.extend=false;
+    if(this.extend == false){
+      this.extend=true;
+
+      //document.getElementById("probability").style.visibility='visible';
+    }else{
+      //document.getElementById("probability").style.visibility='hidden';
+      this.extend=false;
+      this.showProbability=false;
+    } 
   }
 
   liked(c){
