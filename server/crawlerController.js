@@ -1,6 +1,4 @@
-
-
-    // npm Initialize
+// npm Initialize
 var mongoose = require('mongoose');
 var scrapy = require('node-scrapy');
 var dateFormat = require('dateformat');
@@ -21,72 +19,77 @@ exports.getCollegesData = function(req, res){
             "id": "1019560",
             "name": "shankar-school-of-engineering",
             "url": "https://limudim.psychometry.co.il/shenkar/shenkar_requirements.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&sp2=51&sp3=191&college=61"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?campus_distance=1&college=61"
         },{
             "id": "34969730",
             "name": "afeka-engineering-college",
             "url": "https://limudim.psychometry.co.il/afeka/requirements_afeka.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&sp2=61&college=7"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?campus_distance=1&college=7"
         },{
             "id": "1179940",
             "name": "bar-ilan-university",
             "url": "http://engineering.biu.ac.il/about",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=2&campus_distance=1&sp2=51&sp3=191"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?university=2&campus_distance=1"
         },{
             "id": "966690",
             "name": "tau-university",
             "url": "https://limudim.psychometry.co.il/tau/application-chances.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=4&campus_distance=1&sp2=61"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?university=4&campus_distance=1"
         },{
             "id": "33314510",
             "name": "ariel-university-center",
             "url": "https://limudim.psychometry.co.il/ariel/ariel_requirements.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=30&campus_distance=1&sp3=252"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?college=30&campus_distance=1"
         },{
             "id": "3049800",
             "name": "hit-holon1",
             "url": "https://limudim.psychometry.co.il/hit/ba-electronics.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=21&campus_distance=1&sp2=123"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?college=21&campus_distance=1"
         },{
             "id": "39340070",
             "name": "ruppin-college-technology",
             "url": "https://limudim.psychometry.co.il/ruppin/rupin_requirements.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=20&campus_distance=1"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?campus_distance=1&college=20"
         },{
             "id": "10518040",
             "name": "college-ort-braude",
             "url": "https://limudim.psychometry.co.il/braude/brauda_requirements.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=49&campus_distance=1&sp3=271"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?college=49&campus_distance=1"
         },{
             "id": "8149700",
             "name": "college-kinneret",
             "url": "https://limudim.psychometry.co.il/kinneret/kineret_requirements.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?college=14&campus_distance=1&sp3=278"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?college=14&campus_distance=1"
         },{
             "id": "10690120",
             "name": "technion",
             "url": "https://limudim.psychometry.co.il/technion/application-chances.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=39&campus_distance=1&sp3=167"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?university=39&campus_distance=1"
         },{
             "id": "6002050",
             "name": "hebrew-university",
             "url": "https://limudim.psychometry.co.il/huji/application-chances.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=5&campus_distance=1&sp3=30"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?campus_distance=1&university=5"
         },{
             "id": "41324290",
             "name": "jerusalem-college-engineering",
             "url": "https://limudim.psychometry.co.il/jce/azrieli_requirements.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&sp3=30&college=22"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?campus_distance=1&college=22"
         },{
             "id": "2590930",
             "name": "ben-gurion-university",
             "url": "https://limudim.psychometry.co.il/bgu/application-chances.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?university=1&campus_distance=1&sp3=98"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?university=1&campus_distance=1"
         },{
             "id": "40509770",
             "name": "engineering-college-shamoon",
             "url": "https://limudim.psychometry.co.il/sce/sami_shamun_requirements.php",
-            "rentUrl": "http://www.ad.co.il/nadlanstudent?campus_distance=1&college=50&sp3=43"
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?campus_distance=1&college=50"
+        },{
+            "id": "2458940",
+            "name": "sapir-academic-college",
+            "url": "https://limudim.psychometry.co.il/sapir/sapir_requirements.php",
+            "rentUrl": "https://www.ad.co.il/nadlanstudent?campus_distance=1&college=15"
         }   
     ]
 
@@ -107,6 +110,7 @@ exports.getCollegesData = function(req, res){
             };
 
             var currCollege = 0;
+            var currIntCollege = 0;
             var collegesLen = colleges.length;
 
             for (var i = 0; i<collegesLen; i++) {
@@ -124,17 +128,17 @@ exports.getCollegesData = function(req, res){
                     if (err) {
                         console.error(err);
                     }
-                    // console.log(currCollege+"/"+collegesLen);
+                    // console.log("Get Details: "+JSON.stringify(data, null, 4));
 
-                    // set college details
-                    newCollege.specialization = data.specialization;
-                    newCollege.description = data.description;
-                    newCollege.headline = data.headline;
-                    newCollege.hebName = data.name;
-
-                    collegesArr[currCollege] = newCollege;
-
-                    // console.log(currCollege+"/"+collegesLen+" FullUrl: "+fullUrl+JSON.stringify(data, null, 2));
+                    // set college details - validate + set to array
+                    if(data.description&&data.name){
+                        newCollege.specialization = data.specialization;
+                        newCollege.description = data.description;
+                        newCollege.headline = data.headline;
+                        newCollege.hebName = data.name;
+                        collegesArr[currIntCollege] = newCollege;
+                        currIntCollege++;
+                    }
 
                     if(currCollege==collegesLen-1) {
                         console.log("End: A - 1");
@@ -154,7 +158,7 @@ exports.getCollegesData = function(req, res){
 
             var collegeDetails = {
                 name: '.si-hd-txt > h1',
-                info: '.search-plain tr > td'
+                info: '.search-plain td'
             };
 
             var currCollege = 0;
@@ -168,19 +172,17 @@ exports.getCollegesData = function(req, res){
                     if (err) {
                         console.error(err);
                     }
-                    // console.log(currCollege+"/"+collegesLen);
+                    // console.log("Get Address: "+JSON.stringify(data, null, 4));
 
-                    // set college details
+                    // set college details + validate
                     for (var i = 0; i < collegesArr.length; i++) {
-                        if(collegesArr[i].hebName == data.name){
+                        if((collegesArr[i].hebName == data.name)&&(data.info)){
                             // console.log("Match: "+currCollege);
                             collegesArr[i].address = data.info[5];
                             collegesArr[i].tuitionFee = data.info[1];
                             collegesArr[i].dorms = data.info[3];
                         }
                     }
-
-                    // console.log(currCollege+"/"+collegesLen+" FullUrl: "+fullUrl+JSON.stringify(data, null, 2));
 
                     if(currCollege==collegesLen-1) {
                         console.log("End: B - 2");
@@ -199,7 +201,7 @@ exports.getCollegesData = function(req, res){
             var startUrl = "https://www.d.co.il/";
 
             var collegeDetails = {
-                tel: '.phone-number-txt',
+                tel: '.phone_number > a',
                 link: 
                     { selector: 'link',
                       get: 'href',
@@ -217,17 +219,17 @@ exports.getCollegesData = function(req, res){
                     if (err) {
                         console.error(err);
                     }
+                    // console.log("Get Phone: "+JSON.stringify(data, null, 4));
 
                     let collegeId = data.link[1].split("https://www.d.co.il/").join("").split("/8200/").join("").split("/8190/").join("");
 
                     // set college details
                     for (var j = 0; j < collegesArr.length; j++) {
-                        if(collegesArr[j].collegeId == collegeId){
+                        if((collegesArr[j].collegeId == collegeId)&&(data.tel)){
                             // console.log("Match: "+collegeId);
                             collegesArr[j].tel = data.tel;
                         }
                     }
-                    // console.log(currCollege+"/"+collegesLen+" "+JSON.stringify(data, null, 2));
 
                     if(currCollege==collegesLen-1) {
                         console.log("End: C - 3");
@@ -500,7 +502,7 @@ exports.getCollegesData = function(req, res){
             };
 
             var currCollege = 0;
-            var collegesLen = collegesArr.length;
+            var collegesLen = colleges.length;
             var numOfRents = 10;
 
             for (var i = 0; i<collegesLen; i++) {
@@ -509,7 +511,7 @@ exports.getCollegesData = function(req, res){
                         currCollege++;
                         console.error(err);
                     }
-                    // console.log("DATA "+data.rent.length+" => "+JSON.stringify(data, null, 2));
+                    // console.log("Get Rents: "+JSON.stringify(data, null, 2));                    
                     let totalRents = 0;
                     let rentsCounter = 0;
                     for (var j = 0; j < numOfRents; j++) {
@@ -536,10 +538,10 @@ exports.getCollegesData = function(req, res){
             function saveAverage(averageRent, collegeUrl){
                 if(averageRent){
                     // set college details
-                    for (var j = 0; j < collegesArr.length; j++) {
-                        if(collegesArr[j].rentUrl == collegeUrl){
+                    for (var j = 0; j < colleges.length; j++) {
+                        if(colleges[j].rentUrl == collegeUrl){
                             // console.log(collegeUrl+" Match!");
-                            // collegesArr[j].averageRents = averageRent;
+                            // colleges[j].averageRents = averageRent;
                             var now = new Date();
                             var history = {
                                 date: dateFormat(now, "dd/mm/yyyy"),
@@ -547,7 +549,7 @@ exports.getCollegesData = function(req, res){
                                 averagePrice: averageRent
                             }
                             College.update(
-                              { "engName": collegesArr[j].engName },
+                              { "engName": colleges[j].name },
                               { "$push": { "averageRents" : history } } ).
                                 exec (function(err, newProduct){
                                     if(err) console.log(err);
@@ -559,10 +561,10 @@ exports.getCollegesData = function(req, res){
                 }
                 else {
                     // set college details
-                    for (var j = 0; j < collegesArr.length; j++) {
+                    for (var j = 0; j < colleges.length; j++) {
                         if(collegesArr[j].rentUrl == collegeUrl){
                             console.log(collegeUrl+" Match Unknown !");
-                            // collegesArr[j].averageRent = "לא ידוע";
+                            // colleges[j].averageRent = "לא ידוע";
                         }
                     }
                 }
@@ -578,24 +580,21 @@ exports.getCollegesData = function(req, res){
             var collegesLen = colleges.length;
 
             // all colleges models
-            var shenkarDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
+
+            // shenkar, hit, ort, technion, azrieli
+            var modelCollege1 = {requirements: 'div#customers-page-contents > div > ul > li'};
+            // sce, ariel, ruppin, sapir
+            var modelCollege2 = {requirements: 'div#customers-page-contents > ul > li'};
+            var barIlanDetails = {requirements: '.rtejustify'};
+            var kinneretDetails = {requirements: 'div#customers-page-contents > ul'};
             var afekaDetails = {
                 title: 'div#customers-page-contents > span > span span',
                 requirements: 'div#customers-page-contents'
             };
-            var barIlanDetails = {requirements: '.rtejustify'};
-            var sceDetails = {requirements: 'div#customers-page-contents > ul > li'};
-            var arielDetails = {requirements: 'div#customers-page-contents > ul > li'};
-            var hitDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
-            var ruppinDetails = {requirements: 'div#customers-page-contents > ul > li'};
-            var ortDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
-            var kinneretDetails = {requirements: 'div#customers-page-contents > ul'};
-            var technionDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
             var hujiDetails = {
                 title: 'div#customers-page-contents > div > span',
                 requirements: 'div#customers-page-contents > div'
             };
-            var azrieliDetails = {requirements: 'div#customers-page-contents > div > ul > li'};
             var bguDetails = {
                 requirements: 'div#customers-page-contents > ul > li',
                 title: 'div#customers-page-contents > div > strong',
@@ -609,7 +608,7 @@ exports.getCollegesData = function(req, res){
             for (var i = 0; i<collegesLen; i++) {
 
                 if(colleges[i].name == "shankar-school-of-engineering"){
-                    scrapy.scrape(colleges[i].url, shenkarDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege1, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -681,7 +680,7 @@ exports.getCollegesData = function(req, res){
                     });
                 }
                 if(colleges[i].name == "ariel-university-center"){
-                    scrapy.scrape(colleges[i].url, arielDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege2, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -698,7 +697,7 @@ exports.getCollegesData = function(req, res){
                     });
                 }
                 if(colleges[i].name == "hit-holon1"){
-                    scrapy.scrape(colleges[i].url, hitDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege1, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -714,7 +713,7 @@ exports.getCollegesData = function(req, res){
                     });
                 }
                 if(colleges[i].name == "ruppin-college-technology"){
-                    scrapy.scrape(colleges[i].url, ruppinDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege2, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -731,7 +730,7 @@ exports.getCollegesData = function(req, res){
                     });
                 }
                 if(colleges[i].name == "college-ort-braude"){
-                    scrapy.scrape(colleges[i].url, ortDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege1, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -763,7 +762,7 @@ exports.getCollegesData = function(req, res){
                     });
                 }
                 if(colleges[i].name == "technion"){
-                    scrapy.scrape(colleges[i].url, technionDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege1, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -796,7 +795,7 @@ exports.getCollegesData = function(req, res){
                     });
                 }
                 if(colleges[i].name == "jerusalem-college-engineering"){
-                    scrapy.scrape(colleges[i].url, azrieliDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege1, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -836,7 +835,7 @@ exports.getCollegesData = function(req, res){
                     });
                 }
                 if(colleges[i].name == "engineering-college-shamoon"){
-                    scrapy.scrape(colleges[i].url, sceDetails, function(err, data) {
+                    scrapy.scrape(colleges[i].url, modelCollege2, function(err, data) {
                         if (err) {
                             console.error(err);
                             currCollege++;
@@ -852,6 +851,27 @@ exports.getCollegesData = function(req, res){
                         } 
                     });
                 }
+                if(colleges[i].name == "sapir-academic-college"){
+                    scrapy.scrape(colleges[i].url, modelCollege2, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else {
+                            console.log("SAPIR: "+JSON.stringify(data, null, 4));
+                            var reqArray = data.requirements.splice(26, 4);
+                            var reqStr = reqArray.join(" ");
+                            // var reqArray = data.requirements[5];
+                            console.log("reqStr: "+reqStr);
+                            // var reqStr = reqArray.join(" ");
+                            var mathGrades = getMath(reqArray[2], "sapir-academic-college", "math");
+                            var engGrades = getMath(reqArray[1], "sapir-academic-college", "english");
+                            var physicsGrades = getMath(reqStr, "sapir-academic-college", "physics");
+                            var psyGrade = getPsychometric(reqStr, "sapir-academic-college");
+                            return saveRequirements(reqArray, psyGrade, mathGrades, engGrades, physicsGrades, "sapir-academic-college");
+                        } 
+                    });
+                }               
             }
 
             function saveRequirements(requirements, psychometry, mathGrades, engGrades, physicsGrades, collegeName){
@@ -898,7 +918,7 @@ exports.getCollegesData = function(req, res){
                         if(isNaN(beforeStr[beforeStr.length-i-2])){
                             if(i==numPostWords-1)
                                 // The string "Psychometric" was found - but not the grade
-                                return "1";
+                                return 1;
                         }
                         else {
                             if(Number(beforeStr[beforeStr.length-i-2])>200) 
@@ -934,7 +954,7 @@ exports.getCollegesData = function(req, res){
 
                     console.log("Get Math of college: "+collegeName);
                     console.log(subject+" NOT found in college !!");
-                    gradesArray.push(new Object({"units": 0,"grade": 1}));
+                    gradesArray.push(new Object({"units": 0, "grade": 1}));
                     return gradesArray;
                 } 
                 else {
@@ -942,8 +962,8 @@ exports.getCollegesData = function(req, res){
                     let beforeStr = cutStr[0].split(" ");
                     let afterStr;
 
-                    gradesArray.push(new Object({"units": 0,"grade": 1}));
-                    gradesArray.push(new Object({"units": 0,"grade": 1}));
+                    gradesArray.push(new Object({"units": 0, "grade": 1}));
+                    gradesArray.push(new Object({"units": 0, "grade": 1}));
 
                     let gradesCounter = 0;
                     let unitsCounter = 0;
@@ -970,7 +990,7 @@ exports.getCollegesData = function(req, res){
                                     gradesCounter++;
                                 }   
                             }
-                            else if(Number(beforeStr[beforeStr.length-i-2])<10) {
+                            else if((Number(beforeStr[beforeStr.length-i-2])<10)&&(Number(beforeStr[beforeStr.length-i-2])>2)) {
                                 console.log(subject+" UNITS NUMBER :"+beforeStr[beforeStr.length-i-2]);
                                 console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
@@ -994,7 +1014,7 @@ exports.getCollegesData = function(req, res){
                                     gradesCounter++;
                                 }
                             }
-                            else if((Number(afterStr[i])<10)&&(Number(afterStr[i])>0)) {
+                            else if((Number(afterStr[i])<10)&&(Number(afterStr[i])>2)) {
                                 console.log(subject+" UNITS NUMBER :"+afterStr[i]);
                                 console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
@@ -1005,12 +1025,12 @@ exports.getCollegesData = function(req, res){
                         }
                         // last call - check & validate
                         if(i==numPreWords-1) {
-                            if(gradesArray[0].grade&&gradesArray[0].units==0){
+                            if(gradesArray[0].grade&&gradesArray[0].units=="Unknown"){
                                 var emptyArray = [];
-                                emptyArray.push(new Object({"units": 0}));
+                                emptyArray.push(new Object({"units": "Unknown"}));
                                 return emptyArray;
                             }
-                            if(gradesArray[1].grade&&gradesArray[1].units!=0){
+                            if(gradesArray[1].grade&&gradesArray[1].units!="Unknown"){
                                 console.log("FINISH => "+JSON.stringify(gradesArray, null, 2));
                                 return gradesArray;
                             }
@@ -1034,37 +1054,57 @@ exports.getCollegesData = function(req, res){
             console.log("Save Json is finished!");
         });
 
-        for (var i = 0; i < collegesArr.length; i++) {
-            College.update(
-            { "engName": collegesArr[i].engName },
-            { "$set": { 
-                engName:  collegesArr[i].engName, 
-                hebName: collegesArr[i].hebName,
-                headline: collegesArr[i].headline, 
-                address: collegesArr[i].address,
-                tuitionFee: collegesArr[i].tuitionFee,
-                dorms: collegesArr[i].dorms,
-                tel: collegesArr[i].tel,
-                openday: collegesArr[i].openday,
-                description: collegesArr[i].description,
-                requirements: collegesArr[i].requirements,
-                specialization: collegesArr[i].specialization,
-                reqUrl: collegesArr[i].reqUrl,
+        // PreProcess - Create Colleges
+        // for (var i = 0; i < collegesArr.length; i++) {
+        //  collegesArr[i].save(function(err, newCollege){
+        //      if(err){
+        //          console.log(err);
+        //      }
+        //      else {
+        //          console.log("Create College successfully : "+newCollege.engName);
+        //          // console.log("Department => "+JSON.stringify(newDepartment, null, 4));
+        //      }
+        //  })
+        // }
 
-                // scholarships: collegesArr[i].scholarships,
-                psychometry: collegesArr[i].psychometry,
-                mathGrades: collegesArr[i].mathGrades,
-                engGrades: collegesArr[i].engGrades,
-                physicsGrades: collegesArr[i].physicsGrades
-            }}).
-            exec (function(err, newCollege){
-                if(err){
-                    console.log(err);
-                }
-                if(newCollege){
-                    console.log("College Updated successfully");
-                }
-            })
+        // Update College + validate
+        for (var i = 0; i < collegesArr.length; i++) {
+            if(collegesArr[i].address&&collegesArr[i].hebName&&collegesArr[i].tel&&collegesArr[i].psychometry){
+                College.update(
+                { "engName": collegesArr[i].engName },
+                { "$set": { 
+                    engName:  collegesArr[i].engName, 
+                    hebName: collegesArr[i].hebName,
+                    headline: collegesArr[i].headline, 
+                    address: collegesArr[i].address,
+                    tuitionFee: collegesArr[i].tuitionFee,
+                    dorms: collegesArr[i].dorms,
+                    tel: collegesArr[i].tel,
+                    openday: collegesArr[i].openday,
+                    description: collegesArr[i].description,
+                    requirements: collegesArr[i].requirements,
+                    specialization: collegesArr[i].specialization,
+                    reqUrl: collegesArr[i].reqUrl,
+
+                    // scholarships: collegesArr[i].scholarships,
+                    psychometry: collegesArr[i].psychometry,
+                    mathGrades: collegesArr[i].mathGrades,
+                    engGrades: collegesArr[i].engGrades,
+                    physicsGrades: collegesArr[i].physicsGrades
+                }}).
+                exec (function(err, newCollege){
+                    if(err){
+                        console.log(err);
+                    }
+                    if(newCollege){
+                        console.log("College Updated successfully");
+                    }
+                })
+            }
+            else {
+                console.log("Error Parse Some Details - "+collegesArr[i].engName);
+                console.log("College Not Updated - Log to admin");
+            }
         }
     });
 };
@@ -1221,7 +1261,7 @@ exports.getDepartmentsData = function(req, res){
             console.log("Save Json is finished!");
         });
 
-
+        // PreProcess - Create Departments
         // for (var i = 0; i < departmentsArr.length; i++) {
         //  departmentsArr[i].save(function(err, newDepartment){
         //      if(err){
@@ -1234,26 +1274,33 @@ exports.getDepartmentsData = function(req, res){
         //  })
         // }
 
+        // Update Department
         for (var i = 0; i < departmentsArr.length; i++) {
-            Department.update(
-            { "engName": departmentsArr[i].engName },
-            { "$set": { 
-                engName:  departmentsArr[i].engName, 
-                hebName: departmentsArr[i].hebName,
-                description: departmentsArr[i].description, 
-                requirements: departmentsArr[i].requirements,
-                subjects: departmentsArr[i].subjects,
-                lowSalary: departmentsArr[i].lowSalary,
-                highSalary: departmentsArr[i].highSalary
-            }}).
-            exec (function(err, newDepartment){
-                if(err){
-                    console.log(err);
-                }
-                if(newDepartment){
-                    console.log("Department Updated successfully");
-                }
-            })
+            if(departmentsArr[i].hebName&&departmentsArr[i].lowSalary&&departmentsArr[i].requirements){
+                Department.update(
+                { "engName": departmentsArr[i].engName },
+                { "$set": { 
+                    engName:  departmentsArr[i].engName, 
+                    hebName: departmentsArr[i].hebName,
+                    description: departmentsArr[i].description, 
+                    requirements: departmentsArr[i].requirements,
+                    subjects: departmentsArr[i].subjects,
+                    lowSalary: departmentsArr[i].lowSalary,
+                    highSalary: departmentsArr[i].highSalary
+                }}).
+                exec (function(err, newDepartment){
+                    if(err){
+                        console.log(err);
+                    }
+                    if(newDepartment){
+                        console.log("Department Updated successfully");
+                    }
+                })
+            }
+            else {
+                console.log("Error Parse Some Details - "+departmentsArr[i].engName);
+                console.log("Department Not Updated - Log to admin");
+            }
         }
     });
 };
