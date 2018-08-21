@@ -47,3 +47,7 @@ p{
     overflow: hidden;
     text-overflow:ellipsis;
 }
+
+#subEng{
+    cursor: pointer;
+}

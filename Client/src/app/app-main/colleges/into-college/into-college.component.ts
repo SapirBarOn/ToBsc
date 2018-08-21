@@ -4,7 +4,8 @@ import { CurrentColleges } from '../../../app-shared/current-college';
 import { DataService } from '../../../data.service';
 import { Subject } from '../../../model/subject.model';
 import { CurrentUser } from '../../../app-shared/current-user';
-
+import { Departments } from '../../../model/Departments.model';
+import { CurrentDepartments } from '../../../app-shared/current-department';
 import * as Chart from 'chart.js';
 declare var $:any;
 
@@ -22,10 +23,13 @@ export class IntoCollegeComponent implements OnInit {
     stars:boolean[]=[false,false,false,false,false];
     numOfStars:number;
     userID:string;
+    arryOfSubEng:string[]=[];
+    // buldingSubEng:string ="הנדסת בניין";
 
   constructor(private currentCollegeService:CurrentColleges,
               private dataService :DataService,
-              private currentUserService:CurrentUser ) { }
+              private currentUserService:CurrentUser,
+              private currentDepartmentsService:CurrentDepartments ) { }
 
   ngOnInit() {
       //this.userID=this.currentUserService.getCurrentUser()._id;
@@ -34,6 +38,20 @@ export class IntoCollegeComponent implements OnInit {
       console.log("ngOnInit->intoCollege");
       console.log(this.College);
       console.log(this.College.averageRents[0].averagePrice);
+      
+          
+        this.arryOfSubEng=this.College.subEng;
+        if(this.arryOfSubEng.includes("הנדסה אזרחית / הנדסת בניין")){
+            console.log("fkjgkfg")
+        }
+        console.log(this.arryOfSubEng);
+        // for(let i=0 ;i<this.arryOfSubEng.length;i++){
+        //     if(this.arryOfSubEng[i]=="הנדסה אזרחית / הנדסת בניין"){
+        //     this.arryOfSubEng[i]=this.buldingSubEng;
+        //     }
+        // }
+       // console.log(this.arryOfSubEng);
+
 
        $(document).ready(function() {
     // Configure/customize these variables.
@@ -118,6 +136,11 @@ goBack() {
     window.history.back();
 }
 
+openDepartments(d){
+    console.log("openDepartments!!!!!!!!!!!!!!!!");
+    console.log(d);
+    this.currentDepartmentsService.check(d);
+}
 
 rate(x){
     for(let i=0; i<this.stars.length; i++){
