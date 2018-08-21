@@ -302,7 +302,12 @@ exports.getCollegesData = function(req, res){
                     "id": "40509770",
                     "name": "engineering-college-shamoon",
                     "url": "http://www.sce-ac.co.il/?lm_key=de505052e6314ad1935a419ac41fffa0&lm_form=11055&lm_supplier=1196&utm_source=g&utm_campaign=964035723&utm_medium=c&utm_content=%2B%D7%A1%D7%9E%D7%99%20%2B%D7%A9%D7%9E%D7%A2%D7%95%D7%9F%20%2B%D7%99%D7%95%D7%9D%20%2B%D7%A4%D7%AA%D7%95%D7%97&gclid=Cj0KCQjw0PTXBRCGARIsAKNYfG0he0Ysmj1px9NJml-XCyHo2tbx1IEUjHeZGppWmsucE-KwCLB4-YAaAsvjEALw_wcB"
-                }   
+                },{
+                    "id": "2458940",
+                    "name": "sapir-academic-college",
+                    "url": "https://www.sapir.ac.il/content/5350"
+                }
+
             ]
 
             var currCollege = 0;
@@ -322,7 +327,7 @@ exports.getCollegesData = function(req, res){
             var azrieliDetails = {openday: 'h2.entry-title'};
             var bguDetails = {openday: 'h1'};
             var sceDetails = {openday: '.marked-header > h2'};
-
+            var sapirDetails = {openday: 'h1'};
             for (var i = 0; i<collegesLen; i++) {
 
                 if(collegesLinks[i].name == "shankar-school-of-engineering"){
@@ -449,6 +454,15 @@ exports.getCollegesData = function(req, res){
                             currCollege++;
                         }
                         else return saveOpenDay(data.openday[0], "engineering-college-shamoon");
+                    });
+                }
+                if(collegesLinks[i].name == "sapir-academic-college"){
+                    scrapy.scrape(collegesLinks[i].url, sapirDetails, function(err, data) {
+                        if (err) {
+                            console.error(err);
+                            currCollege++;
+                        }
+                        else return saveOpenDay(data.openday, "sapir-academic-college");
                     });
                 }
             }
