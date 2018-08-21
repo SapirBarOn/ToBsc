@@ -1,5 +1,6 @@
 <img src="{{Departments.logo}}"> 
 <h1>{{Departments.hebName}}</h1>
+<button (click)="goBack()">חזור <span class="glyphicon glyphicon-repeat"></span></button>
 <div class="data">
     <span>תיאור התחום:</span>
     <p>{{Departments.description}}</p>
@@ -14,4 +15,3 @@
     <span>מוסדות שמלמדים תחום זה:</span>
     <p id="subEng" (click)="openColleges(s)" *ngFor="let s of arraySubEng">{{s}}</p>
 </div> 
-<button (click)="goBack()">Go Back</button>

@@ -1,14 +1,9 @@
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
   
-  <!-- First Photo Grid-->
   <div class="w3-row-padding">
     <div class="w3-third w3-container w3-margin-bottom" id="sectionLeft">
       <div class="w3-container w3-white">
@@ -20,23 +15,22 @@
     <div class="w3-third w3-container w3-margin-bottom" id="sectionMiddle">
       <div class="w3-container w3-white">
          <p>שמי אילנה ואני פסיכולוגית תעסוקתית</p>
-            <p>
+         <p>
              על מנת שאוכל להתאים לך את תחומי ההנדסה.
              אצטרך להכיר אותך ואת תחומי העניין שלך<br>
               לחץ על "התחל צא'ט" ונצא לדרך...
-            </p>
-        <img src="../../../assets/images/avatar-psychologist (1).png">
-        <button routerLink="/chat-bot">התחל צ'אט</button>
+         </p>
+         <img src="../../../assets/images/avatar-psychologist (1).png">
+         <button routerLink="/chat-bot">התחל צ'אט</button>
       </div>
     </div>
     <div class="w3-third w3-container w3-margin-bottom" id="sectionRight">
       <div class="w3-container w3-white">
-            <h3 id="recommended">לפי נתוני הפרופיל שלך, אולי יעניין אותך ללמוד:</h3>
-            <p (click)="openDepartment(i)" *ngFor="let i of threeSubEngRecommended">{{i}}</p>
-
+          <h3 id="recommended">לפי נתוני הפרופיל שלך, אולי יעניין אותך ללמוד:</h3>
+          <p (click)="openDepartment(i)" *ngFor="let i of threeSubEngRecommended">{{i}}</p>
       </div>
-                  <h3 id="recommended1">מוסדות מועדפים:</h3>
-            <p (click)="openColleges(i)" *ngFor="let i of favoriteColleges">{{i}}</p>
+          <h3 id="recommended1">מוסדות מועדפים:</h3>
+          <p (click)="openColleges(i)" *ngFor="let i of favoriteColleges">{{i}}</p>
     </div>
   </div>
   

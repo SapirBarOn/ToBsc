@@ -2,13 +2,15 @@
     margin-left:40%;
     margin-top: 5%; 
     margin-bottom: 2%;
+    
 }
 
 select{
     display: inline-block;
-    width: 16%;
+    width: 23%;
     direction: rtl;
 }
+
 .btn{
     background: #84b4a7;
     margin-right: 10px;
@@ -16,22 +18,26 @@ select{
     width: 50px;
     height: 30px;
 }
+
 .name{
     text-align: center;
     font-size: 17px;
 }
+
 img{
     margin: 0 auto;
     display: block;
     width: 180px;
     height: 130px;
 }
+
 #mainLayout3{
     background: #f9f9f9;
     position: relative;
     padding-left:1%;
     padding-top:5%;
 }
+
 #mainLayout3 > *{
     width:300px;
     height:200px;
@@ -48,18 +54,24 @@ img{
     width: 100%;
     margin:0 auto;
 }
+
 @media (max-width: 634px) {
     #mainLayout3 > *{
         margin:0 auto;
         display: block;
         margin-bottom:10%; 
-       /* margin-left: 8.5%;*/
+    }
+    
+    #filter{
+        margin:0 auto;
+    }
+
+    select{
+        width: 100%;
+    }
+
+    .btn{
+        display: block;
+        margin :0 auto;
     }
 }
-/*@media (min-width: 378px) and ( max-width:415px) {
-    #mainLayout3 > *{
-        margin:0 auto;
-        margin-bottom:10%; 
-        margin-left: 12%;
-    }
-}*/

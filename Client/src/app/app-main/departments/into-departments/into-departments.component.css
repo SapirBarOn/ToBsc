@@ -2,30 +2,53 @@
     margin: 0;
     padding: 0;
 }
+
 img{
     width: 500px;
     height: 100px;
     margin:0 auto;
     display: block;
 }
+
 h1{
     text-align: center;
 }
+
 .data{
     text-align: right;
     border: 1px solid grey;
     margin: 0 auto;
-   /* width: 800px;*/
 }
 
 p{
     font-size: 15px;
 }
+
  span{
     font-size: 15px;
     font-weight: bold;
     text-align: right;
 }
+
 #subEng{
     cursor: pointer;
 }
+
+button{
+    float: right;
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #7d331f;
+    background-color:#cf411b;
+    color:#ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    outline:none;
+    margin-top: -5.5%;
+    margin-right: 18%;
+}
+
+button:hover{
+        background-color:#b13615;
+    }

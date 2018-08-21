@@ -8,12 +8,12 @@
 
     <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
           
-          <select class="form-control" formControlName="choose">
+        <select class="form-control" formControlName="choose">
             <option value="null" >בחר סוג מלגה</option>
             <option *ngFor="let c of choose"
             [value]="c"> 
                    {{c}} 
-             </option>
+            </option>
         </select>
 
         <select *ngIf="cLocation" class="form-control" formControlName="location">
@@ -21,7 +21,7 @@
             <option *ngFor="let l of locations"
             [value]="l"> 
                    {{l}} 
-             </option>
+            </option>
         </select>
 
         <select *ngIf="cOrigin" class="form-control" formControlName="origin">
@@ -29,11 +29,10 @@
             <option *ngFor="let o of origin"
               [value]="o"> 
               {{o}} 
-             </option>
+            </option>
         </select>
 
         <input type="submit" class="btn btn-info" value="סינון" [disabled]="!myform.valid">
-        
     </form> 
 </div>
     

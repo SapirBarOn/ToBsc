@@ -1,16 +1,15 @@
-
 <h1>{{Scholarships.name}}</h1>
 <div class="data">
     <span>תיאור המלגה:</span>
-    <p>{{Scholarships.description}}</p>
-    <span>מועד הגשה:</span>
-    <p>{{Scholarships.dueDate}}</p>
-    <span>טלפון:
-        <p itemprop="telephone">
-              <a href="tel:{{Scholarships.tel}}">
-                 {{Scholarships.tel}}
-              </a>
-        </p>
-   </span> 
+      <p>{{Scholarships.description}}</p>
+      <span>מועד הגשה:</span>
+      <p>{{Scholarships.dueDate}}</p>
+      <span>טלפון:
+      <p itemprop="telephone">
+        <a href="tel:{{Scholarships.tel}}">
+          {{Scholarships.tel}}
+        </a>
+      </p>
+    </span> 
 </div> 
 <button (click)="goBack()">Go Back</button>

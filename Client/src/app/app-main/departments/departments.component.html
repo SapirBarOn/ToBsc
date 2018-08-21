@@ -1,16 +1,15 @@
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <body>
-    <div id="wrapperLayout3">
-      <main id="mainLayout3">
-          <section *ngFor="let d of departments">
-            <section (click)="intoDepartments(d)">
-                <img src="{{d.logo}}">   
-                <p class="name">{{d.hebName}}</p>
-            </section>
-          </section>
-      </main>
-    </div>
-  
-  </body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+  <div id="wrapperLayout3">
+    <main id="mainLayout3">
+      <section *ngFor="let d of departments">
+        <section (click)="intoDepartments(d)">
+          <img src="{{d.logo}}">   
+          <p class="name">{{d.hebName}}</p>
+        </section>
+      </section>
+    </main>
+  </div>
+</body>
 

@@ -5,8 +5,7 @@
   background-color: #f9f9f9;
   display: block;
   margin: 0 auto;
-  margin-top: 50px; 
- 
+  margin-top: 50px;  
 }
 
 h2{
@@ -30,22 +29,24 @@ input {
   border-radius: 4px;
   width: 75%;
 }
+
 .email{
   direction: ltr;
 }
 ::placeholder{
   text-align: right;
 }
+
 form+form{
   float: left;
   padding-left:3%;
   margin-top: -65%;
-  /*padding-bottom: 50%;*/
 }
+
 select{
   width: 150px;
-  padding-bottom: 3px;
-  padding-top: 5px;
+  padding-bottom: 5%;
+  padding-top: 0%;
   direction: rtl;
   margin: 20px 0;
   border: 1px solid #ccc;
