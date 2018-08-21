@@ -51,69 +51,77 @@ button:hover{
        
     }
 
-  #hamburger{
-    width:168px;
-    height: 80px;
-    border-right:0.5px solid #929292;
-    position:absolute;
-  } 
-  #hamburger button{
-    border:none;
-    background:none;
-    outline:none;
-    margin-left:30%;
-    margin-top:20%;
-  }
-  #hamburger .glyphicon{
-    font-size:40px;;
-    font-weight:40px;
-      color: #f2f2f2;
-      margin: 10px;
-  }
-  #myNav{
-    height: 190px;
-    width: 158px;
-    z-index: 1;
-    top:120px;;
-    right: 0;
-    background-color: #84b4a7;
-    position:absolute;
-  }
-  #myNav hr{
-    width:158px;
-    display:block;
-    margin-right: -40px;
-  }
-  #myNav ul{
-    text-align: right;
-    margin-left:10px;
-    margin-top: 20px;
-    list-style-type:none;
-  }
+    #hamburger{
+      width:168px;
+      height: 80px;
+      border-right:0.5px solid #929292;
+      position:absolute;
+    } 
 
-  #myNav ul li:hover{
-    font-weight:bolder;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  #myNav ul li{
-    cursor: pointer;
-    font-size: 18px;
-    margin-right: 5%;
-  }
+    #hamburger button{
+      border:none;
+      background:none;
+      outline:none;
+      margin-left:30%;
+      margin-top:20%;
+    }
 
-  .glyphicon-education{
-    font-size: 20px;
-    margin-right: -25%;
-  }
-  .glyphicon-user{
-    font-size: 15px;
-     margin-right: -20%;
-  }
-  .glyphicon-home{
-     font-size: 15px;
+    #hamburger .glyphicon{
+      font-size:40px;;
+      font-weight:40px;
+        color: #f2f2f2;
+        margin: 10px;
+    }
+
+    #myNav{
+      height: 190px;
+      width: 158px;
+      z-index: 1;
+      top:120px;;
+      right: 0;
+      background-color: #84b4a7;
+      position:absolute;
+    }
+
+    #myNav hr{
+      width:158px;
+      display:block;
+      margin-right: -40px;
+    }
+
+    #myNav ul{
+      text-align: right;
+      margin-left:10px;
+      margin-top: 20px;
+      list-style-type:none;
+    }
+
+    #myNav ul li:hover{
+      font-weight:bolder;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #myNav ul li{
+      cursor: pointer;
+      font-size: 18px;
+      margin-right: 5%;
+    }
+
+    .glyphicon-education{
+      font-size: 20px;
+      margin-right: -25%;
+    }
+
+    .glyphicon-user{
+      font-size: 15px;
       margin-right: -20%;
-  }
+    }
+
+    .glyphicon-home{
+      font-size: 15px;
+      margin-right: -20%;
+    }
 }
 @media (max-width: 730px) {
 
@@ -153,53 +161,59 @@ button:hover{
         cursor: pointer;
         color: #b13615;
         font-size: 15px;
-       text-align:center; 
+        text-align:center; 
     } 
-    #hamburger{
-    width:168px;
-    height: 80px;
-    border-right:0.5px solid #929292;
-    position:absolute;
-  } 
-  #hamburger button{
-    border:none;
-    background:none;
-    outline:none;
-    margin-left:30%;
-    margin-top:60%;
-  }
-  #hamburger .glyphicon{
-    font-size:40px;;
-    font-weight:40px;
-      color: #f2f2f2;
-      margin: 10px;
-  }
-  #myNav{
-    height: 190px;
-    width: 138px;
-    z-index: 1;
-    top:180px;
-    right: 0;
-    background-color: #84b4a7;
-    position:absolute;
-  }
-  #myNav hr{
-    width:158px;
-    display:block;
-    margin-right: -40px;
-  }
-  #myNav ul{
-    text-align: right;
-    margin-left:10px;
-    margin-top: 20px;
-    list-style-type:none;
-  }
 
-  #myNav ul li:hover{
-    font-weight:bolder;
-    cursor: pointer;
-    font-size: 20px;
-  }  
+    #hamburger{
+        width:168px;
+        height: 80px;
+        border-right:0.5px solid #929292;
+        position:absolute;
+    }
+
+    #hamburger button{
+        border:none;
+        background:none;
+        outline:none;
+        margin-left:30%;
+        margin-top:60%;
+    }
+
+    #hamburger .glyphicon{
+        font-size:40px;;
+        font-weight:40px;
+        color: #f2f2f2;
+        margin: 10px;
+    }
+
+    #myNav{
+        height: 190px;
+        width: 138px;
+        z-index: 1;
+        top:180px;
+        right: 0;
+        background-color: #84b4a7;
+        position:absolute;
+    }
+
+    #myNav hr{
+        width:158px;
+        display:block;
+        margin-right: -40px;
+    }
+
+    #myNav ul{
+        text-align: right;
+        margin-left:10px;
+        margin-top: 20px;
+        list-style-type:none;
+    }
+
+    #myNav ul li:hover{
+        font-weight:bolder;
+        cursor: pointer;
+        font-size: 20px;
+    }  
 }
 
 

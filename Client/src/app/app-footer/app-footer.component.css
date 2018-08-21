@@ -2,8 +2,10 @@ div{
     height: 50px;
     background: #FFFFFF;
 }
+
 p{
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
-    padding-top: 1%;
+    padding-top: 1.5%;
+    direction: rtl;
 }
