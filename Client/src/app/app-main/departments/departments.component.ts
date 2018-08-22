@@ -34,6 +34,10 @@ export class DepartmentsComponent implements OnInit {
       this.router.navigateByUrl('/intoDepartments');
   }
 
+    goBack() {
+    window.history.back();
+  }
+
 }
 
 

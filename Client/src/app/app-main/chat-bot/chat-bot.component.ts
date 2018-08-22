@@ -543,4 +543,8 @@ showPosition(position) {
       // }
   }
 
+  goBack() {
+    window.history.back();
+}
+
 }

@@ -27,6 +27,27 @@ img{
     cursor:  pointer;   
 }
 
+
+button{
+    /*float: right;*/
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #7d331f;
+    background-color:#cf411b;
+    color:#ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    outline:none;
+    margin-top:2%;
+    margin:0 auto;
+    display: block;
+}
+
+button:hover{
+        background-color:#b13615;
+    }
+
 #wrapperLayout3{
     max-width:1000px;
     width: 100%;
@@ -39,4 +60,5 @@ img{
         display: block;
         margin-bottom:10%; 
     }
+
 }

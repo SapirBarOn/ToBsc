@@ -34,7 +34,7 @@ p{
     cursor: pointer;
 }
 
-button{
+.back{
     float: right;
     height: 40px;
     width: 80px;
@@ -45,10 +45,20 @@ button{
     font-size: 17px;
     cursor: pointer;
     outline:none;
-    margin-top: -5.5%;
-    margin-right: 18%;
+    margin-top:-8%;
+    margin-right:7%;
 }
 
-button:hover{
+.back:hover{
         background-color:#b13615;
     }
+
+@media (max-width: 634px) {
+    
+    .back{
+        float: none;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 1%;
+    }
+}

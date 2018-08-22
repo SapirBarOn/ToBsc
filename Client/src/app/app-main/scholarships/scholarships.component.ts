@@ -103,4 +103,8 @@ locations: string[] = [
       this.router.navigateByUrl('/intoScholarships');
   }
 
+    goBack() {
+    window.history.back();
+  }
+
 }

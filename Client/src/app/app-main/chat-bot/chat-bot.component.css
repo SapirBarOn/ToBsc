@@ -146,6 +146,25 @@ img{
    border-color:#e56567;
 }
 
+.back{
+    float: right;
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #7d331f;
+    background-color:#cf411b;
+    color:#ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    outline:none;
+    margin-top:2%;
+    margin-right:7%;
+}
+
+.back:hover{
+        background-color:#b13615;
+    }
+
 @media (max-width: 677px){
         
   .first >button{
@@ -155,4 +174,11 @@ img{
   .last >button{
     margin-right: -180px;
   }
+
+  .back{
+        float: none;
+        display: block;
+        margin: 0 auto;
+    }  
+
 }

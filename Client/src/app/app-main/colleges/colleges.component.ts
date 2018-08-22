@@ -331,5 +331,8 @@ export class CollegesComponent implements OnInit {
     }
   }
 
+ goBack() {
+    window.history.back();
+}
 
 }

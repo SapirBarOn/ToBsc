@@ -55,6 +55,27 @@ img{
     margin:0 auto;
 }
 
+button{
+    /*float: right;*/
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #7d331f;
+    background-color:#cf411b;
+    color:#ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    outline:none;
+    margin-top:2%;
+    display: block;
+    margin:0 auto;
+}
+
+button:hover{
+        background-color:#b13615;
+    }
+
+
 @media (max-width: 634px) {
     #mainLayout3 > *{
         margin:0 auto;
@@ -74,4 +95,5 @@ img{
         display: block;
         margin :0 auto;
     }
+
 }

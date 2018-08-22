@@ -6,8 +6,9 @@
       <a href="tel:{{College.tel}}">
          {{College.tel}}
       </a>
-    </span>
+</span>
 </h5>
+<button class="back" (click)="goBack()">חזור <span class="glyphicon glyphicon-repeat"></span></button>
 <div class="rating">
     <i *ngIf="!stars[4]" class="far fa-star" (click)="rate(5)"></i>
     <i *ngIf="stars[4]" class="fas fa-star" (click)="rate(5)"></i>
@@ -40,5 +41,5 @@
     <p id="subEng" (click)="openDepartments(d)" *ngFor="let d of arryOfSubEng">{{d}}</p>
 <canvas id="myChart" width="300" height="70"></canvas>
 </div> 
-<button (click)="goBack()">Go Back</button>
+
  
