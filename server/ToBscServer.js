@@ -51,6 +51,8 @@ app.post('/login', userList.login);
 
 app.post('/createNewAccount', userList.createUser);
 
+app.post('/updateUser', userList.updateUser);
+
 app.post('/createNewQuestion', questionController.createQuestion);
 
 app.post('/updateQuestion',questionController.updateQuestion);
