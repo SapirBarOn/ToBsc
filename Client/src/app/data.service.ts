@@ -124,6 +124,20 @@ getAllScholarships(callback: Function) {
     );
   }
 
+  updateUser(userId:string,firstName:string,lastName:string,email:string,WorkExperience:string,gender:string,age:number,callback: Function){
+    this.http.post('http://localhost:3000/updateUser',
+    {'userId':userId,'firstName':firstName,'lastName':lastName,'email':email,'WorkExperience':WorkExperience,'gender':gender,'age':age})
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
+
   getSubEngByUserId(userID:string,callback: Function){
     this.http.post('https://finalproject201808.herokuapp.com/getUserSubEngById',
     {'userID':userID})
