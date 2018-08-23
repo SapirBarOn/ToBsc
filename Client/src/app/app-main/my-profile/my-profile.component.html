@@ -1,3 +1,48 @@
-<p>
-  my-profile works!
-</p>
+
+<div id="myProfile" *ngIf="!edit">
+      <h2>הפרופיל שלי</h2>
+      <h3>
+        {{user.firstName}} {{user.lastName}}<br>
+        {{user.gender}}<br>
+        {{user.age}}<br>
+        {{user.email}}<br>
+        {{user.WorkExperience}}<br>
+      </h3>
+
+      <button (click)="editingProfile()">edit</button>
+
+  </div>
+
+  <div id="editMyProfile" *ngIf="edit">
+      <h2>עריכת הפרופיל שלי</h2>
+<form>
+        <input #firstName type="text" name="firstName" value="{{user.firstName}}" >
+        <input #lastName type="text" name="lastName"  value="{{user.lastName}}" >
+        <input #email  class="email" type="email" name="email"  value="{{user.email}}" >
+<!--         <input #pass type="password" name="password" ngModel required>
+ -->        <input #age type="age" name="age"  value="{{user.age}}" >
+    </form>   
+    <form [formGroup]="editing">  
+
+        <select class="form-control" formControlName="WorkExperience">
+            <option value="null">ללא ניסיון</option>
+            <option *ngFor="let w of WorkExperience"
+              [value]="w"> 
+              {{w}} 
+             </option>
+        </select>
+
+        <select class="form-control" formControlName="gender">
+            <option value="null" >מין</option>
+            <option *ngFor="let g of gender"
+              [value]="g"> 
+              {{g}} 
+             </option>
+        </select>
+    </form>
+
+      <button  (click)="saveEdit(editing.value)">save</button>
+              <p id="res"></p>
+
+      <button  (click)="cancelEdit()">X</button>
+  </div>

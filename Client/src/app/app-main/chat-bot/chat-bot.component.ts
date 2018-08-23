@@ -78,7 +78,7 @@ showP2:boolean=false;
       if (this.subEngForUser.software!=0 || this.subEngForUser.chemistry!=0 || this.subEngForUser.electronic!=0 ||
           this.subEngForUser.medical!=0 || this.subEngForUser.management!=0 || 
           this.subEngForUser.building!=0 || this.subEngForUser.machine!=0){
-            if (confirm("לפי נתוני המערכתת ביצעת שיחת צאט בעבר ונמצאו לך תחומי הנדסה מתאימים האם תרצה לבצע שיחה מחדש?\nבלחיצה על 'אישור' נתוניך יתאפסו ונבצע בדיקה מחודשת.\n בלחיצה על 'ביטול' שיחתנו תתבצע עפי הנתונים הקיימים ברשותנו.")) {
+            if (confirm("לפי נתוני המערכת ביצעת שיחה עם נציגנו בעבר ונמצאו לך תחומי הנדסה מתאימים. האם תרצה לבצע שיחה מחדש?\nבלחיצה על 'אישור' נתוניך יתאפסו ונבצע שיחה חדשה.")) {
               this.subEngForUser.software=0 
               this.subEngForUser.chemistry=0 
               this.subEngForUser.electronic=0
@@ -87,8 +87,9 @@ showP2:boolean=false;
               this.subEngForUser.building=0 
               this.subEngForUser.machine=0
               console.log("You pressed OK!");
-            } else {
-                console.log("You pressed Cancel!, no change");
+            }else{
+                console.log("You pressed Cancel!");
+                this.router.navigateByUrl('/enter');
             }
       }
       this.totalSubEng.push(
@@ -345,33 +346,28 @@ getQuestionByDiff(){
         ThreeSub+'\n מתאים לך.'));
 
      },2000);
-     //    this.timer = setTimeout(() => {
-     //   this.messages.pop();
-     //   this.messages.push(new Message('hjkgfhjghfjgfj'));
-     // },2000);
       },1000);
     }
 
+
 //get urls to subeng and colleges
-      this.timer = setTimeout(() => {
-       //  var number=this.messages.length;
-       // console.log(number);
-       //  if((number+1)%2==0){
-       //  this.messages.length++;
-       //    }
-       //   console.log(this.messages.length);
-        this.resultAfterTyping = new Message (this.typing);
-          this.messageResult.push(this.resultAfterTyping)
-            $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
-            }, 10);
-        this.timer = setTimeout(() => {
-       this.messageResult.pop();
-       this.messageResult.push(new Message('לקבלת מידע אודות '+OneSub+ 'לחץ כאן'+
-        '.\n לקבלת מידע אודות '+TwoSub+'לחץ כאן.\nולקבלת מידע אודות '+
-        ThreeSub+'\n לחץ כאן.\n לקבלת מידע אודות מוסדות הלימוד לתואר בהנדסה, לחץ כאן.'));
-     },2000);
-      },5000);
+     //  this.timer = setTimeout(() => {
+     //   //  var number=this.messages.length;
+     //   // console.log(number);
+     //   //  if((number+1)%2==0){
+     //   //  this.messages.length++;
+     //   //    }
+     //   //   console.log(this.messages.length);
+     //    this.resultAfterTyping = new Message (this.typing);
+     //      this.messageResult.push(this.resultAfterTyping)
+     //        $('html, #chat').animate({
+     //          scrollTop: $("#chat").offset().top+ '120px'
+     //        }, 10);
+     //    this.timer = setTimeout(() => {
+     //   this.messageResult.pop();
+     //   this.messageResult.push(new Message('ללמעבר לעמוד תחומי ההנדסה המתאימים לך ל'));
+     // },2000);
+     //  },5000);
   }
 
   checkIfAsked(questionID){

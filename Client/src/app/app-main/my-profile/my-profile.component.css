@@ -1,4 +1,83 @@
-*{
-    margin: 0;
+#myProfile{
+  min-height: 350px;
+  width: 400px;
+  border:2px solid #d3d3d3;
+  background-color: #f9f9f9;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px; 
+ 
+}
+h2{
+  font-size: 20px;
+  font-family: arial;
+  text-align: center;
+  font-weight: bold;
 }
 
+h3{
+    text-align: center;      
+}
+
+img{
+    margin-left: 150px;
+    height:100px; 
+    width:100px;
+}
+/*p{
+    text-align: center;
+    cursor: pointer;
+}*/
+
+button{
+    margin-left:170px; 
+          text-align: center;
+          background-color: red;
+          height: 30px;
+          width: 50px;
+          cursor: pointer;
+          border-top: 1px solid #d5d5d5;
+        }
+
+#editMyProfile{
+     min-height: 350px;
+  width: 400px;
+  border:2px solid #d3d3d3;
+  background-color: #f9f9f9;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px; 
+  
+}
+
+form{
+  float: right;
+  padding-right: 5%;
+  padding-top: 5%;
+}
+
+input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display:block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 75%;
+}
+
+/*form+form{
+  float: left;
+  padding-left:3%;
+  margin-top: 10%;
+/*  /padding-bottom: 50%;/
+}*/
+
+select{
+  width: 150px;
+  padding-bottom: 3px;
+  padding-top: 5px;
+  direction: rtl;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+}

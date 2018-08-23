@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <button class="back" (click)="goBack()">חזור <span class="glyphicon glyphicon-repeat"></span></button>
 <div id="filter">
-   <button class="btn btn-info" id="userLocation" (click)="getUserLocation(this.colleges)" >מיקום נוכחי</button>
+   <button class="btn btn-info" id="userLocation" (click)="getUserLocation()" >מיין לפי מיקום נוכחי</button>
     <form [formGroup]="myform" (ngSubmit)="filter(myform.value)">  
     
         <select class="form-control" formControlName="location">
@@ -50,7 +50,7 @@
 
         <input type="submit" class="btn btn-info" value="חפש" [disabled]="!myform.valid">
 
-        <button class="btn btn-info" id="Extend" (click)="ExtendedFilter()" >חפש לפי תנאי קבלה</button>
+        <button class="btn btn-info" id="Extend" (click)="ExtendedFilter()" >חיפוש מורחב</button>
         <button id="getMap" (click)="openMap(mapModal)" type="button" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-map-marker"></span> מוסדות במפה
         </button>

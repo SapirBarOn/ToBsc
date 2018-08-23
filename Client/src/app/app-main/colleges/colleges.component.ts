@@ -19,7 +19,6 @@ export class CollegesComponent implements OnInit {
   DistanceFromMe:Colleges[]=[];
   myform: FormGroup;
   cChoosed:Colleges;
-  flag:boolean=false;
   myLocationLat:number;
   myLocationLong:number;
   extend:boolean=false;
@@ -142,12 +141,11 @@ export class CollegesComponent implements OnInit {
 
   }
 
-  getUserLocation(colleges){
-    this.flag=true;
+  getUserLocation(){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
             this.showKM=true;
-        this.showPosition(position,colleges)
+        this.showPosition(position)
       },(Error)=>{
          this.showError(Error); 
       });
@@ -155,7 +153,7 @@ export class CollegesComponent implements OnInit {
   }
 
 
-  showPosition(position,colleges) {
+  showPosition(position) {
     //this.showKM=true;
     this.myLocationLat = position.coords.latitude;
     this.myLocationLong = position.coords.longitude;
@@ -164,26 +162,23 @@ export class CollegesComponent implements OnInit {
     var a:number[]=[]
     var p = 0.017453292519943295;    // Math.PI / 180
     var c = Math.cos;
-    this.dataService.getAllColleges((result) =>{
-    this.DistanceFromMe=result;
-    this.colleges=result;
 
-      for(let i=0;i<this.DistanceFromMe.length;i++){
-        a.push( 0.5 - c((this.DistanceFromMe[i].latitude - position.coords.latitude) * p)/2 +
-          c(this.myLocationLat * p) * c(this.DistanceFromMe[i].latitude * p) * 
-          (1 - c((this.DistanceFromMe[i].longitude - position.coords.longitude) * p))/2)
+      for(let i=0;i<this.colleges.length;i++){
+        a.push( 0.5 - c((this.colleges[i].latitude - position.coords.latitude) * p)/2 +
+          c(this.myLocationLat * p) * c(this.colleges[i].latitude * p) * 
+          (1 - c((this.colleges[i].longitude - position.coords.longitude) * p))/2)
       }
-      for(let j=0;j<this.DistanceFromMe.length;j++){
-        this.DistanceFromMe[j].distanceKM=12742 * Math.asin(Math.sqrt(a[j]));
+      for(let j=0;j<this.colleges.length;j++){
+        this.colleges[j].distanceKM=12742 * Math.asin(Math.sqrt(a[j]));
         //this.colleges[j].distanceKM=Math.round(this.DistanceFromMe[j].distanceKM);
-        colleges[j].distanceKM=Math.round(this.DistanceFromMe[j].distanceKM);
+        this.colleges[j].distanceKM=Math.round(this.colleges[j].distanceKM);
         //this.colleges[j].distanceKM.toFixed(2);
       }
 
-    // this.DistanceFromMe.sort(function(a, b){return a.distanceKM - b.distanceKM});
-    // console.log('colleges by distance',this.DistanceFromMe);
-    //    this.colleges=this.DistanceFromMe;
-    });
+    this.colleges.sort(function(a, b){return a.distanceKM - b.distanceKM});
+    console.log('colleges by distance',this.colleges);
+       //this.colleges=this.DistanceFromMe;
+    // });
   }
 
 
@@ -276,7 +271,7 @@ export class CollegesComponent implements OnInit {
                     }  
                   }
                 else  console.log('אין תנאי קבלה');
-         if(this.showKM=true) this.getUserLocation(this.colleges);  
+         // if(this.showKM=true) this.getUserLocation(this.colleges);  
       }         
             })
   }
@@ -331,8 +326,5 @@ export class CollegesComponent implements OnInit {
     }
   }
 
- goBack() {
-    window.history.back();
-}
 
 }
