@@ -61,4 +61,8 @@ p{
         margin: 0 auto;
         margin-bottom: 1%;
     }
+
+    img{
+        width: 100%;
+    }
 }

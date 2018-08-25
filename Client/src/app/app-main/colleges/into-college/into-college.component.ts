@@ -41,9 +41,6 @@ export class IntoCollegeComponent implements OnInit {
       
           
         this.arryOfSubEng=this.College.subEng;
-        if(this.arryOfSubEng.includes("הנדסה אזרחית / הנדסת בניין")){
-            console.log("fkjgkfg")
-        }
         console.log(this.arryOfSubEng);
         // for(let i=0 ;i<this.arryOfSubEng.length;i++){
         //     if(this.arryOfSubEng[i]=="הנדסה אזרחית / הנדסת בניין"){

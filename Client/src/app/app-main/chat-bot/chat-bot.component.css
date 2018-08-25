@@ -22,7 +22,7 @@ img{
   border-radius: 1em;
   padding: 0.5em 1em;
   width: 200px;
-  margin-top: 3%;
+  margin-top: 1%;
   margin-right: 20%;
   margin-bottom:-2%; 
 }
@@ -97,9 +97,24 @@ img{
   border-radius: 1em;
   padding: 0.5em 1em;
   width: 200px;
-  margin-top: -8%;
+  margin-top: -3%;
   margin-right: 20%;
   margin-bottom:12%; 
+}
+
+.mySubEng{
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  border: 2px solid #7d331f;
+  background-color:#cf411b;
+  color:#ffffff;
+  font-size: 17px;
+  cursor: pointer;
+  outline:none;
+  float: left;
+  margin-left: 22%;
+  margin-top: -10%;
 }
 
 #answer{
@@ -171,6 +186,7 @@ img{
     display: block;
     margin-right: -170px;
   }
+  
   .last >button{
     margin-right: -180px;
   }
@@ -179,6 +195,12 @@ img{
         float: none;
         display: block;
         margin: 0 auto;
-    }  
+  }  
+
+  .mySubEng{
+      float: none;
+      display: block;
+      margin:0 auto;
+  } 
 
 }

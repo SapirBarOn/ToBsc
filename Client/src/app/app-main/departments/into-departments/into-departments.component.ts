@@ -25,9 +25,9 @@ export class IntoDepartmentsComponent implements OnInit {
       console.log("ngOnInit->intoDepartments");
       console.log(this.Departments);
       this.nameSunEng=this.Departments.hebName;
-      if (this.nameSunEng=="הנדסה אזרחית / הנדסת בניין"){
-        this.nameSunEng="הנדסת בניין";
-      }
+      // if (this.nameSunEng=="הנדסה אזרחית / הנדסת בניין"){
+      //   this.nameSunEng="הנדסת בניין";
+      // }
       console.log(this.nameSunEng);
       this.dataService.getAllColleges((result)=>{
         console.log(result);
@@ -41,7 +41,7 @@ export class IntoDepartmentsComponent implements OnInit {
         console.log(this.arraySubEng);
         // document.getElementById('subEng').innerHTML= this.arraySubEng.join();
       });
-      this.CurrentCollegesService.setAllColleges();
+      // this.CurrentCollegesService.setAllColleges();
   }
   goBack() {
     window.history.back();

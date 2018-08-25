@@ -23,10 +23,13 @@
                   <img class="userImg" src="../../../assets/images/User_Avatar.png">
               </div>
             </div> 
-            <div class="messagesResult" *ngFor ="let mg of messageResult"> 
+            <!-- <div class="messagesResult" *ngFor ="let mg of messageResult"> 
              {{mg.content}}
                  <div class="arrow-right"></div>
                  <img class="psychImg1" src="../../../assets/images/avatar-psychologist.png">
+            </div> -->
+            <div *ngIf="buttonSubEng">
+                <button routerLink="/mySubEng" class="mySubEng">למעבר לתוצאות תחומי ההנדסה</button>
             </div>
   </section>
   <section class="w3-image w3-margin-top" id="answer">

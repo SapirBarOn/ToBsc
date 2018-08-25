@@ -64,6 +64,7 @@ selects = [
      ];
 showP1:boolean=false;
 showP2:boolean=false;
+buttonSubEng:boolean=false;
   constructor(private dataService : DataService,private currentUserService : CurrentUser, private router: Router) {  
    }
 
@@ -293,11 +294,15 @@ getQuestionByDiff(){
         this.resultAfterTyping = new Message (this.typing);
           this.messages.push(this.resultAfterTyping)
             $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
+              scrollTop: $("#chat").offset().top+ '80px'
             }, 10);
         this.timer = setTimeout(() => {
        this.messages.pop();
+       $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '150px'
+            }, 10);
       this.messages.push(new Message('משיחתי איתך, נראה כי אינך מתעניין בלימודי תחומי ההנדסה הקיימים. חשוב אולי כדאי לשקול תחומים אחרים'));
+      this.buttonSubEng=true;
      },2000);
       },1000);
     }
@@ -307,12 +312,16 @@ getQuestionByDiff(){
         this.resultAfterTyping = new Message (this.typing);
           this.messages.push(this.resultAfterTyping)
             $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
+              scrollTop: $("#chat").offset().top+ '80px'
             }, 10);
         this.timer = setTimeout(() => {
        this.messages.pop();
+       $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '150px'
+            }, 10);
         this.messages.push(new Message('משיחתי איתך, נראה כי קיימים 2 תחומים התאימים לך ביותר ובמידה שווה,התחום '+OneSub+
         ' והתחום '+TwoSub+' . התחום הנוסף התאים לך הוא '+ThreeSub+'.'));
+       this.buttonSubEng=true;
      },2000);
       },1000);
       
@@ -323,11 +332,15 @@ getQuestionByDiff(){
         this.resultAfterTyping = new Message (this.typing);
           this.messages.push(this.resultAfterTyping)
             $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
+              scrollTop: $("#chat").offset().top+ '80px'
             }, 10);
         this.timer = setTimeout(() => {
        this.messages.pop();
+       $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '150px'
+            }, 10);
        this.messages.push(new Message('משיחתי איתך, נראה כי התחום המתאים לך ביותר הוא '+OneSub+' . כעדיפות שנייה התחומים '+TwoSub+ ' ו'+ThreeSub+' מצאו גם כן מתאימים לך באופן שווה'));
+       this.buttonSubEng=true;
      },2000);
       },1000);
     }
@@ -337,13 +350,17 @@ getQuestionByDiff(){
         this.resultAfterTyping = new Message (this.typing);
           this.messages.push(this.resultAfterTyping)
             $('html, #chat').animate({
-              scrollTop: $("#chat").offset().top+ '120px'
+              scrollTop: $("#chat").offset().top+ '80px'
             }, 10);
         this.timer = setTimeout(() => {
        this.messages.pop();
+       $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '120px'
+            }, 10);
        this.messages.push(new Message('משיחתי איתך נראה כי התחום המתאים לך ביותר הוא '+OneSub+
         '.\n כעדיפות שנייה התחום המתאים לך הוא '+TwoSub+'.\nוכעדיפות שלישית ניתן לראות שתחום '+
         ThreeSub+'\n מתאים לך.'));
+             this.buttonSubEng=true;
 
      },2000);
       },1000);

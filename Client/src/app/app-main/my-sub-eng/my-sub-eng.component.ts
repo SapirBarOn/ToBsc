@@ -34,8 +34,8 @@ threeMySubEng:string[]=[];
               new Subject("הנדסה כימית",result.chemistry),
               new Subject("הנדסת אלקטרוניקה",result.electronic),
               new Subject("הנדסה רפואית",result.medical),
-              new Subject("הנדסה תעשיה וניהול",result.management),
-              new Subject("הנדסת בניין/אזרחית",result.building),
+              new Subject("הנדסת תעשייה וניהול",result.management),
+              new Subject("הנדסה אזרחית / הנדסת בניין",result.building),
               new Subject("הנדסת מכונות",result.machine)
                                 );
             this.mySubEng.sort(function(a, b){return b.total - a.total})
