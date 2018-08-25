@@ -125,7 +125,7 @@ getAllScholarships(callback: Function) {
   }
 
   updateUser(userId:string,firstName:string,lastName:string,email:string,WorkExperience:string,gender:string,age:number,callback: Function){
-    this.http.post('http://localhost:3000/updateUser',
+    this.http.post('https://finalproject201808.herokuapp.com/updateUser',
     {'userId':userId,'firstName':firstName,'lastName':lastName,'email':email,'WorkExperience':WorkExperience,'gender':gender,'age':age})
     .subscribe(
       (res: Response ) => {
