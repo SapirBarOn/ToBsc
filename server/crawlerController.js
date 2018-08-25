@@ -8,6 +8,9 @@ var fs = require('fs');
 // Schemes
 var College = require('./collegeData');
 var Department = require('./departmentData');
+var Log = require('./logData');
+var Logs = require('./logsData');
+
 
 // Daily Get Colleges Data from external Url
 exports.getCollegesData = function(req, res){
@@ -163,6 +166,7 @@ exports.getCollegesData = function(req, res){
 
             var currCollege = 0;
             var collegesLen = colleges.length;
+            let validData = false;
 
             for (var i = 0; i<collegesLen; i++) {
 
@@ -181,6 +185,7 @@ exports.getCollegesData = function(req, res){
                             collegesArr[i].address = data.info[5];
                             collegesArr[i].tuitionFee = data.info[1];
                             collegesArr[i].dorms = data.info[3];
+                            validData = true;
                         }
                     }
 
@@ -1081,6 +1086,9 @@ exports.getCollegesData = function(req, res){
         //  })
         // }
 
+        var logData = "Refresh Colleges finished successfully !";
+        exports.sendLog(logData, "refreshLogs");
+
         // Update College + validate
         for (var i = 0; i < collegesArr.length; i++) {
             if(collegesArr[i].address&&collegesArr[i].hebName&&collegesArr[i].tel&&collegesArr[i].psychometry){
@@ -1118,6 +1126,22 @@ exports.getCollegesData = function(req, res){
             else {
                 console.log("Error Parse Some Details - "+collegesArr[i].engName);
                 console.log("College Not Updated - Log to admin");
+            }
+        }
+
+        // Check & validate 
+        for (var i = 0; i < colleges.length; i++) {
+            let checkValid = false;
+            for (var j = 0; j < collegesArr.length; j++) {
+                if(collegesArr[j].engName==colleges[i].name){
+                    // console.log("Match");
+                    checkValid = true;
+
+                }
+                if((j==collegesArr.length-1)&&(!checkValid)){
+                    var logData = "Refresh Colleges Err => "+colleges[i].name;
+                    exports.sendLog(logData, "refreshErr");
+                }
             }
         }
     });
@@ -1292,6 +1316,10 @@ exports.getDepartmentsData = function(req, res){
         //  })
         // }
 
+
+        var logData = "Refresh Departments finished successfully !";
+        exports.sendLog(logData, "refreshLogs");
+
         // Update Department
         for (var i = 0; i < departmentsArr.length; i++) {
             if(departmentsArr[i].hebName&&departmentsArr[i].lowSalary&&departmentsArr[i].requirements){
@@ -1320,6 +1348,24 @@ exports.getDepartmentsData = function(req, res){
                 console.log("Department Not Updated - Log to admin");
             }
         }
+
+
+        // Check & validate 
+        for (var i = 0; i < departments.length; i++) {
+            let checkValid = false;
+            for (var j = 0; j < departmentsArr.length; j++) {
+                if(departmentsArr[j].engName==departments[i].name){
+                    // console.log("Match");
+                    checkValid = true;
+
+                }
+                if((j==departmentsArr.length-1)&&(!checkValid)){
+                    var logData = "Refresh Department Err => "+departments[i].name;
+                    exports.sendLog(logData, "refreshErr");
+                }
+            }
+        }
+
     });
 };
 
@@ -1329,3 +1375,48 @@ exports.getAllColleges = function(req,res){
 exports.getAllDepartments = function(req,res){
     return Department.find();
 }
+
+
+// Generic Inner Function - Send Log to DB
+exports.sendLog = function(logData, logsType){
+    console.log(logData+" Save to => "+logsType);
+    var newLog = new Log();
+    var now = new Date();
+    var id = mongoose.Types.ObjectId();
+    newLog._id = id;
+    newLog.logDate = dateFormat(now, "dd/mm/yyyy => HH:MM:ss");
+    newLog.logData = logData;
+    console.log(JSON.stringify(newLog, null, 2));
+    
+    // Updade Logs Collection
+    Logs.update(
+    { "logsType": logsType },
+    { "$push": { logsArr : newLog } } ).
+    exec (function(err, newLog){
+        if(err) console.log(err);
+        if(!newLog) console.log("Error Log");
+        if(newLog) console.log("Log Saved Successfully");
+    })
+};
+
+
+// var logData = "Admin Login => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "adminLogin");
+
+// var logData = "Designer Login => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "designerLogin");
+
+// var logData = "User Login => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "userLogin");
+
+// var logData = "New Designer => "+savedUser.name+" created Successfully";
+// exports.sendLog(logData, "newDesigners");
+
+// var logData = "New SignUp => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "signUp");
+
+// var logData = "Error Refresh Product Url (Banggood PriceErr) => \n"+product.url;
+// exports.sendLog(logData, "refreshErr");
+
+// var logData = "Refresh System Done Successfully !";
+// exports.sendLog(logData, "refreshLog");
