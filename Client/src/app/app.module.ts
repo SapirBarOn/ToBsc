@@ -46,6 +46,8 @@ import { IntoScholarshipsComponent } from './app-main/scholarships/into-scholars
 import { MyProfileComponent } from './app-main/my-profile/my-profile.component';
 import { MyFavoriteComponent } from './app-main/my-favorite/my-favorite.component';
 import { MySubEngComponent } from './app-main/my-sub-eng/my-sub-eng.component';
+import { ExpertQuestionsComponent } from './app-main/expert/expert-questions/expert-questions.component';
+import { ExpertCrawlerComponent } from './app-main/expert/expert-crawler/expert-crawler.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -84,6 +86,8 @@ const appRoutes: Routes = [
   {path: 'myProfile',component:MyProfileComponent},
   {path: 'myFavorite',component:MyFavoriteComponent},
   {path: 'mySubEng',component:MySubEngComponent},
+  {path: 'expert-questions',component:ExpertQuestionsComponent},
+  {path: 'expert-crawler',component:ExpertCrawlerComponent},
 ];
 
 @NgModule({
@@ -110,6 +114,8 @@ const appRoutes: Routes = [
     MyProfileComponent,
     MyFavoriteComponent,
     MySubEngComponent,
+    ExpertQuestionsComponent,
+    ExpertCrawlerComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

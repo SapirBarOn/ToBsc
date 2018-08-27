@@ -167,6 +167,7 @@ getAllScholarships(callback: Function) {
     );
   }
 
+
 getORcreateSubEngByUser(userID:string,callback: Function){
     this.http.post('https://finalproject201808.herokuapp.com/createSubEngByUserOrReturn',
     {'userID':userID})
@@ -377,6 +378,31 @@ updateSubEngWeights(userID:string,chemistry:number,
     );   
   }
   
+  getCollegesData(callback: Function) {
+    this.http.get('https://finalproject201808.herokuapp.com/getCollegesData')
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error =>{
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
+
+  getDepartmentsData(callback: Function) {
+    this.http.get('https://finalproject201808.herokuapp.com/getDepartmentsData')
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error =>{
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
 
   unFavoriteColleges(userID:string,liked:string,callback: Function){
     this.http.post('https://finalproject201808.herokuapp.com/unFavoriteColleges',
