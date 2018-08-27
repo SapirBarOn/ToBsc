@@ -12,6 +12,7 @@ const   express    = require('express'),
         collegesController= require('./collegesController'),
         scholarshipsController=require('./scholarshipsController'),
         subEngController= require('./subEngController'),
+        logsController=require('./logsController'),
         request    = require('request'),
         Crawler = require("crawler"),
         port       = process.env.PORT || 3000,
@@ -27,15 +28,20 @@ app.use(cors({origin: '*'}));
 
 app.set('port',port);
 app.use('/', express.static('./public'));
-app.use(
-    (req,res,next) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers",
-            "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-    });
+// app.use(
+//     (req,res,next) => {
+//         res.header("Access-Control-Allow-Origin", "*");
+//         res.header("Access-Control-Allow-Headers",
+//             "Origin, X-Requested-With, Content-Type, Accept");
+//         next();
+//     });
 
-
+app.use(function(req, res, next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.set("Content-Type", "application/json");
+    next();
+});
 
 app.get('/', (req, res) => {
    res.sendFile(`${__dirname}/index.html`);
@@ -93,6 +99,14 @@ app.post('/filterScholarships',scholarshipsController.filterScholarships);
 //       institutesController.getAllInstitutes().then(docs => res.json(docs));
 // });
 
+app.get('/getAllLogs',logsController.getAllLogs);
+// app.get('/getAllUserLogin',logsController.getAllUserLogin);
+
+// app.get('/getAllrefreshErr',logsController.getAllrefreshErr);
+
+// app.get('/getAllrefreshLogs',logsController.getAllrefreshLogs);
+
+
 app.get('/getAllSubEng',
      (req,res)=>{
       subEngController.getAllSubEng().then(docs => res.json(docs));
@@ -118,8 +132,8 @@ app.get('/getCollegesData', crawlerController.getCollegesData);
 
 // Automatic Get Rates - (Scheduler - 6:30-AM)
 var getRatesRule = new schedule.RecurrenceRule();
-getRatesRule.hour = 00;
-getRatesRule.minute = 00; 
+getRatesRule.hour = 09;
+getRatesRule.minute = 13
 var i = schedule.scheduleJob(getRatesRule, function(){
     console.log('Automatic Schedule: Get Colleges Data Started !');
     crawlerController.getCollegesData();
@@ -134,8 +148,8 @@ app.get('/getDepartmentsData', crawlerController.getDepartmentsData);
 
 // Automatic Get Rates - (Scheduler - 6:30-AM)
 var getRatesRule = new schedule.RecurrenceRule();
-getRatesRule.hour = 00;
-getRatesRule.minute = 02; 
+getRatesRule.hour = 09
+getRatesRule.minute = 15 
 var i = schedule.scheduleJob(getRatesRule, function(){
     console.log('Automatic Schedule: Get Departments Data Started !');
     crawlerController.getDepartmentsData();
