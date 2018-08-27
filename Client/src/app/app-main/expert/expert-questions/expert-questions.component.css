@@ -34,7 +34,7 @@ td{
   text-align: right;
 }
 
-.glyphicon{
+.glyphicon ,.fas{
   font-size: 20px;
   cursor:pointer;
 }

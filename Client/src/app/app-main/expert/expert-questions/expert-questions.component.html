@@ -9,7 +9,7 @@
     <table id="user_data" class="table table-bordered table-striped">
      <thead>
       <tr>
-       <th>שאלה</th> 
+        <th>שאלה</th> 
         <th>משקל כימיה</th>
         <th>משקל תוכנה</th>
         <th>משקל אלקטרוניקה</th>
@@ -33,6 +33,7 @@
             <td>
                 <span (click)="openUpdate(updateModal,q)" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 <span (click)="openDelete(deleteModal,q)" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                <span (click)="openChart(q)" class="fas fa-chart-pie" aria-hidden="true"></span>
             </td>
         </tr>
       </tbody>     
@@ -93,14 +94,14 @@
         <div class="form-container">
             <div class="row-columns">
 
-                <label>השאלה</label><input type="text" formControlName="question" placeholder="{{Qchoosed.questionData}}">
-                <label>משקל כימיה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wchemistry" placeholder="{{Qchoosed.Wchemistry}}">
-                <label>משקל תוכנה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wsoftware" placeholder="{{Qchoosed.Wsoftware}}">
-                <label>משקל אלקטרוניקה</label><input type="number" name="quantity" min="1" max="5" formControlName="Welectronic" placeholder="{{Qchoosed.Welectronic}}">
-                <label>משקל רפואה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmedical" placeholder="{{Qchoosed.Wmedical}}">
-                <label>משקל תעשיה וניהול</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmanagement" placeholder="{{Qchoosed.Wmanagement}}">
-                <label>משקל בניין</label><input type="number" name="quantity" min="1" max="5" formControlName="Wbuilding" placeholder="{{Qchoosed.Wbuilding}}">
-                <label>משקל מכונות</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmachine" placeholder="{{Qchoosed.Wmachine}}">
+                <label>השאלה</label><input type="text" formControlName="question" value="{{Qchoosed.questionData}}">
+                <label>משקל כימיה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wchemistry" value="{{Qchoosed.Wchemistry}}">
+                <label>משקל תוכנה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wsoftware" value="{{Qchoosed.Wsoftware}}">
+                <label>משקל אלקטרוניקה</label><input type="number" name="quantity" min="1" max="5" formControlName="Welectronic" value="{{Qchoosed.Welectronic}}">
+                <label>משקל רפואה</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmedical" value="{{Qchoosed.Wmedical}}">
+                <label>משקל תעשיה וניהול</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmanagement" value="{{Qchoosed.Wmanagement}}">
+                <label>משקל בניין</label><input type="number" name="quantity" min="1" max="5" formControlName="Wbuilding" value="{{Qchoosed.Wbuilding}}">
+                <label>משקל מכונות</label><input type="number" name="quantity" min="1" max="5" formControlName="Wmachine" value="{{Qchoosed.Wmachine}}">
                 <input type="submit" class="btn btn-info" value="עדכון" [disabled]="!rForm.valid">
 
             </div>

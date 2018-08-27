@@ -4,6 +4,7 @@ import  {Question} from '../../../model/Qustion.model';
 import { Router } from '@angular/router';
 import { NgbModal , ModalDismissReasons ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CurrentQuestion } from '../../../app-shared/current-question';
 
 @Component({
   selector: 'app-expert-questions',
@@ -32,7 +33,9 @@ export class ExpertQuestionsComponent implements OnInit {
   constructor(private dataService : DataService,
               private modalService: NgbModal,
               private fb: FormBuilder,
-              private alertConfig: NgbAlertConfig) {
+              private alertConfig: NgbAlertConfig,
+              private router:Router,
+              private currentQuestionService:CurrentQuestion) {
 
      alertConfig.type = 'success';
      alertConfig.dismissible = false;
@@ -160,6 +163,12 @@ export class ExpertQuestionsComponent implements OnInit {
             })
    };
  
+  openChart(q){
+      this.currentQuestionService.change(q);
+      this.router.navigateByUrl('/chart-pie');
+  }
+
+
 
 }
 

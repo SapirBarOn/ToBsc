@@ -1,0 +1,18 @@
+#container{
+  width: 100%;
+}
+
+.box{
+  width:1270px;
+  padding:20px;
+  background-color:#fff;
+  border:1px solid #ccc;
+  border-radius:5px;
+  margin-top:25px;
+  box-sizing:border-box;
+  
+}
+
+h2{
+    text-align: center;
+}

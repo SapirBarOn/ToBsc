@@ -407,6 +407,33 @@ getQuestionByDiff(){
     
     if (content=="כן") {
       numForAddTotal=1;
+      //Check user's age
+      if (this.user.age<=21){
+        this.askedQuestions[this.askedQuestions.length-1].Age18To21++;
+      }else if (this.user.age>21 && this.user.age<=25){
+        this.askedQuestions[this.askedQuestions.length-1].Age22To25++;
+      }else if (this.user.age>25 && this.user.age<=29){
+        this.askedQuestions[this.askedQuestions.length-1].Age26To29++;
+      }else  if (this.user.age>29){
+        this.askedQuestions[this.askedQuestions.length-1].up30++;
+      }
+      //User's workExp
+      if (this.user.WorkExperience=="שיווק"){
+        this.askedQuestions[this.askedQuestions.length-1].Marketing++;
+      }else if (this.user.WorkExperience=="מלצרות"){
+        this.askedQuestions[this.askedQuestions.length-1].Waitress++;
+      }else if(this.user.WorkExperience=="מכירות"){
+        this.askedQuestions[this.askedQuestions.length-1].Sales++;
+      }else if(this.user.WorkExperience=="ללא ניסיון"){
+        this.askedQuestions[this.askedQuestions.length-1].inexperienced++;
+      }
+      //User's gender
+      if(this.user.gender=="זכר"){
+        this.askedQuestions[this.askedQuestions.length-1].male++;
+      }else if(this.user.gender==="נקבה"){
+        this.askedQuestions[this.askedQuestions.length-1].female++;
+      }
+
     }
 
     else if (content=="אולי") {
