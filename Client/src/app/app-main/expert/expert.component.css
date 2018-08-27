@@ -1,66 +1,63 @@
-#container{
-  width: 100%;
+.name{
+    text-align: center;
+    font-size: 20px;
 }
 
-.box{
-  width:1270px;
-  padding:20px;
-  background-color:#fff;
-  border:1px solid #ccc;
-  border-radius:5px;
-  margin-top:25px;
-  box-sizing:border-box;
+img{
+    margin: 0 auto;
+    display: block;
+    width: 298px;
 }
 
-.btn{
-  background-color: #84b4a7;
-  border-color: #84b4a7;
-  margin-top: 5px;
+#mainLayout3{
+    background: #f9f9f9;
+    position: relative;
+    padding-left:1%;
+    padding-top:5%;
 }
 
-#add{
-  font-size: 35px;
+#mainLayout3 > *{
+    width:300px;
+    height:200px;
+    border: 1px solid #020741;
+    background:#ffffff;
+    display:inline-block;  
+    margin-left:2%;
+    margin-bottom:10%;
+    cursor:  pointer;   
 }
 
-table{
-  direction: rtl;
+
+button{
+    /*float: right;*/
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #7d331f;
+    background-color:#cf411b;
+    color:#ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    outline:none;
+    margin-top:2%;
+    margin:0 auto;
+    display: block;
 }
 
-th{
-  text-align: center;
+button:hover{
+        background-color:#b13615;
+    }
+
+#wrapperLayout3{
+    max-width:1000px;
+    width: 100%;
+    margin:0 auto;
 }
 
-td{
-  text-align: right;
-}
-
-.glyphicon{
-  font-size: 20px;
-  cursor:pointer;
-}
-
-input{
-  text-align: center;
-  margin-bottom: 5px;
-  width: 100%;
-}
-
-label{
-  float: right;
-}
-
-.form-container {
-    display:block;
-    width:100%;
-    padding:2em;
-    margin: 2em auto;
-}
-
-.modal-title{
-  margin-right: 195px;
-}
-
-.close{
-    float: right;
-    margin-right: -280px;
+@media (max-width: 634px) {
+    #mainLayout3 > *{
+        margin:0 auto;
+        display: block;
+        margin-bottom:10%; 
+    }
 }
