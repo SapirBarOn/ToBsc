@@ -32,6 +32,8 @@ import { CurrentUser } from './app-shared/current-user';
 import { CurrentColleges } from './app-shared/current-college';
 import { CurrentDepartments } from './app-shared/current-department';
 import { CurrentScholarships } from './app-shared/current-scholarship';
+import { CurrentQuestion } from './app-shared/current-question';
+
 
 
 import { CollegesComponent } from './app-main/colleges/colleges.component';
@@ -48,6 +50,7 @@ import { MyFavoriteComponent } from './app-main/my-favorite/my-favorite.componen
 import { MySubEngComponent } from './app-main/my-sub-eng/my-sub-eng.component';
 import { ExpertQuestionsComponent } from './app-main/expert/expert-questions/expert-questions.component';
 import { ExpertCrawlerComponent } from './app-main/expert/expert-crawler/expert-crawler.component';
+import { ChartPieComponent } from './app-main/expert/chart-pie/chart-pie.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -88,6 +91,9 @@ const appRoutes: Routes = [
   {path: 'mySubEng',component:MySubEngComponent},
   {path: 'expert-questions',component:ExpertQuestionsComponent},
   {path: 'expert-crawler',component:ExpertCrawlerComponent},
+  {path: 'chart-pie',component:ChartPieComponent},
+
+
 ];
 
 @NgModule({
@@ -116,6 +122,7 @@ const appRoutes: Routes = [
     MySubEngComponent,
     ExpertQuestionsComponent,
     ExpertCrawlerComponent,
+    ChartPieComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -137,6 +144,7 @@ const appRoutes: Routes = [
     CurrentColleges,
     CurrentDepartments,
     CurrentScholarships,
+    CurrentQuestion
 
       {
         provide: AuthServiceConfig,
