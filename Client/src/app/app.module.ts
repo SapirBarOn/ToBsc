@@ -144,8 +144,7 @@ const appRoutes: Routes = [
     CurrentColleges,
     CurrentDepartments,
     CurrentScholarships,
-    CurrentQuestion
-
+    CurrentQuestion,
       {
         provide: AuthServiceConfig,
         useFactory: getAuthServiceConfigs
