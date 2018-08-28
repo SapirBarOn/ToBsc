@@ -97,16 +97,46 @@ export class ExpertQuestionsComponent implements OnInit {
   }
 
   updatePost(post) {
-    this.question = post.question;
-    this.Wchemistry = post.Wchemistry;
-    this.Wsoftware = post.Wsoftware;
-    this.Welectronic = post.Welectronic;    
-    this.Wmedical = post.Wmedical;
-    this.Wmanagement = post.Wmanagement;
-    this.Wbuilding = post.Wbuilding;
-    this.Wmachine = post.Wmachine;
-    console.log("updatePost---->>");
-    console.log(post.question,post.Wchemistry,post.Wsoftware);
+    if(post.question==null){
+      this.question=this.Qchoosed.questionData;
+    }else{
+     this.question = post.question; 
+    }
+    if(post.Wchemistry==null){
+      this.Wchemistry=this.Qchoosed.Wchemistry;
+    }else{
+     this.Wchemistry = post.Wchemistry; 
+    }
+    if(post.Wsoftware==null){
+      this.Wsoftware=this.Qchoosed.Wsoftware;
+    }else{
+     this.Wsoftware = post.Wsoftware; 
+    }
+    if(post.Welectronic==null){
+      this.Welectronic=this.Qchoosed.Welectronic;
+    }else{
+     this.Welectronic = post.Welectronic; 
+    }
+    if(post.Wmedical==null){
+      this.Wmedical=this.Qchoosed.Wmedical;
+    }else{
+     this.Wmedical = post.Wmedical; 
+    }      
+    if(post.Wmanagement==null){
+      this.Wmanagement=this.Qchoosed.Wmanagement;
+    }else{
+     this.Wmanagement = post.Wmanagement; 
+    } 
+    if(post.Wbuilding==null){
+      this.Wbuilding=this.Qchoosed.Wbuilding;
+    }else{
+     this.Wbuilding = post.Wbuilding; 
+    }   
+    if(post.Wmachine==null){
+      this.Wmachine=this.Qchoosed.Wmachine;
+    }else{
+     this.Wmachine = post.Wmachine; 
+    } 
     this.update();
     this.modalReference.close();
     this.alertMassege="השאלה עודכנה בהצלחה";
