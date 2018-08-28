@@ -63,8 +63,6 @@ app.post('/updateQuestion',questionController.updateQuestion);
 
 app.post('/deleteQuestion',questionController.deleteQuestion);
 
-app.post('/updateSumUsersUnsweredYES',chatController.updateSumUsersUnsweredYES);
-
 app.post('/filterColleges',collegesController.filterColleges);
 
 app.post('/forgotPassword',userList.forgotPassword);
@@ -77,13 +75,14 @@ app.post('/unFavoriteColleges',collegesController.unFavoriteColleges);
 
 app.get('/getFavoriteUserId/:_id',collegesController.getFavoriteUserId);
 
+//app.post('/updateUser',userList.updateUser);
+app.post('/updateUser',userList.updateUser);
 
 
 app.get('/getAllQuestions',
      (req,res)=>{
       questionController.allQuestion().then(docs => res.json(docs));
 });
-
 
 
 app.get('/getAllChat',
@@ -118,6 +117,8 @@ app.get('/getAllSubEng',
 app.get('/getQuestion/:idNum', chatController.getQuestionById);
 app.post('/getUserSubEngById' , chatController.getUserSubEngById);
 app.post('/createSubEngByUserOrReturn', chatController.createSubEngByUserOrReturn);
+
+app.post('/updateSumUsersUnsweredYES',chatController.updateSumUsersUnsweredYES);
 
 app.post('/updateSubEngWeights', chatController.updateSubEngWeights); 
 
