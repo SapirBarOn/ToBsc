@@ -94,6 +94,19 @@ getAllScholarships(callback: Function) {
     );   
   }
 
+  getTypeLog(logsType:string,callback: Function){
+    this.http.post('https://finalproject201808.herokuapp.com/getTypeLog',
+    {'logsType':logsType})
+    .subscribe(
+      (res: Response ) => {
+        callback( res.json() );
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );
+  }
 
   login(email:string,password:string,callback: Function) {
     this.http.post('https://finalproject201808.herokuapp.com/login',{'email':email,'password':password})
@@ -125,7 +138,7 @@ getAllScholarships(callback: Function) {
   }
 
   updateUser(userId:string,firstName:string,lastName:string,email:string,WorkExperience:string,gender:string,age:number,callback: Function){
-    this.http.post('http://localhost:3000/updateUser',
+    this.http.post('https://finalproject201808.herokuapp.com/updateUser',
     {'userId':userId,'firstName':firstName,'lastName':lastName,'email':email,'WorkExperience':WorkExperience,'gender':gender,'age':age})
     .subscribe(
       (res: Response ) => {
@@ -288,7 +301,7 @@ updateSubEngWeights(userID:string,chemistry:number,
                  Age22To25:number,
                  Age26To29:number,
                  up30:number,callback: Function){
-    this.http.post('http://localhost:3000/updateSumUsersUnsweredYES',
+    this.http.post('https://finalproject201808.herokuapp.com/updateSumUsersUnsweredYES',
     {'questionId':questionId,'Marketing':Marketing,
     'inexperienced':inexperienced,'Waitress':Waitress,
     'Sales':Sales,'Management':Management,
