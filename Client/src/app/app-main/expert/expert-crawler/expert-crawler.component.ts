@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import  {DataService} from '../../../data.service';
+import { Logs } from '../../../model/Logs.model';
 
 @Component({
   selector: 'app-expert-crawler',
@@ -7,11 +8,23 @@ import  {DataService} from '../../../data.service';
   styleUrls: ['./expert-crawler.component.css']
 })
 export class ExpertCrawlerComponent implements OnInit {
-
+  typeRefreshLogs:string="refreshLogs";
+  typeRefreshErr:string="refreshErr";
+  RefreshLogs:Logs[]=[];
+  RefreshErr:Logs[]=[];
   constructor(private dataService:DataService) { }
 
-  ngOnInit() {
+  ngOnInit() {  
 
+    this.dataService.getTypeLog(this.typeRefreshLogs,(result)=>{
+          console.log(result);
+          this.RefreshLogs=result;
+      })
+
+      this.dataService.getTypeLog(this.typeRefreshErr,(result)=>{
+          console.log(result);
+          this.RefreshErr=result;
+      })
   }
 
   crawlerDepartments(){
@@ -25,4 +38,8 @@ export class ExpertCrawlerComponent implements OnInit {
              console.log("crawler Colleges run")
     });
   }
+
+    goBack() {
+    window.history.back();
+}
 }
