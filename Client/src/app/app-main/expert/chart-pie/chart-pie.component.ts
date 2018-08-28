@@ -73,7 +73,9 @@ export class ChartPieComponent implements OnInit {
 
 
     }
-
+goBack() {
+    window.history.back();
+  }
 
 
 }
