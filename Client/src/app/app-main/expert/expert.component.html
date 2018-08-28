@@ -1,18 +1,17 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<body>
-  <button (click)="goBack()">חזור <span class="glyphicon glyphicon-repeat"></span></button>
-  <div id="wrapperLayout3">
-    <main id="mainLayout3">
-      <section *ngFor="let t of typeExpert">
-        <section (click)="intoTypeExpert(t)">
-          <p class="name">{{t}}</p>
-        </section>
-      </section>
-    </main>
-  </div>
-</body>
-
+<div id="contener">
+  <section class="crawler" routerLink="/expert-crawler">
+  <img src="../../../../assets/images/web-crawler.png">
+    <p>זחלן רשת</p>
+  </section>
+  <section class="users" routerLink="/">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    <p>משתמשים</p>
+  </section>
+  <section class="questions" routerLink="/expert-questions">
+    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+    <p>שאלות</p>
+  </section>
+</div>
 
 
 
