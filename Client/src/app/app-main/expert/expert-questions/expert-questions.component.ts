@@ -31,6 +31,7 @@ export class ExpertQuestionsComponent implements OnInit {
     Wmanagement:number;
     Wbuilding:number;
     Wmachine:number;
+    timer:any;
 
      @Input() public alerts: Array<string> = [];
 
