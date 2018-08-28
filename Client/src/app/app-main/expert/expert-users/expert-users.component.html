@@ -1,0 +1,30 @@
+<button class="back" (click)="goBack()">חזור <span class="glyphicon glyphicon-repeat"></span></button>
+<p>מספר משתמשים: {{usersLenght}}</p>
+<div id="container" class="container box">
+   <div class="table-responsive">
+    <table id="user_data" class="table table-bordered table-striped">
+     <thead>
+      <tr>
+       <th>שם פרטי</th> 
+        <th>שם משפחה</th>
+        <th>אימייל</th>
+        <th>סיסמא</th>
+        <th>מין</th>
+        <th>ניסיון תעסוקתי</th>
+        <th>גיל</th>
+      </tr>
+     </thead>
+    <tbody>
+        <tr *ngFor="let u of users">
+            <td>{{ u.firstName }}</td>
+            <td>{{ u.lastName }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.password }}</td>
+            <td>{{ u.gender }}</td>
+            <td>{{ u.WorkExperience }}</td>
+            <td>{{ u.age }}</td>
+        </tr>
+      </tbody>     
+    </table>
+   </div>
+  </div>
