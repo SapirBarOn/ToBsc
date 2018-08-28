@@ -84,6 +84,9 @@ export class ExpertQuestionsComponent implements OnInit {
     this.modalReference.close();
     this.alertMassege="השאלה נוספה בהצלחה";
     $(".alert").show();
+    this.timer = setTimeout(() => {
+        $('.alert').css('visibility','hidden');
+    },1500);
   }
 
 
@@ -108,6 +111,9 @@ export class ExpertQuestionsComponent implements OnInit {
     this.modalReference.close();
     this.alertMassege="השאלה עודכנה בהצלחה";
     $(".alert").show();
+    this.timer = setTimeout(() => {
+        $('.alert').css('visibility','hidden');
+    },1500);
   }
 
   openDelete(content,q) {
@@ -156,6 +162,9 @@ export class ExpertQuestionsComponent implements OnInit {
     this.modalReference.close();
     this.alertMassege="השאלה נמחקה בהצלחה";
     $(".alert").show();
+    this.timer = setTimeout(() => {
+      $('.alert').css('visibility','hidden');
+    },1500);
   }
 
 
