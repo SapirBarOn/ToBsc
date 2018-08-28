@@ -18,6 +18,12 @@
   margin-top: 5px;
 }
 
+#cancel{
+  margin-right: 15px;
+  background-color: #cf411b;
+  border-color: #7d331f;
+}        
+
 #add{
   font-size: 35px;
 }
@@ -63,4 +69,12 @@ label{
 .close{
     float: right;
     margin-right: -280px;
+}
+
+.alert{
+  display: none;
+  width: 400px;
+  text-align: center;
+  margin-right: 350px;
+  margin-top: -20px;
 }

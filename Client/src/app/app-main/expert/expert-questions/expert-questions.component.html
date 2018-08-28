@@ -4,6 +4,7 @@
    <br />
     <div align="right">
      <span (click)="openAdd(addModal)" id="add" class="glyphicon glyphicon-plus-sign"></span>
+     <div class="alert alert-success">{{alertMassege}}</div>
     </div>
     <br />
     <table id="user_data" class="table table-bordered table-striped">
@@ -51,12 +52,12 @@
     </button>
   </div>
   <div class="modal-body">
-    <p *ngIf="alertConfig.dismissible">
-        <ngb-alert>
+<!--     <p *ngIf="alertConfig.dismissible">
+        <ngb-alert [dismissible]="false">
             השאלה נוספה בהצלחה!
         </ngb-alert>
-    </p>
-    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+    </p> -->
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" >
         <div class="form-container">
             <div class="row columns">
 
@@ -85,11 +86,11 @@
     </button>
   </div>
   <div class="modal-body">
-      <p *ngIf="alertConfig.dismissible">
-        <ngb-alert>
+<!--       <p *ngIf="alertConfig.dismissible">
+        <ngb-alert [dismissible]="false">
             העדכון בוצע בהצלחה!
         </ngb-alert>
-    </p>
+    </p> -->
     <form [formGroup]="rForm" (ngSubmit)="updatePost(rForm.value)">
         <div class="form-container">
             <div class="row-columns">
@@ -113,22 +114,39 @@
 
 <ng-template #deleteModal let-c="close" let-d="dismiss">
   <div class="modal-header">
+    <h4 class="modal-title">מחיקת שאלה</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 <!--   <p *ngIf="alertConfig.dismissible">
-    <ngb-alert>
+    <ngb-alert [dismissible]="false">
         השאלה נמחקה!
     </ngb-alert>
   </p> -->
 
-  <div class="alert alert-success" role="alert">מחיקת שאלה</div>
   <div class="modal-body">
     האם אתה בטוח כי ברצונך למחוק את השאלה?
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="delete()">אישור</button>
+    <button type="button" class="btn btn-success" (click)="delete()">אישור</button>
+    <button type="button" id="cancel" class="btn btn-danger" (click)="d('Cross click')">ביטול</button>
+
   </div>
 </ng-template>
 
+
+<ng-template #alertModal let-c="close" let-d="dismiss">
+  <!-- <div class="modal-header">
+    <h4 class="modal-title">מחיקת שאלה</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> -->
+  <div class="modal-body">
+    השאלה {{type}} 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="d('Cross click')">אישור</button>
+  </div>
+</ng-template>

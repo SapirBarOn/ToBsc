@@ -1,10 +1,11 @@
-import { Component, OnInit , Input} from '@angular/core';
-import  {DataService} from '../../../data.service';
-import  {Question} from '../../../model/Qustion.model';
+import { Component, OnInit , Input } from '@angular/core';
+import { DataService } from '../../../data.service';
+import { Question } from '../../../model/Qustion.model';
 import { Router } from '@angular/router';
-import { NgbModal , ModalDismissReasons ,NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal , ModalDismissReasons ,NgbAlertConfig ,NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CurrentQuestion } from '../../../app-shared/current-question';
+declare var $:any;
 
 @Component({
   selector: 'app-expert-questions',
@@ -12,6 +13,9 @@ import { CurrentQuestion } from '../../../app-shared/current-question';
   styleUrls: ['./expert-questions.component.css']
 })
 export class ExpertQuestionsComponent implements OnInit {
+
+    modalReference:NgbModalRef= null;     
+    alertMassege:string;
 
     questions:Question[]=[];
     Qchoosed:Question;
@@ -64,7 +68,7 @@ export class ExpertQuestionsComponent implements OnInit {
 
   openAdd(content) {
     this.alertConfig.dismissible = false;
-    this.modalService.open(content,{ centered: true });
+    this.modalReference=this.modalService.open(content,{ centered: true });
   }
 
   addPost(post) {
@@ -77,13 +81,16 @@ export class ExpertQuestionsComponent implements OnInit {
     this.Wbuilding = post.Wbuilding;
     this.Wmachine = post.Wmachine;
     this.createQuestion();
+    this.modalReference.close();
+    this.alertMassege="השאלה נוספה בהצלחה";
+    $(".alert").show();
   }
 
 
   openUpdate(content,q) {
     this.alertConfig.dismissible = false;
     this.Qchoosed=q;
-    this.modalService.open(content,{ centered: true });
+    this.modalReference=this.modalService.open(content,{ centered: true });
   }
 
   updatePost(post) {
@@ -95,13 +102,18 @@ export class ExpertQuestionsComponent implements OnInit {
     this.Wmanagement = post.Wmanagement;
     this.Wbuilding = post.Wbuilding;
     this.Wmachine = post.Wmachine;
+    console.log("updatePost---->>");
+    console.log(post.question,post.Wchemistry,post.Wsoftware);
     this.update();
+    this.modalReference.close();
+    this.alertMassege="השאלה עודכנה בהצלחה";
+    $(".alert").show();
   }
 
   openDelete(content,q) {
     this.alertConfig.dismissible = false;
     this.Qchoosed=q;
-    this.modalService.open(content,{ centered: true });
+    this.modalReference=this.modalService.open(content,{ centered: true });
   }
 
   private getDismissReason(reason: any): string {
@@ -141,6 +153,9 @@ export class ExpertQuestionsComponent implements OnInit {
                               this.ngOnInit();
                           }        
     });
+    this.modalReference.close();
+    this.alertMassege="השאלה נמחקה בהצלחה";
+    $(".alert").show();
   }
 
 
