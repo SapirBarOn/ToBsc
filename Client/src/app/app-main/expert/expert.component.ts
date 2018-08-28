@@ -12,38 +12,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ExpertComponent implements OnInit {
 
-    typeExpert:string[]=[
-    "משתמשים",
-    "קרולר",
-    "שאלות"
-    ]
-
 
   constructor(private router:Router) { }
 
   ngOnInit() {
 
-   };
+  };
 
     goBack() {
     window.history.back();
   }
-
-
-   intoTypeExpert(t){
-     if (t=="שאלות"){
-        this.router.navigateByUrl('/expert-questions');
-     }
-
-     if (t=="קרולר") {
-       this.router.navigateByUrl('/expert-crawler');
-     }
-
-     if (t=="משתמשים") {
-       // code...
-     }
-
-   }
 
 }
 
