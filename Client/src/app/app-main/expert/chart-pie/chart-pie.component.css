@@ -16,3 +16,12 @@
 h2{
     text-align: center;
 }
+
+canvas{
+    margin-bottom:50px;
+}
+
+hr{
+    width: 400px;
+    color:#ccc;
+}
