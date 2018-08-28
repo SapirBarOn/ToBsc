@@ -51,6 +51,8 @@ import { MySubEngComponent } from './app-main/my-sub-eng/my-sub-eng.component';
 import { ExpertQuestionsComponent } from './app-main/expert/expert-questions/expert-questions.component';
 import { ExpertCrawlerComponent } from './app-main/expert/expert-crawler/expert-crawler.component';
 import { ChartPieComponent } from './app-main/expert/chart-pie/chart-pie.component';
+import { ExpertUsersComponent } from './app-main/expert/expert-users/expert-users.component';
+
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -92,6 +94,8 @@ const appRoutes: Routes = [
   {path: 'expert-questions',component:ExpertQuestionsComponent},
   {path: 'expert-crawler',component:ExpertCrawlerComponent},
   {path: 'chart-pie',component:ChartPieComponent},
+  {path: 'expert-users',component:ExpertUsersComponent},
+
 
 
 ];
@@ -123,6 +127,7 @@ const appRoutes: Routes = [
     ExpertQuestionsComponent,
     ExpertCrawlerComponent,
     ChartPieComponent,
+    ExpertUsersComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
