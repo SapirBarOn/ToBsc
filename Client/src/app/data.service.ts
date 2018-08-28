@@ -275,7 +275,35 @@ updateSubEngWeights(userID:string,chemistry:number,
       })
     );    
   }
-
+  
+  updateSumUsersUnsweredYES(questionId:number,
+                 Marketing:number,
+                 inexperienced:number,
+                 Waitress:number,
+                 Sales:number,
+                 Management:number,
+                 female:number,
+                 male:number,
+                 Age18To21:number,
+                 Age22To25:number,
+                 Age26To29:number,
+                 up30:number,callback: Function){
+    this.http.post('http://localhost:3000/updateSumUsersUnsweredYES',
+    {'questionId':questionId,'Marketing':Marketing,
+    'inexperienced':inexperienced,'Waitress':Waitress,
+    'Sales':Sales,'Management':Management,
+    'female':female,'male':male,'Age18To21':Age18To21,'Age22To25':Age22To25,
+    'Age26To29':Age26To29,'up30':up30})
+    .subscribe(
+      (res: Response ) => {
+        callback(res.json());
+      },
+      (error => {
+        console.log(error);
+        callback(null);
+      })
+    );    
+  }
 
   deleteQuestion(questionId:number,callback: Function){
     this.http.post('https://finalproject201808.herokuapp.com/deleteQuestion',{'questionId':questionId})
