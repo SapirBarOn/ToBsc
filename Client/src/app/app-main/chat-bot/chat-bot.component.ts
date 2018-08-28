@@ -407,7 +407,9 @@ getQuestionByDiff(){
     
     if (content=="כן") {
       numForAddTotal=1;
+      console.log('The ques user answered YES',this.askedQuestions[this.askedQuestions.length-1]);
       //Check user's age
+      console.log('User age',this.user.age);
       if (this.user.age<=21){
         this.askedQuestions[this.askedQuestions.length-1].Age18To21++;
       }else if (this.user.age>21 && this.user.age<=25){
@@ -417,23 +419,41 @@ getQuestionByDiff(){
       }else  if (this.user.age>29){
         this.askedQuestions[this.askedQuestions.length-1].up30++;
       }
+      console.log('User work',this.user.WorkExperience);
       //User's workExp
       if (this.user.WorkExperience=="שיווק"){
+        console.log('שיווק');
         this.askedQuestions[this.askedQuestions.length-1].Marketing++;
       }else if (this.user.WorkExperience=="מלצרות"){
         this.askedQuestions[this.askedQuestions.length-1].Waitress++;
       }else if(this.user.WorkExperience=="מכירות"){
         this.askedQuestions[this.askedQuestions.length-1].Sales++;
-      }else if(this.user.WorkExperience=="ללא ניסיון"){
+      }else if(this.user.WorkExperience=="ללא נסיון"){
         this.askedQuestions[this.askedQuestions.length-1].inexperienced++;
       }
       //User's gender
+      console.log('User gender',this.user.gender);
       if(this.user.gender=="זכר"){
         this.askedQuestions[this.askedQuestions.length-1].male++;
       }else if(this.user.gender==="נקבה"){
         this.askedQuestions[this.askedQuestions.length-1].female++;
       }
 
+      this.dataService.updateSumUsersUnsweredYES(this.askedQuestions[this.askedQuestions.length-1].questionId,
+                 this.askedQuestions[this.askedQuestions.length-1].Marketing,
+                 this.askedQuestions[this.askedQuestions.length-1].inexperienced,
+                 this.askedQuestions[this.askedQuestions.length-1].Waitress,
+                 this.askedQuestions[this.askedQuestions.length-1].Sales,
+                 this.askedQuestions[this.askedQuestions.length-1].Management,
+                 this.askedQuestions[this.askedQuestions.length-1].female,
+                 this.askedQuestions[this.askedQuestions.length-1].male,
+                 this.askedQuestions[this.askedQuestions.length-1].Age18To21,
+                 this.askedQuestions[this.askedQuestions.length-1].Age22To25,
+                 this.askedQuestions[this.askedQuestions.length-1].Age26To29,
+                 this.askedQuestions[this.askedQuestions.length-1].up30,(result)=>{
+                   this.result=result;
+        console.log('After answered Yes:',this.result);
+      });
     }
 
     else if (content=="אולי") {
