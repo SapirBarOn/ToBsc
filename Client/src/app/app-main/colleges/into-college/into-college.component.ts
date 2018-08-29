@@ -86,15 +86,15 @@ export class IntoCollegeComponent implements OnInit {
         return false;
     });
 });
-      
+      var length=this.College.averageRents.length;
       var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: [this.College.averageRents[0].date,this.College.averageRents[1].date,this.College.averageRents[2].date, this.College.averageRents[3].date,this.College.averageRents[4].date,this.College.averageRents[5].date],
+        labels: [this.College.averageRents[length-1].date,this.College.averageRents[length-2].date,this.College.averageRents[length-3].date, this.College.averageRents[length-4].date,this.College.averageRents[length-5].date,this.College.averageRents[length-6].date],
         datasets: [{
             label: 'שכירות ממוצעת באזור מוסד הלימוד',
-            data: [this.College.averageRents[0].averagePrice, this.College.averageRents[1].averagePrice, this.College.averageRents[2].averagePrice, this.College.averageRents[3].averagePrice, this.College.averageRents[4].averagePrice, this.College.averageRents[5].averagePrice],
+            data: [this.College.averageRents[length-1].averagePrice, this.College.averageRents[length-2].averagePrice, this.College.averageRents[length-3].averagePrice, this.College.averageRents[length-4].averagePrice, this.College.averageRents[length-5].averagePrice, this.College.averageRents[length-6].averagePrice],
             backgroundColor: [
                 // 'rgba(255, 99, 132, 0.2)',
                 // 'rgba(54, 162, 235, 0.2)',

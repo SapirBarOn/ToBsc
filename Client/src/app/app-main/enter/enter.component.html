@@ -5,32 +5,28 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <div class="w3-row-padding">
-    <div class="w3-third w3-container w3-margin-bottom" id="sectionLeft">
-      <div class="w3-container w3-white">
+
+    <div class="w1-third w1-container w1-margin-bottom" id="sectionMiddle">
+      <div class="w2-container">
+        <div class="panel panel-info" style="float: right;width: 33%;">
+          <div class="panel-heading">לפי נתוני הפרופיל שלך, אולי יעניין אותך ללמוד:</div>
+      <div class="panel-body" (click)="openDepartment(i)" *ngFor="let i of threeSubEngRecommended">{{i}}</div>
+          </div>
+
+          <img src="../../../assets/images/avatar-psychologist (1).png">
+         <div class="bubble me">שמי אילנה ואני פסיכולוגית תעסוקתית <br>
+על מנת שאוכל להתאים לך את תחומי ההנדסה, עליי להכיר אותך ואת תחומי העניין שלך.
+ לחץ על "התחל צ'אט" ונצא לדרך...</div>
+
+         <button routerLink="/chat-bot">התחל צ'אט</button>
+      </div>
+    </div>
+        <div class="w3-third w3-container w3-margin-bottom" id="sectionLeft">
+      <div class="w1-container">
         <img src="../../../assets/images/מוסדות.png"  id="data" routerLink="/colleges">
         <img src="../../../assets/images/הנדסה.png" id="data" routerLink="/departments">
         <img src="../../../assets/images/מלגות.png" id="data" routerLink="/scholarships">
       </div>
-    </div>
-    <div class="w3-third w3-container w3-margin-bottom" id="sectionMiddle">
-      <div class="w3-container w3-white">
-         <p>שמי אילנה ואני פסיכולוגית תעסוקתית</p>
-         <p>
-             על מנת שאוכל להתאים לך את תחומי ההנדסה.
-             אצטרך להכיר אותך ואת תחומי העניין שלך<br>
-              לחץ על "התחל צא'ט" ונצא לדרך...
-         </p>
-         <img src="../../../assets/images/avatar-psychologist (1).png">
-         <button routerLink="/chat-bot">התחל צ'אט</button>
-      </div>
-    </div>
-    <div class="w3-third w3-container w3-margin-bottom" id="sectionRight">
-      <div class="w3-container w3-white">
-          <h3 id="recommended">לפי נתוני הפרופיל שלך, אולי יעניין אותך ללמוד:</h3>
-          <p (click)="openDepartment(i)" *ngFor="let i of threeSubEngRecommended">{{i}}</p>
-      </div>
-<!--           <h3 id="recommended1">מוסדות מועדפים:</h3>
-          <p (click)="openColleges(i)" *ngFor="let i of favoriteColleges">{{i}}</p> -->
     </div>
   </div>
   

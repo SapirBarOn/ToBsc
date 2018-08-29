@@ -6,10 +6,7 @@
         <h2 id="pass">סיסמא</h2>
         <input #pass type="password" name="password" ngModel  required>
         <p id="res"></p>
-        <p routerLink="/forgotPassword" id="forgot">?שכחת סיסמא</p>
+        <p routerLink="/forgotPassword" id="forgot">שכחתי סיסמא</p>
         <button id="signIn" (click)="login()" type="submit">התחבר</button>
-        <h2 id="or">או</h2>
-        <button id="Facebook" (click)="socialSignIn('facebook')">Facebook</button>
-        <button id="Google" (click)="socialSignIn('google')">Google+</button>  
     </form>
 </div>

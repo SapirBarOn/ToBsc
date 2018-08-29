@@ -223,6 +223,10 @@ export class ExpertQuestionsComponent implements OnInit {
       this.router.navigateByUrl('/chart-pie');
   }
 
+  goBack() {
+    window.history.back();
+  }
+
 
 
 }

@@ -87,6 +87,8 @@ buttonSubEng:boolean=false;
               this.subEngForUser.management=0 
               this.subEngForUser.building=0 
               this.subEngForUser.machine=0
+                  this.dataService.updateSubEngWeights(this.id,this.subEngForUser.chemistry,this.subEngForUser.software,this.subEngForUser.electronic,
+    this.subEngForUser.medical,this.subEngForUser.management,this.subEngForUser.building,this.subEngForUser.machine, (result)=>{})
               console.log("You pressed OK!");
             }else{
                 console.log("You pressed Cancel!");
@@ -344,6 +346,24 @@ getQuestionByDiff(){
      },2000);
       },1000);
     }
+    else if(this.userTotalSubEng[2].total==this.userTotalSubEng[3].total){
+      this.timer = setTimeout(() => {
+        this.resultAfterTyping = new Message (this.typing);
+          this.messages.push(this.resultAfterTyping)
+            $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '80px'
+            }, 10);
+        this.timer = setTimeout(() => {
+       this.messages.pop();
+       $('html, #chat').animate({
+              scrollTop: $("#chat").offset().top+ '150px'
+            }, 10);
+       this.messages.push(new Message('שיחתי איתך נראה כי התחום המתאים לך ביותר הוא '+OneSub+
+        '.\n כעדיפות שנייה התחום המתאים לך הוא '+TwoSub+'.'));
+       this.buttonSubEng=true;
+     },2000);
+      },1000);
+    }    
 
     else{
          this.timer = setTimeout(() => {

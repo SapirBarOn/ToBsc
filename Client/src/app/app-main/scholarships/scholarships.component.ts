@@ -19,10 +19,7 @@ cLocation:boolean=false;
 cOrigin:boolean=false;
 locations: string[] = [
     'מרכז',
-    'שרון',
-    'ירושלים',
     'דרום',
-    'שומרון',
     'צפון'
   ]  
 
